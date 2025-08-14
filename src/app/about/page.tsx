@@ -48,49 +48,49 @@ const logoPhilosophy = [
 
 const galleryItems = [
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/600x400",
         title: "RAKER X UPGRADING HMIF UNSRI",
         year: "2025",
         hint: "student presentation"
     },
     {
-        src: "https://placehold.co/400x301",
+        src: "https://placehold.co/600x400",
         title: "RAKER X UPGRADING HMIF UNSRI",
         year: "2025",
         hint: "student audience"
     },
     {
-        src: "https://placehold.co/400x302",
+        src: "https://placehold.co/600x400",
         title: "RAKER X UPGRADING HMIF UNSRI",
         year: "2025",
         hint: "group photo"
     },
     {
-        src: "https://placehold.co/400x303",
+        src: "https://placehold.co/600x400",
         title: "RAKER X UPGRADING HMIF UNSRI",
         year: "2025",
         hint: "students sitting"
     },
     {
-        src: "https://placehold.co/400x304",
+        src: "https://placehold.co/600x400",
         title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
         year: "2025",
         hint: "large group"
     },
     {
-        src: "https://placehold.co/400x305",
+        src: "https://placehold.co/600x400",
         title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
         year: "2025",
         hint: "students listening"
     },
     {
-        src: "https://placehold.co/400x306",
+        src: "https://placehold.co/600x400",
         title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
         year: "2025",
         hint: "student team"
     },
     {
-        src: "https://placehold.co/400x307",
+        src: "https://placehold.co/600x400",
         title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
         year: "2025",
         hint: "student speaking"
