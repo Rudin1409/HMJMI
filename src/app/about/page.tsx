@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, Paw } from 'lucide-react';
 
 const stats = [
   {
@@ -27,6 +27,24 @@ const stats = [
     description: 'Diverse range of activities and initiatives',
   },
 ];
+
+const logoPhilosophy = [
+    {
+        icon: <Leaf className="w-5 h-5 text-primary" />,
+        title: "7 Kelopak Bunga",
+        description: "Melambangkan 7 dinas dalam HMIF."
+    },
+    {
+        icon: <Feather className="w-5 h-5 text-primary" />,
+        title: "3 Bulu Sayap",
+        description: "Melambangkan tridharma perguruan tinggi yakni pendidikan, penelitian, serta pengabdian kepada masyarakat."
+    },
+    {
+        icon: <Paw className="w-5 h-5 text-primary" />,
+        title: "5 Bulu Ekor",
+        description: "Melambangkan lima fungsi mahasiswa sebagai Agent of Change, Iron Stock, Moral Force, Social Control, serta Guardian of Value."
+    }
+]
 
 export default function AboutPage() {
   return (
@@ -88,48 +106,77 @@ export default function AboutPage() {
       
       <section className="bg-pink-50/50 py-16 md:py-24">
         <div className="container mx-auto px-4">
-            <Card className="p-8 shadow-lg rounded-2xl bg-white">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                    <div className="relative aspect-video rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/600x400" layout="fill" objectFit="cover" alt="HMIF Team" data-ai-hint="university student group" />
-                        <div className="absolute bottom-4 left-4 bg-black/50 text-white p-2 rounded-md">
-                            <h4 className="font-bold">HMIF Team</h4>
-                            <p className="text-sm">Kepengurusan 2025</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className="text-3xl font-bold text-gray-800 mb-4">Membangun Generasi Digital yang <span className="text-primary">Unggul</span></h3>
-                        <p className="text-muted-foreground mb-4">
-                            Sebagai organisasi mahasiswa, HMIF berkomitmen untuk mengembangkan potensi mahasiswa informatika melalui berbagai program yang inovatif dan relevan dengan perkembangan teknologi terkini.
-                        </p>
-                        <p className="text-muted-foreground">
-                            Kami percaya bahwa kolaborasi, inovasi, dan pembelajaran berkelanjutan adalah kunci untuk mempersiapkan mahasiswa menghadapi tantangan di era digital.
-                        </p>
-                    </div>
+            <div className="text-center mb-12">
+                <div className="flex justify-center mb-4">
+                    <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
-            </Card>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                    Vision & <span className="text-primary">Mission</span>
+                </h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
+                    <div className="relative z-10">
+                        <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                            <Target className="w-8 h-8"/>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h3>
+                        <p className="text-muted-foreground">Membangun generasi teknologi yang unggul, berkarakter, dan berkontribusi positif bagi perkembangan teknologi informasi di Indonesia melalui berbagai program dan kegiatan yang bermanfaat.</p>
+                    </div>
+                </Card>
+                <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
+                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
+                     <div className="relative z-10">
+                        <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                            <Rocket className="w-8 h-8"/>
+                        </div>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h3>
+                        <p className="text-muted-foreground">Menjadi wadah pengembangan potensi mahasiswa Teknik Informatika yang berkualitas, inovatif, dan berdaya saing global melalui kegiatan akademik dan non-akademik yang berstruktur dan berkelanjutan.</p>
+                    </div>
+                </Card>
+            </div>
+             <p className="text-center italic text-muted-foreground mt-8 text-lg">"Satukan Ambisi, Wujudkan Mimpi"</p>
         </div>
       </section>
       
        <section className="bg-white py-16 md:py-24">
-        <div className="container mx-auto px-4">
-            <Card className="p-8 shadow-lg rounded-2xl bg-white">
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                     <div>
-                        <h3 className="text-3xl font-bold text-gray-800 mb-4">Visi & Misi <span className="text-primary">Kami</span></h3>
-                        <p className="text-muted-foreground mb-4">
-                            Menjadi wadah pengembangan potensi mahasiswa Teknik Informatika yang berkualitas, inovatif, dan berdaya saing global melalui kegiatan akademik dan non-akademik yang terstruktur dan berkelanjutan.
-                        </p>
-                        <p className="text-muted-foreground">
-                            Membangun generasi teknologi yang unggul, berkarakter, dan berkontribusi positif bagi perkembangan teknologi informasi di Indonesia melalui berbagai program dan kegiatan yang bermanfaat.
-                        </p>
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <div className="flex justify-center mb-4">
+                        <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
-                    <div className="relative aspect-video rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/600x401" layout="fill" objectFit="cover" alt="Visi Misi Image" data-ai-hint="students planning meeting"/>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                        Filosofi Logo <span className="text-primary">Arthasena</span>
+                    </h2>
+                </div>
+                <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                    <div className="relative aspect-square">
+                        <Image src="https://placehold.co/500x500" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo phoenix flower" />
+                    </div>
+                    <div>
+                        <Card className="p-8 shadow-lg rounded-2xl bg-white">
+                            <h3 className="text-2xl font-bold text-gray-800 mb-4">Filosofi Logo</h3>
+                            <p className="text-muted-foreground mb-6">
+                                Logo kabinet Arthasena menggambarkan ketangguhan, kebijaksaan, dan semangat inovasi. Bunga teratai menggambarkan kemurnian dan perjuangan untuk terus berkembang meski menghadapi tantangan, serta burung dengan sayap merepresentasikan keberanian, kebebasan berpikir, dan tekad untuk membawa himpunan lebih tinggi. Kombinasi ini mencerminkan kepemimpinan yang kuat, inovatif, dan berintegritas.
+                            </p>
+                            <div className="space-y-4">
+                               {logoPhilosophy.map((item, index) => (
+                                     <div key={index} className="flex items-start gap-4">
+                                        <div className="flex-shrink-0 w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                                            {item.icon}
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-gray-800">{item.title}</h4>
+                                            <p className="text-muted-foreground text-sm">{item.description}</p>
+                                        </div>
+                                    </div>
+                               ))}
+                            </div>
+                        </Card>
                     </div>
                 </div>
-            </Card>
-        </div>
+            </div>
       </section>
 
     </div>
