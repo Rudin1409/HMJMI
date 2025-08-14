@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -10,16 +10,19 @@ import { Logo } from '@/components/icons';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
-  { href: '#tentang', label: 'Tentang' },
-  { href: '#divisi', label: 'Departemen' },
-  { href: '#berita', label: 'Berita' },
-  { href: '#galeri', label: 'Galeri' },
+  { href: '#about', label: 'About Us' },
+  { href: '#profile', label: 'Profile' },
+  { href: '#proker', label: 'Proker' },
+  { href: '#academic', label: 'Academic' },
+  { href: '#aspiration', label: 'Aspiration' },
 ];
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [activeLink, setActiveLink] = React.useState('#home');
+  // Simple dark mode toggle for visual effect, no actual theme change logic
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +30,15 @@ export function SiteHeader() {
       setIsScrolled(scrollPosition > 10);
 
       const sections = navLinks.map(link => document.querySelector(link.href));
+      let currentSection = '';
       sections.forEach(section => {
-        if (section && section.offsetTop <= scrollPosition + 100) {
-          setActiveLink(`#${section.id}`);
+        if (section && section.offsetTop <= scrollPosition + 150) {
+          currentSection = `#${section.id}`;
         }
       });
+      if (currentSection) {
+        setActiveLink(currentSection);
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -39,10 +46,8 @@ export function SiteHeader() {
 
   const getLinkClass = (href: string) => {
     return cn(
-      'relative font-semibold transition-colors hover:text-primary',
-      activeLink === href ? 'text-primary' : (isScrolled ? 'text-foreground' : 'text-white'),
-       'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-0 after:transition-transform after:duration-300',
-       activeLink === href && 'after:scale-x-100'
+      'font-semibold transition-colors hover:text-primary py-2 px-3 rounded-md',
+      activeLink === href ? 'bg-pink-100 text-primary' : 'text-gray-600',
     );
   };
   
@@ -50,16 +55,19 @@ export function SiteHeader() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'border-b border-border/40 bg-background/80 backdrop-blur-lg' : 'bg-transparent'
+        isScrolled ? 'border-b bg-white/80 backdrop-blur-lg' : 'bg-transparent'
       )}
     >
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <Logo className="h-10 w-10 text-primary" />
-          <span className={cn('text-xl font-bold', isScrolled ? 'text-primary' : 'text-white')}>HMIF</span>
+          <Logo className="h-10 w-10" />
+          <div className="flex flex-col">
+            <span className={cn('text-lg font-bold text-gray-800')}>HMIF UNSRI</span>
+            <span className="text-xs text-muted-foreground">Keilmuan, Profesional, Inovasi</span>
+          </div>
         </Link>
         
-        <nav className="hidden items-center space-x-8 text-sm md:flex">
+        <nav className="hidden items-center space-x-2 text-sm lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -73,12 +81,13 @@ export function SiteHeader() {
         </nav>
         
         <div className="flex items-center gap-2">
-           <Button asChild size="sm" className='hidden md:flex'>
-              <Link href="#kontak">Hubungi Kami</Link>
+           <Button variant="ghost" size="icon" onClick={() => setIsDarkMode(!isDarkMode)} className="hidden lg:flex">
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                <span className="sr-only">Toggle theme</span>
            </Button>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" className={cn("md:hidden", !isScrolled && "text-white hover:bg-white/10 hover:text-white")} size="icon">
+              <Button variant="ghost" className="lg:hidden" size="icon">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -87,7 +96,7 @@ export function SiteHeader() {
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-4">
                   <Link href="/" className="flex items-center space-x-2">
-                    <Logo className="h-8 w-8 text-primary" />
+                    <Logo className="h-8 w-8" />
                     <span className="font-bold">HMIF UNSRI</span>
                   </Link>
                    <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
@@ -95,7 +104,7 @@ export function SiteHeader() {
                       <span className="sr-only">Close menu</span>
                    </Button>
                 </div>
-                <nav className="mt-6 flex flex-col space-y-4">
+                <nav className="mt-6 flex flex-col space-y-2">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
@@ -107,9 +116,10 @@ export function SiteHeader() {
                     </Link>
                   ))}
                 </nav>
-                <Button asChild className="mt-auto">
-                    <Link href="#kontak" onClick={() => setMobileMenuOpen(false)}>Hubungi Kami</Link>
-                </Button>
+                 <Button variant="ghost" size="icon" onClick={() => setIsDarkMode(!isDarkMode)} className="mt-auto">
+                    {isDarkMode ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+                    <span className="sr-only">Toggle theme</span>
+               </Button>
               </div>
             </SheetContent>
           </Sheet>
