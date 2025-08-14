@@ -11,56 +11,74 @@ import { Logo } from '@/components/icons';
 const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#tentang', label: 'Tentang' },
-  { href: '#divisi', label: 'Divisi' },
+  { href: '#divisi', label: 'Departemen' },
   { href: '#berita', label: 'Berita' },
   { href: '#galeri', label: 'Galeri' },
-  { href: '#kontak', label: 'Kontak' },
 ];
 
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [activeLink, setActiveLink] = React.useState('#home');
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 10);
+
+      const sections = navLinks.map(link => document.querySelector(link.href));
+      sections.forEach(section => {
+        if (section && section.offsetTop <= scrollPosition + 100) {
+          setActiveLink(`#${section.id}`);
+        }
+      });
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const getLinkClass = (href: string) => {
+    return cn(
+      'relative font-semibold transition-colors hover:text-primary',
+      activeLink === href ? 'text-primary' : (isScrolled ? 'text-foreground' : 'text-white'),
+       'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-0 after:transition-transform after:duration-300',
+       activeLink === href && 'after:scale-x-100'
+    );
+  };
+  
   return (
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'border-b border-border/40 bg-background/80 backdrop-blur-lg' : 'bg-transparent text-white'
+        isScrolled ? 'border-b border-border/40 bg-background/80 backdrop-blur-lg' : 'bg-transparent'
       )}
     >
-      <div className="container flex h-20 items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Logo className={cn('h-10 w-10', isScrolled ? 'text-primary' : 'text-accent')} />
-          <span className={cn('text-xl font-bold', isScrolled ? 'text-primary' : 'text-white')}>HMJMI Polsri</span>
+      <div className="container flex h-20 items-center justify-between">
+        <Link href="/" className="flex items-center space-x-2">
+          <Logo className="h-10 w-10 text-primary" />
+          <span className={cn('text-xl font-bold', isScrolled ? 'text-primary' : 'text-white')}>HMIF</span>
         </Link>
-        <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="hidden items-center space-x-8 text-sm font-semibold md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn('transition-colors', isScrolled ? 'text-foreground hover:text-primary' : 'hover:text-accent')}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="hidden md:block">
-            <Button asChild size="sm" variant={isScrolled ? "default" : "outline"} className={cn(!isScrolled && 'border-accent text-accent hover:bg-accent hover:text-accent-foreground')}>
-                <Link href="#kontak">Hubungi Kami</Link>
-            </Button>
-          </div>
+        
+        <nav className="hidden items-center space-x-8 text-sm md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={getLinkClass(link.href)}
+              onClick={() => setActiveLink(link.href)}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        
+        <div className="flex items-center gap-2">
+           <Button asChild size="sm" className='hidden md:flex'>
+              <Link href="#kontak">Hubungi Kami</Link>
+           </Button>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" className="md:hidden" size="icon">
+              <Button variant="ghost" className={cn("md:hidden", !isScrolled && "text-white hover:bg-white/10 hover:text-white")} size="icon">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -70,7 +88,7 @@ export function SiteHeader() {
                 <div className="flex items-center justify-between border-b pb-4">
                   <Link href="/" className="flex items-center space-x-2">
                     <Logo className="h-8 w-8 text-primary" />
-                    <span className="font-bold">HMJMI Polsri</span>
+                    <span className="font-bold">HMIF UNSRI</span>
                   </Link>
                    <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
                       <X className="h-6 w-6" />

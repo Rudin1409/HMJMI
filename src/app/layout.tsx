@@ -7,11 +7,11 @@ import { SiteFooter } from '@/components/site-footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'HMJMI Reborn',
-    template: `%s - HMJMI Reborn`,
+    default: 'HMIF UNSRI',
+    template: `%s - HMIF UNSRI`,
   },
-  description: 'Website Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya',
-  keywords: ['HMJMI', 'Polsri', 'Manajemen Informatika', 'Politeknik Negeri Sriwijaya'],
+  description: 'Website Himpunan Mahasiswa Teknik Informatika Universitas Sriwijaya',
+  keywords: ['HMIF', 'Unsri', 'Teknik Informatika', 'Universitas Sriwijaya'],
 };
 
 export default function RootLayout({
@@ -25,6 +25,10 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
