@@ -1,4 +1,5 @@
 import { HeroSection } from '@/components/sections/hero-section';
+import { AboutSection } from '@/components/sections/about-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import { FaqSection } from '@/components/sections/faq-section';
 import { InstagramSection } from '@/components/sections/instagram-section';
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
+      <AboutSection />
       <TestimonialsSection />
       <FaqSection />
       <InstagramSection />
