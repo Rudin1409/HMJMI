@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code } from 'lucide-react';
+import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const departments = [
@@ -28,8 +28,49 @@ const teamMembers = [
   { name: 'Aditya', role: 'Anggota', class: 'REG A 2023', avatar: 'https://placehold.co/150x150' },
 ];
 
+const programs = [
+  {
+    title: 'Informatika Peduli Kasih',
+    date: '01 Januari 2024',
+    type: 'Offline',
+    category: 'INFORMATIKA PEDULI KASIH',
+    description: 'Informatika Peduli Kasih adalah program kerja unggulan yang dirancang sebagai bentuk...',
+    image: 'https://placehold.co/400x200',
+    hint: 'students community service'
+  },
+  {
+    title: 'Informatics Learning Center (ILC)',
+    date: '01 Januari 2024',
+    type: 'Offline',
+    category: 'UNGGULAN',
+    description: 'Informatics Learning Center (ILC) adalah program kerja yang dirancang untuk menjadi pusat...',
+    image: 'https://placehold.co/400x200',
+    hint: 'students learning center'
+  },
+  {
+    title: 'SYMBIOTECH',
+    date: '01 Januari 2024',
+    type: 'Offline',
+    category: 'SYMBIOTECH',
+    description: 'Symbiosys of Technology adalah program kerja unggulan Himpunan Mahasiswa Teknik Informatik...',
+    image: 'https://placehold.co/400x200',
+    hint: 'technology symbiosis'
+  },
+  {
+    title: 'Informatika Creative Hub',
+    date: '01 Januari 2024',
+    type: 'Online',
+    category: 'Informatika Creative Hub',
+    description: 'Informatics Creative Hub adalah program kerja yang berfokus pada pembuatan konten kreatif untuk...',
+    image: 'https://placehold.co/400x200',
+    hint: 'creative hub'
+  }
+];
+
+
 export default function ProfilePage() {
   const [activeDept, setActiveDept] = useState(departments[0]);
+  const [activeView, setActiveView] = useState('members');
 
   return (
     <div className="flex flex-col bg-pink-50/30">
@@ -117,49 +158,111 @@ export default function ProfilePage() {
               <div className="w-16 h-0.5 bg-primary/50 rounded-full"></div>
             </div>
             <div className="flex gap-4">
-              <Button size="lg" className="rounded-full bg-pink-100 text-primary border border-primary/20 hover:bg-primary hover:text-white">
+              <Button 
+                size="lg"
+                onClick={() => setActiveView('members')}
+                className={cn(
+                  'rounded-full',
+                  activeView === 'members' ? 'bg-pink-100 text-primary border border-primary/20 hover:bg-primary hover:text-white' : ''
+                )}
+                variant={activeView === 'members' ? 'default' : 'outline'}
+              >
                 <Users className="mr-2 h-4 w-4" /> Members
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full">
+              <Button
+                size="lg"
+                onClick={() => setActiveView('programs')}
+                className={cn(
+                    'rounded-full',
+                    activeView === 'programs' ? 'bg-pink-100 text-primary border border-primary/20 hover:bg-primary hover:text-white' : ''
+                )}
+                variant={activeView === 'programs' ? 'default' : 'outline'}
+               >
                 <Briefcase className="mr-2 h-4 w-4" /> Programs
               </Button>
             </div>
           </div>
           
-          <div className="text-center mb-8">
-             <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
-                Badan Pengurus Harian
-                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
-            </h3>
-          </div>
+          {activeView === 'members' && (
+            <div>
+              <div className="text-center mb-8">
+                 <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
+                    Badan Pengurus Harian
+                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
+                </h3>
+              </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-            {teamMembers.map((member, index) => (
-              <Card key={index} className="text-center p-6 shadow-lg hover:shadow-xl transition-shadow bg-white rounded-2xl flex flex-col items-center">
-                <CardContent className="p-0 flex flex-col items-center">
-                    <div className="relative w-32 h-32 mb-4">
-                        <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full transform -rotate-12"></div>
-                        <div className="absolute inset-0.5 bg-white rounded-full p-1">
-                            <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover" data-ai-hint="headshot portrait" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+                {teamMembers.map((member, index) => (
+                  <Card key={index} className="text-center p-6 shadow-lg hover:shadow-xl transition-shadow bg-white rounded-2xl flex flex-col items-center">
+                    <CardContent className="p-0 flex flex-col items-center">
+                        <div className="relative w-32 h-32 mb-4">
+                            <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full transform -rotate-12"></div>
+                            <div className="absolute inset-0.5 bg-white rounded-full p-1">
+                                <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover" data-ai-hint="headshot portrait" />
+                            </div>
                         </div>
-                    </div>
-                  <h4 className="font-bold text-lg text-gray-800">{member.name}</h4>
-                  <p className="text-primary font-medium text-sm mb-1">{member.role}</p>
-                  <p className="text-muted-foreground text-xs mb-3">{member.class}</p>
-                  <div className="flex gap-3">
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      <Instagram className="h-5 w-5" />
-                    </a>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                      <Linkedin className="h-5 w-5" />
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                      <h4 className="font-bold text-lg text-gray-800">{member.name}</h4>
+                      <p className="text-primary font-medium text-sm mb-1">{member.role}</p>
+                      <p className="text-muted-foreground text-xs mb-3">{member.class}</p>
+                      <div className="flex gap-3">
+                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                          <Instagram className="h-5 w-5" />
+                        </a>
+                        <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                          <Linkedin className="h-5 w-5" />
+                        </a>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeView === 'programs' && (
+            <div>
+              <div className="text-center mb-8">
+                 <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
+                    Program Kerja
+                    <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {programs.map((program, index) => (
+                    <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+                        <CardContent className="p-0">
+                             <div className="relative aspect-video">
+                                <Image src={program.image} layout="fill" objectFit="cover" alt={program.title} data-ai-hint={program.hint}/>
+                                <div className="absolute top-2 right-2">
+                                     <Badge className="bg-yellow-300 text-yellow-900 font-bold">{program.category}</Badge>
+                                </div>
+                            </div>
+                            <div className="p-6">
+                                <h4 className="text-xl font-bold text-gray-800 mb-2">{program.title}</h4>
+                                <div className="flex items-center text-sm text-muted-foreground mb-3">
+                                    <span>{program.date}</span>
+                                    <span className="mx-2">•</span>
+                                    <span>{program.type}</span>
+                                </div>
+                                <p className="text-muted-foreground mb-4 text-sm">
+                                  {program.description}
+                                </p>
+                                <Button variant="link" className="text-primary p-0 h-auto">
+                                    Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
+                                </Button>
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))}
+              </div>
+            </div>
+          )}
+
         </div>
       </section>
     </div>
   );
 }
+
+    
