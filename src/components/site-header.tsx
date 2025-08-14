@@ -15,8 +15,7 @@ const navLinks = [
   { href: '/about', label: 'About Us' },
   { href: '/profile', label: 'Profile' },
   { href: '/proker', label: 'Proker' },
-  { href: '#academic', label: 'Academic' },
-  { href: '#aspiration', label: 'Aspiration' },
+  { href: '/aspiration', label: 'Aspiration' },
 ];
 
 export function SiteHeader() {
@@ -87,8 +86,8 @@ export function SiteHeader() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[240px] bg-background">
-             <SheetTitle className="sr-only">Menu</SheetTitle>
-              <SheetDescription className="sr-only">Main navigation menu</SheetDescription>
+              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+              <SheetDescription className="sr-only">Main navigation links</SheetDescription>
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-4">
                   <Link href="/" className="flex items-center space-x-2">
