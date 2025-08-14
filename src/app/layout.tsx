@@ -7,11 +7,11 @@ import { SiteFooter } from '@/components/site-footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'HMIF UNSRI',
-    template: `%s - HMIF UNSRI`,
+    default: 'HMJMI POLSRI',
+    template: `%s - HMJMI POLSRI`,
   },
-  description: 'Website Himpunan Mahasiswa Teknik Informatika Universitas Sriwijaya',
-  keywords: ['HMIF', 'Unsri', 'Teknik Informatika', 'Universitas Sriwijaya'],
+  description: 'Website Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya',
+  keywords: ['HMJMI', 'Polsri', 'Manajemen Informatika', 'Politeknik Negeri Sriwijaya'],
 };
 
 export default function RootLayout({

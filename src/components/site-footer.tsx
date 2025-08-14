@@ -13,12 +13,11 @@ export function SiteFooter() {
   ];
 
   const menuLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About Us' },
-    { href: '#profile', label: 'Profile' },
-    { href: '#proker', label: 'Proker' },
-    { href: '#academic', label: 'Academic' },
-    { href: '#aspiration', label: 'Aspiration' },
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About Us' },
+    { href: '/profile', label: 'Profile' },
+    { href: '/proker', label: 'Proker' },
+    { href: '/aspiration', label: 'Aspiration' },
   ];
 
   const infoLinks = [
@@ -36,12 +35,12 @@ export function SiteFooter() {
             <Link href="/" className="flex items-center space-x-3">
               <Logo className="h-10 w-10" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold leading-tight">HMIF UNSRI</span>
-                <span className="text-sm font-semibold leading-tight text-muted-foreground">Kuatkan Formasi Wujudkan Inovasi</span>
+                <span className="text-lg font-bold leading-tight">HMJMI POLSRI</span>
+                <span className="text-sm font-semibold leading-tight text-muted-foreground">Manajemen Informatika</span>
               </div>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Himpunan Mahasiswa Informatika Fakultas Ilmu Komputer Universitas Sriwijaya - Wadah kreativitas dan inovasi mahasiswa informatika.
+              Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya - Wadah kreativitas dan inovasi mahasiswa informatika.
             </p>
              <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
@@ -50,7 +49,7 @@ export function SiteFooter() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary flex-shrink-0" />
-                <span className="text-muted-foreground">hmif@unsri.ac.id</span>
+                <span className="text-muted-foreground">hmjmi@polsri.ac.id</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
@@ -89,7 +88,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-pink-200 pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; 2025 HMIF UNSRI. Made with ❤️ by HMIF Dev Team</p>
+          <p>&copy; 2025 HMJMI POLSRI. All rights reserved.</p>
           <div className="flex space-x-2 mt-4 sm:mt-0">
              {socialLinks.map((social) => (
               <Button key={social.label} variant="ghost" size="icon" asChild className="text-muted-foreground hover:bg-primary/10 hover:text-primary">

@@ -10,60 +10,60 @@ import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, 
 import { cn } from '@/lib/utils';
 
 const departments = [
-  { id: 'inti', name: 'Inti', icon: <Award className="w-8 h-8 text-primary" />, description: 'Departemen ini bertanggung jawab untuk mengelola berbagai program dan kegiatan HMIF.' },
-  { id: 'akademik', name: 'Akademik', icon: <Code className="w-8 h-8 text-primary" />, description: 'Departemen yang berfokus pada pengembangan kemampuan akademik mahasiswa.' },
-  { id: 'psdm', name: 'PSDM', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, untuk meningkatkan soft skill.' },
-  { id: 'adm', name: 'ADM', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Administrasi dan kesekretariatan organisasi.' },
-  { id: 'kominfo', name: 'Kominfo', icon: <Tv className="w-8 h-8 text-primary" />, description: 'Komunikasi dan Informasi, mengelola media sosial dan publikasi.' },
-  { id: 'pmb', name: 'PMB', icon: <Handshake className="w-8 h-8 text-primary" />, description: 'Pengembangan Minat dan Bakat mahasiswa.' },
-  { id: 'kwu', name: 'KWU', icon: <Store className="w-8 h-8 text-primary" />, description: 'Kewirausahaan, mendorong jiwa bisnis mahasiswa.' },
-  { id: 'kastrad', name: 'Kastrad', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Kajian Strategis dan Advokasi, menyikapi isu-isu strategis.' },
+  { id: 'inti', name: 'Inti', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
+  { id: 'sekretaris', name: 'Sekretaris', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Mengelola administrasi, surat-menyurat, dan dokumentasi organisasi.' },
+  { id: 'bendahara', name: 'Bendahara', icon: <Store className="w-8 h-8 text-primary" />, description: 'Mengelola keuangan dan anggaran organisasi.' },
+  { id: 'akademik', name: 'Akademik', icon: <Code className="w-8 h-8 text-primary" />, description: 'Meningkatkan prestasi dan wawasan akademik mahasiswa.' },
+  { id: 'sdm', name: 'SDM', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
+  { id: 'humas', name: 'Humas', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
+  { id: 'kominfo', name: 'Kominfo', icon: <Tv className="w-8 h-8 text-primary" />, description: 'Komunikasi dan Informasi, mengelola media dan publikasi.' },
+  { id: 'minatbakat', name: 'Minat Bakat', icon: <Handshake className="w-8 h-8 text-primary" />, description: 'Mengembangkan minat dan bakat mahasiswa di berbagai bidang.' },
 ];
 
 const teamMembers = [
-  { name: 'Saravina Zharfa Kelana Putri', role: 'Bendahara Umum I', class: 'BILA 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Putri Aisya Zhafirah', role: 'Bendahara Umum II', class: 'BILA 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Muhammad Fattahul Aziz', role: 'Ketua Himpunan', class: 'BIL A 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Adhia Rihal Sulaiman', role: 'Wakil Ketua Himpunan', class: 'REG A 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Aditya', role: 'Anggota', class: 'REG A 2023', avatar: 'https://placehold.co/150x150' },
+  { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
+  { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
+  { name: 'Aditya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  { name: 'Aisyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  { name: 'Budi', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
 ];
 
 const programs = [
   {
-    title: 'Informatika Peduli Kasih',
-    date: '01 Januari 2024',
+    title: 'LKMM-PD',
+    date: '15 Maret 2024',
     type: 'Offline',
-    category: 'INFORMATIKA PEDULI KASIH',
-    description: 'Informatika Peduli Kasih adalah program kerja unggulan yang dirancang sebagai bentuk...',
+    category: 'PELATIHAN',
+    description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar, untuk melatih kepemimpinan.',
     image: 'https://placehold.co/400x200',
-    hint: 'students community service'
+    hint: 'students leadership training'
   },
   {
-    title: 'Informatics Learning Center (ILC)',
-    date: '01 Januari 2024',
+    title: 'Upgrading',
+    date: '28 Februari 2024',
     type: 'Offline',
-    category: 'UNGGULAN',
-    description: 'Informatics Learning Center (ILC) adalah program kerja yang dirancang untuk menjadi pusat...',
+    category: 'INTERNAL',
+    description: 'Kegiatan untuk meningkatkan kualitas dan solidaritas internal pengurus HMJMI.',
     image: 'https://placehold.co/400x200',
-    hint: 'students learning center'
+    hint: 'team building'
   },
   {
-    title: 'SYMBIOTECH',
-    date: '01 Januari 2024',
-    type: 'Offline',
-    category: 'SYMBIOTECH',
-    description: 'Symbiosys of Technology adalah program kerja unggulan Himpunan Mahasiswa Teknik Informatik...',
+    title: 'Seminar Nasional',
+    date: '10 Agustus 2024',
+    type: 'Hybrid',
+    category: 'AKADEMIK',
+    description: 'Seminar berskala nasional dengan topik-topik terkini di dunia teknologi informasi.',
     image: 'https://placehold.co/400x200',
-    hint: 'technology symbiosis'
+    hint: 'national seminar'
   },
   {
-    title: 'Informatika Creative Hub',
-    date: '01 Januari 2024',
-    type: 'Online',
-    category: 'Informatika Creative Hub',
-    description: 'Informatics Creative Hub adalah program kerja yang berfokus pada pembuatan konten kreatif untuk...',
+    title: 'MI CUP',
+    date: '20 September 2024',
+    type: 'Offline',
+    category: 'MINAT BAKAT',
+    description: 'Kompetisi olahraga dan seni untuk mahasiswa Manajemen Informatika.',
     image: 'https://placehold.co/400x200',
-    hint: 'creative hub'
+    hint: 'student competition'
   }
 ];
 
@@ -86,7 +86,7 @@ export default function ProfilePage() {
             Our Strength <span className="text-primary">Lies In Our Team</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Kami persembahkan jajaran kabinet HMIF yang penuh semangat! Bersama, kita kuatkan formasi dan wujudkan inovasi!
+            Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi!
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
@@ -106,7 +106,7 @@ export default function ProfilePage() {
               Explore <span className="text-primary">Our Cabinet</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Temukan berbagai departemen dan divisi yang ada di HMIF UNSRI, masing-masing dengan fokus dan program unggulan yang berbeda untuk pengembangan mahasiswa informatika.
+              Temukan berbagai departemen yang ada di HMJMI POLSRI, masing-masing dengan fokus dan program unggulan yang berbeda untuk pengembangan mahasiswa.
             </p>
           </div>
 
@@ -135,7 +135,7 @@ export default function ProfilePage() {
                         <p className={cn(
                            "text-xs",
                            activeDept.id === dept.id ? 'text-primary-foreground/80' : 'text-muted-foreground'
-                        )}>Departemen HMIF</p>
+                        )}>Departemen HMJMI</p>
                       </CardContent>
                     </Card>
                   </button>
@@ -264,5 +264,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    

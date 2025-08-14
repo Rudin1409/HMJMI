@@ -10,65 +10,63 @@ import { ChevronDown, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const departments = [
-  { id: 'semua', name: 'Semua Dinas' },
-  { id: 'psdm', name: 'PSDM' },
-  { id: 'adm', name: 'ADM' },
-  { id: 'kominfo', name: 'Kominfo' },
-  { id: 'pmb', name: 'PMB' },
+  { id: 'semua', name: 'Semua Departemen' },
   { id: 'akademik', name: 'Akademik' },
+  { id: 'sdm', name: 'SDM' },
+  { id: 'humas', name: 'Humas' },
+  { id: 'kominfo', name: 'Kominfo' },
+  { id: 'minatbakat', name: 'Minat Bakat' },
   { id: 'inti', name: 'Inti' },
-  { id: 'kwu', name: 'KWU' },
-  { id: 'kastrad', name: 'Kastrad' },
 ];
 
 const allPrograms = [
   {
-    title: 'Informatika Peduli Kasih',
-    details: '5 bulan sekali • Offline',
-    description: 'Informatika Peduli Kasih adalah program kerja unggulan yang dirancang sebagai bentuk...',
+    title: 'LKMM-PD',
+    details: 'Tahunan • Offline',
+    description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar untuk kaderisasi anggota.',
     image: 'https://placehold.co/400x250',
-    hint: 'community charity program',
-    department: 'psdm'
+    hint: 'leadership training',
+    department: 'sdm'
   },
   {
-    title: 'KURASI DESAIN',
-    details: '• Online',
-    description: 'Kurasi desain ini merupakan merupakan proker baru dari KOMINFO dan agenda bulanan yang dilakuka...',
+    title: 'WEBINAR',
+    details: 'Semesteran • Online',
+    description: 'Webinar dengan pemateri profesional untuk menambah wawasan mahasiswa.',
     image: 'https://placehold.co/400x250',
-    hint: 'design workshop',
-    department: 'kominfo'
-  },
-  {
-    title: 'Ready for Professional Placement (RFPP)',
-    details: '20 Mei 2025 • Online',
-    description: 'Webinar ini diadakan untuk persiapan Mahasiswa Teknik Informatika dalam menghadapi Kerja Prakti...',
-    image: 'https://placehold.co/400x250',
-    hint: 'webinar career preparation',
+    hint: 'professional webinar',
     department: 'akademik'
+  },
+  {
+    title: 'MI CUP',
+    details: 'Tahunan • Offline',
+    description: 'Ajang kompetisi olahraga dan seni antar mahasiswa Manajemen Informatika.',
+    image: 'https://placehold.co/400x250',
+    hint: 'student sport competition',
+    department: 'minatbakat'
   },
    {
-    title: 'Informatics Learning Center (ILC)',
-    details: 'Bulanan • Offline',
-    description: 'Informatics Learning Center (ILC) adalah program kerja yang dirancang untuk menjadi pusat...',
+    title: 'Upgrading',
+    details: 'Tahunan • Offline',
+    description: 'Program untuk meningkatkan solidaritas dan kualitas internal pengurus HMJMI.',
     image: 'https://placehold.co/400x250',
-    hint: 'students learning',
-    department: 'akademik'
+    hint: 'team building event',
+    department: 'sdm'
   },
   {
-    title: 'SYMBIOTECH',
+    title: 'Musyawarah Besar',
     details: 'Tahunan • Offline',
-    description: 'Symbiosys of Technology adalah program kerja unggulan Himpunan Mahasiswa Teknik Informatika...',
+    description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.',
     image: 'https://placehold.co/400x250',
-    hint: 'technology conference',
+    hint: 'organization meeting',
     department: 'inti'
   },
   {
-    title: 'Informatika Creative Hub',
-    details: 'Mingguan • Online',
-    description: 'Informatics Creative Hub adalah program kerja yang berfokus pada pembuatan konten kreatif untuk...',
+    title: 'Kunjungan Industri',
+    details: 'Tahunan • Offline',
+    description: 'Mengunjungi perusahaan untuk melihat langsung dunia kerja industri IT.',
     image: 'https://placehold.co/400x250',
-    hint: 'creative content creation',
-    department: 'kominfo'
+    hint: 'industry visit',
+    department: 'humas'
   }
 ];
 
@@ -94,7 +92,7 @@ export default function ProkerPage() {
             Program <span className="text-primary">Kerja</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Jelajahi berbagai program kerja yang telah dan akan dilaksanakan oleh HMIF. Temukan program yang sesuai dengan minat dan kebutuhan Anda.
+            Jelajahi berbagai program kerja yang telah dan akan dilaksanakan oleh HMJMI. Temukan program yang sesuai dengan minat dan kebutuhan Anda.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
@@ -111,10 +109,10 @@ export default function ProkerPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Proker <span className="text-primary">HMIF UNSRI</span>
+              Proker <span className="text-primary">HMJMI POLSRI</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Temukan berbagai program kerja yang telah dan akan dilaksanakan oleh HMIF.
+              Temukan berbagai program kerja yang telah dan akan dilaksanakan oleh HMJMI.
             </p>
           </div>
 

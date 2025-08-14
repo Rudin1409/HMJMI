@@ -14,28 +14,28 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const testimonials = [
   {
-    name: 'M Dzawil Fadhol A.',
-    role: 'Ketua Himpunan Mahasiswa Informatika',
+    name: 'Alumni MI',
+    role: 'Ketua Himpunan Mahasiswa Jurusan MI',
     avatar: 'https://placehold.co/100x100',
-    text: 'Menjadi Ketua HMIF Universitas Sriwijaya selama satu periode jadi salah satu pengalaman paling berkesan. Banyak hal yang saya pela... read more',
+    text: 'Menjadi Ketua HMJMI Politeknik Negeri Sriwijaya selama satu periode jadi salah satu pengalaman paling berkesan. Banyak hal yang saya pela... read more',
   },
   {
-    name: 'Vellanindhita',
-    role: 'Sekretaris Umum 2',
+    name: 'Alumni MI',
+    role: 'Sekretaris Umum',
     avatar: 'https://placehold.co/100x100',
-    text: 'Merupakan keputusan tepat bagi saya untuk bergabung dengan HMIF. Tidak hanya mendapat relasi yang luas tetapi juga pengalaman baru... read more',
+    text: 'Merupakan keputusan tepat bagi saya untuk bergabung dengan HMJMI. Tidak hanya mendapat relasi yang luas tetapi juga pengalaman baru... read more',
   },
   {
-    name: 'Zidjian Vito',
-    role: 'Kepala Dinas Akademik',
+    name: 'Alumni MI',
+    role: 'Kepala Departemen Akademik',
     avatar: 'https://placehold.co/100x100',
-    text: 'Di HMIF UNSRI, saya merasakan bagaimana riset dan inovasi berpadu dalam harmoni, menantang batas konvensional dan mengubah gagasan... read more',
+    text: 'Di HMJMI POLSRI, saya merasakan bagaimana riset dan inovasi berpadu dalam harmoni, menantang batas konvensional dan mengubah gagasan... read more',
   },
   {
     name: 'Alumni Lain',
     role: 'Software Engineer',
     avatar: 'https://placehold.co/100x100',
-    text: 'HMIF tempat terbaik untuk berkembang. Saya belajar banyak hal yang sangat berguna di dunia kerja. Sangat direkomendasikan... read more',
+    text: 'HMJMI tempat terbaik untuk berkembang. Saya belajar banyak hal yang sangat berguna di dunia kerja. Sangat direkomendasikan... read more',
   },
 ];
 
@@ -50,7 +50,7 @@ export function TestimonialsSection() {
             What They Say
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Dengarkan pengalaman dan cerita dari para alumni HMIF yang telah sukses dalam karir mereka
+            Dengarkan pengalaman dan cerita dari para alumni HMJMI yang telah sukses dalam karir mereka
           </p>
         </div>
 

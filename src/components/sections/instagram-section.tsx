@@ -15,13 +15,13 @@ export function InstagramSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6">
              <Badge variant="secondary" className="bg-white/20 text-white rounded-full px-4 py-1">
-                @hmif.unsri
+                @hmjmi.polsri
              </Badge>
             <h2 className="text-3xl md:text-4xl font-bold">
               Follow us on Instagram for the latest updates and fun activities!
             </h2>
             <p className="text-white/80 max-w-lg">
-              Stay connected with HMIF UNSRI and never miss our exciting events, workshops, and community highlights.
+              Stay connected with HMJMI POLSRI and never miss our exciting events, workshops, and community highlights.
             </p>
             <Button variant="secondary" size="lg" className="bg-white text-pink-500 hover:bg-gray-100 rounded-full">
               Follow Us <ArrowRight className="ml-2 h-4 w-4" />
@@ -32,8 +32,8 @@ export function InstagramSection() {
               <CardContent className="p-0">
                 <div className="flex items-center justify-between mb-4 px-2">
                    <div className="flex items-center gap-2">
-                     <Image src="https://placehold.co/40x40" width={40} height={40} alt="HMIF Logo" className="rounded-full" data-ai-hint="logo" />
-                     <span className="font-semibold text-gray-800">hmif.unsri</span>
+                     <Image src="https://placehold.co/40x40" width={40} height={40} alt="HMJMI Logo" className="rounded-full" data-ai-hint="logo" />
+                     <span className="font-semibold text-gray-800">hmjmi.polsri</span>
                    </div>
                    <div className="text-gray-800 font-bold">...</div>
                 </div>

@@ -8,24 +8,24 @@ import { Badge } from '@/components/ui/badge';
 
 const faqItems = [
   {
-    question: 'Apa itu HMIF?',
-    answer: 'Himpunan Mahasiswa Informatika adalah organisasi kemahasiswaan di Universitas Sriwijaya yang menjadi wadah bagi mahasiswa Teknik Informatika untuk mengembangkan potensi akademik, non-akademik, serta kreativitas dan inovasi.',
+    question: 'Apa itu HMJMI?',
+    answer: 'Himpunan Mahasiswa Jurusan Manajemen Informatika adalah organisasi kemahasiswaan di Politeknik Negeri Sriwijaya yang menjadi wadah bagi mahasiswa Manajemen Informatika untuk mengembangkan potensi akademik, non-akademik, serta kreativitas dan inovasi.',
   },
   {
-    question: 'Apa saja Program HMIF?',
-    answer: 'HMIF memiliki berbagai program kerja yang mencakup bidang akademik, pengembangan skill (workshop, seminar), kompetisi, pengabdian masyarakat, dan kegiatan kebersamaan untuk mempererat hubungan antar anggota.',
+    question: 'Apa saja Program HMJMI?',
+    answer: 'HMJMI memiliki berbagai program kerja yang mencakup bidang akademik, pengembangan skill (workshop, seminar), kompetisi, pengabdian masyarakat, dan kegiatan kebersamaan untuk mempererat hubungan antar anggota.',
   },
   {
-    question: 'Bagaimana cara bergabung dengan HMIF?',
-    answer: 'Setiap tahunnya, HMIF membuka pendaftaran anggota baru untuk mahasiswa Teknik Informatika. Informasi pendaftaran, persyaratan, dan alur seleksi akan diumumkan melalui media sosial resmi dan situs web HMIF.',
+    question: 'Bagaimana cara bergabung dengan HMJMI?',
+    answer: 'Setiap tahunnya, HMJMI membuka pendaftaran anggota baru untuk mahasiswa Manajemen Informatika. Informasi pendaftaran, persyaratan, dan alur seleksi akan diumumkan melalui media sosial resmi dan situs web HMJMI.',
   },
   {
-    question: 'Apa manfaat bergabung dengan HMIF?',
-    answer: 'Bergabung dengan HMIF memberikan banyak manfaat, seperti menambah relasi, pengalaman berorganisasi, pengembangan soft skill dan hard skill, serta menjadi bagian dari komunitas yang suportif dan inovatif.',
+    question: 'Apa manfaat bergabung dengan HMJMI?',
+    answer: 'Bergabung dengan HMJMI memberikan banyak manfaat, seperti menambah relasi, pengalaman berorganisasi, pengembangan soft skill dan hard skill, serta menjadi bagian dari komunitas yang suportif dan inovatif.',
   },
   {
-    question: 'Berapa lama masa kepengurusan HMIF?',
-    answer: 'Masa kepengurusan dalam satu periode di HMIF berlangsung selama satu tahun, dimulai dari pelantikan pengurus baru hingga serah terima jabatan kepada pengurus periode berikutnya.',
+    question: 'Berapa lama masa kepengurusan HMJMI?',
+    answer: 'Masa kepengurusan dalam satu periode di HMJMI berlangsung selama satu tahun, dimulai dari pelantikan pengurus baru hingga serah terima jabatan kepada pengurus periode berikutnya.',
   },
 ];
 

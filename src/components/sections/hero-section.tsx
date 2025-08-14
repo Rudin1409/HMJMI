@@ -13,14 +13,14 @@ export function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="z-10">
             <Badge variant="secondary" className="bg-pink-100 text-primary mb-4 py-1 px-3">
-              Welcome to HMIF UNSRI <ArrowRight className="ml-2 h-4 w-4" />
+              Welcome to HMJMI POLSRI <ArrowRight className="ml-2 h-4 w-4" />
             </Badge>
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight">
               Empowering Future <br />
               <span className="text-pink-500">Tech Leaders</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-lg">
-              Himpunan Mahasiswa Informatika Universitas Sriwijaya - Wadah
+              Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya - Wadah
               kreativitas, inovasi, dan pengembangan potensi mahasiswa
               informatika dalam menghadapi era digital.
             </p>
@@ -35,17 +35,17 @@ export function HeroSection() {
             <div className="mt-12 grid grid-cols-3 gap-4 text-center">
               <div>
                 <Users className="h-7 w-7 mx-auto text-primary mb-2" />
-                <p className="font-bold text-xl">100+</p>
+                <p className="font-bold text-xl">150+</p>
                 <p className="text-sm text-muted-foreground">Active Members</p>
               </div>
               <div>
                 <Calendar className="h-7 w-7 mx-auto text-primary mb-2" />
-                <p className="font-bold text-xl">20+</p>
+                <p className="font-bold text-xl">25+</p>
                 <p className="text-sm text-muted-foreground">Annual Events</p>
               </div>
               <div>
                 <Award className="h-7 w-7 mx-auto text-primary mb-2" />
-                <p className="font-bold text-xl">15+</p>
+                <p className="font-bold text-xl">20+</p>
                 <p className="text-sm text-muted-foreground">Years Experience</p>
               </div>
             </div>

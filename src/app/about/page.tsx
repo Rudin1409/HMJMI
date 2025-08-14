@@ -8,22 +8,22 @@ import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Fe
 const stats = [
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
-    title: 'Est. 2008',
-    description: '15+ years of excellence in nurturing tech talents',
+    title: 'Est. 2002',
+    description: '20+ years of excellence in nurturing tech talents',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    title: '7 Departments',
+    title: '8 Departments',
     description: 'Specialized divisions for comprehensive development',
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: '11 Divisions',
+    title: '15+ Divisions',
     description: 'Focused teams for targeted skill development',
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '20+ Programs',
+    title: '25+ Programs',
     description: 'Diverse range of activities and initiatives',
   },
 ];
@@ -31,68 +31,68 @@ const stats = [
 const logoPhilosophy = [
     {
         icon: <Leaf className="w-5 h-5 text-primary" />,
-        title: "7 Kelopak Bunga",
-        description: "Melambangkan 7 dinas dalam HMIF."
+        title: "Padi dan Kapas",
+        description: "Melambangkan kemakmuran dan kesejahteraan bagi seluruh anggota."
     },
     {
         icon: <Feather className="w-5 h-5 text-primary" />,
-        title: "3 Bulu Sayap",
-        description: "Melambangkan tridharma perguruan tinggi yakni pendidikan, penelitian, serta pengabdian kepada masyarakat."
+        title: "Perisai",
+        description: "Melambangkan pertahanan dalam menghadapi tantangan dan rintangan."
     },
     {
         icon: <PawPrint className="w-5 h-5 text-primary" />,
-        title: "5 Bulu Ekor",
-        description: "Melambangkan lima fungsi mahasiswa sebagai Agent of Change, Iron Stock, Moral Force, Social Control, serta Guardian of Value."
+        title: "Buku dan Pena",
+        description: "Melambangkan ilmu pengetahuan dan kreativitas tanpa batas."
     }
 ]
 
 const galleryItems = [
     {
         src: "https://placehold.co/400x300",
-        title: "RAKER X UPGRADING HMIF UNSRI",
-        year: "2025",
+        title: "LKMM-PD HMJMI POLSRI",
+        year: "2024",
         hint: "student presentation"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "RAKER X UPGRADING HMIF UNSRI",
-        year: "2025",
+        title: "LKMM-PD HMJMI POLSRI",
+        year: "2024",
         hint: "student audience"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "RAKER X UPGRADING HMIF UNSRI",
-        year: "2025",
+        title: "UPGRADING HMJMI POLSRI",
+        year: "2024",
         hint: "group photo"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "RAKER X UPGRADING HMIF UNSRI",
-        year: "2025",
+        title: "UPGRADING HMJMI POLSRI",
+        year: "2024",
         hint: "students sitting"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
-        year: "2025",
+        title: "MUSYAWARAH BESAR HMJMI",
+        year: "2024",
         hint: "large group"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
-        year: "2025",
+        title: "MUSYAWARAH BESAR HMJMI",
+        year: "2024",
         hint: "students listening"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
-        year: "2025",
+        title: "SEMINAR NASIONAL",
+        year: "2024",
         hint: "student team"
     },
     {
         src: "https://placehold.co/400x300",
-        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
-        year: "2025",
+        title: "SEMINAR NASIONAL",
+        year: "2024",
         hint: "student speaking"
     },
 ]
@@ -113,7 +113,7 @@ export default function AboutPage() {
             About <span className="text-primary">Us</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Mengenal lebih dekat Himpunan Mahasiswa Informatika Universitas Sriwijaya dan perjalanan kami dalam membentuk generasi teknologi masa depan.
+            Mengenal lebih dekat Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan perjalanan kami dalam membentuk generasi teknologi masa depan.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200">
@@ -130,13 +130,13 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              About <span className="text-primary">HMIF</span>
+              About <span className="text-primary">HMJMI</span>
             </h2>
             <p className="text-muted-foreground mt-6 max-w-4xl mx-auto">
-              Himpunan Mahasiswa Informatika (HMIF) adalah organisasi kemahasiswaan khusus untuk mahasiswa Jurusan Teknik Informatika. Berdiri sejak tahun 2008, HMIF berperan sebagai wadah yang mendukung pengembangan di bidang akademik dan non-akademik, serta menyediakan berbagai kegiatan yang bermanfaat bagi para mahasiswa.
+             Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) adalah organisasi kemahasiswaan khusus untuk mahasiswa Jurusan Manajemen Informatika di Politeknik Negeri Sriwijaya. Berdiri sejak tahun 2002, HMJMI berperan sebagai wadah yang mendukung pengembangan di bidang akademik dan non-akademik, serta menyediakan berbagai kegiatan yang bermanfaat bagi para mahasiswa.
             </p>
             <p className="text-muted-foreground mt-4 max-w-4xl mx-auto">
-              HMIF memiliki 7 dinas dengan 11 divisi yang berfokus pada berbagai aspek untuk meningkatkan kompetensi dan kolaborasi mahasiswa.
+              HMJMI memiliki 8 departemen dengan berbagai divisi yang berfokus pada berbagai aspek untuk meningkatkan kompetensi dan kolaborasi mahasiswa.
             </p>
           </div>
 
@@ -174,7 +174,7 @@ export default function AboutPage() {
                             <Target className="w-8 h-8"/>
                         </div>
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h3>
-                        <p className="text-muted-foreground">Membangun generasi teknologi yang unggul, berkarakter, dan berkontribusi positif bagi perkembangan teknologi informasi di Indonesia melalui berbagai program dan kegiatan yang bermanfaat.</p>
+                        <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai wadah untuk menyalurkan dan mengembangkan potensi mahasiswa yang aktif, kreatif, dan inovatif, serta menjalin hubungan baik di tingkat internal maupun eksternal.</p>
                     </div>
                 </Card>
                 <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
@@ -184,11 +184,11 @@ export default function AboutPage() {
                             <Rocket className="w-8 h-8"/>
                         </div>
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h3>
-                        <p className="text-muted-foreground">Menjadi wadah pengembangan potensi mahasiswa Teknik Informatika yang berkualitas, inovatif, dan berdaya saing global melalui kegiatan akademik dan non-akademik yang berstruktur dan berkelanjutan.</p>
+                        <p className="text-muted-foreground">Mewujudkan HMJ Manajemen Informatika sebagai organisasi yang SMART (Solid, Melayani, Aktif, Responsif, dan Terdampak) dalam berekspresi, berkreasi, dan berprestasi.</p>
                     </div>
                 </Card>
             </div>
-             <p className="text-center italic text-muted-foreground mt-8 text-lg">"Satukan Ambisi, Wujudkan Mimpi"</p>
+             <p className="text-center italic text-muted-foreground mt-8 text-lg">"Spirit Perubahan"</p>
         </div>
       </section>
       
@@ -199,18 +199,18 @@ export default function AboutPage() {
                         <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Filosofi Logo <span className="text-primary">Arthasena</span>
+                        Filosofi Logo <span className="text-primary">HMJMI</span>
                     </h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                     <div className="relative aspect-square">
-                        <Image src="https://placehold.co/500x500" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo phoenix flower" />
+                        <Image src="https://placehold.co/500x500" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo gears book" />
                     </div>
                     <div>
                         <Card className="p-8 shadow-lg rounded-2xl bg-white">
                             <h3 className="text-2xl font-bold text-gray-800 mb-4">Filosofi Logo</h3>
                             <p className="text-muted-foreground mb-6">
-                                Logo kabinet Arthasena menggambarkan ketangguhan, kebijaksaan, dan semangat inovasi. Bunga teratai menggambarkan kemurnian dan perjuangan untuk terus berkembang meski menghadapi tantangan, serta burung dengan sayap merepresentasikan keberanian, kebebasan berpikir, dan tekad untuk membawa himpunan lebih tinggi. Kombinasi ini mencerminkan kepemimpinan yang kuat, inovatif, dan berintegritas.
+                                Logo HMJMI melambangkan semangat, inovasi, dan profesionalisme. Setiap elemen memiliki makna mendalam yang mencerminkan nilai-nilai inti organisasi, dari kemakmuran hingga pertahanan dalam menghadapi tantangan, serta menjunjung tinggi ilmu pengetahuan dan kreativitas.
                             </p>
                             <div className="space-y-4">
                                {logoPhilosophy.map((item, index) => (
@@ -241,7 +241,7 @@ export default function AboutPage() {
                     Our <span className="text-primary">Gallery</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-                    Dokumentasi kegiatan dan momen berharga HMIF Universitas Sriwijaya yang menggambarkan perjalanan kami dalam mengembangkan potensi mahasiswa informatika.
+                    Dokumentasi kegiatan dan momen berharga HMJMI Politeknik Negeri Sriwijaya yang menggambarkan perjalanan kami dalam mengembangkan potensi mahasiswa.
                 </p>
             </div>
 

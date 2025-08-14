@@ -11,7 +11,7 @@ export function CtaSection() {
             <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-primary/10 rounded-full"></div>
             <div className='relative z-10'>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Stay Updated with <span className="text-primary">HMIF</span>
+                    Stay Updated with <span className="text-primary">HMJMI</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto">
                     Subscribe to our newsletter for the latest updates, events, and opportunities.

@@ -7,22 +7,22 @@ import { Briefcase, Calendar, Code, Users, Rocket, Target } from 'lucide-react';
 const stats = [
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
-    title: 'Est. 2008',
-    description: '15+ years of excellence in nurturing tech talents',
+    title: 'Est. 2002',
+    description: '20+ years of excellence in nurturing tech talents',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    title: '7 Departments',
+    title: '8 Departments',
     description: 'Specialized divisions for comprehensive development',
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: '11 Divisions',
+    title: '15+ Divisions',
     description: 'Focused teams for targeted skill development',
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '20+ Programs',
+    title: '25+ Programs',
     description: 'Diverse range of activities and initiatives',
   },
 ];
@@ -33,13 +33,13 @@ export function AboutSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
            <Badge variant="default" className="bg-pink-100 text-primary mb-4">
-            About HMIF
+            About HMJMI
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            About <span className="text-primary">HMIF</span>
+            About <span className="text-primary">HMJMI</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-            Himpunan Mahasiswa Informatika adalah sebuah Organisasi Kemahasiswaan khusus Jurusan Teknik Informatika yang bergerak dalam bidang Akademik maupun Non-Akademik yang dapat menjadi wadah bagi para Mahasiswa Jurusan Teknik Informatika.
+            Himpunan Mahasiswa Jurusan Manajemen Informatika adalah sebuah Organisasi Kemahasiswaan khusus Jurusan Manajemen Informatika yang bergerak dalam bidang Akademik maupun Non-Akademik yang dapat menjadi wadah bagi para Mahasiswa Jurusan Manajemen Informatika.
           </p>
         </div>
 
@@ -62,14 +62,14 @@ export function AboutSection() {
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
                 <div className="relative z-10">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h3>
-                    <p className="text-muted-foreground">Menjadi wadah pengembangan potensi mahasiswa Teknik Informatika yang berkualitas, inovatif, dan berdaya saing global melalui kegiatan akademik dan non-akademik yang terstruktur dan berkelanjutan.</p>
+                    <p className="text-muted-foreground">Mewujudkan HMJ Manajemen Informatika sebagai organisasi yang SMART (Solid, Melayani, Aktif, Responsif, dan Terdampak) dalam berekspresi, berkreasi, dan berprestasi.</p>
                 </div>
             </Card>
             <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
                  <div className="relative z-10">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h3>
-                    <p className="text-muted-foreground">Membangun generasi teknologi yang unggul, berkarakter, dan berkontribusi positif bagi perkembangan teknologi informasi di Indonesia melalui berbagai program dan kegiatan yang bermanfaat.</p>
+                    <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai wadah untuk menyalurkan dan mengembangkan potensi mahasiswa yang aktif, kreatif, dan inovatif, serta menjalin hubungan baik di tingkat internal maupun eksternal.</p>
                 </div>
             </Card>
         </div>

@@ -53,8 +53,8 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center space-x-2">
           <Logo className="h-10 w-10" />
            <div className="flex flex-col">
-              <span className="text-lg font-bold leading-tight">HMIF UNSRI</span>
-              <span className="text-xs font-semibold leading-tight text-muted-foreground">Kuatkan Formasi Wujudkan Inovasi</span>
+              <span className="text-lg font-bold leading-tight">HMJMI POLSRI</span>
+              <span className="text-xs font-semibold leading-tight text-muted-foreground">Manajemen Informatika</span>
             </div>
         </Link>
         
@@ -92,7 +92,7 @@ export function SiteHeader() {
                 <div className="flex items-center justify-between border-b pb-4">
                   <Link href="/" className="flex items-center space-x-2">
                     <Logo className="h-8 w-8" />
-                    <span className="font-bold">HMIF UNSRI</span>
+                    <span className="font-bold">HMJMI POLSRI</span>
                   </Link>
                    <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
                       <X className="h-6 w-6" />
