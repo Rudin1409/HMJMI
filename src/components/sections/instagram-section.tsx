@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -18,13 +19,13 @@ export function InstagramSection() {
                 @hmjmi.polsri
              </Badge>
             <h2 className="text-3xl md:text-4xl font-bold">
-              Follow us on Instagram for the latest updates and fun activities!
+              Ikuti kami di Instagram untuk update terbaru dan aktivitas seru!
             </h2>
             <p className="text-white/80 max-w-lg">
-              Stay connected with HMJMI POLSRI and never miss our exciting events, workshops, and community highlights.
+              Tetap terhubung dengan HMJMI POLSRI dan jangan lewatkan acara menarik, workshop, dan sorotan komunitas kami.
             </p>
-            <Button variant="secondary" size="lg" className="bg-white text-pink-500 hover:bg-gray-100 rounded-full">
-              Follow Us <ArrowRight className="ml-2 h-4 w-4" />
+            <Button asChild variant="secondary" size="lg" className="bg-white text-pink-500 hover:bg-gray-100 rounded-full">
+              <Link href="#">Ikuti Kami <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
           <div>
@@ -59,3 +60,5 @@ export function InstagramSection() {
     </section>
   );
 }
+
+    

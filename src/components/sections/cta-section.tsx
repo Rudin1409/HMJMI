@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Send } from 'lucide-react';
@@ -11,19 +12,19 @@ export function CtaSection() {
             <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-primary/10 rounded-full"></div>
             <div className='relative z-10'>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Stay Updated with <span className="text-primary">HMJMI</span>
+                    Tetap Terhubung dengan <span className="text-primary">HMJMI</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto">
-                    Subscribe to our newsletter for the latest updates, events, and opportunities.
+                    Berlangganan buletin kami untuk mendapatkan pembaruan terbaru, acara, dan peluang eksklusif dari kami.
                 </p>
                 <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                     <Input 
                         type="email" 
-                        placeholder="Enter your email" 
+                        placeholder="Masukkan email Anda" 
                         className="bg-white/80 focus:bg-white border-gray-300" 
                     />
                     <Button type="submit" size="lg" className="rounded-full">
-                        Subscribe <Send className="ml-2 h-4 w-4" />
+                        Berlangganan <Send className="ml-2 h-4 w-4" />
                     </Button>
                 </form>
             </div>
@@ -32,3 +33,5 @@ export function CtaSection() {
     </section>
   );
 }
+
+    

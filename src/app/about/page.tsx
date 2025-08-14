@@ -9,22 +9,22 @@ const stats = [
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
     title: 'Est. 2002',
-    description: '20+ years of excellence in nurturing tech talents',
+    description: '20+ tahun pengalaman dalam mencetak talenta teknologi.',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    title: '8 Departments',
-    description: 'Specialized divisions for comprehensive development',
+    title: '8 Departemen',
+    description: 'Divisi khusus untuk pengembangan yang komprehensif.',
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: '15+ Divisions',
-    description: 'Focused teams for targeted skill development',
+    title: '15+ Divisi',
+    description: 'Tim yang fokus untuk pengembangan keterampilan yang ditargetkan.',
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '25+ Programs',
-    description: 'Diverse range of activities and initiatives',
+    title: '25+ Program',
+    description: 'Berbagai kegiatan dan inisiatif yang beragam.',
   },
 ];
 
@@ -110,10 +110,10 @@ export default function AboutPage() {
             Tentang Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            About <span className="text-primary">Us</span>
+            Mengenal <span className="text-primary">Kami</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Mengenal lebih dekat Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan perjalanan kami dalam membentuk generasi teknologi masa depan.
+            Kenali lebih dekat Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan perjalanan kami dalam membentuk generasi teknologi masa depan.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200">
@@ -130,7 +130,7 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              About <span className="text-primary">HMJMI</span>
+              Tentang <span className="text-primary">HMJMI</span>
             </h2>
             <p className="text-muted-foreground mt-6 max-w-4xl mx-auto">
              Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) adalah organisasi kemahasiswaan khusus untuk mahasiswa Jurusan Manajemen Informatika di Politeknik Negeri Sriwijaya. Berdiri sejak tahun 2002, HMJMI berperan sebagai wadah yang mendukung pengembangan di bidang akademik dan non-akademik, serta menyediakan berbagai kegiatan yang bermanfaat bagi para mahasiswa.
@@ -163,7 +163,7 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Vision & <span className="text-primary">Mission</span>
+                    Visi & <span className="text-primary">Misi</span>
                 </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -173,7 +173,7 @@ export default function AboutPage() {
                         <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
                             <Target className="w-8 h-8"/>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h3>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Visi Kami</h3>
                         <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai wadah untuk menyalurkan dan mengembangkan potensi mahasiswa yang aktif, kreatif, dan inovatif, serta menjalin hubungan baik di tingkat internal maupun eksternal.</p>
                     </div>
                 </Card>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                         <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
                             <Rocket className="w-8 h-8"/>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h3>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Misi Kami</h3>
                         <p className="text-muted-foreground">Mewujudkan HMJ Manajemen Informatika sebagai organisasi yang SMART (Solid, Melayani, Aktif, Responsif, dan Terdampak) dalam berekspresi, berkreasi, dan berprestasi.</p>
                     </div>
                 </Card>
@@ -238,7 +238,7 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Our <span className="text-primary">Gallery</span>
+                    Galeri <span className="text-primary">Kami</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
                     Dokumentasi kegiatan dan momen berharga HMJMI Politeknik Negeri Sriwijaya yang menggambarkan perjalanan kami dalam mengembangkan potensi mahasiswa.
@@ -266,3 +266,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    

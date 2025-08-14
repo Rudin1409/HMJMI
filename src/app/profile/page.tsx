@@ -23,9 +23,9 @@ const departments = [
 const teamMembers = [
   { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
   { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
-  { name: 'Aditya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Aisyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Budi', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  { name: 'Anggota Inti 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  { name: 'Anggota Inti 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  { name: 'Anggota Inti 3', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
 ];
 
 const programs = [
@@ -80,13 +80,13 @@ export default function ProfilePage() {
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Our Team
+            Tim Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Our Strength <span className="text-primary">Lies In Our Team</span>
+            Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi!
+            Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
@@ -103,7 +103,7 @@ export default function ProfilePage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Explore <span className="text-primary">Our Cabinet</span>
+              Jelajahi <span className="text-primary">Kabinet Kami</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
               Temukan berbagai departemen yang ada di HMJMI POLSRI, masing-masing dengan fokus dan program unggulan yang berbeda untuk pengembangan mahasiswa.
@@ -114,7 +114,7 @@ export default function ProfilePage() {
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
-                <h3 className="text-xl font-bold text-center text-gray-700">Departments</h3>
+                <h3 className="text-xl font-bold text-center text-gray-700">Departemen</h3>
                 <span className="text-primary text-xl font-bold">*</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -167,7 +167,7 @@ export default function ProfilePage() {
                 )}
                 variant={activeView === 'members' ? 'default' : 'outline'}
               >
-                <Users className="mr-2 h-4 w-4" /> Members
+                <Users className="mr-2 h-4 w-4" /> Anggota
               </Button>
               <Button
                 size="lg"
@@ -178,7 +178,7 @@ export default function ProfilePage() {
                 )}
                 variant={activeView === 'programs' ? 'default' : 'outline'}
                >
-                <Briefcase className="mr-2 h-4 w-4" /> Programs
+                <Briefcase className="mr-2 h-4 w-4" /> Program
               </Button>
             </div>
           </div>
@@ -264,3 +264,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    

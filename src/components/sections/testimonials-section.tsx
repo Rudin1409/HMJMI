@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
@@ -14,28 +15,28 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const testimonials = [
   {
-    name: 'Alumni MI',
-    role: 'Ketua Himpunan Mahasiswa Jurusan MI',
+    name: 'Alumni MI 2020',
+    role: 'Ketua Himpunan 2019-2020',
     avatar: 'https://placehold.co/100x100',
-    text: 'Menjadi Ketua HMJMI Politeknik Negeri Sriwijaya selama satu periode jadi salah satu pengalaman paling berkesan. Banyak hal yang saya pela... read more',
+    text: 'Menjadi Ketua HMJMI adalah salah satu pengalaman paling berharga. Saya belajar tentang kepemimpinan, tanggung jawab, dan kerja sama tim yang nyata.',
   },
   {
-    name: 'Alumni MI',
-    role: 'Sekretaris Umum',
+    name: 'Alumni MI 2021',
+    role: 'Sekretaris Umum 2020-2021',
     avatar: 'https://placehold.co/100x100',
-    text: 'Merupakan keputusan tepat bagi saya untuk bergabung dengan HMJMI. Tidak hanya mendapat relasi yang luas tetapi juga pengalaman baru... read more',
+    text: 'Bergabung dengan HMJMI adalah keputusan terbaik. Saya tidak hanya mendapatkan relasi yang luas, tetapi juga pengalaman baru yang tak ternilai harganya.',
   },
   {
-    name: 'Alumni MI',
-    role: 'Kepala Departemen Akademik',
+    name: 'Pengurus Aktif',
+    role: 'Kepala Dept. Akademik',
     avatar: 'https://placehold.co/100x100',
-    text: 'Di HMJMI POLSRI, saya merasakan bagaimana riset dan inovasi berpadu dalam harmoni, menantang batas konvensional dan mengubah gagasan... read more',
+    text: 'Di HMJMI, saya merasakan bagaimana riset dan inovasi berpadu, menantang batas konvensional dan mengubah ide menjadi karya nyata.',
   },
   {
-    name: 'Alumni Lain',
+    name: 'Alumni MI 2019',
     role: 'Software Engineer',
     avatar: 'https://placehold.co/100x100',
-    text: 'HMJMI tempat terbaik untuk berkembang. Saya belajar banyak hal yang sangat berguna di dunia kerja. Sangat direkomendasikan... read more',
+    text: 'HMJMI adalah tempat terbaik untuk tumbuh. Keterampilan yang saya pelajari di sini sangat relevan dan membantu saya di dunia kerja profesional.',
   },
 ];
 
@@ -45,12 +46,12 @@ export function TestimonialsSection() {
     <section id="testimonials" className="w-full py-16 md:py-24 bg-pink-50/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-           <Badge variant="default" className="bg-pink-100 text-primary mb-2">Testimonials</Badge>
+           <Badge variant="default" className="bg-pink-100 text-primary mb-2">Testimoni</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            What They Say
+            Apa Kata Mereka
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Dengarkan pengalaman dan cerita dari para alumni HMJMI yang telah sukses dalam karir mereka
+            Dengarkan pengalaman dan cerita inspiratif dari para alumni dan anggota aktif HMJMI yang telah merasakan dampaknya secara langsung.
           </p>
         </div>
 
@@ -81,7 +82,7 @@ export function TestimonialsSection() {
                       </div>
                       <Avatar className="w-20 h-20 mb-4 border-4 border-pink-100">
                         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                        <AvatarFallback>{testimonial.name.substring(0, 2)}</AvatarFallback>
                       </Avatar>
                       <h3 className="font-bold text-lg">{testimonial.name}</h3>
                       <p className="text-sm text-primary">{testimonial.role}</p>
@@ -99,3 +100,5 @@ export function TestimonialsSection() {
     </section>
   );
 }
+
+    

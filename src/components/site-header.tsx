@@ -5,17 +5,17 @@ import * as React from 'react';
 import Link from 'next/link';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/icons';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
-  { href: '/profile', label: 'Profile' },
-  { href: '/proker', label: 'Proker' },
-  { href: '/aspiration', label: 'Aspiration' },
+  { href: '/', label: 'Beranda' },
+  { href: '/about', label: 'Tentang' },
+  { href: '/profile', label: 'Profil' },
+  { href: '/proker', label: 'Program' },
+  { href: '/aspiration', label: 'Aspirasi' },
 ];
 
 export function SiteHeader() {
@@ -82,12 +82,10 @@ export function SiteHeader() {
             <SheetTrigger asChild>
               <Button variant="ghost" className="lg:hidden" size="icon">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Buka menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[240px] bg-background">
-              <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-              <SheetDescription className="sr-only">Main navigation links</SheetDescription>
               <div className="flex h-full flex-col">
                 <div className="flex items-center justify-between border-b pb-4">
                   <Link href="/" className="flex items-center space-x-2">
@@ -96,7 +94,7 @@ export function SiteHeader() {
                   </Link>
                    <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)}>
                       <X className="h-6 w-6" />
-                      <span className="sr-only">Close menu</span>
+                      <span className="sr-only">Tutup menu</span>
                    </Button>
                 </div>
                 <nav className="mt-6 flex flex-col space-y-2">
@@ -123,3 +121,5 @@ export function SiteHeader() {
     </header>
   );
 }
+
+    

@@ -1,8 +1,8 @@
+
 import Link from 'next/link';
 import { Github, Instagram, Linkedin, Mail, Twitter, MapPin, Phone } from 'lucide-react';
 import { Logo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 
 export function SiteFooter() {
   const socialLinks = [
@@ -13,15 +13,15 @@ export function SiteFooter() {
   ];
 
   const menuLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About Us' },
-    { href: '/profile', label: 'Profile' },
-    { href: '/proker', label: 'Proker' },
-    { href: '/aspiration', label: 'Aspiration' },
+    { href: '/', label: 'Beranda' },
+    { href: '/about', label: 'Tentang Kami' },
+    { href: '/profile', label: 'Profil' },
+    { href: '/proker', label: 'Program Kerja' },
+    { href: '/aspiration', label: 'Aspirasi' },
   ];
 
   const infoLinks = [
-    { href: '#testimonials', label: 'Testimonials' },
+    { href: '#testimonials', label: 'Testimoni' },
     { href: '#faq', label: 'FAQ' },
   ];
 
@@ -40,7 +40,7 @@ export function SiteFooter() {
               </div>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya - Wadah kreativitas dan inovasi mahasiswa informatika.
+              Wadah kreativitas, inovasi, dan pengembangan potensi mahasiswa informatika Politeknik Negeri Sriwijaya.
             </p>
              <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
@@ -88,7 +88,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-pink-200 pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; 2025 HMJMI POLSRI. All rights reserved.</p>
+          <p>&copy; 2025 HMJMI POLSRI. Seluruh hak cipta dilindungi.</p>
           <div className="flex space-x-2 mt-4 sm:mt-0">
              {socialLinks.map((social) => (
               <Button key={social.label} variant="ghost" size="icon" asChild className="text-muted-foreground hover:bg-primary/10 hover:text-primary">
@@ -103,3 +103,5 @@ export function SiteFooter() {
     </footer>
   );
 }
+
+    

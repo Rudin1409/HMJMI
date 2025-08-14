@@ -5,7 +5,7 @@ import { useFormStatus } from 'react-dom';
 import { useEffect, useActionState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -57,10 +57,10 @@ export default function AspirationPage() {
          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Your Voice Matters
+            Suara Anda Penting
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Give Your <span className="text-primary">Aspiration!</span>
+            Sampaikan <span className="text-primary">Aspirasi Anda!</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
             Bagikan aspirasi, saran, dan ide Anda untuk membantu kami tumbuh dan berkembang. Pendapat Anda sangat berarti bagi kemajuan bersama.
@@ -80,10 +80,10 @@ export default function AspirationPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Give <span className="text-primary">Your Aspiration</span>
+              Formulir <span className="text-primary">Aspirasi</span>
             </h2>
              <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
-                Bagikan aspirasi, saran, dan ide Anda untuk membantu kami tumbuh dan berkembang. Pendapat Anda sangat berarti bagi kemajuan bersama.
+                Gunakan formulir di bawah ini untuk mengirimkan ide, saran, atau kritik membangun. Setiap masukan akan kami terima dengan baik.
             </p>
           </div>
 
@@ -101,8 +101,8 @@ export default function AspirationPage() {
                   {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email}</p>}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="message">Pesan</Label>
-                  <Textarea id="message" name="message" placeholder="Tulis aspirasi Anda di sini..." rows={6} required />
+                  <Label htmlFor="message">Pesan Aspirasi</Label>
+                  <Textarea id="message" name="message" placeholder="Tuliskan aspirasi, ide, atau saran Anda di sini..." rows={6} required />
                   {state.errors?.message && <p className="text-sm font-medium text-destructive">{state.errors.message}</p>}
                 </div>
                  <input type="hidden" name="subject" value="Aspiration" />
@@ -115,3 +115,5 @@ export default function AspirationPage() {
     </div>
   );
 }
+
+    
