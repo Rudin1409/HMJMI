@@ -8,12 +8,11 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from 
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/icons';
 import { usePathname } from 'next/navigation';
-import { DialogTitle } from '@radix-ui/react-dialog';
 
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
-  { href: '#profile', label: 'Profile' },
+  { href: '/profile', label: 'Profile' },
   { href: '#proker', label: 'Proker' },
   { href: '#academic', label: 'Academic' },
   { href: '#aspiration', label: 'Aspiration' },
