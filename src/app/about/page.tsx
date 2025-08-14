@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, Paw } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, PawPrint } from 'lucide-react';
 
 const stats = [
   {
@@ -40,7 +40,7 @@ const logoPhilosophy = [
         description: "Melambangkan tridharma perguruan tinggi yakni pendidikan, penelitian, serta pengabdian kepada masyarakat."
     },
     {
-        icon: <Paw className="w-5 h-5 text-primary" />,
+        icon: <PawPrint className="w-5 h-5 text-primary" />,
         title: "5 Bulu Ekor",
         description: "Melambangkan lima fungsi mahasiswa sebagai Agent of Change, Iron Stock, Moral Force, Social Control, serta Guardian of Value."
     }
