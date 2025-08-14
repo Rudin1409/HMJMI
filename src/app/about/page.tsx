@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, PawPrint } from 'lucide-react';
 
 const stats = [
@@ -45,6 +45,58 @@ const logoPhilosophy = [
         description: "Melambangkan lima fungsi mahasiswa sebagai Agent of Change, Iron Stock, Moral Force, Social Control, serta Guardian of Value."
     }
 ]
+
+const galleryItems = [
+    {
+        src: "https://placehold.co/400x300",
+        title: "RAKER X UPGRADING HMIF UNSRI",
+        year: "2025",
+        hint: "student presentation"
+    },
+    {
+        src: "https://placehold.co/400x301",
+        title: "RAKER X UPGRADING HMIF UNSRI",
+        year: "2025",
+        hint: "student audience"
+    },
+    {
+        src: "https://placehold.co/400x302",
+        title: "RAKER X UPGRADING HMIF UNSRI",
+        year: "2025",
+        hint: "group photo"
+    },
+    {
+        src: "https://placehold.co/400x303",
+        title: "RAKER X UPGRADING HMIF UNSRI",
+        year: "2025",
+        hint: "students sitting"
+    },
+    {
+        src: "https://placehold.co/400x304",
+        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
+        year: "2025",
+        hint: "large group"
+    },
+    {
+        src: "https://placehold.co/400x305",
+        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
+        year: "2025",
+        hint: "students listening"
+    },
+    {
+        src: "https://placehold.co/400x306",
+        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
+        year: "2025",
+        hint: "student team"
+    },
+    {
+        src: "https://placehold.co/400x307",
+        title: "MAKRAB X BUKBER X IPK HMIF UNSRI",
+        year: "2025",
+        hint: "student speaking"
+    },
+]
+
 
 export default function AboutPage() {
   return (
@@ -179,6 +231,40 @@ export default function AboutPage() {
             </div>
       </section>
 
+      <section id="gallery" className="bg-pink-50/50 py-16 md:py-24">
+        <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+                <div className="flex justify-center mb-4">
+                    <div className="w-16 h-1 bg-primary rounded-full"></div>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                    Our <span className="text-primary">Gallery</span>
+                </h2>
+                <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+                    Dokumentasi kegiatan dan momen berharga HMIF Universitas Sriwijaya yang menggambarkan perjalanan kami dalam mengembangkan potensi mahasiswa informatika.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {galleryItems.map((item, index) => (
+                    <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white">
+                        <CardContent className="p-0">
+                            <div className="relative aspect-w-4 aspect-h-3">
+                                <Image src={item.src} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.hint} />
+                            </div>
+                        </CardContent>
+                        <CardFooter className="p-4 text-center flex-col items-center justify-center">
+                            <p className="font-semibold text-primary text-sm">{item.title}</p>
+                            <p className="text-xs text-primary/80">{item.year}</p>
+                        </CardFooter>
+                    </Card>
+                ))}
+            </div>
+        </div>
+      </section>
+
     </div>
   );
 }
+
+    
