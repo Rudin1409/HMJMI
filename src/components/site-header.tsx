@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -13,7 +14,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/profile', label: 'Profile' },
-  { href: '#proker', label: 'Proker' },
+  { href: '/proker', label: 'Proker' },
   { href: '#academic', label: 'Academic' },
   { href: '#aspiration', label: 'Aspiration' },
 ];
