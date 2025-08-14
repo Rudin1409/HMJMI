@@ -33,28 +33,30 @@ export function SiteHeader() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'border-b border-border/40 bg-background/80 backdrop-blur-lg' : 'bg-transparent'
+        isScrolled ? 'border-b border-border/40 bg-background/80 backdrop-blur-lg' : 'bg-transparent text-white'
       )}
     >
-      <div className="container flex h-16 items-center">
+      <div className="container flex h-20 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <Logo className="h-8 w-8 text-primary" />
-          <span className="font-bold">HMJMI Polsri</span>
+          <Logo className={cn('h-10 w-10', isScrolled ? 'text-primary' : 'text-accent')} />
+          <span className={cn('text-xl font-bold', isScrolled ? 'text-primary' : 'text-white')}>HMJMI Polsri</span>
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-4">
-          <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
+          <nav className="hidden items-center space-x-8 text-sm font-semibold md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-primary"
+                className={cn('transition-colors', isScrolled ? 'text-foreground hover:text-primary' : 'hover:text-accent')}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
           <div className="hidden md:block">
-            <Button size="sm">Gabung Sekarang</Button>
+            <Button asChild size="sm" variant={isScrolled ? "default" : "outline"} className={cn(!isScrolled && 'border-accent text-accent hover:bg-accent hover:text-accent-foreground')}>
+                <Link href="#kontak">Hubungi Kami</Link>
+            </Button>
           </div>
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
@@ -87,7 +89,9 @@ export function SiteHeader() {
                     </Link>
                   ))}
                 </nav>
-                <Button className="mt-auto">Gabung Sekarang</Button>
+                <Button asChild className="mt-auto">
+                    <Link href="#kontak" onClick={() => setMobileMenuOpen(false)}>Hubungi Kami</Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

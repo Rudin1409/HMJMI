@@ -46,9 +46,9 @@ export function ContactSection() {
   }, [state, toast]);
 
   return (
-    <section id="kontak" className="w-full bg-background py-16 md:py-24">
+    <section id="kontak" className="w-full bg-secondary py-16 md:py-24">
       <div className="container">
-        <Card className="mx-auto max-w-2xl border-border/40 bg-background/50 shadow-lg backdrop-blur-sm">
+        <Card className="mx-auto max-w-2xl border-border/40 bg-background shadow-lg">
           <CardHeader className="text-center">
             <CardTitle className="text-3xl font-bold tracking-tighter sm:text-4xl">Hubungi Kami</CardTitle>
             <CardDescription className="md:text-xl/relaxed">

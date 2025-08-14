@@ -30,7 +30,7 @@ export function SiteFooter() {
               <span className="text-xl font-bold">HMJMI Polsri</span>
             </Link>
             <p className="text-sm text-primary-foreground/80">
-              Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya.
+              Menjadi wadah aspirasi dan pengembangan potensi mahasiswa Manajemen Informatika Politeknik Negeri Sriwijaya.
             </p>
           </div>
 
@@ -82,7 +82,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-8 border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} HMJMI Politeknik Negeri Sriwijaya. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} HMJMI Politeknik Negeri Sriwijaya. Didesain dengan ❤️ oleh Anggota HMJMI.</p>
         </div>
       </div>
     </footer>

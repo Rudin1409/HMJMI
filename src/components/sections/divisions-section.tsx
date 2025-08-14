@@ -36,7 +36,7 @@ const divisions = [
 
 export function DivisionsSection() {
   return (
-    <section id="divisi" className="w-full py-16 md:py-24">
+    <section id="divisi" className="w-full bg-secondary py-16 md:py-24">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -50,7 +50,7 @@ export function DivisionsSection() {
           {divisions.map((division, index) => (
             <Card
               key={index}
-              className="group transform-gpu overflow-hidden border-border/40 bg-background/50 text-center shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 backdrop-blur-sm"
+              className="group transform-gpu overflow-hidden border-border/40 bg-background text-center shadow-lg transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20"
             >
               <CardHeader className="items-center">
                 <div className="rounded-full bg-accent/10 p-4 transition-colors duration-300 group-hover:bg-accent/20">

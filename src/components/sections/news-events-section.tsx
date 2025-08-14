@@ -36,7 +36,7 @@ const events = [
 
 export function NewsEventsSection() {
   return (
-    <section id="berita" className="w-full bg-background py-16 md:py-24">
+    <section id="berita" className="w-full bg-secondary py-16 md:py-24">
       <div className="container">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
@@ -52,7 +52,7 @@ export function NewsEventsSection() {
             <h3 className="mb-6 text-2xl font-bold">Berita Terbaru</h3>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {newsItems.map((item, index) => (
-                <Card key={index} className="group overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <Card key={index} className="group overflow-hidden transition-all duration-300 hover:shadow-xl bg-background">
                   <CardHeader className="p-0">
                     <div className="relative h-48 w-full">
                       <Image
@@ -84,7 +84,7 @@ export function NewsEventsSection() {
           
           <div>
             <h3 className="mb-6 text-2xl font-bold">Agenda Terdekat</h3>
-            <Card className="bg-background/80 backdrop-blur-sm">
+            <Card className="bg-background">
               <CardContent className="p-6">
                 <ul className="space-y-4">
                   {events.map((event, index) => (
