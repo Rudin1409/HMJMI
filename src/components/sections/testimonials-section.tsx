@@ -22,19 +22,19 @@ const testimonials = [
   {
     name: 'Vellanindhita',
     role: 'Sekretaris Umum 2',
-    avatar: 'https://placehold.co/101x101',
+    avatar: 'https://placehold.co/100x100',
     text: 'Merupakan keputusan tepat bagi saya untuk bergabung dengan HMIF. Tidak hanya mendapat relasi yang luas tetapi juga pengalaman baru... read more',
   },
   {
     name: 'Zidjian Vito',
     role: 'Kepala Dinas Akademik',
-    avatar: 'https://placehold.co/102x102',
+    avatar: 'https://placehold.co/100x100',
     text: 'Di HMIF UNSRI, saya merasakan bagaimana riset dan inovasi berpadu dalam harmoni, menantang batas konvensional dan mengubah gagasan... read more',
   },
   {
     name: 'Alumni Lain',
     role: 'Software Engineer',
-    avatar: 'https://placehold.co/103x103',
+    avatar: 'https://placehold.co/100x100',
     text: 'HMIF tempat terbaik untuk berkembang. Saya belajar banyak hal yang sangat berguna di dunia kerja. Sangat direkomendasikan... read more',
   },
 ];

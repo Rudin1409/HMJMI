@@ -39,16 +39,16 @@ export function InstagramSection() {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                     <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/400x400" layout="fill" objectFit="cover" alt="Instagram post 1" data-ai-hint="student organization event" />
+                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 1" data-ai-hint="student organization event" />
                     </div>
                      <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/400x401" layout="fill" objectFit="cover" alt="Instagram post 2" data-ai-hint="coding workshop" />
+                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 2" data-ai-hint="coding workshop" />
                     </div>
                      <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/400x402" layout="fill" objectFit="cover" alt="Instagram post 3" data-ai-hint="university competition" />
+                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 3" data-ai-hint="university competition" />
                     </div>
                      <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/400x403" layout="fill" objectFit="cover" alt="Instagram post 4" data-ai-hint="community gathering" />
+                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 4" data-ai-hint="community gathering" />
                     </div>
                 </div>
               </CardContent>

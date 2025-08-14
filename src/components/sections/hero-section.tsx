@@ -57,13 +57,13 @@ export function HeroSection() {
             <div className="relative z-10 p-2 bg-white rounded-3xl shadow-2xl h-full">
                 <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
                     <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden">
-                        <Image src="https://placehold.co/800x400" layout="fill" objectFit="cover" alt="Group photo 1" data-ai-hint="university student group" />
+                        <Image src="https://placehold.co/600x300" layout="fill" objectFit="cover" alt="Group photo 1" data-ai-hint="university student group" />
                     </div>
                     <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
-                        <Image src="https://placehold.co/400x400" layout="fill" objectFit="cover" alt="Group photo 2" data-ai-hint="students coding event" />
+                        <Image src="https://placehold.co/300x300" layout="fill" objectFit="cover" alt="Group photo 2" data-ai-hint="students coding event" />
                     </div>
                     <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
-                        <Image src="https://placehold.co/400x401" layout="fill" objectFit="cover" alt="Group photo 3" data-ai-hint="classroom presentation" />
+                        <Image src="https://placehold.co/300x300" layout="fill" objectFit="cover" alt="Group photo 3" data-ai-hint="classroom presentation" />
                     </div>
                 </div>
             </div>
