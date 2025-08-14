@@ -7,10 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/icons';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Us' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
   { href: '#profile', label: 'Profile' },
   { href: '#proker', label: 'Proker' },
   { href: '#academic', label: 'Academic' },
@@ -20,34 +21,24 @@ const navLinks = [
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  const [activeLink, setActiveLink] = React.useState('#home');
   // Simple dark mode toggle for visual effect, no actual theme change logic
-  const [isDarkMode, setIsDarkMode] = React.useState(false);
+  const [isDarkMode, setIsDarkMode] = React.useState(true);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 10);
-
-      const sections = navLinks.map(link => document.querySelector(link.href));
-      let currentSection = '';
-      sections.forEach(section => {
-        if (section && section.offsetTop <= scrollPosition + 150) {
-          currentSection = `#${section.id}`;
-        }
-      });
-      if (currentSection) {
-        setActiveLink(currentSection);
-      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const getLinkClass = (href: string) => {
+    const isActive = pathname === href;
     return cn(
-      'font-semibold transition-colors hover:text-primary py-2 px-3 rounded-md',
-      activeLink === href ? 'bg-pink-100 text-primary' : 'text-gray-600',
+      'relative font-semibold transition-colors hover:text-primary py-2 text-sm',
+      isActive ? 'text-primary' : 'text-gray-600',
     );
   };
   
@@ -55,33 +46,35 @@ export function SiteHeader() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'border-b bg-white/80 backdrop-blur-lg' : 'bg-transparent'
+        isScrolled ? 'border-b bg-white/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Logo className="h-10 w-10" />
-          <div className="flex flex-col">
-            <span className={cn('text-lg font-bold text-gray-800')}>HMIF UNSRI</span>
-            <span className="text-xs text-muted-foreground">Keilmuan, Profesional, Inovasi</span>
-          </div>
+           <div className="flex flex-col">
+              <span className="text-lg font-bold leading-tight">HMIF UNSRI</span>
+              <span className="text-xs font-semibold leading-tight text-muted-foreground">Kuatkan Formasi Wujudkan Inovasi</span>
+            </div>
         </Link>
         
-        <nav className="hidden items-center space-x-2 text-sm lg:flex">
+        <nav className="hidden items-center space-x-6 text-sm lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={getLinkClass(link.href)}
-              onClick={() => setActiveLink(link.href)}
             >
               {link.label}
+               {pathname === link.href && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
+              )}
             </Link>
           ))}
         </nav>
         
         <div className="flex items-center gap-2">
-           <Button variant="ghost" size="icon" onClick={() => setIsDarkMode(!isDarkMode)} className="hidden lg:flex">
+           <Button variant="ghost" size="icon" onClick={() => setIsDarkMode(!isDarkMode)} className="hidden lg:flex bg-gray-800 text-white hover:bg-gray-700">
                 {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 <span className="sr-only">Toggle theme</span>
            </Button>
