@@ -58,7 +58,7 @@ const teamMembers = {
         { name: 'Devi Aprianti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2023', avatar: '/M%20Bahrudin.png', instagram: "em_dizi" },
         { name: 'Dimas Yuda Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Niken Septi Andini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Delvia Apriani', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
@@ -267,8 +267,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
                 <Carousel
                   opts={{
                     align: "center",
-                    loop: true,
-                    slidesToScroll: 'auto',
+                    loop: members.length > 5, // Loop only if more than 5 members
                   }}
                   className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
                 >
@@ -330,6 +329,17 @@ export default function ProfilePage() {
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
+                <div className="relative z-10 text-center md:text-left">
+                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
+                        Tim Kami
+                    </Badge>
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
+                    </h1>
+                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
+                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
+                    </p>
+                </div>
                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-pink-100 rounded-full shadow-inner"></div>
@@ -355,19 +365,6 @@ export default function ProfilePage() {
                           <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
                     </div>
                 </div>
-
-                <div className="relative z-10 text-center md:text-left">
-                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-                        Tim Kami
-                    </Badge>
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
-                    </h1>
-                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
-                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
-                    </p>
-                </div>
-
             </div>
         </div>
       </section>
