@@ -208,10 +208,14 @@ const MemberCard = ({ member }: { member: Member }) => {
                 <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
                 <p className="text-xl font-semibold text-gray-800">{member.name}</p>
                 <p className="text-muted-foreground">{member.class}</p>
-                {member.instagram && member.instagram !== '-' && (
-                    <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start">
+                {member.instagram && (
+                    <a 
+                      href={member.instagram === '-' ? 'https://instagram.com' : `https://instagram.com/${member.instagram}`} 
+                      target="_blank" 
+                      className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start"
+                    >
                         <Instagram className="h-5 w-5" />
-                        <span>{member.instagram}</span>
+                        {member.instagram !== '-' && <span>{member.instagram}</span>}
                     </a>
                 )}
             </div>
@@ -528,5 +532,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
