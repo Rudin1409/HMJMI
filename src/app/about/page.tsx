@@ -268,7 +268,7 @@ export default function AboutPage() {
                     >
                         <CardContent className="p-0">
                             <div className="relative aspect-w-4 aspect-h-3">
-                                <Image src={item.src} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
+                                <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
                             </div>
                         </CardContent>
                         <CardFooter className="p-4 text-center flex-col items-center justify-center">
