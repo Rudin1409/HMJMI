@@ -29,7 +29,7 @@ const departments = [
   { id: 'humas', name: 'Humas', fullName: 'Hubungan Masyarakat', icon: <Users className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
   { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
   { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
-  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Users className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
+  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
 ];
 
 const teamMembers = {
@@ -232,7 +232,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { ti
             {otherMembers.length > 0 && (
                 <Carousel
                   opts={{
-                    align: "start",
+                    align: "center",
                     loop: true,
                     slidesToScroll: 3,
                   }}
@@ -240,13 +240,13 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { ti
                 >
                   <CarouselContent className="-ml-4">
                     {otherMembers.map((member, index) => (
-                      <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6">
+                      <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center">
                           <SmallMemberCard member={member} onSelect={() => setFeaturedMember(member)} />
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="flex" />
-                  <CarouselNext className="flex" />
+                  <CarouselPrevious className="lg:hidden flex" />
+                  <CarouselNext className="lg:hidden flex" />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -282,30 +282,6 @@ export default function ProfilePage() {
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
-                
-                <div className="relative hidden md:flex items-center justify-center h-[500px]">
-                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 left-10 blur-xl"></div>
-                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 right-10 blur-xl"></div>
-                    <div className="absolute top-0 left-10 w-36 h-36">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                    </div>
-                     <div className="absolute top-1/2 left-0 w-44 h-44 -translate-y-1/2">
-                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="team meeting"/>
-                    </div>
-                     <div className="absolute bottom-0 left-20 w-32 h-32">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                    </div>
-                    <div className="absolute top-0 right-10 w-36 h-36">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
-                    </div>
-                     <div className="absolute top-1/2 right-0 w-44 h-44 -translate-y-1/2">
-                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 5" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
-                    </div>
-                     <div className="absolute bottom-0 right-20 w-32 h-32">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
-                    </div>
-                </div>
-
                 <div className="relative z-10 text-center md:text-left">
                     <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
                         Tim Kami
@@ -317,6 +293,30 @@ export default function ProfilePage() {
                         Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
                     </p>
                 </div>
+
+                <div className="relative flex items-center justify-center h-[500px]">
+                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 left-10 blur-xl"></div>
+                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 right-10 blur-xl"></div>
+                    <div className="absolute top-0 left-1/4 w-36 h-36">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
+                    </div>
+                     <div className="absolute top-1/2 -left-8 w-44 h-44 -translate-y-1/2">
+                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="team meeting"/>
+                    </div>
+                     <div className="absolute bottom-0 left-1/4 w-32 h-32">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
+                    </div>
+                    <div className="absolute top-0 right-1/4 w-36 h-36">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
+                    </div>
+                     <div className="absolute top-1/2 -right-8 w-44 h-44 -translate-y-1/2">
+                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 5" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
+                    </div>
+                     <div className="absolute bottom-0 right-1/4 w-32 h-32">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
+                    </div>
+                </div>
+
             </div>
         </div>
       </section>
