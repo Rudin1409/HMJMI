@@ -42,9 +42,7 @@ const teamMembers = {
       { name: 'Koordinator 1', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       { name: 'Koordinator 2', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
     ],
-    members: Array.from({ length: 12 }, (_, i) => ({
-      name: `Anggota BPH ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com"
-    }))
+    members: []
   },
   ptkp: {
     heads: [
@@ -226,7 +224,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { ti
 
     return (
         <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-700 text-center md:text-left">{title}</h3>
+            <h3 className="text-2xl font-bold text-gray-700 text-center">{title}</h3>
             {featuredMember && members.includes(featuredMember) && (
                 <MemberCard member={featuredMember} />
             )}
@@ -247,8 +245,8 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { ti
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="hidden md:flex" />
-                  <CarouselNext className="hidden md:flex" />
+                  <CarouselPrevious className="flex" />
+                  <CarouselNext className="flex" />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -434,12 +432,14 @@ export default function ProfilePage() {
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
                 />
-                <MemberGroup 
-                    title="Anggota"
-                    members={currentDepartmentData.members}
-                    featuredMember={featuredMember}
-                    setFeaturedMember={setFeaturedMember}
-                />
+                {activeDept.id !== 'inti' && (
+                    <MemberGroup 
+                        title="Anggota"
+                        members={currentDepartmentData.members}
+                        featuredMember={featuredMember}
+                        setFeaturedMember={setFeaturedMember}
+                    />
+                )}
             </div>
           )}
 
