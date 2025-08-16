@@ -52,7 +52,7 @@ export default function AspirationPage() {
     <div className="flex flex-col">
        <section 
         id="hero-aspiration" 
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white pt-28 pb-16"
+        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white flex items-center justify-center min-h-screen"
       >
          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -115,5 +115,3 @@ export default function AspirationPage() {
     </div>
   );
 }
-
-    

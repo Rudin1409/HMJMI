@@ -117,7 +117,7 @@ export default function AboutPage() {
     <div className="flex flex-col">
       <section 
         id="hero-about" 
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white pt-28 pb-16"
+        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white flex items-center justify-center min-h-screen"
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">

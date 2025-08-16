@@ -75,7 +75,7 @@ export default function ProfilePage() {
     <div className="flex flex-col bg-pink-50/30">
       <section
         id="hero-profile"
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-pink-50/30 pt-28 pb-16"
+        className="relative w-full bg-gradient-to-b from-pink-100/50 to-pink-50/30 flex items-center justify-center min-h-screen"
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
