@@ -8,8 +8,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
@@ -62,7 +60,9 @@ export function TestimonialsSection() {
           }}
           plugins={[
             Autoplay({
-              delay: 5000,
+              delay: 3000,
+              stopOnInteraction: false,
+              stopOnMouseEnter: true,
             }),
           ]}
           className="w-full max-w-6xl mx-auto"
@@ -92,13 +92,9 @@ export function TestimonialsSection() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex" />
-          <CarouselNext className="hidden sm:flex" />
         </Carousel>
 
       </div>
     </section>
   );
 }
-
-    

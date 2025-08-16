@@ -16,7 +16,7 @@ const stats = [
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: '15+ Divisi',
+    title: '11 Divisi',
     description: 'Tim yang fokus untuk pengembangan keterampilan yang ditargetkan.',
   },
   {

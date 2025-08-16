@@ -14,7 +14,7 @@ const faqItems = [
   },
   {
     question: 'Apa saja program kerja unggulan HMJMI?',
-    answer: 'HMJMI menyelenggarakan berbagai program kerja, termasuk seminar teknologi, workshop pengembangan keterampilan (coding, desain), kompetisi internal seperti MI-CUP, serta program kaderisasi seperti LKMM-PD untuk mencetak pemimpin masa depan.',
+    answer: 'Program utama kami adalah IT Festival (Information Technology Festival), sebuah acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar sebagai sarana edukasi bagi mahasiswa dan masyarakat umum.',
   },
   {
     question: 'Bagaimana cara mendaftar menjadi anggota HMJMI?',
@@ -26,7 +26,7 @@ const faqItems = [
   },
   {
     question: 'Berapa lama masa jabatan kepengurusan di HMJMI?',
-    answer: 'Satu periode kepengurusan di HMJMI berlangsung selama satu tahun. Prosesnya dimulai dari pelantikan pengurus baru dan diakhiri dengan serah terima jabatan kepada pengurus periode berikutnya melalui Musyawarah Besar (MUBES).',
+    answer: 'Satu periode kepengurusan di HMJMI berlangsung selama dua tahun (dua periode). Prosesnya dimulai dari pelantikan pengurus baru dan diakhiri dengan serah terima jabatan kepada pengurus periode berikutnya melalui Musyawarah Besar (MUBES).',
   },
 ];
 
@@ -60,5 +60,3 @@ export function FaqSection() {
     </section>
   );
 }
-
-    
