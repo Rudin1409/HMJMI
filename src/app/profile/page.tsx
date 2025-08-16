@@ -6,71 +6,70 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight, Bot, Network, Palette, BarChart3, Heart, Wallet, UserCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const departments = [
-  { id: 'inti', name: 'Inti', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
-  { id: 'sekretaris', name: 'Sekretaris', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Mengelola administrasi, surat-menyurat, dan dokumentasi organisasi.' },
-  { id: 'bendahara', name: 'Bendahara', icon: <Store className="w-8 h-8 text-primary" />, description: 'Mengelola keuangan dan anggaran organisasi.' },
-  { id: 'akademik', name: 'Akademik', icon: <Code className="w-8 h-8 text-primary" />, description: 'Meningkatkan prestasi dan wawasan akademik mahasiswa.' },
-  { id: 'sdm', name: 'SDM', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
+  { id: 'inti', name: 'Inti (BPI)', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
+  { id: 'ptpk', name: 'PTPK', icon: <Code className="w-8 h-8 text-primary" />, description: 'Pengembangan Teknologi dan Penalaran Keilmuan, fokus pada inovasi teknologi.' },
   { id: 'humas', name: 'Humas', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
-  { id: 'kominfo', name: 'Kominfo', icon: <Tv className="w-8 h-8 text-primary" />, description: 'Komunikasi dan Informasi, mengelola media dan publikasi.' },
-  { id: 'minatbakat', name: 'Minat Bakat', icon: <Handshake className="w-8 h-8 text-primary" />, description: 'Mengembangkan minat dan bakat mahasiswa di berbagai bidang.' },
+  { id: 'psdm', name: 'PSDM', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
+  { id: 'kesma', name: 'Kesma', icon: <Heart className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
+  { id: 'bistra', name: 'Bistra', icon: <Store className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
 ];
 
-const teamMembers = [
-  { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
-  { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
-  { name: 'Anggota Inti 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Anggota Inti 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
-  { name: 'Anggota Inti 3', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
-];
+const teamMembers = {
+  inti: [
+    { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
+    { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
+  ],
+  ptpk: [
+    { name: 'Anggota PTPK 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+    { name: 'Anggota PTPK 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  ],
+  humas: [
+     { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  ],
+  psdm: [
+      { name: 'Anggota PSDM 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  ],
+  kesma: [
+      { name: 'Anggota Kesma 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  ],
+  bistra: [
+      { name: 'Anggota Bistra 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+  ]
+};
 
-const programs = [
-  {
-    title: 'LKMM-PD',
-    date: '15 Maret 2024',
-    type: 'Offline',
-    category: 'PELATIHAN',
-    description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar, untuk melatih kepemimpinan.',
-    image: 'https://placehold.co/400x200',
-    hint: 'students leadership training'
-  },
-  {
-    title: 'Upgrading',
-    date: '28 Februari 2024',
-    type: 'Offline',
-    category: 'INTERNAL',
-    description: 'Kegiatan untuk meningkatkan kualitas dan solidaritas internal pengurus HMJMI.',
-    image: 'https://placehold.co/400x200',
-    hint: 'team building'
-  },
-  {
-    title: 'Seminar Nasional',
-    date: '10 Agustus 2024',
-    type: 'Hybrid',
-    category: 'AKADEMIK',
-    description: 'Seminar berskala nasional dengan topik-topik terkini di dunia teknologi informasi.',
-    image: 'https://placehold.co/400x200',
-    hint: 'national seminar'
-  },
-  {
-    title: 'MI CUP',
-    date: '20 September 2024',
-    type: 'Offline',
-    category: 'MINAT BAKAT',
-    description: 'Kompetisi olahraga dan seni untuk mahasiswa Manajemen Informatika.',
-    image: 'https://placehold.co/400x200',
-    hint: 'student competition'
-  }
-];
-
+const programs = {
+    inti: [
+        { title: 'Musyawarah Besar', category: 'INTERNAL', description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.', image: 'https://placehold.co/400x200', hint: 'organization meeting' }
+    ],
+    ptpk: [
+        { title: 'Webinar Teknologi', category: 'AKADEMIK', description: 'Seminar online dengan topik terkini di dunia IT untuk meningkatkan wawasan.', image: 'https://placehold.co/400x200', hint: 'tech webinar' },
+        { title: 'Pelatihan Coding', category: 'AKADEMIK', description: 'Workshop intensif untuk mengasah kemampuan pemrograman mahasiswa.', image: 'https://placehold.co/400x200', hint: 'coding workshop' }
+    ],
+    humas: [
+        { title: 'Kunjungan Industri', category: 'EKSTERNAL', description: 'Mengunjungi perusahaan teknologi untuk memperluas wawasan dunia kerja.', image: 'https://placehold.co/400x200', hint: 'industry visit' }
+    ],
+    psdm: [
+        { title: 'LKMM-PD', category: 'PELATIHAN', description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar untuk kaderisasi.', image: 'https://placehold.co/400x200', hint: 'leadership training' },
+        { title: 'MI CUP', category: 'MINAT BAKAT', description: 'Kompetisi olahraga dan seni untuk mahasiswa Manajemen Informatika.', image: 'https://placehold.co/400x200', hint: 'student competition' }
+    ],
+    kesma: [
+        { title: 'Bakti Sosial', category: 'SOSIAL', description: 'Kegiatan sosial untuk membantu masyarakat sekitar dan menumbuhkan empati.', image: 'https://placehold.co/400x200', hint: 'social charity' }
+    ],
+    bistra: [
+        { title: 'Bazar Kewirausahaan', category: 'BISNIS', description: 'Mengadakan bazar untuk mendorong semangat dan kreativitas wirausaha.', image: 'https://placehold.co/400x200', hint: 'entrepreneur bazaar' }
+    ]
+};
 
 export default function ProfilePage() {
   const [activeDept, setActiveDept] = useState(departments[0]);
   const [activeView, setActiveView] = useState('members');
+  
+  const currentMembers = teamMembers[activeDept.id as keyof typeof teamMembers] || [];
+  const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
 
   return (
     <div className="flex flex-col bg-pink-50/30">
@@ -110,18 +109,18 @@ export default function ProfilePage() {
             </p>
           </div>
 
-          <Card className="max-w-4xl mx-auto p-6 md:p-8 shadow-lg rounded-2xl bg-white/80 backdrop-blur-sm">
+          <Card className="max-w-5xl mx-auto p-6 md:p-8 shadow-lg rounded-2xl bg-white/80 backdrop-blur-sm">
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
                 <h3 className="text-xl font-bold text-center text-gray-700">Departemen</h3>
                 <span className="text-primary text-xl font-bold">*</span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                 {departments.map((dept) => (
                   <button key={dept.id} onClick={() => setActiveDept(dept)}>
                     <Card className={cn(
-                      'text-center p-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl hover:scale-105',
+                      'text-center p-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl hover:scale-105 h-full',
                       activeDept.id === dept.id ? 'bg-primary text-primary-foreground shadow-primary/40' : 'bg-white'
                     )}>
                       <CardContent className="p-0 flex flex-col items-center gap-2">
@@ -132,10 +131,6 @@ export default function ProfilePage() {
                            {dept.icon}
                         </div>
                         <h4 className="font-bold text-sm">{dept.name}</h4>
-                        <p className={cn(
-                           "text-xs",
-                           activeDept.id === dept.id ? 'text-primary-foreground/80' : 'text-muted-foreground'
-                        )}>Departemen HMJMI</p>
                       </CardContent>
                     </Card>
                   </button>
@@ -192,8 +187,8 @@ export default function ProfilePage() {
                 </h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                {teamMembers.map((member, index) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 justify-center">
+                {currentMembers.map((member, index) => (
                   <Card key={index} className="text-center p-6 shadow-lg hover:shadow-xl transition-shadow bg-white rounded-2xl flex flex-col items-center">
                     <CardContent className="p-0 flex flex-col items-center">
                         <div className="relative w-32 h-32 mb-4">
@@ -229,32 +224,31 @@ export default function ProfilePage() {
                 </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                {programs.map((program, index) => (
-                    <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
-                        <CardContent className="p-0">
-                             <div className="relative aspect-video">
-                                <Image src={program.image} layout="fill" objectFit="cover" alt={program.title} data-ai-hint={program.hint}/>
-                                <div className="absolute top-2 right-2">
-                                     <Badge className="bg-yellow-300 text-yellow-900 font-bold">{program.category}</Badge>
-                                </div>
-                            </div>
-                            <div className="p-6">
-                                <h4 className="text-xl font-bold text-gray-800 mb-2">{program.title}</h4>
-                                <div className="flex items-center text-sm text-muted-foreground mb-3">
-                                    <span>{program.date}</span>
-                                    <span className="mx-2">•</span>
-                                    <span>{program.type}</span>
-                                </div>
-                                <p className="text-muted-foreground mb-4 text-sm">
-                                  {program.description}
-                                </p>
-                                <Button variant="link" className="text-primary p-0 h-auto">
-                                    Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
-                                </Button>
-                            </div>
-                        </CardContent>
-                    </Card>
-                ))}
+                {currentPrograms.length > 0 ? (
+                  currentPrograms.map((program, index) => (
+                      <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+                          <CardContent className="p-0">
+                               <div className="relative aspect-video">
+                                  <Image src={program.image} layout="fill" objectFit="cover" alt={program.title} data-ai-hint={program.hint}/>
+                                  <div className="absolute top-2 right-2">
+                                       <Badge className="bg-yellow-300 text-yellow-900 font-bold">{program.category}</Badge>
+                                  </div>
+                              </div>
+                              <div className="p-6">
+                                  <h4 className="text-xl font-bold text-gray-800 mb-2">{program.title}</h4>
+                                  <p className="text-muted-foreground mb-4 text-sm">
+                                    {program.description}
+                                  </p>
+                                  <Button variant="link" className="text-primary p-0 h-auto">
+                                      Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
+                                  </Button>
+                              </div>
+                          </CardContent>
+                      </Card>
+                  ))
+                ) : (
+                  <p className="text-muted-foreground col-span-full text-center">Belum ada program kerja yang tersedia untuk departemen ini.</p>
+                )}
               </div>
             </div>
           )}
@@ -264,5 +258,4 @@ export default function ProfilePage() {
     </div>
   );
 }
-
     
