@@ -25,31 +25,12 @@ export function InstagramSection() {
               Tetap terhubung dengan HMJMI POLSRI dan jangan lewatkan acara menarik, workshop, dan sorotan komunitas kami.
             </p>
             <Button asChild variant="secondary" size="lg" className="bg-white text-pink-500 hover:bg-gray-100 rounded-full">
-              <Link href="#">Ikuti Kami <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="https://www.instagram.com/hmjmi.polsri/" target="_blank">Ikuti Kami <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
-          <div className="relative h-full min-h-[450px]">
-             <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
-             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
-             <div className="relative z-10 p-2 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl h-full border border-white/20">
-                <div className="flex items-center justify-between mb-4 px-4 pt-2">
-                   <div className="flex items-center gap-3">
-                     <Image src="https://placehold.co/40x40" width={40} height={40} alt="HMJMI Logo" className="rounded-full border-2 border-pink-200" data-ai-hint="logo" />
-                     <span className="font-semibold text-gray-800">hmjmi.polsri</span>
-                   </div>
-                   <div className="text-gray-800 font-bold">...</div>
-                </div>
-                <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
-                    <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
-                        <Image src="https://placehold.co/300x300.png" layout="fill" objectFit="cover" alt="Instagram Post 1" data-ai-hint="student organization event" className="transition-transform duration-500 hover:scale-110"/>
-                    </div>
-                    <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
-                        <Image src="https://placehold.co/300x300.png" layout="fill" objectFit="cover" alt="Instagram Post 2" data-ai-hint="coding workshop" className="transition-transform duration-500 hover:scale-110"/>
-                    </div>
-                    <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden">
-                        <Image src="https://placehold.co/600x300.png" layout="fill" objectFit="cover" alt="Instagram Post 3" data-ai-hint="university competition" className="transition-transform duration-500 hover:scale-110"/>
-                    </div>
-                </div>
+          <div className="relative h-full min-h-[450px] flex items-center justify-center">
+            <div className="relative w-full aspect-square max-w-md rounded-2xl overflow-hidden shadow-2xl">
+                 <Image src="https://placehold.co/600x600.png" layout="fill" objectFit="cover" alt="Instagram Post" data-ai-hint="student community event" className="transition-transform duration-500 hover:scale-105"/>
             </div>
           </div>
         </div>
