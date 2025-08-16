@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Github, Instagram, Linkedin, Mail, Twitter, MapPin, Phone } from 'lucide-react';
 import { Logo } from '@/components/icons';
@@ -6,10 +5,10 @@ import { Button } from '@/components/ui/button';
 
 export function SiteFooter() {
   const socialLinks = [
-    { href: '#', icon: Instagram, label: 'Instagram' },
+    { href: 'https://www.instagram.com/hmjmi.polsri/', icon: Instagram, label: 'Instagram' },
     { href: '#', icon: Linkedin, label: 'LinkedIn' },
     { href: '#', icon: Github, label: 'GitHub' },
-    { href: '#', icon: Twitter, label: 'Twitter' },
+    { href: '#', icon: Mail, label: 'Email' },
   ];
 
   const menuLinks = [
@@ -27,7 +26,7 @@ export function SiteFooter() {
 
 
   return (
-    <footer className="bg-pink-50/50 text-gray-800">
+    <footer className="bg-white text-foreground border-t">
       <div className="container py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Logo and About */}
@@ -35,7 +34,7 @@ export function SiteFooter() {
             <Link href="/" className="flex items-center space-x-3">
               <Logo className="h-10 w-10" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold leading-tight">HMJMI POLSRI</span>
+                <span className="text-lg font-bold leading-tight text-primary">HMJMI POLSRI</span>
                 <span className="text-sm font-semibold leading-tight text-muted-foreground">Manajemen Informatika</span>
               </div>
             </Link>
@@ -49,23 +48,19 @@ export function SiteFooter() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-primary flex-shrink-0" />
-                <span className="text-muted-foreground">hmjmi@polsri.ac.id</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-4 w-4 text-primary flex-shrink-0" />
-                <span className="text-muted-foreground">+62 812-3456-7890</span>
+                <a href="mailto:hmjmi@polsri.ac.id" className="text-muted-foreground hover:text-primary transition-colors">hmjmi@polsri.ac.id</a>
               </div>
             </div>
           </div>
           
           {/* Column 2: Menu */}
           <div className="md:col-start-2 lg:col-start-3">
-            <h4 className="font-bold text-lg mb-4">Menu</h4>
+            <h4 className="font-bold text-lg mb-4 text-primary">Menu</h4>
             <ul className="space-y-3">
               {menuLinks.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                     <span className="text-primary">•</span> {link.label}
+                     <span className="text-accent">•</span> {link.label}
                   </Link>
                 </li>
               ))}
@@ -74,12 +69,12 @@ export function SiteFooter() {
 
           {/* Column 3: Informasi */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Informasi</h4>
+            <h4 className="font-bold text-lg mb-4 text-primary">Informasi</h4>
             <ul className="space-y-3">
               {infoLinks.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
-                    <span className="text-primary">•</span> {link.label}
+                    <span className="text-accent">•</span> {link.label}
                   </Link>
                 </li>
               ))}
@@ -87,12 +82,12 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-pink-200 pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; 2025 HMJMI POLSRI. Seluruh hak cipta dilindungi.</p>
-          <div className="flex space-x-2 mt-4 sm:mt-0">
+        <div className="mt-12 border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} HMJMI POLSRI. Seluruh hak cipta dilindungi.</p>
+          <div className="flex space-x-1 mt-4 sm:mt-0">
              {socialLinks.map((social) => (
               <Button key={social.label} variant="ghost" size="icon" asChild className="text-muted-foreground hover:bg-primary/10 hover:text-primary">
-                <Link href={social.href} aria-label={social.label}>
+                <Link href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer">
                   <social.icon className="h-5 w-5" />
                 </Link>
               </Button>
@@ -103,5 +98,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
-    
