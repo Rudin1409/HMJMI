@@ -2,11 +2,11 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight, Bot, Network, Palette, BarChart3, Heart, Wallet, UserCheck, Mail } from 'lucide-react';
+import { Users, Briefcase, Award, Instagram, Mail, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -17,11 +17,11 @@ import {
 
 const departments = [
   { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
-  { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <Code className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'humas', name: 'Humas', fullName: 'Hubungan Masyarakat', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
+  { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'humas', name: 'Humas', fullName: 'Hubungan Masyarakat', icon: <Users className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
   { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
-  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Heart className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
-  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Store className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
+  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
+  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Users className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
 ];
 
 const teamMembers = {
@@ -35,10 +35,11 @@ const teamMembers = {
   ptkp: {
     heads: [
         { name: 'Kepala Dept. PTKP', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Wakil Dept. PTKP', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
     ],
     members: [
-        { name: 'Anggota PTKP 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
-        { name: 'Anggota PTKP 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota PTKP 1', role: 'Staff Ahli', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota PTKP 2', role: 'Staff Ahli', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
     ]
   },
   humas: {
@@ -46,7 +47,7 @@ const teamMembers = {
         { name: 'Kepala Dept. Humas', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
      ],
      members: [
-        { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota Humas 1', role: 'Staff Ahli', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
      ]
   },
   psdm: {
@@ -54,7 +55,7 @@ const teamMembers = {
         { name: 'Kepala Dept. PSDM', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ],
       members: [
-        { name: 'Anggota PSDM 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota PSDM 1', role: 'Staff Ahli', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ]
   },
   kesma: {
@@ -62,7 +63,7 @@ const teamMembers = {
         { name: 'Kepala Dept. Kesma', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ],
       members: [
-        { name: 'Anggota Kesma 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota Kesma 1', role: 'Staff Ahli', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ]
   },
   bistra: {
@@ -70,11 +71,10 @@ const teamMembers = {
         { name: 'Kepala Dept. Bistra', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ],
       members: [
-        { name: 'Anggota Bistra 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota Bistra 1', role: 'Staff Ahli', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ]
   }
 };
-
 
 const programs = {
     inti: [
@@ -135,119 +135,149 @@ type Member = {
     email?: string;
 };
 
-const MemberCard = ({ member, isFeatured = false, onSelect, className }: { member: Member, isFeatured?: boolean, onSelect?: () => void, className?: string }) => {
-    if (isFeatured) {
-        return (
-            <div className={cn("grid md:grid-cols-2 items-center gap-8 w-full", className)}>
-                <div className="relative aspect-square max-w-sm mx-auto cursor-pointer" onClick={onSelect}>
+const MemberCard = ({ member, isFeatured, onSelect }: { member: Member, isFeatured: boolean, onSelect: () => void }) => {
+    return (
+        <div className={cn("grid items-center gap-8 w-full", isFeatured ? "md:grid-cols-2" : "grid-cols-1")}>
+            <div 
+              className={cn(
+                "relative mx-auto cursor-pointer", 
+                isFeatured ? "aspect-square max-w-sm" : "aspect-square w-32"
+              )} 
+              onClick={onSelect}
+            >
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className={cn("w-full h-full rounded-full", isFeatured ? "border-8 border-primary/50" : "border-4 border-primary/50")}></div>
+                </div>
+                {isFeatured && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-full h-full border-8 border-primary/50 rounded-full"></div>
-                    </div>
-                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-[calc(100%-40px)] h-[calc(100%-40px)] border-4 border-primary/30 rounded-full"></div>
                     </div>
-                    <Image src={member.avatar} alt={member.name} width={400} height={400} className="rounded-full object-cover relative z-10 p-2 bg-pink-50/30" data-ai-hint="headshot portrait" />
-                </div>
-                <div className="flex flex-col gap-2 text-center md:text-left">
-                    <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
-                    <p className="text-xl font-semibold text-gray-800">{member.name}</p>
-                    <p className="text-muted-foreground">{member.class}</p>
-                    <div className="flex flex-col gap-2 mt-4 items-center md:items-start">
-                        {member.instagram && (
-                             <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                                <Instagram className="h-5 w-5" />
-                                <span>{member.instagram}</span>
-                            </a>
-                        )}
-                        {member.email && (
-                            <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                                <Mail className="h-5 w-5" />
-                                <span>{member.email}</span>
-                            </a>
-                        )}
-                    </div>
+                )}
+                <Image src={member.avatar} alt={member.name} width={400} height={400} className={cn("rounded-full object-cover relative z-10 bg-pink-50/30", isFeatured ? "p-2" : "p-1")} data-ai-hint="headshot portrait" />
+            </div>
+            <div className={cn("flex flex-col gap-2", isFeatured ? "text-center md:text-left" : "hidden")}>
+                <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
+                <p className="text-xl font-semibold text-gray-800">{member.name}</p>
+                <p className="text-muted-foreground">{member.class}</p>
+                <div className="flex flex-col gap-2 mt-4 items-center md:items-start">
+                    {member.instagram && (
+                         <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                            <Instagram className="h-5 w-5" />
+                            <span>{member.instagram}</span>
+                        </a>
+                    )}
+                    {member.email && (
+                        <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                            <Mail className="h-5 w-5" />
+                            <span>{member.email}</span>
+                        </a>
+                    )}
                 </div>
             </div>
-        )
-    }
-
-    return (
-        <div className={cn("relative aspect-square w-32 cursor-pointer", className)} onClick={onSelect}>
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-full h-full border-4 border-primary/50 rounded-full"></div>
-            </div>
-            <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
         </div>
     )
+};
+
+const SmallMemberCard = ({ member, onSelect }: { member: Member, onSelect: () => void }) => (
+    <div className="relative aspect-square w-32 cursor-pointer" onClick={onSelect}>
+        <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full h-full border-4 border-primary/50 rounded-full"></div>
+        </div>
+        <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
+    </div>
+);
+
+const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member) => void }) => {
+    if (!members || members.length === 0) return null;
+
+    const otherMembers = members.filter(m => m.name !== featuredMember?.name);
+
+    return (
+        <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-gray-700">{title}</h3>
+            {featuredMember && members.includes(featuredMember) && (
+                <MemberCard member={featuredMember} isFeatured={true} onSelect={() => {}} />
+            )}
+            {otherMembers.length > 0 && (
+                <div className="flex gap-4 justify-start flex-wrap">
+                    {otherMembers.map((member) => (
+                        <SmallMemberCard key={member.name} member={member} onSelect={() => setFeaturedMember(member)} />
+                    ))}
+                </div>
+            )}
+            <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
+        </div>
+    );
 };
 
 
 export default function ProfilePage() {
   const [activeDept, setActiveDept] = useState(departments[0]);
   const [activeView, setActiveView] = useState('members');
+  const [featuredHead, setFeaturedHead] = useState<Member | null>(null);
+  const [featuredMember, setFeaturedMember] = useState<Member | null>(null);
   
   const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: [] };
-  const allMembers: Member[] = [...currentDepartmentData.heads, ...currentDepartmentData.members];
-  const [featuredMember, setFeaturedMember] = useState<Member | null>(null);
-
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
   const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
   
-  React.useEffect(() => {
-    const newAllMembers = [...(teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || []), ...(teamMembers[activeDept.id as keyof typeof teamMembers]?.members || [])];
-    setFeaturedMember(newAllMembers[0] || null);
+  useEffect(() => {
+    const newHeads = teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || [];
+    setFeaturedHead(newHeads[0] || null);
+    const newMembers = teamMembers[activeDept.id as keyof typeof teamMembers]?.members || [];
+    setFeaturedMember(newMembers[0] || null);
   }, [activeDept]);
-
-  const otherHeads = (currentDepartmentData.heads || []).filter(member => member.name !== featuredMember?.name);
-  const otherRegularMembers = (currentDepartmentData.members || []).filter(member => member.name !== featuredMember?.name);
-
 
   return (
     <div className="flex flex-col bg-pink-50/30">
-      <section
+       <section
         id="hero-profile"
         className="relative w-full bg-background flex items-center justify-center min-h-screen overflow-hidden"
       >
-        <div className="container mx-auto px-4">
-            <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
+        <div className="container mx-auto px-4 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
                 <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
                 <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
+                
+                <div className="relative flex items-center justify-center h-[500px] order-last md:order-first">
+                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 left-10 blur-xl"></div>
+                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 right-10 blur-xl"></div>
+                    <div className="absolute top-0 left-10 w-36 h-36">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
+                    </div>
+                     <div className="absolute top-1/2 left-0 w-44 h-44">
+                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="team meeting"/>
+                    </div>
+                     <div className="absolute bottom-10 left-20 w-32 h-32">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
+                    </div>
+                </div>
 
-                <div className="relative z-10 text-center md:text-left">
+                <div className="relative z-10 text-center">
                     <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
                         Tim Kami
                     </Badge>
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
                         Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
                     </h1>
-                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
+                    <p className="mt-4 max-w-md mx-auto text-lg text-muted-foreground">
                         Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
                     </p>
                 </div>
                 
-                <div className="relative h-full flex items-center justify-center">
-                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 right-1/2 blur-xl"></div>
-                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 left-1/2 blur-xl"></div>
-
-                    <div className="relative w-full h-[500px]">
-                        <div className="absolute top-0 left-10 w-48 h-48">
-                            <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                        </div>
-                        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-60 h-60">
-                             <Image src="https://placehold.co/400x400.png" width={400} height={400} alt="Team Photo 2" className="rounded-full object-cover shadow-2xl border-8 border-white" data-ai-hint="team meeting"/>
-                        </div>
-                         <div className="absolute bottom-0 right-10 w-52 h-52">
-                             <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                        </div>
-                         <div className="absolute top-20 right-0 w-32 h-32">
-                             <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-md border-2 border-white" data-ai-hint="group discussion"/>
-                        </div>
-                        <div className="absolute bottom-10 left-0 w-36 h-36">
-                            <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 5" className="rounded-full object-cover shadow-md border-2 border-white" data-ai-hint="students collaborating"/>
-                        </div>
+                 <div className="relative hidden md:flex items-center justify-center h-[500px]">
+                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 right-10 blur-xl"></div>
+                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 left-10 blur-xl"></div>
+                    <div className="absolute top-0 right-10 w-36 h-36">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
+                    </div>
+                     <div className="absolute top-1/2 right-0 w-44 h-44">
+                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 5" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
+                    </div>
+                     <div className="absolute bottom-10 right-20 w-32 h-32">
+                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
                     </div>
                 </div>
-
             </div>
         </div>
       </section>
@@ -351,39 +381,19 @@ export default function ProfilePage() {
           </div>
           
           {activeView === 'members' && (
-             <div className="space-y-8 flex flex-col items-center">
-                {featuredMember ? (
-                  <>
-                    <MemberCard member={featuredMember} isFeatured />
-
-                    {(otherHeads.length > 0 || otherRegularMembers.length > 0) && (
-                       <div className="w-full pt-8 mt-8 border-t border-primary/20 space-y-8">
-                          {otherHeads.length > 0 && (
-                            <div>
-                                <h3 className="text-xl font-bold text-center text-gray-700 mb-6">Kepala Departemen & Koordinator</h3>
-                                <div className="flex gap-4 justify-center flex-wrap">
-                                    {otherHeads.map((member, index) => (
-                                        <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
-                                    ))}
-                                </div>
-                            </div>
-                          )}
-                          {otherRegularMembers.length > 0 && (
-                              <div>
-                                  <h3 className="text-xl font-bold text-center text-gray-700 mb-6">Anggota</h3>
-                                  <div className="flex gap-4 justify-center flex-wrap">
-                                      {otherRegularMembers.map((member, index) => (
-                                          <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
-                                      ))}
-                                  </div>
-                              </div>
-                          )}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                    <p className="text-muted-foreground text-center">Belum ada anggota yang tersedia untuk departemen ini.</p>
-                )}
+             <div className="space-y-12">
+                <MemberGroup 
+                    title={activeDept.id === 'inti' ? 'Badan Pengurus Harian' : 'Kepala Departemen & Koordinator'}
+                    members={currentDepartmentData.heads}
+                    featuredMember={featuredHead}
+                    setFeaturedMember={setFeaturedHead}
+                />
+                <MemberGroup 
+                    title="Staff Ahli"
+                    members={currentDepartmentData.members}
+                    featuredMember={featuredMember}
+                    setFeaturedMember={setFeaturedMember}
+                />
             </div>
           )}
 
