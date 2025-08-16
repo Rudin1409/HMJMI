@@ -197,10 +197,10 @@ const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
             <div className="relative mx-auto w-full max-w-xs h-[380px] flex items-center justify-center">
-                 <div className="absolute w-[280px] h-full rounded-[6rem] bg-pink-100/80"></div>
-                 <div className="absolute w-[280px] h-full rounded-[6rem] border-4 border-primary"></div>
-                 <div className="relative w-[240px] h-[320px] rounded-[5rem] overflow-hidden">
-                    <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover" data-ai-hint="headshot portrait" />
+                 <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] bg-pink-100/80"></div>
+                 <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] border-4 border-primary"></div>
+                 <div className="relative w-[240px] h-[320px] rounded-t-[120px] rounded-b-[5rem] overflow-hidden">
+                    <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
                  </div>
             </div>
             <div className="flex flex-col gap-2 text-center md:text-left">
@@ -229,7 +229,7 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
                 isActive ? "scale-110 border-primary" : "border-primary/50 group-hover:scale-105 group-hover:border-primary/80"
             )}
         >
-            <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover" data-ai-hint="headshot portrait" />
+            <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
         </div>
         <p className="text-xs text-center font-semibold text-gray-700 w-24 md:w-32 truncate">{member.name}</p>
     </div>
