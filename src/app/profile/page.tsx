@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight, Bot, Network, Palette, BarChart3, Heart, Wallet, UserCheck } from 'lucide-react';
+import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight, Bot, Network, Palette, BarChart3, Heart, Wallet, UserCheck, Mail } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -27,50 +27,50 @@ const departments = [
 const teamMembers = {
   inti: {
     heads: [
-      { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
-      { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+      { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+      { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
     ],
     members: []
   },
   ptkp: {
     heads: [
-        { name: 'Kepala Dept. PTKP', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Kepala Dept. PTKP', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
     ],
     members: [
-        { name: 'Anggota PTKP 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
-        { name: 'Anggota PTKP 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Anggota PTKP 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
+        { name: 'Anggota PTKP 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
     ]
   },
   humas: {
      heads: [
-        { name: 'Kepala Dept. Humas', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Kepala Dept. Humas', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
      ],
      members: [
-        { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
      ]
   },
   psdm: {
       heads: [
-        { name: 'Kepala Dept. PSDM', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Kepala Dept. PSDM', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ],
       members: [
-        { name: 'Anggota PSDM 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Anggota PSDM 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ]
   },
   kesma: {
       heads: [
-        { name: 'Kepala Dept. Kesma', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Kepala Dept. Kesma', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ],
       members: [
-        { name: 'Anggota Kesma 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Anggota Kesma 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ]
   },
   bistra: {
       heads: [
-        { name: 'Kepala Dept. Bistra', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Kepala Dept. Bistra', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ],
       members: [
-        { name: 'Anggota Bistra 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+        { name: 'Anggota Bistra 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi", email: "dzafa50@gmail.com" },
       ]
   }
 };
@@ -126,37 +126,80 @@ const divisions = {
   ],
 };
 
-const MemberCard = ({ member }: { member: { name: string; role: string; class: string; avatar: string; } }) => (
-    <Card className="text-center p-6 shadow-lg hover:shadow-xl transition-shadow bg-white rounded-2xl flex flex-col items-center">
-        <CardContent className="p-0 flex flex-col items-center">
-            <div className="relative w-32 h-32 mb-4">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-pink-600 rounded-full transform -rotate-12"></div>
-                <div className="absolute inset-0.5 bg-white rounded-full p-1">
-                    <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover" data-ai-hint="headshot portrait" />
+type Member = {
+    name: string;
+    role: string;
+    class: string;
+    avatar: string;
+    instagram?: string;
+    email?: string;
+};
+
+const MemberCard = ({ member, isFeatured = false, onSelect, className }: { member: Member, isFeatured?: boolean, onSelect?: () => void, className?: string }) => {
+    if (isFeatured) {
+        return (
+            <div className={cn("grid md:grid-cols-2 items-center gap-8 w-full", className)}>
+                <div className="relative aspect-square max-w-sm mx-auto cursor-pointer" onClick={onSelect}>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-full h-full border-8 border-primary/50 rounded-full"></div>
+                    </div>
+                     <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-[calc(100%-40px)] h-[calc(100%-40px)] border-4 border-primary/30 rounded-full"></div>
+                    </div>
+                    <Image src={member.avatar} alt={member.name} width={400} height={400} className="rounded-full object-cover relative z-10 p-2 bg-pink-50/30" data-ai-hint="headshot portrait" />
+                </div>
+                <div className="flex flex-col gap-2 text-center md:text-left">
+                    <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
+                    <p className="text-xl font-semibold text-gray-800">{member.name}</p>
+                    <p className="text-muted-foreground">{member.class}</p>
+                    <div className="flex flex-col gap-2 mt-4 items-center md:items-start">
+                        {member.instagram && (
+                             <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                                <Instagram className="h-5 w-5" />
+                                <span>{member.instagram}</span>
+                            </a>
+                        )}
+                        {member.email && (
+                            <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+                                <Mail className="h-5 w-5" />
+                                <span>{member.email}</span>
+                            </a>
+                        )}
+                    </div>
                 </div>
             </div>
-          <h4 className="font-bold text-lg text-gray-800">{member.name}</h4>
-          <p className="text-primary font-medium text-sm mb-1">{member.role}</p>
-          <p className="text-muted-foreground text-xs mb-3">{member.class}</p>
-          <div className="flex gap-3">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </div>
-        </CardContent>
-      </Card>
-);
+        )
+    }
+
+    return (
+        <div className={cn("relative aspect-square w-32 cursor-pointer", className)} onClick={onSelect}>
+            <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full h-full border-4 border-primary/50 rounded-full"></div>
+            </div>
+            <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
+        </div>
+    )
+};
+
 
 export default function ProfilePage() {
   const [activeDept, setActiveDept] = useState(departments[0]);
   const [activeView, setActiveView] = useState('members');
   
   const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: [] };
+  const allMembers: Member[] = [...currentDepartmentData.heads, ...currentDepartmentData.members];
+  const [featuredMember, setFeaturedMember] = useState<Member | null>(allMembers[0] || null);
+
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
   const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
+  
+  const otherMembers = allMembers.filter(member => member.name !== featuredMember?.name);
+
+  React.useEffect(() => {
+    const newAllMembers = [...(teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || []), ...(teamMembers[activeDept.id as keyof typeof teamMembers]?.members || [])];
+    setFeaturedMember(newAllMembers[0] || null);
+  }, [activeDept]);
+
 
   return (
     <div className="flex flex-col bg-pink-50/30">
@@ -307,40 +350,23 @@ export default function ProfilePage() {
           </div>
           
           {activeView === 'members' && (
-             <div className="space-y-12">
-                {currentDepartmentData.heads.length > 0 && (
-                    <div>
-                        <div className="text-center mb-8">
-                            <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
-                                {activeDept.id === 'inti' ? 'Badan Pengurus Harian' : 'Kepala Departemen &amp; Koordinator'}
-                                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
-                            </h3>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
-                            {currentDepartmentData.heads.map((member, index) => (
-                                <MemberCard key={index} member={member} />
-                            ))}
-                        </div>
-                    </div>
-                )}
+             <div className="space-y-8 flex flex-col items-center">
+                {featuredMember ? (
+                  <>
+                    <MemberCard member={featuredMember} isFeatured />
 
-                {currentDepartmentData.members.length > 0 && (
-                    <div>
-                        <div className="text-center mb-8">
-                           <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
-                                Anggota
-                                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
-                            </h3>
+                    {otherMembers.length > 0 && (
+                        <div className="w-full pt-8 mt-8 border-t border-primary/20">
+                            <div className="flex gap-4 justify-center flex-wrap">
+                                {otherMembers.map((member, index) => (
+                                    <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
+                                ))}
+                            </div>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
-                           {currentDepartmentData.members.map((member, index) => (
-                                <MemberCard key={index} member={member} />
-                            ))}
-                        </div>
-                    </div>
-                )}
-                 {(currentDepartmentData.heads.length === 0 && currentDepartmentData.members.length === 0) && (
-                    <p className="text-muted-foreground col-span-full text-center">Belum ada anggota yang tersedia untuk departemen ini.</p>
+                    )}
+                  </>
+                ) : (
+                    <p className="text-muted-foreground text-center">Belum ada anggota yang tersedia untuk departemen ini.</p>
                 )}
             </div>
           )}
@@ -389,3 +415,4 @@ export default function ProfilePage() {
   );
 }
 
+    
