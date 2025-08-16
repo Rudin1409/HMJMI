@@ -4,12 +4,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
+import React from 'react';
 
 const testimonials = [
   {
@@ -36,12 +31,18 @@ const testimonials = [
     avatar: 'https://placehold.co/100x100',
     text: 'HMJMI adalah tempat terbaik untuk tumbuh. Keterampilan yang saya pelajari di sini sangat relevan dan membantu saya di dunia kerja profesional.',
   },
+  {
+    name: 'Mahasiswa MI 2022',
+    role: 'Anggota Aktif',
+    avatar: 'https://placehold.co/100x100',
+    text: 'Kegiatan dan program kerja di HMJMI sangat membantu saya dalam mengembangkan soft skill dan mempersiapkan diri untuk karir masa depan di industri teknologi.',
+  },
 ];
 
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="w-full py-16 md:py-24 bg-pink-50/50">
+    <section id="testimonials" className="w-full py-16 md:py-24 bg-pink-50/50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
            <Badge variant="default" className="bg-pink-100 text-primary mb-2">Testimoni</Badge>
@@ -52,30 +53,16 @@ export function TestimonialsSection() {
             Dengarkan pengalaman dan cerita inspiratif dari para alumni dan anggota aktif HMJMI yang telah merasakan dampaknya secara langsung.
           </p>
         </div>
-
-        <Carousel
-          opts={{
-            align: 'start',
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 0,
-              stopOnInteraction: false,
-              stopOnMouseEnter: false,
-            }),
-          ]}
-          className="w-full max-w-6xl mx-auto"
-        >
-          <CarouselContent className="-ml-4">
-            {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                <div className="p-1">
+      </div>
+      <div className="relative flex w-full overflow-x-hidden">
+          <div className="flex w-max animate-marquee space-x-4 pr-4">
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+               <div key={index} className="w-[350px] md:w-[400px]">
                   <Card className="h-full bg-white shadow-lg rounded-xl overflow-hidden">
                     <CardContent className="p-8 flex flex-col items-center text-center">
                       <div className="relative mb-6">
                         <p className="text-6xl text-primary/20 absolute -top-8 left-0 font-serif">“</p>
-                        <p className="text-muted-foreground z-10 relative pt-4">
+                        <p className="text-muted-foreground z-10 relative pt-4 min-h-[100px]">
                           {testimonial.text}
                         </p>
                          <p className="text-6xl text-primary/20 absolute -bottom-8 right-0 font-serif rotate-180">“</p>
@@ -89,11 +76,8 @@ export function TestimonialsSection() {
                     </CardContent>
                   </Card>
                 </div>
-              </CarouselItem>
             ))}
-          </CarouselContent>
-        </Carousel>
-
+          </div>
       </div>
     </section>
   );
