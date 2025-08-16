@@ -188,17 +188,18 @@ export default function ProfilePage() {
   
   const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: [] };
   const allMembers: Member[] = [...currentDepartmentData.heads, ...currentDepartmentData.members];
-  const [featuredMember, setFeaturedMember] = useState<Member | null>(allMembers[0] || null);
+  const [featuredMember, setFeaturedMember] = useState<Member | null>(null);
 
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
   const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
   
-  const otherMembers = allMembers.filter(member => member.name !== featuredMember?.name);
-
   React.useEffect(() => {
     const newAllMembers = [...(teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || []), ...(teamMembers[activeDept.id as keyof typeof teamMembers]?.members || [])];
     setFeaturedMember(newAllMembers[0] || null);
   }, [activeDept]);
+
+  const otherHeads = (currentDepartmentData.heads || []).filter(member => member.name !== featuredMember?.name);
+  const otherRegularMembers = (currentDepartmentData.members || []).filter(member => member.name !== featuredMember?.name);
 
 
   return (
@@ -355,15 +356,29 @@ export default function ProfilePage() {
                   <>
                     <MemberCard member={featuredMember} isFeatured />
 
-                    {otherMembers.length > 0 && (
-                        <div className="w-full pt-8 mt-8 border-t border-primary/20">
-                            <h3 className="text-xl font-bold text-center text-gray-700 mb-6">Anggota Lainnya</h3>
-                            <div className="flex gap-4 justify-center flex-wrap">
-                                {otherMembers.map((member, index) => (
-                                    <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
-                                ))}
+                    {(otherHeads.length > 0 || otherRegularMembers.length > 0) && (
+                       <div className="w-full pt-8 mt-8 border-t border-primary/20 space-y-8">
+                          {otherHeads.length > 0 && (
+                            <div>
+                                <h3 className="text-xl font-bold text-center text-gray-700 mb-6">Kepala Departemen & Koordinator</h3>
+                                <div className="flex gap-4 justify-center flex-wrap">
+                                    {otherHeads.map((member, index) => (
+                                        <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                          )}
+                          {otherRegularMembers.length > 0 && (
+                              <div>
+                                  <h3 className="text-xl font-bold text-center text-gray-700 mb-6">Anggota</h3>
+                                  <div className="flex gap-4 justify-center flex-wrap">
+                                      {otherRegularMembers.map((member, index) => (
+                                          <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
+                                      ))}
+                                  </div>
+                              </div>
+                          )}
+                      </div>
                     )}
                   </>
                 ) : (
