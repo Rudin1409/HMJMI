@@ -59,56 +59,48 @@ const logoPhilosophy = [
 const galleryItems = [
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "LKMM-PD HMJMI POLSRI",
         year: "2024",
         hint: "student presentation"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "LKMM-PD HMJMI POLSRI",
         year: "2024",
         hint: "student audience"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "UPGRADING HMJMI POLSRI",
         year: "2024",
         hint: "group photo"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "UPGRADING HMJMI POLSRI",
         year: "2024",
         hint: "students sitting"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "MUSYAWARAH BESAR HMJMI",
         year: "2024",
         hint: "large group"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "MUSYAWARAH BESAR HMJMI",
         year: "2024",
         hint: "students listening"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "SEMINAR NASIONAL",
         year: "2024",
         hint: "student team"
     },
     {
         src: "https://placehold.co/800x600.png",
-        thumb: "https://placehold.co/400x300.png",
         title: "SEMINAR NASIONAL",
         year: "2024",
         hint: "student speaking"
@@ -271,12 +263,12 @@ export default function AboutPage() {
                 {galleryItems.map((item, index) => (
                     <Card 
                       key={index} 
-                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white cursor-pointer"
+                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white cursor-pointer group"
                       onClick={() => setSelectedImage(item)}
                     >
                         <CardContent className="p-0">
                             <div className="relative aspect-w-4 aspect-h-3">
-                                <Image src={item.thumb} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.hint} />
+                                <Image src={item.src} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
                             </div>
                         </CardContent>
                         <CardFooter className="p-4 text-center flex-col items-center justify-center">
@@ -307,5 +299,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
