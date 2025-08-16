@@ -175,7 +175,7 @@ const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
             <div 
-              className="relative mx-auto aspect-square max-w-xs" 
+              className="relative mx-auto aspect-square max-w-[280px]" 
             >
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-full h-full rounded-full border-8 border-primary/50"></div>
@@ -194,12 +194,6 @@ const MemberCard = ({ member }: { member: Member }) => {
                          <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
                             <Instagram className="h-5 w-5" />
                             <span>{member.instagram}</span>
-                        </a>
-                    )}
-                    {member.email && (
-                        <a href={`mailto:${member.email}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                            <Mail className="h-5 w-5" />
-                            <span>{member.email}</span>
                         </a>
                     )}
                 </div>
@@ -245,8 +239,8 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, always
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className={cn("flex", !alwaysShowNav && "lg:hidden")} />
-                  <CarouselNext className={cn("flex", !alwaysShowNav && "lg:hidden")} />
+                  <CarouselPrevious className={cn("flex z-10", !alwaysShowNav && "lg:hidden")} />
+                  <CarouselNext className={cn("flex z-10", !alwaysShowNav && "lg:hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
