@@ -79,12 +79,11 @@ const teamMembers = {
         { name: 'Wakil Dept. PSDM', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Sekretaris PSDM', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Bendahara PSDM', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Koordinator Divisi Minat Bakat', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Ketua Pelaksana HRD', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
       ],
     members: {
-      minatbakat: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Minat Bakat ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
-      hrd: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota HRD ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      minatbakat: Array.from({ length: 12 }, (_, i) => ({ name: `Anggota Minat Bakat ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
     }
   },
   kesma: {
@@ -245,8 +244,8 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, always
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className={cn("flex z-10", !alwaysShowNav && "lg:hidden")} />
-                  <CarouselNext className={cn("flex z-10", !alwaysShowNav && "lg:hidden")} />
+                  <CarouselPrevious className={cn("hidden z-10", alwaysShowNav && "!flex", otherMembers.length <= 6 && "lg:!hidden" )} />
+                  <CarouselNext className={cn("hidden z-10", alwaysShowNav && "!flex", otherMembers.length <= 6 && "lg:!hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
