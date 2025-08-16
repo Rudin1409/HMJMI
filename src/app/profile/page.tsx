@@ -196,10 +196,17 @@ type Member = {
 const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
-            <div className="relative mx-auto aspect-square w-full max-w-[280px] flex items-center justify-center">
-                <div className="absolute bg-primary rounded-full w-2/3 h-2/3 blur-2xl opacity-50"></div>
-                <div className="absolute bg-primary/50 rounded-full w-1/2 h-1/2 top-0 left-0"></div>
-                <Image src={member.avatar} alt={member.name} width={400} height={400} className="relative z-10 w-full h-full object-cover rounded-2xl shadow-lg border-4 border-white" data-ai-hint="headshot portrait" />
+            <div className="relative mx-auto w-full max-w-[280px] aspect-square flex items-center justify-center">
+                 <div className="absolute inset-0 bg-primary rounded-full"></div>
+                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-16 border-2 border-primary rounded-full -translate-y-8"></div>
+                 <div className="relative z-10 w-full h-full p-6">
+                    <Image 
+                        src={member.avatar} 
+                        alt={member.name} 
+                        width={400} height={400} 
+                        className="w-full h-full object-contain" data-ai-hint="headshot portrait" 
+                    />
+                 </div>
             </div>
             <div className="flex flex-col gap-2 text-center md:text-left">
                 <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
@@ -217,13 +224,15 @@ const MemberCard = ({ member }: { member: Member }) => {
 };
 
 const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSelect: () => void, isActive: boolean }) => (
-    <div className="flex flex-col items-center gap-2">
+    <div 
+      className="flex flex-col items-center gap-2 cursor-pointer group"
+      onClick={onSelect}
+    >
         <div 
             className={cn(
-                "relative aspect-square w-24 md:w-32 cursor-pointer group transition-transform duration-300",
+                "relative aspect-square w-24 md:w-32 transition-transform duration-300",
                 isActive ? "scale-110" : "hover:scale-105"
             )}
-            onClick={onSelect}
         >
             <div className="absolute inset-0 flex items-center justify-center">
                 <div className={cn(
@@ -321,6 +330,32 @@ export default function ProfilePage() {
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
+                <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-48 h-48 md:w-64 md:h-64 bg-pink-100 rounded-full shadow-inner"></div>
+                    </div>
+                    
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10">
+                         <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Main" className="rounded-full object-cover shadow-2xl border-8 border-white" data-ai-hint="team leader" />
+                    </div>
+                    
+                    <div className="absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32">
+                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
+                    </div>
+                    
+                    <div className="absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32">
+                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
+                    </div>
+
+                    <div className="absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28">
+                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
+                    </div>
+
+                     <div className="absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28">
+                          <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
+                    </div>
+                </div>
+
                 <div className="relative z-10 text-center md:text-left">
                     <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
                         Tim Kami
@@ -331,28 +366,6 @@ export default function ProfilePage() {
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
                         Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
                     </p>
-                </div>
-
-                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
-                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center">
-                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Main" className="rounded-full object-cover shadow-2xl border-8 border-white z-10" data-ai-hint="team leader" />
-                    </div>
-                    
-                    <div className="absolute top-10 left-1/2 -translate-x-1/2 w-32 h-32 md:w-40 md:h-40">
-                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                    </div>
-                    
-                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-32 h-32 md:w-40 md:h-40">
-                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                    </div>
-
-                    <div className="absolute top-1/2 -translate-y-1/2 left-0 w-28 h-28 md:w-36 md:h-36">
-                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
-                    </div>
-
-                     <div className="absolute top-1/2 -translate-y-1/2 right-0 w-28 h-28 md:w-36 md:h-36">
-                          <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
-                    </div>
                 </div>
 
             </div>
@@ -390,7 +403,7 @@ export default function ProfilePage() {
                       <CardContent className="p-0 flex flex-col items-center gap-2">
                         <div className={cn(
                           'p-3 rounded-full transition-colors',
-                           activeDept.id === dept.id ? 'bg-white/20 [&>svg]:text-white' : 'bg-pink-100'
+                           activeDept.id === dept.id ? 'bg-white/20' : 'bg-pink-100'
                         )}>
                            {React.cloneElement(dept.icon, {className: cn("w-8 h-8", activeDept.id === dept.id ? 'text-white' : 'text-primary')})}
                         </div>
@@ -437,7 +450,7 @@ export default function ProfilePage() {
                 onClick={() => setActiveView('members')}
                 className={cn(
                   'rounded-full',
-                  activeView === 'members' ? 'bg-pink-100 text-primary border border-primary/20 hover:bg-primary hover:text-white' : ''
+                  activeView === 'members' ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-gray-700'
                 )}
                 variant={activeView === 'members' ? 'default' : 'outline'}
               >
@@ -448,7 +461,7 @@ export default function ProfilePage() {
                 onClick={() => setActiveView('programs')}
                 className={cn(
                     'rounded-full',
-                    activeView === 'programs' ? 'bg-pink-100 text-primary border border-primary/20 hover:bg-primary hover:text-white' : ''
+                    activeView === 'programs' ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-gray-700'
                 )}
                 variant={activeView === 'programs' ? 'default' : 'outline'}
                >
