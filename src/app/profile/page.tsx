@@ -16,12 +16,12 @@ import {
 } from '@/components/ui/accordion';
 
 const departments = [
-  { id: 'inti', name: 'Inti (BPI)', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
-  { id: 'ptpk', name: 'PTPK', icon: <Code className="w-8 h-8 text-primary" />, description: 'Pengembangan Teknologi dan Penalaran Keilmuan, fokus pada inovasi teknologi.' },
-  { id: 'humas', name: 'Humas', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
-  { id: 'psdm', name: 'PSDM', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
-  { id: 'kesma', name: 'Kesma', icon: <Heart className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
-  { id: 'bistra', name: 'Bistra', icon: <Store className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
+  { id: 'inti', name: 'Inti (BPI)', fullName: 'Badan Pengurus Inti', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
+  { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <Code className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'humas', name: 'Humas', fullName: 'Hubungan Masyarakat', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Hubungan Masyarakat, menjalin komunikasi dengan pihak eksternal.' },
+  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
+  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Heart className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
+  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Store className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
 ];
 
 const teamMembers = {
@@ -29,9 +29,9 @@ const teamMembers = {
     { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
     { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
   ],
-  ptpk: [
-    { name: 'Anggota PTPK 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
-    { name: 'Anggota PTPK 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+  ptkp: [
+    { name: 'Anggota PTKP 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+    { name: 'Anggota PTKP 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
   ],
   humas: [
      { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
@@ -51,7 +51,7 @@ const programs = {
     inti: [
         { title: 'Musyawarah Besar', category: 'INTERNAL', description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.', image: 'https://placehold.co/400x200.png', hint: 'organization meeting' }
     ],
-    ptpk: [
+    ptkp: [
         { title: 'Webinar Teknologi', category: 'AKADEMIK', description: 'Seminar online dengan topik terkini di dunia IT untuk meningkatkan wawasan.', image: 'https://placehold.co/400x200.png', hint: 'tech webinar' },
         { title: 'Pelatihan Coding', category: 'AKADEMIK', description: 'Workshop intensif untuk mengasah kemampuan pemrograman mahasiswa.', image: 'https://placehold.co/400x200.png', hint: 'coding workshop' }
     ],
@@ -71,9 +71,9 @@ const programs = {
 };
 
 const divisions = {
-  ptpk: [
-    { id: 'risbang', name: 'Divisi Riset dan Pengembangan', description: 'Fokus pada penelitian dan pengembangan teknologi terbaru untuk diimplementasikan dalam proyek-proyek inovatif.' },
-    { id: 'pelatihan', name: 'Divisi Pelatihan dan Workshop', description: 'Bertanggung jawab untuk mengadakan pelatihan, workshop, dan sesi berbagi pengetahuan untuk meningkatkan skill teknis mahasiswa.' },
+  ptkp: [
+    { id: 'kepemudaan', name: 'Divisi Kepemudaan', description: 'bertugas memantau isu-isu yang berkembang dan mewakili mahasiswa dalam menyampaikan permasalahan tersebut di lingkungan jurusan Manajemen Informatika.' },
+    { id: 'akademik', name: 'Divisi Akademik', description: 'Mengkoordinir sumber daya mahasiswa dibidang akademik guna mewujudkan mahasiswa yang cerdas dan aktif' },
   ],
   humas: [
     { id: 'multimedia', name: 'Divisi Multimedia', description: 'Divisi Multimedia atau Divisi Mulmed adalah divisi yang bertanggung jawab atas pengelolaan dan produksi konten multimedia.' },
@@ -204,13 +204,13 @@ export default function ProfilePage() {
             <div className="relative w-24 h-24 mb-4">
               <Image src="https://placehold.co/100x100.png" layout="fill" alt={`${activeDept.name} Logo`} className="rounded-full" data-ai-hint="organization logo" />
             </div>
-            <h2 className="text-4xl font-bold text-primary mb-2">{activeDept.name}</h2>
+            <h2 className="text-4xl font-bold text-primary mb-2">{activeDept.fullName}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-6">{activeDept.description}</p>
              <div className="flex justify-center mb-4">
               <div className="w-16 h-0.5 bg-primary/50 rounded-full"></div>
             </div>
 
-            {activeDept.id !== 'inti' && (
+            {activeDept.id !== 'inti' && currentDivisions.length > 0 && (
               <Accordion type="single" collapsible className="w-full max-w-2xl mb-8">
                   <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisi</h3>
                    {currentDivisions.map((division) => (
