@@ -75,23 +75,49 @@ export default function ProfilePage() {
     <div className="flex flex-col bg-pink-50/30">
       <section
         id="hero-profile"
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-pink-50/30 flex items-center justify-center min-h-screen"
+        className="relative w-full bg-background flex items-center justify-center min-h-screen overflow-hidden"
       >
-        <div className="container mx-auto px-4 text-center">
-          <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Tim Kami
-          </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
-          </h1>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
-          </p>
-          <div className="mt-8">
-            <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
-              <ChevronDown className="h-6 w-6" />
-            </Button>
-          </div>
+        <div className="container mx-auto px-4">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
+                <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
+                <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
+
+                <div className="relative z-10 text-center md:text-left">
+                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
+                        Tim Kami
+                    </Badge>
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
+                    </h1>
+                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
+                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
+                    </p>
+                </div>
+                
+                <div className="relative h-full flex items-center justify-center">
+                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 right-1/2 blur-xl"></div>
+                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 left-1/2 blur-xl"></div>
+
+                    <div className="relative w-full h-[500px]">
+                        <div className="absolute top-0 left-10 w-48 h-48">
+                            <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
+                        </div>
+                        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-60 h-60">
+                             <Image src="https://placehold.co/400x400.png" width={400} height={400} alt="Team Photo 2" className="rounded-full object-cover shadow-2xl border-8 border-white" data-ai-hint="team meeting"/>
+                        </div>
+                         <div className="absolute bottom-0 right-10 w-52 h-52">
+                             <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
+                        </div>
+                         <div className="absolute top-20 right-0 w-32 h-32">
+                             <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-md border-2 border-white" data-ai-hint="group discussion"/>
+                        </div>
+                        <div className="absolute bottom-10 left-0 w-36 h-36">
+                            <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 5" className="rounded-full object-cover shadow-md border-2 border-white" data-ai-hint="students collaborating"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
       </section>
 
