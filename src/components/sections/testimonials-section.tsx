@@ -60,17 +60,17 @@ export function TestimonialsSection() {
           }}
           plugins={[
             Autoplay({
-              delay: 3000,
+              delay: 0,
               stopOnInteraction: false,
-              stopOnMouseEnter: true,
+              stopOnMouseEnter: false,
             }),
           ]}
           className="w-full max-w-6xl mx-auto"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-4">
             {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-4">
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                <div className="p-1">
                   <Card className="h-full bg-white shadow-lg rounded-xl overflow-hidden">
                     <CardContent className="p-8 flex flex-col items-center text-center">
                       <div className="relative mb-6">
