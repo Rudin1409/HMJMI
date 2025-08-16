@@ -25,7 +25,7 @@ import {
 
 const departments = [
   { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
-  { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <GraduationCap className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'ptkp', name: 'PTKP', fullName: 'Perguruan Tinggi dan Kepemudaan', icon: <GraduationCap className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
   { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
   { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Sparkles className="w-8 h-8 text-primary" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
   { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <HeartHandshake className="w-8 h-8 text-primary" />, description: 'Departemen Kesejahteraan Mahasiswa (KESMA), yaitu keanggotaan biasa yang bertugas dalam mensejahterakan mahasiswa dan membangun sisi religius serta jiwa sosial di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
@@ -46,16 +46,33 @@ const teamMembers = {
   },
   ptkp: {
     heads: [
-        { name: 'Kepala Dept. PTKP', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Wakil Dept. PTKP', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Sekretaris PTKP', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Bendahara PTKP', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Al Fajri Nur Ramadhan', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Agnes', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Shofi Nanda Rismaliani', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Lara Amelia Apriani', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Lenno Nardo', role: 'Koordinator Akademik', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Muhammad Ichwan', role: 'Koordinator Kepemudaan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
     ],
     members: {
-      kepemudaan: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Kepemudaan ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
-      akademik: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Akademik ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" }))
+      akademik: [
+        { name: 'Devi Aprianti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Dimas Yuda Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Niken Septi Andini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Delvia Apriani', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+      ],
+      kepemudaan: [
+        { name: 'Miftahul Jannah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Nis Murib', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Briliana Azizah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Muhammad Fadlil', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Innayah Dwikhailah Putri', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Irham Bagus Sanjaya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Rasya Ratu Juanna', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+      ]
     }
   },
   humas: {
@@ -146,8 +163,8 @@ const programs = {
 
 const divisions = {
   ptkp: [
-    { id: 'kepemudaan', name: 'Divisi Kepemudaan', description: 'bertugas memantau isu-isu yang berkembang dan mewakili mahasiswa dalam menyampaikan permasalahan tersebut di lingkungan jurusan Manajemen Informatika.' },
     { id: 'akademik', name: 'Divisi Akademik', description: 'Mengkoordinir sumber daya mahasiswa dibidang akademik guna mewujudkan mahasiswa yang cerdas dan aktif' },
+    { id: 'kepemudaan', name: 'Divisi Kepemudaan', description: 'bertugas memantau isu-isu yang berkembang dan mewakili mahasiswa dalam menyampaikan permasalahan tersebut di lingkungan jurusan Manajemen Informatika.' },
   ],
   humas: [
     { id: 'media-kreatif', name: 'Media Kreatif', description: 'Media Kreatif (Medkraf) berperan sebagai pusat pengembangan konten visual dan narasi digital. Tanggung jawab utamanya meliputi eksekusi ide kreatif dalam bentuk desain grafis, videografi, fotografi, serta copywriting. Selain itu, divisi ini bertugas mengelola seluruh platform media sosial dan menjadi garda terdepan dalam menyebarluaskan informasi secara inovatif, khususnya untuk lingkungan Jurusan Manajemen Informatika.' },
@@ -244,8 +261,8 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, always
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className={cn("hidden z-10", alwaysShowNav && "!flex", otherMembers.length <= 6 && "lg:!hidden" )} />
-                  <CarouselNext className={cn("hidden z-10", alwaysShowNav && "!flex", otherMembers.length <= 6 && "lg:!hidden")} />
+                  <CarouselPrevious className={cn("hidden z-10", alwaysShowNav && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden" )} />
+                  <CarouselNext className={cn("hidden z-10", alwaysShowNav && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -304,26 +321,26 @@ export default function ProfilePage() {
                 </div>
 
                 <div className="relative flex items-center justify-center h-[500px]">
-                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 left-10 blur-xl"></div>
-                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 right-10 blur-xl"></div>
-                    <div className="absolute top-0 left-1/4 w-36 h-36">
+                  <div className="absolute w-full h-full grid grid-cols-3 grid-rows-3 gap-4 transform-gpu scale-75 md:scale-100">
+                      <div className="relative col-start-1 row-start-2">
                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                    </div>
-                     <div className="absolute top-1/2 -left-8 w-44 h-44 -translate-y-1/2">
+                      </div>
+                      <div className="relative col-start-2 row-start-1">
                         <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="team meeting"/>
+                      </div>
+                      <div className="relative col-start-3 row-start-2">
+                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
+                      </div>
+                      <div className="relative col-start-1 row-start-3 self-end">
+                         <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
+                      </div>
+                       <div className="relative col-start-2 row-start-3 self-end">
+                          <Image src="https://placehold.co/250x250.png" width={250} height={250} alt="Team Photo 5" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
+                      </div>
+                      <div className="relative col-start-3 row-start-3 self-end">
+                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
                     </div>
-                     <div className="absolute bottom-0 left-1/4 w-32 h-32">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                    </div>
-                    <div className="absolute top-0 right-1/4 w-36 h-36">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
-                    </div>
-                     <div className="absolute top-1/2 -right-8 w-44 h-44 -translate-y-1/2">
-                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 5" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
-                    </div>
-                     <div className="absolute bottom-0 right-1/4 w-32 h-32">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
-                    </div>
+                  </div>
                 </div>
 
             </div>
@@ -494,3 +511,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
