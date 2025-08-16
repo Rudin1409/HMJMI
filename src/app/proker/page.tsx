@@ -10,16 +10,40 @@ import { ChevronDown, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const departments = [
-  { id: 'semua', name: 'Semua Departemen' },
-  { id: 'akademik', name: 'Akademik' },
-  { id: 'sdm', name: 'SDM' },
-  { id: 'humas', name: 'Humas' },
-  { id: 'kominfo', name: 'Kominfo' },
-  { id: 'minatbakat', name: 'Minat Bakat' },
-  { id: 'inti', name: 'Inti' },
+  { id: 'semua', name: 'Semua Kategori' },
+  { id: 'akademik', name: 'Akademik & Pelatihan' },
+  { id: 'sdm', name: 'Pengembangan SDM' },
+  { id: 'humas', name: 'Hubungan Masyarakat' },
+  { id: 'minatbakat', name: 'Minat & Bakat' },
+  { id: 'sosial', name: 'Sosial & Kesejahteraan' },
+  { id: 'bisnis', name: 'Bisnis & Kemitraan' },
 ];
 
 const allPrograms = [
+  {
+    title: 'WEBINAR',
+    details: 'Semesteran • Online',
+    description: 'Seminar online dengan pemateri profesional untuk menambah wawasan mahasiswa di bidang IT.',
+    image: 'https://placehold.co/400x250',
+    hint: 'professional webinar',
+    department: 'akademik'
+  },
+  {
+    title: 'Pelatihan Skill',
+    details: 'Periodik • Offline/Online',
+    description: 'Pelatihan untuk meningkatkan keahlian teknis mahasiswa dalam bidang tertentu.',
+    image: 'https://placehold.co/400x250',
+    hint: 'skill training',
+    department: 'akademik'
+  },
+   {
+    title: 'Technology Sharing',
+    details: 'Bulanan • Online',
+    description: 'Sesi berbagi pengetahuan antar anggota untuk membahas tren teknologi terbaru.',
+    image: 'https://placehold.co/400x250',
+    hint: 'tech sharing session',
+    department: 'akademik'
+  },
   {
     title: 'LKMM-PD',
     details: 'Tahunan • Offline',
@@ -29,22 +53,6 @@ const allPrograms = [
     department: 'sdm'
   },
   {
-    title: 'WEBINAR',
-    details: 'Semesteran • Online',
-    description: 'Webinar dengan pemateri profesional untuk menambah wawasan mahasiswa.',
-    image: 'https://placehold.co/400x250',
-    hint: 'professional webinar',
-    department: 'akademik'
-  },
-  {
-    title: 'MI CUP',
-    details: 'Tahunan • Offline',
-    description: 'Ajang kompetisi olahraga dan seni antar mahasiswa Manajemen Informatika.',
-    image: 'https://placehold.co/400x250',
-    hint: 'student sport competition',
-    department: 'minatbakat'
-  },
-   {
     title: 'Upgrading',
     details: 'Tahunan • Offline',
     description: 'Program untuk meningkatkan solidaritas dan kualitas internal pengurus HMJMI.',
@@ -58,7 +66,7 @@ const allPrograms = [
     description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.',
     image: 'https://placehold.co/400x250',
     hint: 'organization meeting',
-    department: 'inti'
+    department: 'sdm'
   },
   {
     title: 'Kunjungan Industri',
@@ -67,7 +75,47 @@ const allPrograms = [
     image: 'https://placehold.co/400x250',
     hint: 'industry visit',
     department: 'humas'
-  }
+  },
+  {
+    title: 'Studi Banding',
+    details: 'Periodik • Offline',
+    description: 'Studi banding ke organisasi lain untuk bertukar pikiran dan pengalaman.',
+    image: 'https://placehold.co/400x250',
+    hint: 'organization visit',
+    department: 'humas'
+  },
+  {
+    title: 'MI CUP',
+    details: 'Tahunan • Offline',
+    description: 'Ajang kompetisi olahraga dan seni antar mahasiswa Manajemen Informatika.',
+    image: 'https://placehold.co/400x250',
+    hint: 'student sport competition',
+    department: 'minatbakat'
+  },
+  {
+    title: 'Bakti Sosial',
+    details: 'Periodik • Offline',
+    description: 'Kegiatan sosial sebagai bentuk kepedulian kepada masyarakat sekitar.',
+    image: 'https://placehold.co/400x250',
+    hint: 'social charity work',
+    department: 'sosial'
+  },
+  {
+    title: 'Donasi',
+    details: 'Insidental • Online/Offline',
+    description: 'Penggalangan dana untuk membantu pihak-pihak yang membutuhkan.',
+    image: 'https://placehold.co/400x250',
+    hint: 'donation drive',
+    department: 'sosial'
+  },
+   {
+    title: 'Bazar Kewirausahaan',
+    details: 'Periodik • Offline',
+    description: 'Mengadakan bazar untuk mendorong semangat dan kreativitas wirausaha mahasiswa.',
+    image: 'https://placehold.co/400x250',
+    hint: 'entrepreneur bazaar',
+    department: 'bisnis'
+  },
 ];
 
 
@@ -135,7 +183,7 @@ export default function ProkerPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPrograms.map((program, index) => (
+            {filteredPrograms.length > 0 ? filteredPrograms.map((program, index) => (
                <Card key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden group">
                   <CardContent className="p-0">
                       <div className="relative aspect-[16/10] overflow-hidden">
@@ -163,7 +211,11 @@ export default function ProkerPage() {
                       </div>
                   </CardContent>
               </Card>
-            ))}
+            )) : (
+                 <div className="col-span-full text-center py-12">
+                    <p className="text-muted-foreground">Program kerja untuk kategori ini akan segera hadir!</p>
+                </div>
+            )}
           </div>
           
           <div className="text-center mt-12">
@@ -174,5 +226,3 @@ export default function ProkerPage() {
     </div>
   );
 }
-
-    
