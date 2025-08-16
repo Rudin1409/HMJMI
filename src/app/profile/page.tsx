@@ -8,6 +8,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronDown, Users, Briefcase, Award, Tv, Handshake, Store, Megaphone, Instagram, Linkedin, Code, ArrowUpRight, Bot, Network, Palette, BarChart3, Heart, Wallet, UserCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const departments = [
   { id: 'inti', name: 'Inti (BPI)', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
@@ -64,12 +70,37 @@ const programs = {
     ]
 };
 
+const divisions = {
+  ptpk: [
+    { id: 'risbang', name: 'Divisi Riset dan Pengembangan', description: 'Fokus pada penelitian dan pengembangan teknologi terbaru untuk diimplementasikan dalam proyek-proyek inovatif.' },
+    { id: 'pelatihan', name: 'Divisi Pelatihan dan Workshop', description: 'Bertanggung jawab untuk mengadakan pelatihan, workshop, dan sesi berbagi pengetahuan untuk meningkatkan skill teknis mahasiswa.' },
+  ],
+  humas: [
+    { id: 'multimedia', name: 'Divisi Multimedia', description: 'Divisi Multimedia atau Divisi Mulmed adalah divisi yang bertanggung jawab atas pengelolaan dan produksi konten multimedia.' },
+    { id: 'infokom', name: 'Divisi Informasi dan Komunikasi', description: 'Bertugas menyebarkan informasi penting dari himpunan ke mahasiswa dan menjaga citra organisasi di media sosial.' },
+  ],
+  psdm: [
+    { id: 'kaderisasi', name: 'Divisi Kaderisasi', description: 'Berperan dalam proses rekrutmen dan pembinaan anggota baru agar sesuai dengan nilai-nilai himpunan.' },
+    { id: 'minatbakat', name: 'Divisi Minat dan Bakat', description: 'Mewadahi dan mengembangkan potensi mahasiswa di bidang non-akademik seperti olahraga, seni, dan lainnya.' },
+  ],
+  kesma: [
+    { id: 'advokasi', name: 'Divisi Advokasi', description: 'Menjembatani aspirasi dan keluhan mahasiswa kepada pihak jurusan atau politeknik.' },
+    { id: 'sosial', name: 'Divisi Sosial', description: 'Mengadakan kegiatan sosial dan pengabdian masyarakat sebagai bentuk kepedulian terhadap lingkungan sekitar.' },
+  ],
+  bistra: [
+    { id: 'danus', name: 'Divisi Dana dan Usaha', description: 'Bertanggung jawab untuk mencari sumber pendanaan dan mengelola keuangan himpunan secara mandiri.' },
+    { id: 'kemitraan', name: 'Divisi Kemitraan', description: 'Menjalin dan menjaga hubungan baik dengan sponsor, alumni, dan pihak eksternal lainnya untuk mendukung kegiatan himpunan.' },
+  ],
+};
+
+
 export default function ProfilePage() {
   const [activeDept, setActiveDept] = useState(departments[0]);
   const [activeView, setActiveView] = useState('members');
   
   const currentMembers = teamMembers[activeDept.id as keyof typeof teamMembers] || [];
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
+  const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
 
   return (
     <div className="flex flex-col bg-pink-50/30">
@@ -168,7 +199,7 @@ export default function ProfilePage() {
       </section>
 
       <section id="department-details" className="w-full pb-16 md:pb-24">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
             <div className="relative w-24 h-24 mb-4">
               <Image src="https://placehold.co/100x100.png" layout="fill" alt={`${activeDept.name} Logo`} className="rounded-full" data-ai-hint="organization logo" />
@@ -178,6 +209,21 @@ export default function ProfilePage() {
              <div className="flex justify-center mb-4">
               <div className="w-16 h-0.5 bg-primary/50 rounded-full"></div>
             </div>
+
+            {activeDept.id !== 'inti' && (
+              <Accordion type="single" collapsible className="w-full max-w-2xl mb-8">
+                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisi</h3>
+                   {currentDivisions.map((division) => (
+                      <AccordionItem key={division.id} value={division.id} className="bg-white/60 border-b-2 rounded-lg mb-2 px-4">
+                          <AccordionTrigger className="text-left font-semibold hover:no-underline">{division.name}</AccordionTrigger>
+                          <AccordionContent className="text-muted-foreground">
+                              {division.description}
+                          </AccordionContent>
+                      </AccordionItem>
+                   ))}
+              </Accordion>
+            )}
+
             <div className="flex gap-4">
               <Button 
                 size="lg"
