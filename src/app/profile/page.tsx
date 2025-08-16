@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -35,100 +36,100 @@ const departments = [
 const teamMembers = {
   inti: {
     heads: [
-      { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-      { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-      { name: 'Sekretaris 1', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-      { name: 'Bendahara 1', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-      { name: 'Koordinator 1', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-      { name: 'Koordinator 2', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+      { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Sekretaris 1', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Bendahara 1', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Koordinator 1', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Koordinator 2', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
     ],
     members: {}
   },
   ptkp: {
     heads: [
-        { name: 'Al Fajri Nur Ramadhan', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Agnes', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Shofi Nanda Rismaliani', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Lara Amelia Apriani', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Lenno Nardo', role: 'Koordinator Akademik', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Muhammad Ichwan', role: 'Koordinator Kepemudaan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Al Fajri Nur Ramadhan', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Agnes', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Shofi Nanda Rismaliani', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Lara Amelia Apriani', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Lenno Nardo', role: 'Koordinator Akademik', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Ichwan', role: 'Koordinator Kepemudaan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
     ],
     members: {
       akademik: [
-        { name: 'Devi Aprianti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2023', avatar: '/M Bahrudin.png', instagram: "em_dizi" },
-        { name: 'Dimas Yuda Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Niken Septi Andini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Delvia Apriani', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Devi Aprianti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2023', avatar: '/M Bahrudin.png', instagram: "-" },
+        { name: 'Dimas Yuda Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Niken Septi Andini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Delvia Apriani', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
       kepemudaan: [
-        { name: 'Miftahul Jannah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Nis Murib', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Briliana Azizah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Muhammad Fadlil', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Innayah Dwikhailah Putri', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Irham Bagus Sanjaya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Rasya Ratu Juanna', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Miftahul Jannah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Nis Murib', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Briliana Azizah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Fadlil', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Innayah Dwikhailah Putri', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Irham Bagus Sanjaya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Rasya Ratu Juanna', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ]
     }
   },
   humas: {
      heads: [
-        { name: 'Kepala Dept. Humas', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Wakil Dept. Humas', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Sekretaris Humas', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Bendahara Humas', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Kepala Dept. Humas', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Wakil Dept. Humas', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Sekretaris Humas', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Bendahara Humas', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
      ],
     members: {
-      'media-kreatif': Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Medkraf ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
-      kominfo: Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Kominfo ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
-      jurnalistik: Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Jurnalistik ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      'media-kreatif': Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Medkraf ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
+      kominfo: Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Kominfo ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
+      jurnalistik: Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Jurnalistik ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
     }
   },
   psdm: {
       heads: [
-        { name: 'Kepala Dept. PSDM', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Wakil Dept. PSDM', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Sekretaris PSDM', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Bendahara PSDM', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi Minat Bakat', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Ketua Pelaksana HRD', role: 'Ketua Pelaksana HRD', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Kepala Dept. PSDM', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Wakil Dept. PSDM', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Sekretaris PSDM', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Bendahara PSDM', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi Minat Bakat', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Ketua Pelaksana HRD', role: 'Ketua Pelaksana HRD', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     members: {
-      minatbakat: Array.from({ length: 12 }, (_, i) => ({ name: `Anggota Minat Bakat ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      minatbakat: Array.from({ length: 12 }, (_, i) => ({ name: `Anggota Minat Bakat ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
     }
   },
   kesma: {
       heads: [
-        { name: 'Kepala Dept. Kesma', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Wakil Dept. Kesma', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Sekretaris Kesma', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Bendahara Kesma', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Kepala Dept. Kesma', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Wakil Dept. Kesma', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Sekretaris Kesma', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Bendahara Kesma', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     members: {
-      agama: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Agama ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
-      sosial: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Sosial ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      agama: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Agama ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
+      sosial: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Sosial ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
     }
   },
   bistra: {
       heads: [
-        { name: 'Kepala Dept. Bistra', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Wakil Dept. Bistra', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Sekretaris Bistra', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Bendahara Bistra', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Kepala Dept. Bistra', role: 'Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Wakil Dept. Bistra', role: 'Wakil Kepala Departemen', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Sekretaris Bistra', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Bendahara Bistra', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     members: {
-      bisnis: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Bisnis ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
-      kemitraan: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Kemitraan ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      bisnis: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Bisnis ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
+      kemitraan: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Kemitraan ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" })),
     }
   }
 };
@@ -207,7 +208,7 @@ const MemberCard = ({ member }: { member: Member }) => {
                 <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
                 <p className="text-xl font-semibold text-gray-800">{member.name}</p>
                 <p className="text-muted-foreground">{member.class}</p>
-                {member.instagram && (
+                {member.instagram && member.instagram !== '-' && (
                     <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start">
                         <Instagram className="h-5 w-5" />
                         <span>{member.instagram}</span>
@@ -527,3 +528,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
