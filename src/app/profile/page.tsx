@@ -42,7 +42,7 @@ const teamMembers = {
       { name: 'Koordinator 1', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
       { name: 'Koordinator 2', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
     ],
-    members: []
+    members: {}
   },
   ptkp: {
     heads: [
@@ -53,9 +53,10 @@ const teamMembers = {
         { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
     ],
-    members: Array.from({ length: 12 }, (_, i) => ({
-        name: `Anggota PTKP ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi"
-    }))
+    members: {
+      kepemudaan: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Kepemudaan ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      akademik: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Akademik ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" }))
+    }
   },
   humas: {
      heads: [
@@ -66,9 +67,11 @@ const teamMembers = {
         { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
      ],
-    members: Array.from({ length: 12 }, (_, i) => ({
-        name: `Anggota Humas ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi"
-    }))
+    members: {
+      'media-kreatif': Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Medkraf ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      kominfo: Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Kominfo ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      jurnalistik: Array.from({ length: 4 }, (_, i) => ({ name: `Anggota Jurnalistik ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+    }
   },
   psdm: {
       heads: [
@@ -79,9 +82,10 @@ const teamMembers = {
         { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
       ],
-    members: Array.from({ length: 12 }, (_, i) => ({
-        name: `Anggota PSDM ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi"
-    }))
+    members: {
+      minatbakat: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Minat Bakat ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      hrd: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota HRD ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+    }
   },
   kesma: {
       heads: [
@@ -92,9 +96,10 @@ const teamMembers = {
         { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
       ],
-    members: Array.from({ length: 12 }, (_, i) => ({
-        name: `Anggota Kesma ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi"
-    }))
+    members: {
+      agama: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Agama ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      sosial: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Sosial ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+    }
   },
   bistra: {
       heads: [
@@ -105,9 +110,10 @@ const teamMembers = {
         { name: 'Koordinator Divisi 1', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Koordinator Divisi 2', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
       ],
-    members: Array.from({ length: 12 }, (_, i) => ({
-        name: `Anggota Bistra ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi"
-    }))
+    members: {
+      bisnis: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Bisnis ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+      kemitraan: Array.from({ length: 6 }, (_, i) => ({ name: `Anggota Kemitraan ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
+    }
   }
 };
 
@@ -253,18 +259,28 @@ export default function ProfilePage() {
   const [activeDept, setActiveDept] = useState(departments[0]);
   const [activeView, setActiveView] = useState('members');
   const [featuredHead, setFeaturedHead] = useState<Member | null>(null);
-  const [featuredMember, setFeaturedMember] = useState<Member | null>(null);
+  const [featuredMembers, setFeaturedMembers] = useState<{[key: string]: Member | null}>({});
   
-  const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: [] };
+  const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: {} };
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
   const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
   
   useEffect(() => {
     const newHeads = teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || [];
     setFeaturedHead(newHeads[0] || null);
-    const newMembers = teamMembers[activeDept.id as keyof typeof teamMembers]?.members || [];
-    setFeaturedMember(newMembers[0] || null);
+
+    const newMembersByDivision = teamMembers[activeDept.id as keyof typeof teamMembers]?.members || {};
+    const initialFeaturedMembers: {[key: string]: Member | null} = {};
+    for (const divisionId in newMembersByDivision) {
+        const divisionMembers = newMembersByDivision[divisionId as keyof typeof newMembersByDivision] || [];
+        initialFeaturedMembers[divisionId] = divisionMembers[0] || null;
+    }
+    setFeaturedMembers(initialFeaturedMembers);
   }, [activeDept]);
+
+  const setFeaturedMemberForDivision = (divisionId: string, member: Member) => {
+    setFeaturedMembers(prev => ({...prev, [divisionId]: member}));
+  }
 
   return (
     <div className="flex flex-col bg-pink-50/30">
@@ -421,14 +437,17 @@ export default function ProfilePage() {
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
                 />
-                {activeDept.id !== 'inti' && (
+                {activeDept.id !== 'inti' && currentDivisions.length > 0 && (
+                  currentDivisions.map(division => (
                     <MemberGroup 
-                        title="Anggota"
-                        members={currentDepartmentData.members}
-                        featuredMember={featuredMember}
-                        setFeaturedMember={setFeaturedMember}
+                        key={division.id}
+                        title={`Anggota Divisi ${division.name}`}
+                        members={currentDepartmentData.members[division.id as keyof typeof currentDepartmentData.members] || []}
+                        featuredMember={featuredMembers[division.id] || null}
+                        setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
                         alwaysShowNav={true}
                     />
+                  ))
                 )}
             </div>
           )}
