@@ -28,37 +28,32 @@ export function InstagramSection() {
               <Link href="#">Ikuti Kami <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
-          <div>
-            <Card className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-2xl">
-              <CardContent className="p-0">
-                <div className="flex items-center justify-between mb-4 px-2">
-                   <div className="flex items-center gap-2">
-                     <Image src="https://placehold.co/40x40" width={40} height={40} alt="HMJMI Logo" className="rounded-full" data-ai-hint="logo" />
+          <div className="relative h-full min-h-[450px]">
+             <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
+             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
+             <div className="relative z-10 p-2 bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl h-full border border-white/20">
+                <div className="flex items-center justify-between mb-4 px-4 pt-2">
+                   <div className="flex items-center gap-3">
+                     <Image src="https://placehold.co/40x40" width={40} height={40} alt="HMJMI Logo" className="rounded-full border-2 border-pink-200" data-ai-hint="logo" />
                      <span className="font-semibold text-gray-800">hmjmi.polsri</span>
                    </div>
                    <div className="text-gray-800 font-bold">...</div>
                 </div>
-                <div className="grid grid-cols-2 gap-2">
-                    <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 1" data-ai-hint="student organization event" />
+                <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
+                    <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
+                        <Image src="https://placehold.co/300x300.png" layout="fill" objectFit="cover" alt="Instagram Post 1" data-ai-hint="student organization event" className="transition-transform duration-500 hover:scale-110"/>
                     </div>
-                     <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 2" data-ai-hint="coding workshop" />
+                    <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
+                        <Image src="https://placehold.co/300x300.png" layout="fill" objectFit="cover" alt="Instagram Post 2" data-ai-hint="coding workshop" className="transition-transform duration-500 hover:scale-110"/>
                     </div>
-                     <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 3" data-ai-hint="university competition" />
-                    </div>
-                     <div className="aspect-square relative rounded-lg overflow-hidden">
-                        <Image src="https://placehold.co/200x200" layout="fill" objectFit="cover" alt="Instagram post 4" data-ai-hint="community gathering" />
+                    <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden">
+                        <Image src="https://placehold.co/600x300.png" layout="fill" objectFit="cover" alt="Instagram Post 3" data-ai-hint="university competition" className="transition-transform duration-500 hover:scale-110"/>
                     </div>
                 </div>
-              </CardContent>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
-
-    
