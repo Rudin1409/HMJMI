@@ -1,9 +1,19 @@
 
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
 
 const stats = [
   {
@@ -48,57 +58,69 @@ const logoPhilosophy = [
 
 const galleryItems = [
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "LKMM-PD HMJMI POLSRI",
         year: "2024",
         hint: "student presentation"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "LKMM-PD HMJMI POLSRI",
         year: "2024",
         hint: "student audience"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "UPGRADING HMJMI POLSRI",
         year: "2024",
         hint: "group photo"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "UPGRADING HMJMI POLSRI",
         year: "2024",
         hint: "students sitting"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "MUSYAWARAH BESAR HMJMI",
         year: "2024",
         hint: "large group"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "MUSYAWARAH BESAR HMJMI",
         year: "2024",
         hint: "students listening"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "SEMINAR NASIONAL",
         year: "2024",
         hint: "student team"
     },
     {
-        src: "https://placehold.co/400x300.png",
+        src: "https://placehold.co/800x600.png",
+        thumb: "https://placehold.co/400x300.png",
         title: "SEMINAR NASIONAL",
         year: "2024",
         hint: "student speaking"
     },
-]
+];
+
+type GalleryItem = typeof galleryItems[0];
 
 
 export default function AboutPage() {
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+
   return (
     <div className="flex flex-col">
       <section 
@@ -247,10 +269,14 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {galleryItems.map((item, index) => (
-                    <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white">
+                    <Card 
+                      key={index} 
+                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white cursor-pointer"
+                      onClick={() => setSelectedImage(item)}
+                    >
                         <CardContent className="p-0">
                             <div className="relative aspect-w-4 aspect-h-3">
-                                <Image src={item.src} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.hint} />
+                                <Image src={item.thumb} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.hint} />
                             </div>
                         </CardContent>
                         <CardFooter className="p-4 text-center flex-col items-center justify-center">
@@ -263,6 +289,23 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {selectedImage && (
+        <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl p-0">
+            <div className="relative aspect-video">
+              <Image src={selectedImage.src} alt={selectedImage.title} layout="fill" objectFit="contain" />
+            </div>
+            <DialogHeader className="p-6 pt-2">
+                <DialogTitle>{selectedImage.title}</DialogTitle>
+                <DialogDescription>
+                    {selectedImage.year}
+                </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }
+
+    
