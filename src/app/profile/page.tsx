@@ -211,14 +211,12 @@ const MemberCard = ({ member }: { member: Member }) => {
                 <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
                 <p className="text-xl font-semibold text-gray-800">{member.name}</p>
                 <p className="text-muted-foreground">{member.class}</p>
-                <div className="flex flex-col gap-2 mt-4 items-center md:items-start">
-                    {member.instagram && (
-                         <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-                            <Instagram className="h-5 w-5" />
-                            <span>{member.instagram}</span>
-                        </a>
-                    )}
-                </div>
+                {member.instagram && (
+                    <a href={`https://instagram.com/${member.instagram}`} target="_blank" className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start">
+                        <Instagram className="h-5 w-5" />
+                        <span>{member.instagram}</span>
+                    </a>
+                )}
             </div>
         </div>
     )
@@ -233,16 +231,17 @@ const SmallMemberCard = ({ member, onSelect }: { member: Member, onSelect: () =>
     </div>
 );
 
-const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, alwaysShowNav = false }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member) => void, alwaysShowNav?: boolean }) => {
+const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, alwaysShowNav = false }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member | null) => void, alwaysShowNav?: boolean }) => {
     if (!members || members.length === 0) return null;
 
-    const otherMembers = members.filter(m => m.name !== featuredMember?.name);
+    const currentFeatured = featuredMember && members.some(m => m.name === featuredMember.name) ? featuredMember : members[0];
+    const otherMembers = members.filter(m => m.name !== currentFeatured.name);
 
     return (
         <div className="space-y-8">
             <h3 className="text-2xl font-bold text-gray-700 text-center">{title}</h3>
-            {featuredMember && members.includes(featuredMember) && (
-                <MemberCard member={featuredMember} />
+            {currentFeatured && (
+                <MemberCard member={currentFeatured} />
             )}
             
             {otherMembers.length > 0 && (
@@ -261,8 +260,8 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, always
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className={cn("hidden z-10", alwaysShowNav && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden" )} />
-                  <CarouselNext className={cn("hidden z-10", alwaysShowNav && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden")} />
+                  <CarouselPrevious className={cn("hidden z-10", (alwaysShowNav || members.length > 6) && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden" )} />
+                  <CarouselNext className={cn("hidden z-10", (alwaysShowNav || members.length > 6) && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -294,7 +293,7 @@ export default function ProfilePage() {
     setFeaturedMembers(initialFeaturedMembers);
   }, [activeDept]);
 
-  const setFeaturedMemberForDivision = (divisionId: string, member: Member) => {
+  const setFeaturedMemberForDivision = (divisionId: string, member: Member | null) => {
     setFeaturedMembers(prev => ({...prev, [divisionId]: member}));
   }
 
@@ -511,5 +510,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
