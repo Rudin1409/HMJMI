@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -36,12 +35,12 @@ const departments = [
 const teamMembers = {
   inti: {
     heads: [
-      { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Sekretaris 1', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Bendahara 1', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Koordinator 1', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Koordinator 2', role: 'Koordinator', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Muhammad Farhan Pratama', role: 'Ketua Himpunan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Muhammad Dava Prayoga', role: 'Wakil Ketua Himpunan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Siti Nabila Zhafirah', role: 'Sekretaris Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Eka Rahayu Putri', role: 'Wakil Sekretaris Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Muthia Maylafayza Inayah', role: 'Bendahara Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Putri Afifah Khairunnisa', role: 'Wakil Bendahara Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
     ],
     members: {}
   },
@@ -118,7 +117,7 @@ const teamMembers = {
         { name: 'Sri Rahayu Rezeki', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
         { name: 'Shoofiyah Maharani', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
         { name: 'Handika Putra', role: 'Koordinator Minat Bakat', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Koordinator Bidang HRD PSDM', role: 'Koordinator HRD', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Koordinator HRD', role: 'Koordinator Bidang HRD PSDM', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     members: {
       minatbakat: [
