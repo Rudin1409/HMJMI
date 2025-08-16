@@ -175,7 +175,7 @@ const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
             <div 
-              className="relative mx-auto aspect-square max-w-sm" 
+              className="relative mx-auto aspect-square max-w-xs" 
             >
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-full h-full rounded-full border-8 border-primary/50"></div>
@@ -217,7 +217,7 @@ const SmallMemberCard = ({ member, onSelect }: { member: Member, onSelect: () =>
     </div>
 );
 
-const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member) => void }) => {
+const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, alwaysShowNav = false }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member) => void, alwaysShowNav?: boolean }) => {
     if (!members || members.length === 0) return null;
 
     const otherMembers = members.filter(m => m.name !== featuredMember?.name);
@@ -245,8 +245,8 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember }: { ti
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className="lg:hidden flex" />
-                  <CarouselNext className="lg:hidden flex" />
+                  <CarouselPrevious className={cn("flex", !alwaysShowNav && "lg:hidden")} />
+                  <CarouselNext className={cn("flex", !alwaysShowNav && "lg:hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -433,6 +433,7 @@ export default function ProfilePage() {
                         members={currentDepartmentData.members}
                         featuredMember={featuredMember}
                         setFeaturedMember={setFeaturedMember}
+                        alwaysShowNav={true}
                     />
                 )}
             </div>
