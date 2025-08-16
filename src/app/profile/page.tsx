@@ -1,8 +1,8 @@
 
 'use client';
 
-import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -175,7 +175,7 @@ const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
             <div 
-              className="relative mx-auto aspect-square max-w-xs" 
+              className="relative mx-auto aspect-square max-w-sm" 
             >
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-full h-full rounded-full border-8 border-primary/50"></div>
@@ -281,9 +281,9 @@ export default function ProfilePage() {
         <div className="container mx-auto px-4 relative z-10">
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
-            <div className="grid grid-cols-1 md:grid-cols-5 items-center gap-8 min-h-screen">
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
                 
-                <div className="relative hidden md:flex items-center justify-center h-[500px] col-span-2">
+                <div className="relative hidden md:flex items-center justify-center h-[500px]">
                     <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 left-10 blur-xl"></div>
                     <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 right-10 blur-xl"></div>
                     <div className="absolute top-0 left-10 w-36 h-36">
@@ -295,23 +295,6 @@ export default function ProfilePage() {
                      <div className="absolute bottom-0 left-20 w-32 h-32">
                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
                     </div>
-                </div>
-
-                <div className="relative z-10 text-center col-span-1">
-                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-                        Tim Kami
-                    </Badge>
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
-                    </h1>
-                    <p className="mt-4 max-w-md mx-auto text-lg text-muted-foreground">
-                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
-                    </p>
-                </div>
-                
-                 <div className="relative hidden md:flex items-center justify-center h-[500px] col-span-2">
-                    <div className="absolute w-40 h-40 bg-yellow-200/50 rounded-full top-20 right-10 blur-xl"></div>
-                    <div className="absolute w-40 h-40 bg-pink-200/50 rounded-full bottom-20 left-10 blur-xl"></div>
                     <div className="absolute top-0 right-10 w-36 h-36">
                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
                     </div>
@@ -321,6 +304,18 @@ export default function ProfilePage() {
                      <div className="absolute bottom-0 right-20 w-32 h-32">
                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
                     </div>
+                </div>
+
+                <div className="relative z-10 text-center md:text-left">
+                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
+                        Tim Kami
+                    </Badge>
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
+                    </h1>
+                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
+                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
+                    </p>
                 </div>
             </div>
         </div>
@@ -486,5 +481,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
