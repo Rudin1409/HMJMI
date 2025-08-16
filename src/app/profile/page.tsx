@@ -357,6 +357,7 @@ export default function ProfilePage() {
 
                     {otherMembers.length > 0 && (
                         <div className="w-full pt-8 mt-8 border-t border-primary/20">
+                            <h3 className="text-xl font-bold text-center text-gray-700 mb-6">Anggota Lainnya</h3>
                             <div className="flex gap-4 justify-center flex-wrap">
                                 {otherMembers.map((member, index) => (
                                     <MemberCard key={index} member={member} onSelect={() => setFeaturedMember(member)} />
