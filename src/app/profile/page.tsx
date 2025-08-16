@@ -97,7 +97,7 @@ const teamMembers = {
         { name: 'Sekretaris PSDM', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Bendahara PSDM', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
         { name: 'Koordinator Divisi Minat Bakat', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
-        { name: 'Ketua Pelaksana HRD', role: 'Koordinator Divisi', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
+        { name: 'Ketua Pelaksana HRD', role: 'Ketua Pelaksana HRD', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" },
       ],
     members: {
       minatbakat: Array.from({ length: 12 }, (_, i) => ({ name: `Anggota Minat Bakat ${i + 1}`, role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "em_dizi" })),
@@ -197,7 +197,7 @@ const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
             <div 
-              className="relative mx-auto aspect-square max-w-[280px]" 
+              className="relative mx-auto aspect-square w-full max-w-[280px]" 
             >
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-full h-full rounded-full border-8 border-primary/50"></div>
@@ -223,25 +223,35 @@ const MemberCard = ({ member }: { member: Member }) => {
 };
 
 const SmallMemberCard = ({ member, onSelect }: { member: Member, onSelect: () => void }) => (
-    <div className="relative aspect-square w-24 md:w-32 cursor-pointer group" onClick={onSelect}>
-        <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-full h-full border-4 border-primary/50 rounded-full transition-all duration-300 group-hover:scale-110"></div>
+    <div className="flex flex-col items-center gap-2">
+        <div className="relative aspect-square w-24 md:w-32 cursor-pointer group" onClick={onSelect}>
+            <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full h-full border-4 border-primary/50 rounded-full transition-all duration-300 group-hover:scale-110"></div>
+            </div>
+            <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
         </div>
-        <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
+        <p className="text-xs text-center font-semibold text-gray-700 w-24 md:w-32 truncate">{member.name}</p>
     </div>
 );
 
-const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, alwaysShowNav = false }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member | null) => void, alwaysShowNav?: boolean }) => {
+
+const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNavOnDesktop = false }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member | null) => void, showNavOnDesktop?: boolean }) => {
     if (!members || members.length === 0) return null;
 
     const currentFeatured = featuredMember && members.some(m => m.name === featuredMember.name) ? featuredMember : members[0];
     const otherMembers = members.filter(m => m.name !== currentFeatured.name);
 
+    const handleSelectMember = (member: Member) => {
+        setFeaturedMember(member);
+    };
+
     return (
         <div className="space-y-8">
             <h3 className="text-2xl font-bold text-gray-700 text-center">{title}</h3>
             {currentFeatured && (
-                <MemberCard member={currentFeatured} />
+                 <div className="flex justify-center">
+                    <MemberCard member={currentFeatured} />
+                </div>
             )}
             
             {otherMembers.length > 0 && (
@@ -249,19 +259,19 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, always
                   opts={{
                     align: "center",
                     loop: true,
-                    slidesToScroll: 3,
+                    slidesToScroll: 'auto',
                   }}
                   className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
                 >
                   <CarouselContent className="-ml-4">
                     {otherMembers.map((member, index) => (
                       <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center">
-                          <SmallMemberCard member={member} onSelect={() => setFeaturedMember(member)} />
+                          <SmallMemberCard member={member} onSelect={() => handleSelectMember(member)} />
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className={cn("hidden z-10", (alwaysShowNav || members.length > 6) && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden" )} />
-                  <CarouselNext className={cn("hidden z-10", (alwaysShowNav || members.length > 6) && "flex", !alwaysShowNav && members.length > 6 && "lg:!hidden")} />
+                  <CarouselPrevious className={cn("flex z-10", !showNavOnDesktop && "md:hidden")} />
+                  <CarouselNext className={cn("flex z-10", !showNavOnDesktop && "md:hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -282,13 +292,13 @@ export default function ProfilePage() {
   
   useEffect(() => {
     const newHeads = teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || [];
-    setFeaturedHead(newHeads[0] || null);
+    setFeaturedHead(newHeads.length > 0 ? newHeads[0] : null);
 
     const newMembersByDivision = teamMembers[activeDept.id as keyof typeof teamMembers]?.members || {};
     const initialFeaturedMembers: {[key: string]: Member | null} = {};
     for (const divisionId in newMembersByDivision) {
         const divisionMembers = newMembersByDivision[divisionId as keyof typeof newMembersByDivision] || [];
-        initialFeaturedMembers[divisionId] = divisionMembers[0] || null;
+        initialFeaturedMembers[divisionId] = divisionMembers.length > 0 ? divisionMembers[0] : null;
     }
     setFeaturedMembers(initialFeaturedMembers);
   }, [activeDept]);
@@ -460,7 +470,7 @@ export default function ProfilePage() {
                         members={currentDepartmentData.members[division.id as keyof typeof currentDepartmentData.members] || []}
                         featuredMember={featuredMembers[division.id] || null}
                         setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
-                        alwaysShowNav={true}
+                        showNavOnDesktop={true}
                     />
                   ))
                 )}
