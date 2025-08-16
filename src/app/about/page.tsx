@@ -285,7 +285,7 @@ export default function AboutPage() {
         <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
           <DialogContent className="max-w-4xl p-0">
             <div className="relative aspect-video">
-              <Image src={selectedImage.src} alt={selectedImage.title} layout="fill" objectFit="contain" />
+              <Image src={selectedImage.src} alt={selectedImage.title} layout="fill" objectFit="contain" data-ai-hint={selectedImage.hint} />
             </div>
             <DialogHeader className="p-6 pt-2">
                 <DialogTitle>{selectedImage.title}</DialogTitle>
@@ -299,3 +299,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
