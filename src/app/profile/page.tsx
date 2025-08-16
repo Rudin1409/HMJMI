@@ -27,9 +27,9 @@ const departments = [
   { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
   { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
   { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Pengembangan Sumber Daya Mahasiswa, fokus pada soft skill dan kaderisasi.' },
-  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Kesejahteraan Mahasiswa, mendukung kebutuhan dan kesejahteraan mahasiswa.' },
-  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Bisnis dan Kemitraan, mengembangkan potensi kewirausahaan dan kemitraan.' },
+  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Kesejahteraan Mahasiswa (KESMA), yaitu keanggotaan biasa yang bertugas dalam mensejahterakan mahasiswa dan membangun sisi religius serta jiwa sosial di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Departemen Bisnis dan Kemitraan (BISTRA), yaitu keanggotaan biasa yang bertugas dalam mengelola usaha dari mahasiswa dan mengkoordinir kesekretariatan serta melaksanakan pembinaan terkait bisnis di jurusan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
 ];
 
 const teamMembers = {
@@ -150,16 +150,16 @@ const divisions = {
     { id: 'jurnalistik', name: 'Jurnalistik', description: 'Divisi Jurnalistik adalah pilar utama dalam penyediaan informasi yang akurat dan terpercaya. Divisi ini bertanggung jawab penuh atas seluruh proses jurnalistik, mulai dari peliputan acara, melakukan wawancara, hingga riset mendalam. Semua informasi yang terkumpul diolah dan disajikan secara objektif dalam bentuk berita, artikel feature, maupun tulisan inspiratif. Tujuannya adalah untuk memastikan seluruh lingkungan Jurusan Manajemen Informatika mendapatkan informasi yang kredibel dan beretika.' },
   ],
   psdm: [
-    { id: 'kaderisasi', name: 'Divisi Kaderisasi', description: 'Berperan dalam proses rekrutmen dan pembinaan anggota baru agar sesuai dengan nilai-nilai himpunan.' },
-    { id: 'minatbakat', name: 'Divisi Minat dan Bakat', description: 'Mewadahi dan mengembangkan potensi mahasiswa di bidang non-akademik seperti olahraga, seni, dan lainnya.' },
+    { id: 'minatbakat', name: 'Minat Bakat', description: 'Minat Bakat berfungsi mendata serta menyalurkan artis dan atlet yang berpotensi di Jurusan Manajemen Informatika.' },
+    { id: 'hrd', name: 'HRD', description: 'HRD (Human Resource Development) berfungsi membantu Badan Pengurus Harian dalam mengawasi kepengurusan guna mengoptimalkan kinerja Himpunan Mahasiswa Jurusan Manajemen Informatika.' },
   ],
   kesma: [
-    { id: 'advokasi', name: 'Divisi Advokasi', description: 'Menjembatani aspirasi dan keluhan mahasiswa kepada pihak jurusan atau politeknik.' },
-    { id: 'sosial', name: 'Divisi Sosial', description: 'Mengadakan kegiatan sosial dan pengabdian masyarakat sebagai bentuk kepedulian terhadap lingkungan sekitar.' },
+    { id: 'agama', name: 'Agama', description: 'Agama merupakan subdivisi yang bergerak dalam hal keagamaan dan bertujuan untuk meningkatkan sisi religius mahasiswa Manajemen Informatika.' },
+    { id: 'sosial', name: 'Sosial', description: 'Sosial merupakan subdivisi yang bergerak dalam hal sosial untuk meningkatkan kesejahteraan dan kepedulian mahasiswa Manajemen Informatika.' },
   ],
   bistra: [
-    { id: 'danus', name: 'Divisi Dana dan Usaha', description: 'Bertanggung jawab untuk mencari sumber pendanaan dan mengelola keuangan himpunan secara mandiri.' },
-    { id: 'kemitraan', name: 'Divisi Kemitraan', description: 'Menjalin dan menjaga hubungan baik dengan sponsor, alumni, dan pihak eksternal lainnya untuk mendukung kegiatan himpunan.' },
+    { id: 'bisnis', name: 'Bisnis', description: 'Bisnis berfungsi untuk mengatur jalannya bisnis di dalam lingkungan Manajemen Informatika serta mengelola inventaris sekretariat HMJ Manajemen Informatika Politeknik Negeri Sriwijaya.' },
+    { id: 'kemitraan', name: 'Kemitraan', description: 'Kemitraan berfungsi untuk mengatur dan mengelolah jalannnya kerja sama antar divisi bistra dengan usaha dari pihak luar maupun di dalam lingkungan jurusan Manajemen Informatika Politeknik Negeri Sriwijaya.' },
   ],
 };
 
