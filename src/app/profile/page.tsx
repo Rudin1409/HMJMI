@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Briefcase, Award, Instagram, ArrowUpRight } from 'lucide-react';
+import { Users, Briefcase, Award, Instagram, ArrowUpRight, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -25,11 +25,11 @@ import {
 
 const departments = [
   { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
-  { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <Users className="w-8 h-8 text-primary" />, description: 'Departemen Kesejahteraan Mahasiswa (KESMA), yaitu keanggotaan biasa yang bertugas dalam mensejahterakan mahasiswa dan membangun sisi religius serta jiwa sosial di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Briefcase className="w-8 h-8 text-primary" />, description: 'Departemen Bisnis dan Kemitraan (BISTRA), yaitu keanggotaan biasa yang bertugas dalam mengelola usaha dari mahasiswa dan mengkoordinir kesekretariatan serta melaksanakan pembinaan terkait bisnis di jurusan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'ptkp', name: 'PTKP', fullName: 'PERGURUAN TINGGI DAN KEPEMUDAAN', icon: <GraduationCap className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Sparkles className="w-8 h-8 text-primary" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <HeartHandshake className="w-8 h-8 text-primary" />, description: 'Departemen Kesejahteraan Mahasiswa (KESMA), yaitu keanggotaan biasa yang bertugas dalam mensejahterakan mahasiswa dan membangun sisi religius serta jiwa sosial di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Store className="w-8 h-8 text-primary" />, description: 'Departemen Bisnis dan Kemitraan (BISTRA), yaitu keanggotaan biasa yang bertugas dalam mengelola usaha dari mahasiswa dan mengkoordinir kesekretariatan serta melaksanakan pembinaan terkait bisnis di jurusan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
 ];
 
 const teamMembers = {
@@ -364,8 +364,8 @@ export default function ProfilePage() {
       <section id="department-details" className="w-full pb-16 md:pb-24">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
-            <div className="relative w-24 h-24 mb-4">
-              <Image src="https://placehold.co/100x100.png" layout="fill" alt={`${activeDept.name} Logo`} className="rounded-full" data-ai-hint="organization logo" />
+            <div className="relative w-24 h-24 mb-4 bg-pink-100 text-primary rounded-full flex items-center justify-center">
+              {React.cloneElement(activeDept.icon, {className: "w-12 h-12"})}
             </div>
             <h2 className="text-4xl font-bold text-primary mb-2">{activeDept.fullName}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-6">{activeDept.description}</p>
