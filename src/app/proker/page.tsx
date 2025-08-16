@@ -24,7 +24,7 @@ const allPrograms = [
     title: 'WEBINAR',
     details: 'Semesteran • Online',
     description: 'Seminar online dengan pemateri profesional untuk menambah wawasan mahasiswa di bidang IT.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'professional webinar',
     department: 'akademik'
   },
@@ -32,7 +32,7 @@ const allPrograms = [
     title: 'Pelatihan Skill',
     details: 'Periodik • Offline/Online',
     description: 'Pelatihan untuk meningkatkan keahlian teknis mahasiswa dalam bidang tertentu.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'skill training',
     department: 'akademik'
   },
@@ -40,7 +40,7 @@ const allPrograms = [
     title: 'Technology Sharing',
     details: 'Bulanan • Online',
     description: 'Sesi berbagi pengetahuan antar anggota untuk membahas tren teknologi terbaru.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'tech sharing session',
     department: 'akademik'
   },
@@ -48,7 +48,7 @@ const allPrograms = [
     title: 'LKMM-PD',
     details: 'Tahunan • Offline',
     description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar untuk kaderisasi anggota.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'leadership training',
     department: 'sdm'
   },
@@ -56,7 +56,7 @@ const allPrograms = [
     title: 'Upgrading',
     details: 'Tahunan • Offline',
     description: 'Program untuk meningkatkan solidaritas dan kualitas internal pengurus HMJMI.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'team building event',
     department: 'sdm'
   },
@@ -64,7 +64,7 @@ const allPrograms = [
     title: 'Musyawarah Besar',
     details: 'Tahunan • Offline',
     description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'organization meeting',
     department: 'sdm'
   },
@@ -72,7 +72,7 @@ const allPrograms = [
     title: 'Kunjungan Industri',
     details: 'Tahunan • Offline',
     description: 'Mengunjungi perusahaan untuk melihat langsung dunia kerja industri IT.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'industry visit',
     department: 'humas'
   },
@@ -80,7 +80,7 @@ const allPrograms = [
     title: 'Studi Banding',
     details: 'Periodik • Offline',
     description: 'Studi banding ke organisasi lain untuk bertukar pikiran dan pengalaman.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'organization visit',
     department: 'humas'
   },
@@ -88,7 +88,7 @@ const allPrograms = [
     title: 'MI CUP',
     details: 'Tahunan • Offline',
     description: 'Ajang kompetisi olahraga dan seni antar mahasiswa Manajemen Informatika.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'student sport competition',
     department: 'minatbakat'
   },
@@ -96,7 +96,7 @@ const allPrograms = [
     title: 'Bakti Sosial',
     details: 'Periodik • Offline',
     description: 'Kegiatan sosial sebagai bentuk kepedulian kepada masyarakat sekitar.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'social charity work',
     department: 'sosial'
   },
@@ -104,7 +104,7 @@ const allPrograms = [
     title: 'Donasi',
     details: 'Insidental • Online/Offline',
     description: 'Penggalangan dana untuk membantu pihak-pihak yang membutuhkan.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'donation drive',
     department: 'sosial'
   },
@@ -112,7 +112,7 @@ const allPrograms = [
     title: 'Bazar Kewirausahaan',
     details: 'Periodik • Offline',
     description: 'Mengadakan bazar untuk mendorong semangat dan kreativitas wirausaha mahasiswa.',
-    image: 'https://placehold.co/400x250',
+    image: 'https://placehold.co/400x250.png',
     hint: 'entrepreneur bazaar',
     department: 'bisnis'
   },

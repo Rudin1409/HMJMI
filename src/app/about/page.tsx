@@ -48,49 +48,49 @@ const logoPhilosophy = [
 
 const galleryItems = [
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "LKMM-PD HMJMI POLSRI",
         year: "2024",
         hint: "student presentation"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "LKMM-PD HMJMI POLSRI",
         year: "2024",
         hint: "student audience"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "UPGRADING HMJMI POLSRI",
         year: "2024",
         hint: "group photo"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "UPGRADING HMJMI POLSRI",
         year: "2024",
         hint: "students sitting"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "MUSYAWARAH BESAR HMJMI",
         year: "2024",
         hint: "large group"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "MUSYAWARAH BESAR HMJMI",
         year: "2024",
         hint: "students listening"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "SEMINAR NASIONAL",
         year: "2024",
         hint: "student team"
     },
     {
-        src: "https://placehold.co/400x300",
+        src: "https://placehold.co/400x300.png",
         title: "SEMINAR NASIONAL",
         year: "2024",
         hint: "student speaking"
@@ -204,7 +204,7 @@ export default function AboutPage() {
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                     <div className="relative aspect-square">
-                        <Image src="https://placehold.co/500x500" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo gears book" />
+                        <Image src="https://placehold.co/500x500.png" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo gears book" />
                     </div>
                     <div>
                         <Card className="p-8 shadow-lg rounded-2xl bg-white">
@@ -266,5 +266,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    

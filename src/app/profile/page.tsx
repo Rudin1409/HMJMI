@@ -20,47 +20,47 @@ const departments = [
 
 const teamMembers = {
   inti: [
-    { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
-    { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150' },
+    { name: 'Mgs. A. Farid Al-Kautsar', role: 'Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
+    { name: 'M. Hafizh Al-Ghariz', role: 'Wakil Ketua Umum', class: 'MI 2022', avatar: 'https://placehold.co/150x150.png' },
   ],
   ptpk: [
-    { name: 'Anggota PTPK 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
-    { name: 'Anggota PTPK 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+    { name: 'Anggota PTPK 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
+    { name: 'Anggota PTPK 2', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
   ],
   humas: [
-     { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+     { name: 'Anggota Humas 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
   ],
   psdm: [
-      { name: 'Anggota PSDM 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+      { name: 'Anggota PSDM 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
   ],
   kesma: [
-      { name: 'Anggota Kesma 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+      { name: 'Anggota Kesma 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
   ],
   bistra: [
-      { name: 'Anggota Bistra 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150' },
+      { name: 'Anggota Bistra 1', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/150x150.png' },
   ]
 };
 
 const programs = {
     inti: [
-        { title: 'Musyawarah Besar', category: 'INTERNAL', description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.', image: 'https://placehold.co/400x200', hint: 'organization meeting' }
+        { title: 'Musyawarah Besar', category: 'INTERNAL', description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.', image: 'https://placehold.co/400x200.png', hint: 'organization meeting' }
     ],
     ptpk: [
-        { title: 'Webinar Teknologi', category: 'AKADEMIK', description: 'Seminar online dengan topik terkini di dunia IT untuk meningkatkan wawasan.', image: 'https://placehold.co/400x200', hint: 'tech webinar' },
-        { title: 'Pelatihan Coding', category: 'AKADEMIK', description: 'Workshop intensif untuk mengasah kemampuan pemrograman mahasiswa.', image: 'https://placehold.co/400x200', hint: 'coding workshop' }
+        { title: 'Webinar Teknologi', category: 'AKADEMIK', description: 'Seminar online dengan topik terkini di dunia IT untuk meningkatkan wawasan.', image: 'https://placehold.co/400x200.png', hint: 'tech webinar' },
+        { title: 'Pelatihan Coding', category: 'AKADEMIK', description: 'Workshop intensif untuk mengasah kemampuan pemrograman mahasiswa.', image: 'https://placehold.co/400x200.png', hint: 'coding workshop' }
     ],
     humas: [
-        { title: 'Kunjungan Industri', category: 'EKSTERNAL', description: 'Mengunjungi perusahaan teknologi untuk memperluas wawasan dunia kerja.', image: 'https://placehold.co/400x200', hint: 'industry visit' }
+        { title: 'Kunjungan Industri', category: 'EKSTERNAL', description: 'Mengunjungi perusahaan teknologi untuk memperluas wawasan dunia kerja.', image: 'https://placehold.co/400x200.png', hint: 'industry visit' }
     ],
     psdm: [
-        { title: 'LKMM-PD', category: 'PELATIHAN', description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar untuk kaderisasi.', image: 'https://placehold.co/400x200', hint: 'leadership training' },
-        { title: 'MI CUP', category: 'MINAT BAKAT', description: 'Kompetisi olahraga dan seni untuk mahasiswa Manajemen Informatika.', image: 'https://placehold.co/400x200', hint: 'student competition' }
+        { title: 'LKMM-PD', category: 'PELATIHAN', description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar untuk kaderisasi.', image: 'https://placehold.co/400x200.png', hint: 'leadership training' },
+        { title: 'MI CUP', category: 'MINAT BAKAT', description: 'Kompetisi olahraga dan seni untuk mahasiswa Manajemen Informatika.', image: 'https://placehold.co/400x200.png', hint: 'student competition' }
     ],
     kesma: [
-        { title: 'Bakti Sosial', category: 'SOSIAL', description: 'Kegiatan sosial untuk membantu masyarakat sekitar dan menumbuhkan empati.', image: 'https://placehold.co/400x200', hint: 'social charity' }
+        { title: 'Bakti Sosial', category: 'SOSIAL', description: 'Kegiatan sosial untuk membantu masyarakat sekitar dan menumbuhkan empati.', image: 'https://placehold.co/400x200.png', hint: 'social charity' }
     ],
     bistra: [
-        { title: 'Bazar Kewirausahaan', category: 'BISNIS', description: 'Mengadakan bazar untuk mendorong semangat dan kreativitas wirausaha.', image: 'https://placehold.co/400x200', hint: 'entrepreneur bazaar' }
+        { title: 'Bazar Kewirausahaan', category: 'BISNIS', description: 'Mengadakan bazar untuk mendorong semangat dan kreativitas wirausaha.', image: 'https://placehold.co/400x200.png', hint: 'entrepreneur bazaar' }
     ]
 };
 
@@ -145,7 +145,7 @@ export default function ProfilePage() {
         <div className="container mx-auto px-4">
           <div className="text-center flex flex-col items-center mb-12">
             <div className="relative w-24 h-24 mb-4">
-              <Image src="https://placehold.co/100x100" layout="fill" alt={`${activeDept.name} Logo`} className="rounded-full" data-ai-hint="organization logo" />
+              <Image src="https://placehold.co/100x100.png" layout="fill" alt={`${activeDept.name} Logo`} className="rounded-full" data-ai-hint="organization logo" />
             </div>
             <h2 className="text-4xl font-bold text-primary mb-2">{activeDept.name}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-6">{activeDept.description}</p>
@@ -258,4 +258,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-    
