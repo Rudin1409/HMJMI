@@ -196,14 +196,12 @@ type Member = {
 const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
-            <div className="relative mx-auto w-full max-w-[280px] aspect-square flex items-center justify-center">
-                <div className="relative aspect-square w-full max-w-sm transition-transform duration-300">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-full h-full bg-primary rounded-full"></div>
-                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-16 border-2 border-primary rounded-full -translate-y-8"></div>
-                    </div>
-                    <Image src={member.avatar} alt={member.name} width={400} height={400} className="relative z-10 w-full h-full p-6 object-contain" data-ai-hint="headshot portrait" />
-                </div>
+            <div className="relative mx-auto w-full max-w-xs h-[380px] flex items-center justify-center">
+                 <div className="absolute w-[280px] h-full rounded-[6rem] bg-pink-100/80"></div>
+                 <div className="absolute w-[280px] h-full rounded-[6rem] border-4 border-primary"></div>
+                 <div className="relative w-[240px] h-[320px] rounded-[5rem] overflow-hidden">
+                    <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover" data-ai-hint="headshot portrait" />
+                 </div>
             </div>
             <div className="flex flex-col gap-2 text-center md:text-left">
                 <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
@@ -227,17 +225,11 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
     >
         <div 
             className={cn(
-                "relative aspect-square w-24 md:w-32 transition-transform duration-300",
-                isActive ? "scale-110" : "group-hover:scale-105"
+                "relative aspect-square w-24 md:w-32 rounded-full overflow-hidden transition-all duration-300 border-4",
+                isActive ? "scale-110 border-primary" : "border-primary/50 group-hover:scale-105 group-hover:border-primary/80"
             )}
         >
-            <div className="absolute inset-0 flex items-center justify-center">
-                <div className={cn(
-                    "w-full h-full border-4 rounded-full transition-all duration-300",
-                    isActive ? "border-primary" : "border-primary/50 group-hover:border-primary/80"
-                )}></div>
-            </div>
-            <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
+            <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover" data-ai-hint="headshot portrait" />
         </div>
         <p className="text-xs text-center font-semibold text-gray-700 w-24 md:w-32 truncate">{member.name}</p>
     </div>
@@ -260,7 +252,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
                 </div>
             )}
             
-            {members.length > 0 && (
+            {members.length > 1 && (
                 <Carousel
                   opts={{
                     align: "center",
@@ -326,6 +318,17 @@ export default function ProfilePage() {
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
+                 <div className="relative z-10 text-center md:text-left">
+                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
+                        Tim Kami
+                    </Badge>
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
+                    </h1>
+                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
+                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
+                    </p>
+                </div>
                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-pink-100 rounded-full shadow-inner"></div>
@@ -350,17 +353,6 @@ export default function ProfilePage() {
                      <div className="absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28">
                           <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
                     </div>
-                </div>
-                <div className="relative z-10 text-center md:text-left">
-                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-                        Tim Kami
-                    </Badge>
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
-                    </h1>
-                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
-                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
-                    </p>
                 </div>
             </div>
         </div>
@@ -471,6 +463,7 @@ export default function ProfilePage() {
                     members={currentDepartmentData.heads}
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
+                    showNavOnDesktop={false}
                 />
                 {Object.keys(currentDepartmentData.members).length > 0 && currentDivisions.length > 0 && (
                   currentDivisions.map(division => {
