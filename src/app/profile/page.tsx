@@ -24,12 +24,12 @@ import {
 
 
 const departments = [
-  { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8 text-primary" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
-  { id: 'ptkp', name: 'PTKP', fullName: 'Perguruan Tinggi dan Kepemudaan', icon: <GraduationCap className="w-8 h-8 text-primary" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Megaphone className="w-8 h-8 text-primary" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Sparkles className="w-8 h-8 text-primary" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <HeartHandshake className="w-8 h-8 text-primary" />, description: 'Departemen Kesejahteraan Mahasiswa (KESMA), yaitu keanggotaan biasa yang bertugas dalam mensejahterakan mahasiswa dan membangun sisi religius serta jiwa sosial di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
-  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Store className="w-8 h-8 text-primary" />, description: 'Departemen Bisnis dan Kemitraan (BISTRA), yaitu keanggotaan biasa yang bertugas dalam mengelola usaha dari mahasiswa dan mengkoordinir kesekretariatan serta melaksanakan pembinaan terkait bisnis di jurusan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
+  { id: 'ptkp', name: 'PTKP', fullName: 'Perguruan Tinggi dan Kepemudaan', icon: <GraduationCap className="w-8 h-8" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Megaphone className="w-8 h-8" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Sparkles className="w-8 h-8" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'kesma', name: 'Kesma', fullName: 'Kesejahteraan Mahasiswa', icon: <HeartHandshake className="w-8 h-8" />, description: 'Departemen Kesejahteraan Mahasiswa (KESMA), yaitu keanggotaan biasa yang bertugas dalam mensejahterakan mahasiswa dan membangun sisi religius serta jiwa sosial di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
+  { id: 'bistra', name: 'Bistra', fullName: 'Bisnis dan Kemitraan', icon: <Store className="w-8 h-8" />, description: 'Departemen Bisnis dan Kemitraan (BISTRA), yaitu keanggotaan biasa yang bertugas dalam mengelola usaha dari mahasiswa dan mengkoordinir kesekretariatan serta melaksanakan pembinaan terkait bisnis di jurusan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
 ];
 
 const teamMembers = {
@@ -196,16 +196,10 @@ type Member = {
 const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
-            <div 
-              className="relative mx-auto aspect-square w-full max-w-[280px]" 
-            >
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full h-full rounded-full border-8 border-primary/50"></div>
-                </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-[calc(100%-40px)] h-[calc(100%-40px)] border-4 border-primary/30 rounded-full"></div>
-                </div>
-                <Image src={member.avatar} alt={member.name} width={400} height={400} className="rounded-full object-cover relative z-10 bg-pink-50/30 p-2" data-ai-hint="headshot portrait" />
+            <div className="relative mx-auto aspect-square w-full max-w-[280px] flex items-center justify-center">
+                <div className="absolute bg-primary rounded-full w-2/3 h-2/3 blur-2xl opacity-50"></div>
+                <div className="absolute bg-primary/50 rounded-full w-1/2 h-1/2 top-0 left-0"></div>
+                <Image src={member.avatar} alt={member.name} width={400} height={400} className="relative z-10 w-full h-full object-cover rounded-2xl shadow-lg border-4 border-white" data-ai-hint="headshot portrait" />
             </div>
             <div className="flex flex-col gap-2 text-center md:text-left">
                 <h3 className="text-3xl font-bold text-primary">{member.role}</h3>
@@ -222,11 +216,20 @@ const MemberCard = ({ member }: { member: Member }) => {
     )
 };
 
-const SmallMemberCard = ({ member, onSelect }: { member: Member, onSelect: () => void }) => (
+const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSelect: () => void, isActive: boolean }) => (
     <div className="flex flex-col items-center gap-2">
-        <div className="relative aspect-square w-24 md:w-32 cursor-pointer group" onClick={onSelect}>
+        <div 
+            className={cn(
+                "relative aspect-square w-24 md:w-32 cursor-pointer group transition-transform duration-300",
+                isActive ? "scale-110" : "hover:scale-105"
+            )}
+            onClick={onSelect}
+        >
             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-full h-full border-4 border-primary/50 rounded-full transition-all duration-300 group-hover:scale-110"></div>
+                <div className={cn(
+                    "w-full h-full border-4 rounded-full transition-all duration-300",
+                    isActive ? "border-primary" : "border-primary/50 group-hover:border-primary/80"
+                )}></div>
             </div>
             <Image src={member.avatar} alt={member.name} width={150} height={150} className="rounded-full object-cover relative z-10 p-1 bg-pink-50/30" data-ai-hint="headshot portrait" />
         </div>
@@ -238,9 +241,6 @@ const SmallMemberCard = ({ member, onSelect }: { member: Member, onSelect: () =>
 const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNavOnDesktop = false }: { title: string, members: Member[], featuredMember: Member | null, setFeaturedMember: (member: Member | null) => void, showNavOnDesktop?: boolean }) => {
     if (!members || members.length === 0) return null;
 
-    const currentFeatured = featuredMember && members.some(m => m.name === featuredMember.name) ? featuredMember : members[0];
-    const otherMembers = members.filter(m => m.name !== currentFeatured.name);
-
     const handleSelectMember = (member: Member) => {
         setFeaturedMember(member);
     };
@@ -248,13 +248,13 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
     return (
         <div className="space-y-8">
             <h3 className="text-2xl font-bold text-gray-700 text-center">{title}</h3>
-            {currentFeatured && (
+            {featuredMember && (
                  <div className="flex justify-center">
-                    <MemberCard member={currentFeatured} />
+                    <MemberCard member={featuredMember} />
                 </div>
             )}
             
-            {otherMembers.length > 0 && (
+            {members.length > 0 && (
                 <Carousel
                   opts={{
                     align: "center",
@@ -264,14 +264,18 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
                   className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
                 >
                   <CarouselContent className="-ml-4">
-                    {otherMembers.map((member, index) => (
+                    {members.map((member, index) => (
                       <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center">
-                          <SmallMemberCard member={member} onSelect={() => handleSelectMember(member)} />
+                          <SmallMemberCard 
+                            member={member} 
+                            onSelect={() => handleSelectMember(member)}
+                            isActive={featuredMember?.name === member.name}
+                          />
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselPrevious className={cn("flex z-10", !showNavOnDesktop && "md:hidden")} />
-                  <CarouselNext className={cn("flex z-10", !showNavOnDesktop && "md:hidden")} />
+                  <CarouselPrevious className={cn("flex z-20", !showNavOnDesktop && "md:hidden")} />
+                  <CarouselNext className={cn("flex z-20", !showNavOnDesktop && "md:hidden")} />
                 </Carousel>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
@@ -329,27 +333,26 @@ export default function ProfilePage() {
                     </p>
                 </div>
 
-                <div className="relative flex items-center justify-center h-[500px]">
-                  <div className="absolute w-full h-full grid grid-cols-3 grid-rows-3 gap-4 transform-gpu scale-75 md:scale-100">
-                      <div className="relative col-start-1 row-start-2">
-                        <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                      </div>
-                      <div className="relative col-start-2 row-start-1">
-                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Photo 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="team meeting"/>
-                      </div>
-                      <div className="relative col-start-3 row-start-2">
-                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team Photo 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                      </div>
-                      <div className="relative col-start-1 row-start-3 self-end">
-                         <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team Photo 6" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
-                      </div>
-                       <div className="relative col-start-2 row-start-3 self-end">
-                          <Image src="https://placehold.co/250x250.png" width={250} height={250} alt="Team Photo 5" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
-                      </div>
-                      <div className="relative col-start-3 row-start-3 self-end">
-                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team Photo 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="group discussion"/>
+                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
+                    <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-center">
+                        <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Main" className="rounded-full object-cover shadow-2xl border-8 border-white z-10" data-ai-hint="team leader" />
                     </div>
-                  </div>
+                    
+                    <div className="absolute top-10 left-1/2 -translate-x-1/2 w-32 h-32 md:w-40 md:h-40">
+                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
+                    </div>
+                    
+                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-32 h-32 md:w-40 md:h-40">
+                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
+                    </div>
+
+                    <div className="absolute top-1/2 -translate-y-1/2 left-0 w-28 h-28 md:w-36 md:h-36">
+                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
+                    </div>
+
+                     <div className="absolute top-1/2 -translate-y-1/2 right-0 w-28 h-28 md:w-36 md:h-36">
+                          <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
+                    </div>
                 </div>
 
             </div>
@@ -387,9 +390,9 @@ export default function ProfilePage() {
                       <CardContent className="p-0 flex flex-col items-center gap-2">
                         <div className={cn(
                           'p-3 rounded-full transition-colors',
-                           activeDept.id === dept.id ? 'bg-white/20 [&>svg]:text-white' : 'bg-pink-100 [&>svg]:text-primary'
+                           activeDept.id === dept.id ? 'bg-white/20 [&>svg]:text-white' : 'bg-pink-100'
                         )}>
-                           {dept.icon}
+                           {React.cloneElement(dept.icon, {className: cn("w-8 h-8", activeDept.id === dept.id ? 'text-white' : 'text-primary')})}
                         </div>
                         <h4 className="font-bold text-sm">{dept.name}</h4>
                       </CardContent>
@@ -406,7 +409,7 @@ export default function ProfilePage() {
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
             <div className="relative w-24 h-24 mb-4 bg-pink-100 text-primary rounded-full flex items-center justify-center">
-              {React.cloneElement(activeDept.icon, {className: "w-12 h-12"})}
+              {React.cloneElement(activeDept.icon, {className: "w-12 h-12 text-primary"})}
             </div>
             <h2 className="text-4xl font-bold text-primary mb-2">{activeDept.fullName}</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-6">{activeDept.description}</p>
@@ -462,17 +465,21 @@ export default function ProfilePage() {
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
                 />
-                {activeDept.id !== 'inti' && currentDivisions.length > 0 && (
-                  currentDivisions.map(division => (
-                    <MemberGroup 
-                        key={division.id}
-                        title={`Anggota Divisi ${division.name}`}
-                        members={currentDepartmentData.members[division.id as keyof typeof currentDepartmentData.members] || []}
-                        featuredMember={featuredMembers[division.id] || null}
-                        setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
-                        showNavOnDesktop={true}
-                    />
-                  ))
+                {Object.keys(currentDepartmentData.members).length > 0 && currentDivisions.length > 0 && (
+                  currentDivisions.map(division => {
+                    const divisionMembers = currentDepartmentData.members[division.id as keyof typeof currentDepartmentData.members] || [];
+                    if (divisionMembers.length === 0) return null;
+                    return (
+                        <MemberGroup 
+                            key={division.id}
+                            title={`Anggota Divisi ${division.name}`}
+                            members={divisionMembers}
+                            featuredMember={featuredMembers[division.id] || null}
+                            setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
+                            showNavOnDesktop={true}
+                        />
+                    );
+                  })
                 )}
             </div>
           )}
