@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, PawPrint } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck } from 'lucide-react';
 
 const stats = [
   {
@@ -13,12 +13,12 @@ const stats = [
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    title: '8 Departemen',
+    title: '5 Departemen',
     description: 'Divisi khusus untuk pengembangan yang komprehensif.',
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: '15+ Divisi',
+    title: '11 Divisi',
     description: 'Tim yang fokus untuk pengembangan keterampilan yang ditargetkan.',
   },
   {
@@ -40,7 +40,7 @@ const logoPhilosophy = [
         description: "Melambangkan pertahanan dalam menghadapi tantangan dan rintangan."
     },
     {
-        icon: <PawPrint className="w-5 h-5 text-primary" />,
+        icon: <BookOpenCheck className="w-5 h-5 text-primary" />,
         title: "Buku dan Pena",
         description: "Melambangkan ilmu pengetahuan dan kreativitas tanpa batas."
     }
@@ -136,7 +136,7 @@ export default function AboutPage() {
              Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) adalah organisasi kemahasiswaan khusus untuk mahasiswa Jurusan Manajemen Informatika di Politeknik Negeri Sriwijaya. Berdiri sejak tahun 2002, HMJMI berperan sebagai wadah yang mendukung pengembangan di bidang akademik dan non-akademik, serta menyediakan berbagai kegiatan yang bermanfaat bagi para mahasiswa.
             </p>
             <p className="text-muted-foreground mt-4 max-w-4xl mx-auto">
-              HMJMI memiliki 8 departemen dengan berbagai divisi yang berfokus pada berbagai aspek untuk meningkatkan kompetensi dan kolaborasi mahasiswa.
+              HMJMI memiliki 5 departemen dengan 11 divisi yang berfokus pada berbagai aspek untuk meningkatkan kompetensi dan kolaborasi mahasiswa.
             </p>
           </div>
 
