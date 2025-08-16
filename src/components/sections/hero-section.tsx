@@ -11,7 +11,7 @@ export function HeroSection() {
   return (
     <section id="home" className="relative w-full overflow-hidden bg-background">
       <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent opacity-50"></div>
-      <div className="container mx-auto px-4 py-20 md:py-28 relative">
+      <div className="container mx-auto px-4 pt-24 pb-20 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="z-10">
             <Badge variant="outline" className="border-primary/50 text-primary mb-4 py-1 px-3 font-semibold">
@@ -35,7 +35,7 @@ export function HeroSection() {
             <div className="mt-12 grid grid-cols-3 gap-4 text-center">
               <div>
                 <Users className="h-7 w-7 mx-auto text-primary mb-2" />
-                <p className="font-bold text-xl">150+</p>
+                <p className="font-bold text-xl">108</p>
                 <p className="text-sm text-muted-foreground">Anggota Aktif</p>
               </div>
               <div>
@@ -52,7 +52,8 @@ export function HeroSection() {
           </div>
           
           <div className="relative h-full min-h-[450px]">
-             <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 rounded-3xl transform -rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
+             <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
+             <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
             <div className="relative z-10 p-2 bg-white rounded-3xl shadow-2xl h-full border">
                 <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
                     <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden">
