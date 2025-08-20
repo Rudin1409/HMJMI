@@ -58,8 +58,9 @@ export function TestimonialsSection() {
           <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-background to-transparent z-10"></div>
           <div className="flex w-max animate-marquee space-x-4 pr-4 group-hover:[animation-play-state:paused]">
             {[...testimonials, ...testimonials].map((testimonial, index) => (
-               <div key={index} className="w-[350px] md:w-[400px] py-4">
-                  <Card className="h-full bg-card/80 backdrop-blur-sm shadow-lg rounded-xl overflow-hidden transition-transform duration-300 hover:scale-110">
+               <div key={index} className="w-[350px] md:w-[400px] py-4 group/item">
+                  <Card className="h-full bg-card/80 backdrop-blur-sm shadow-lg rounded-xl overflow-hidden transition-all duration-300 relative">
+                    <div className="absolute top-4 right-4 w-5 h-5 bg-primary rounded-sm opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
                     <CardContent className="p-8 flex flex-col items-center text-center">
                       <div className="relative mb-6">
                         <p className="text-6xl text-primary/20 absolute -top-8 left-0 font-serif">“</p>
