@@ -44,7 +44,7 @@ export function ProgramHighlightsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {highlightedPrograms.map((program, index) => (
-            <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-card/80 backdrop-blur-sm group">
+            <Card key={index} className="group relative overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-card/80 backdrop-blur-sm hover:bg-primary/10">
               <CardContent className="p-0">
                 <div className="relative aspect-video overflow-hidden">
                     <Image 
@@ -61,6 +61,7 @@ export function ProgramHighlightsSection() {
                   <h3 className="text-xl font-bold text-gray-800">{program.title}</h3>
                 </div>
               </CardContent>
+               <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-primary/20 rounded-xl rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Card>
           ))}
         </div>

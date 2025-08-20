@@ -1,7 +1,6 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, Calendar, Code, Users } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, CheckCircle } from 'lucide-react';
 
 const stats = [
   {
@@ -44,7 +43,7 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {stats.map((stat, index) => (
-            <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-card/80 backdrop-blur-sm rounded-xl">
+            <Card key={index} className="group relative text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-card/80 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-primary/10">
               <CardContent className="flex flex-col items-center gap-4 p-0">
                 <div className="bg-pink-100 p-4 rounded-full">
                    {stat.icon}
@@ -52,24 +51,33 @@ export function AboutSection() {
                 <h3 className="text-xl font-bold">{stat.title}</h3>
                 <p className="text-muted-foreground text-sm">{stat.description}</p>
               </CardContent>
+              <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-primary/20 rounded-xl rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Card>
           ))}
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 shadow-lg rounded-2xl bg-card/80 backdrop-blur-sm relative overflow-hidden">
+            <Card className="group relative p-8 shadow-lg rounded-2xl bg-card/80 backdrop-blur-sm overflow-hidden hover:bg-primary/10 transition-colors">
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 rounded-full"></div>
                 <div className="relative z-10">
+                    <div className="w-16 h-16 bg-pink-100 text-primary rounded-2xl flex items-center justify-center flex-shrink-0 mb-4">
+                        <CheckCircle className="w-8 h-8"/>
+                    </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Visi Kami</h3>
                     <p className="text-muted-foreground">Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif bagi seluruh Mahasiswa/i Manajemen Informatika.</p>
                 </div>
+                <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-primary/20 rounded-xl rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Card>
-            <Card className="p-8 shadow-lg rounded-2xl bg-card/80 backdrop-blur-sm relative overflow-hidden">
+            <Card className="group relative p-8 shadow-lg rounded-2xl bg-card/80 backdrop-blur-sm overflow-hidden hover:bg-primary/10 transition-colors">
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 rounded-full"></div>
                  <div className="relative z-10">
+                    <div className="w-16 h-16 bg-pink-100 text-primary rounded-2xl flex items-center justify-center flex-shrink-0 mb-4">
+                        <CheckCircle className="w-8 h-8"/>
+                    </div>
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Misi Kami</h3>
                     <p className="text-muted-foreground">Meningkatkan kepedulian sosial dan religius, mendorong pengembangan kompetensi dan aspirasi, menjadi pusat informasi yang kreatif, mewadahi minat bakat, serta menumbuhkan jiwa kewirausahaan mahasiswa.</p>
                 </div>
+                <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-primary/20 rounded-xl rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Card>
         </div>
 
