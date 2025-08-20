@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -113,6 +113,14 @@ type GalleryItem = typeof galleryItems[0];
 export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
+  const missionPoints = [
+    "Meningkatkan kepedulian sosial dan memperkuat nilai-nilai religius bagi Mahasiswa/i Jurusan Manajemen Informatika.",
+    "Mendorong pengembangan kompetensi dan prestasi akademik serta mengelola dan menyalurkan aspirasi Mahasiswa/i Jurusan Manajemen Informatika.",
+    "Menjadikan Himpunan Mahasiswa Jurusan Informatika sebagai pusat informasi melalui Media Kreatif dan penyebaran berita yang informatif bagi Mahasiswa/i Manajemen Informatika.",
+    "Mewadahi serta Menyalurkan minat dan bakat di bidang non-akademik yang terdapat pada Mahasiswa/i Jurusan Manajemen Informatika.",
+    "Mengembangkan jiwa kewirausahaan Mahasiswa/i Jurusan Manajemen Informatika melalui pengelolaan bisnis dan layanan kemitraan."
+  ];
+
   return (
     <div className="flex flex-col">
       <section 
@@ -130,7 +138,7 @@ export default function AboutPage() {
             Temukan bagaimana Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berkomitmen mencetak pemimpin teknologi masa depan.
           </p>
           <div className="mt-8">
-            <a href="#our-story">
+            <a href="#vision-mission">
               <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200">
                 <ChevronDown className="h-6 w-6" />
               </Button>
@@ -139,45 +147,44 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="our-story" className="w-full bg-white py-16 md:py-24">
+      <section id="vision-mission" className="w-full bg-white py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div>
-              <div className="flex justify-start mb-4">
-                  <div className="w-16 h-1 bg-primary rounded-full"></div>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                  Awal Mula: <span className="text-primary">Visi Menjadi Aksi</span>
-              </h2>
-              <p className="text-muted-foreground mb-4">
-               Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) didirikan pada tahun 2002 sebagai wadah bagi mahasiswa Manajemen Informatika Politeknik Negeri Sriwijaya untuk berkembang, berkolaborasi, dan berinovasi. Kami fokus pada pengembangan bakat akademik dan non-akademik.
-              </p>
-              <p className="text-muted-foreground mb-6">
-                Mengusung semangat "Spirit Perubahan", kami berkomitmen menjalankan organisasi yang SMART—Solid, Melayani, Aktif, Responsif, dan Terdampak—dalam setiap program kerja kami.
-              </p>
-              <div className="grid grid-cols-2 gap-8">
-                  <div className="flex items-start gap-4">
-                      <div className="bg-pink-100 text-primary w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Target className="w-6 h-6"/>
-                      </div>
-                      <div>
-                          <h3 className="text-lg font-bold text-gray-800">Tujuan Kami</h3>
-                          <p className="text-muted-foreground text-sm">Menjadi pusat pengembangan potensi mahasiswa yang aktif, kreatif, dan inovatif.</p>
-                      </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                      <div className="bg-pink-100 text-primary w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <Rocket className="w-6 h-6"/>
-                      </div>
-                      <div>
-                          <h3 className="text-lg font-bold text-gray-800">Strategi Kami</h3>
-                          <p className="text-muted-foreground text-sm">Menciptakan organisasi yang SMART dalam setiap ekspresi, kreasi, dan prestasi.</p>
-                      </div>
-                  </div>
-              </div>
+          <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div className='space-y-12'>
+                <div className='flex flex-col items-center md:items-start text-center md:text-left'>
+                    <div className="flex items-center gap-4 mb-4">
+                        <div className="w-16 h-16 bg-pink-100 text-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <Eye className="w-8 h-8"/>
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Visi Kami</h2>
+                    </div>
+                    <p className="text-muted-foreground">
+                    Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif bagi seluruh Mahasiswa/i Manajemen Informatika.
+                    </p>
+                </div>
+                 <div className="relative aspect-square hidden md:block">
+                    <Image src="https://placehold.co/600x600.png" layout="fill" objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                </div>
             </div>
-             <div className="relative aspect-square">
-                <Image src="https://placehold.co/600x600.png" layout="fill" objectFit="cover" alt="Team discussing" className="rounded-2xl shadow-lg" data-ai-hint="students brainstorming whiteboard"/>
+             <div className='space-y-8'>
+                <div className='flex flex-col items-center md:items-start text-center md:text-left'>
+                  <div className="flex items-center gap-4 mb-4">
+                          <div className="w-16 h-16 bg-pink-100 text-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                              <ListChecks className="w-8 h-8"/>
+                          </div>
+                          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Misi Kami</h2>
+                  </div>
+                </div>
+                <ul className="space-y-4">
+                  {missionPoints.map((mission, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="flex-shrink-0 w-6 h-6 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold mt-1">
+                        {index + 1}
+                      </div>
+                      <p className="text-muted-foreground">{mission}</p>
+                    </li>
+                  ))}
+                </ul>
             </div>
           </div>
         </div>
