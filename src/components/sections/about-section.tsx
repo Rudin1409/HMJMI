@@ -21,7 +21,7 @@ const stats = [
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '25+ Program',
+    title: '15+ Program',
     description: 'Beragam kegiatan dan inisiatif yang inovatif.',
   },
 ];

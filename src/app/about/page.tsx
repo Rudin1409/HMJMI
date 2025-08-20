@@ -33,7 +33,7 @@ const stats = [
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '25+ Program Kerja',
+    title: '15+ Program Kerja',
     description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
   },
 ];

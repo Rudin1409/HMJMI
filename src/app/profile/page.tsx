@@ -201,28 +201,25 @@ const teamMembers = {
 
 const programs = {
     inti: [
-        { title: 'Musyawarah Besar', category: 'INTERNAL', description: 'Agenda tahunan untuk evaluasi kepengurusan dan pemilihan ketua umum baru.', image: 'https://placehold.co/400x200.png', hint: 'organization meeting' },
-        { title: 'Rapat Kerja', category: 'INTERNAL', description: 'Menyusun dan menyelaraskan program kerja untuk satu periode kepengurusan.', image: 'https://placehold.co/400x200.png', hint: 'work meeting' }
+        { title: 'IT Festival', category: 'KOMPETISI & EDUKASI', description: 'Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.', image: 'https://placehold.co/400x200.png', hint: 'tech festival stage competition' },
+        { title: 'Sertijab & Demisioner', category: 'INTERNAL', description: 'Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru.', image: 'https://placehold.co/400x200.png', hint: 'organization meeting' }
     ],
     ptkp: [
-        { title: 'Webinar Teknologi', category: 'AKADEMIK', description: 'Seminar online dengan topik terkini di dunia IT untuk meningkatkan wawasan.', image: 'https://placehold.co/400x200.png', hint: 'tech webinar' },
-        { title: 'Pelatihan Coding', category: 'AKADEMIK', description: 'Workshop intensif untuk mengasah kemampuan pemrograman mahasiswa.', image: 'https://placehold.co/400x200.png', hint: 'coding workshop' }
+        { title: 'SINTAK', category: 'PENGEMBANGAN DIRI', description: 'Study club untuk mengembangkan soft skill dalam pemrograman, terutama di bidang web development.', image: 'https://placehold.co/400x200.png', hint: 'coding workshop' },
+        { title: 'Latihan Dasar Organisasi', category: 'PELATIHAN', description: 'Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi.', image: 'https://placehold.co/400x200.png', hint: 'leadership training' }
     ],
     humas: [
-        { title: 'Kunjungan Industri', category: 'EKSTERNAL', description: 'Mengunjungi perusahaan teknologi untuk memperluas wawasan dunia kerja.', image: 'https://placehold.co/400x200.png', hint: 'industry visit' },
-        { title: 'Studi Banding', category: 'EKSTERNAL', description: 'Bertukar wawasan dan pengalaman dengan organisasi mahasiswa lain.', image: 'https://placehold.co/400x200.png', hint: 'student exchange' }
+        { title: 'VIBE (Voice of Informatics and Business Event)', category: 'EDUKASI', description: 'Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis.', image: 'https://placehold.co/400x200.png', hint: 'seminar event' }
     ],
     psdm: [
-        { title: 'LKMM-PD', category: 'PELATIHAN', description: 'Latihan Keterampilan Manajemen Mahasiswa - Pra Dasar untuk kaderisasi.', image: 'https://placehold.co/400x200.png', hint: 'leadership training' },
-        { title: 'MI CUP', category: 'MINAT BAKAT', description: 'Kompetisi olahraga dan seni untuk mahasiswa Manajemen Informatika.', image: 'https://placehold.co/400x200.png', hint: 'student competition' }
+        { title: 'UPGRADING', category: 'PELATIHAN', description: 'Pelatihan yang dikhususkan untuk kepengurusan baru demi meningkatkan kemampuan public speaking dan desain grafis.', image: 'https://placehold.co/400x200.png', hint: 'skill workshop' },
+        { title: 'POSMI', category: 'MINAT BAKAT', description: 'Kompetisi olahraga dan seni untuk mahasiswa Jurusan Manajemen Informatika.', image: 'https://placehold.co/400x200.png', hint: 'student competition' }
     ],
     kesma: [
-        { title: 'Bakti Sosial', category: 'SOSIAL', description: 'Kegiatan sosial untuk membantu masyarakat sekitar dan menumbuhkan empati.', image: 'https://placehold.co/400x200.png', hint: 'social charity' },
-        { title: 'Penggalangan Dana', category: 'SOSIAL', description: 'Mengumpulkan donasi untuk membantu yang membutuhkan akibat bencana atau musibah.', image: 'https://placehold.co/400x200.png', hint: 'fundraising event' }
+        { title: 'BAKSOMI', category: 'SOSIAL', description: 'Bakti sosial yang mencakup kunjungan ke panti, tausiyah, serta bagi-bagi takjil.', image: 'https://placehold.co/400x200.png', hint: 'social charity' },
     ],
     bistra: [
-        { title: 'Bazar Kewirausahaan', category: 'BISNIS', description: 'Mengadakan bazar untuk mendorong semangat dan kreativitas wirausaha.', image: 'https://placehold.co/400x200.png', hint: 'entrepreneur bazaar' },
-        { title: 'Pelatihan Kewirausahaan', category: 'BISNIS', description: 'Memberikan pembekalan dan strategi bisnis bagi mahasiswa yang tertarik berwirausaha.', image: 'https://placehold.co/400x200.png', hint: 'business workshop' }
+        { title: 'Seminar Bisnis', category: 'EDUKASI', description: 'Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha.', image: 'https://placehold.co/400x200.png', hint: 'business seminar' }
     ]
 };
 
