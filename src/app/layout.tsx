@@ -30,10 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background text-foreground font-sans antialiased', inter.variable)}>
+      <body className={cn('min-h-screen text-foreground font-sans antialiased', inter.variable)}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <div className="relative flex min-h-dvh flex-col bg-transparent">
-            <div className="absolute top-0 left-0 -z-10 h-full w-full opacity-50">
+          <div className="absolute top-0 left-0 -z-10 h-full w-full opacity-50">
               <Squares 
                 speed={0.3} 
                 squareSize={40}
@@ -41,7 +40,8 @@ export default function RootLayout({
                 defaultBorderColor='hsla(331, 69%, 90%, 0.2)'
                 hoverFillColor='hsla(331, 69%, 80%, 0.3)'
               />
-            </div>
+          </div>
+          <div className="relative flex min-h-dvh flex-col bg-background">
             <SiteHeader />
             <main className="flex-1">{children}</main>
             <SiteFooter />
