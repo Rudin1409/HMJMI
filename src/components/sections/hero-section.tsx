@@ -51,7 +51,7 @@ export function HeroSection() {
             </div>
           </div>
           
-          <div className="relative h-full min-h-[450px]">
+          <div className="relative h-full min-h-[450px] md:pl-8 lg:pl-16">
              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
              <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
              <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-pink-200 rounded-3xl transform rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
