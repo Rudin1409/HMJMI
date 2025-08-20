@@ -87,26 +87,26 @@ const teamMembers = {
      ],
     members: {
       kominfo: [
-          { name: 'Arien Salsabila Basurini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nadi Kurniawan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Fajar Setyanusa', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nafi Julian Syam Fajri', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Diana Mareta', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Anggun Ayu Tria Rahmah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Arien Salsabila Basurini', role: 'Anggota Kominfo', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nadi Kurniawan', role: 'Anggota Kominfo', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Fajar Setyanusa', role: 'Anggota kominfo', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nafi Julian Syam Fajri', role: 'Anggota Kominfo', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Diana Mareta', role: 'Anggota Kominfo', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Anggun Ayu Tria Rahmah', role: 'Anggota Kominfo', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
       medkraf: [
-          { name: 'M. Dandi Firjatullah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Muhammad Nabil Fadhilah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Finolia Rama Danti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nuril Maghfiroh', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Helza Framesha', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Thomas Kristalio Ariflan Santos', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'M. Dandi Firjatullah', role: 'Anggota Medkraf', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Muhammad Nabil Fadhilah', role: 'Anggota Medkraf', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Finolia Rama Danti', role: 'Anggota Medkraf', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nuril Maghfiroh', role: 'Anggota Medkraf', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Helza Framesha', role: 'Anggota Medkraf', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Thomas Kristalio Ariflan Santos', role: 'Anggota Medkraf', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
       jurnalis: [
-          { name: 'Regas Sonjaya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Sulthan Muhammad Diftha Annashira', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Arau Imanuel Siritoitet', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Muhammad Kevin Fadhilah Akmal', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Regas Sonjaya', role: 'Anggota Jurnalis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Sulthan Muhammad Diftha Annashira', role: 'Anggota Jurnalis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Arau Imanuel Siritoitet', role: 'Anggota Jurnalis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Muhammad Kevin Fadhilah Akmal', role: 'Anggota Jurnalis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     }
   },
@@ -121,20 +121,20 @@ const teamMembers = {
       ],
     members: {
       minatbakat: [
-          { name: 'Swarnata Prayoga', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nurhaliza', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nanda Meylani Putri', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Luluk Anggraini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Ridho Dwi Restiandi', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Muhammad Haekal Saleh', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Muhammad Fathir Romeo', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Shafia Aurajannah Marza', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Renjiro Alief Daniswara', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Fika Dwi Jayanti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nurin Nabya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Kayla Syakirah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'M. Faizal Alfriandy', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Muhammad Ridho Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Swarnata Prayoga', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nurhaliza', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nanda Meylani Putri', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Luluk Anggraini', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Ridho Dwi Restiandi', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Muhammad Haekal Saleh', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Muhammad Fathir Romeo', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Shafia Aurajannah Marza', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Renjiro Alief Daniswara', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Fika Dwi Jayanti', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nurin Nabya', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Kayla Syakirah', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'M. Faizal Alfriandy', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Muhammad Ridho Pratama', role: 'Anggota Minat Bakat', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
        hrd: []
     }
@@ -150,21 +150,21 @@ const teamMembers = {
       ],
     members: {
       agama: [
-        { name: 'Annisa Nurhidayah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Muhammad Ghani Yusha', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Muhammad Rizky Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Nabila Huwaida', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Muhammad Rizky Wijaya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Annisa Nurhidayah', role: 'Anggota Agama', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Ghani Yusha', role: 'Anggota Agama', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Rizky Pratama', role: 'Anggota Agama', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Nabila Huwaida', role: 'Anggota Agama', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Rizky Wijaya', role: 'Anggota Agama', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
       sosial: [
-        { name: 'Dimas Fajar Satrio', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Jessica Imelda Septriani', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Muhammad Rifki Surya Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Tarisha Bais Husna', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Adinda Rahmalia', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Amira Luthfia Alkamila', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Frans Ahmad Zharif', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Rasya Syakir', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Dimas Fajar Satrio', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Jessica Imelda Septriani', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Rifki Surya Pratama', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Tarisha Bais Husna', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Adinda Rahmalia', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Amira Luthfia Alkamila', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Frans Ahmad Zharif', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Rasya Syakir', role: 'Anggota Sosial', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     }
   },
@@ -179,20 +179,20 @@ const teamMembers = {
       ],
     members: {
       bisnis: [
-        { name: 'Henny Daraditha Salsabilla', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Tri Aji Alhuda', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Munzillin Zahri Aji', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Muhammad Azrin', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Alfaris Abiyyu Ramadhan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Fadhlan Lordiansyah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Henny Daraditha Salsabilla', role: 'Anggota Bisnis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Tri Aji Alhuda', role: 'Anggota Bisnis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Munzillin Zahri Aji', role: 'Anggota Bisnis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Muhammad Azrin', role: 'Anggota Bisnis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Alfaris Abiyyu Ramadhan', role: 'Anggota Bisnis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Fadhlan Lordiansyah', role: 'Anggota Bisnis', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
       kemitraan: [
-        { name: 'Aldi Kurniawan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Sharla Imanda', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Afifah Saharani', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Fenita Harlina', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Ayu Sari Romadhon', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Nabila Salsabila', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Aldi Kurniawan', role: 'Anggota Kemitraan', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Sharla Imanda', role: 'Anggota Kemitraan', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Afifah Saharani', role: 'Anggota Kemitraan', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Fenita Harlina', role: 'Anggota Kemitraan', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Ayu Sari Romadhon', role: 'Anggota Kemitraan', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Nabila Salsabila', role: 'Anggota Kemitraan', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     }
   }
@@ -206,13 +206,13 @@ const programs = {
     ],
     ptkp: [
         { title: 'SINTAK', category: 'PENGEMBANGAN DIRI', description: 'Study club untuk mengembangkan soft skill dalam pemrograman, terutama di bidang web development.', image: 'https://placehold.co/400x200.png', hint: 'coding workshop' },
-        { title: 'Latihan Dasar Organisasi', category: 'PELATIHAN', description: 'Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi.', image: 'https://placehold.co/400x200.png', hint: 'leadership training' }
     ],
     humas: [
-        { title: 'VIBE (Voice of Informatics and Business Event)', category: 'EDUKASI', description: 'Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis.', image: 'https://placehold.co/400x200.png', hint: 'seminar event' }
+        { title: 'VIBE (Voice of Informatics and Business Event)', category: 'EDUKASI', description: 'Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis.', image: 'https://placehold.co/400x200.png', hint: 'seminar event' },
+        { title: 'UPGRADING', category: 'PELATIHAN', description: 'Pelatihan yang dikhususkan untuk kepengurusan baru demi meningkatkan kemampuan public speaking dan desain grafis.', image: 'https://placehold.co/400x200.png', hint: 'skill workshop' },
     ],
     psdm: [
-        { title: 'UPGRADING', category: 'PELATIHAN', description: 'Pelatihan yang dikhususkan untuk kepengurusan baru demi meningkatkan kemampuan public speaking dan desain grafis.', image: 'https://placehold.co/400x200.png', hint: 'skill workshop' },
+        { title: 'Latihan Dasar Organisasi', category: 'PELATIHAN', description: 'Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi.', image: 'https://placehold.co/400x200.png', hint: 'leadership training' },
         { title: 'POSMI', category: 'MINAT BAKAT', description: 'Kompetisi olahraga dan seni untuk mahasiswa Jurusan Manajemen Informatika.', image: 'https://placehold.co/400x200.png', hint: 'student competition' }
     ],
     kesma: [
@@ -390,7 +390,7 @@ export default function ProfilePage() {
                         Temui Tim Kami
                     </Badge>
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-                        Our Strength <span className="text-primary">is Our Team</span>
+                        Meet Our <span className="text-primary">Visionaries</span>
                     </h1>
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
                         Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
