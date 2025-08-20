@@ -5,6 +5,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { Inter } from 'next/font/google';
+import Squares from '@/components/squares';
+import { ThemeProvider } from 'next-themes';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,19 +29,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen bg-background font-sans antialiased', inter.variable)}>
-        <div className="relative flex min-h-dvh flex-col bg-transparent">
-          <div className="absolute top-0 left-0 -z-10 h-full w-full">
-            <div className="absolute top-0 left-0 h-full w-full bg-background">
-              <div className="absolute bottom-0 left-[-20%] right-0 top-[-10%] h-[500px] w-[500px] rounded-full bg-primary/10 blur-[120px] animate-blob-1"></div>
-              <div className="absolute bottom-0 right-[-20%] top-[-10%] h-[500px] w-[500px] rounded-full bg-secondary/10 blur-[120px] animate-blob-2"></div>
+      <body className={cn('min-h-screen bg-background text-foreground font-sans antialiased', inter.variable)}>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <div className="relative flex min-h-dvh flex-col bg-transparent">
+            <div className="absolute top-0 left-0 -z-10 h-full w-full opacity-50">
+              <Squares 
+                speed={0.3} 
+                squareSize={40}
+                direction='diagonal'
+                defaultBorderColor='hsla(331, 69%, 90%, 0.2)'
+                hoverFillColor='hsla(331, 69%, 80%, 0.3)'
+                gradientColor='hsl(var(--background))'
+              />
             </div>
+            <SiteHeader />
+            <main className="flex-1">{children}</main>
+            <SiteFooter />
           </div>
-          <SiteHeader />
-          <main className="flex-1">{children}</main>
-          <SiteFooter />
-        </div>
-        <Toaster />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
