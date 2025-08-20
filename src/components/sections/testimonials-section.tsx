@@ -58,7 +58,7 @@ export function TestimonialsSection() {
           <div className="flex w-max animate-marquee space-x-4 pr-4">
             {[...testimonials, ...testimonials].map((testimonial, index) => (
                <div key={index} className="w-[350px] md:w-[400px]">
-                  <Card className="h-full bg-transparent shadow-lg rounded-xl overflow-hidden">
+                  <Card className="h-full bg-card/80 backdrop-blur-sm shadow-lg rounded-xl overflow-hidden">
                     <CardContent className="p-8 flex flex-col items-center text-center">
                       <div className="relative mb-6">
                         <p className="text-6xl text-primary/20 absolute -top-8 left-0 font-serif">“</p>

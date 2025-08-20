@@ -32,7 +32,7 @@ export function DivisionsSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {departments.map((dept) => (
-            <Card key={dept.name} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-transparent rounded-xl">
+            <Card key={dept.name} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-card/80 backdrop-blur-sm rounded-xl">
               <CardContent className="flex flex-col items-center gap-4 p-0">
                 <div className="bg-pink-100 p-4 rounded-full">
                   {dept.icon}

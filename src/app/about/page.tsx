@@ -209,7 +209,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-transparent rounded-xl">
+              <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-card/80 backdrop-blur-sm rounded-xl">
                 <CardContent className="flex flex-col items-center gap-4">
                   <div className="bg-pink-100 p-4 rounded-full">
                      {stat.icon}
@@ -277,7 +277,7 @@ export default function AboutPage() {
                 {galleryItems.map((item, index) => (
                     <Card 
                       key={index} 
-                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-transparent cursor-pointer group"
+                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-card/80 backdrop-blur-sm cursor-pointer group"
                       onClick={() => setSelectedImage(item)}
                     >
                         <CardContent className="p-0">

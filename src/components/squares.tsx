@@ -37,10 +37,6 @@ const Squares = ({
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     
-    const gradientColor = resolvedTheme === 'dark' 
-      ? 'hsl(331 25% 10%)' 
-      : 'hsl(320 100% 98%)';
-
     const drawGrid = () => {
       if (!ctx) return;
       
@@ -65,21 +61,6 @@ const Squares = ({
               }
           }
       }
-
-      // Vignette effect
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2,
-        canvas.height / 2,
-        0,
-        canvas.width / 2,
-        canvas.height / 2,
-        Math.max(canvas.width, canvas.height) / 2
-      );
-      gradient.addColorStop(0, "rgba(255, 255, 255, 0)");
-      gradient.addColorStop(0.8, gradientColor);
-
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 
     const updateAnimation = () => {

@@ -440,7 +440,7 @@ export default function ProfilePage() {
             </p>
           </div>
 
-          <Card className="max-w-5xl mx-auto p-6 md:p-8 shadow-lg rounded-2xl bg-transparent backdrop-blur-sm">
+          <Card className="max-w-5xl mx-auto p-6 md:p-8 shadow-lg rounded-2xl bg-card/80 backdrop-blur-sm">
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
@@ -452,7 +452,7 @@ export default function ProfilePage() {
                   <button key={dept.id} onClick={() => setActiveDept(dept)}>
                     <Card className={cn(
                       'text-center p-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl hover:scale-105 h-full',
-                      activeDept.id === dept.id ? 'bg-primary text-primary-foreground shadow-primary/40' : 'bg-transparent'
+                      activeDept.id === dept.id ? 'bg-primary text-primary-foreground shadow-primary/40' : 'bg-card'
                     )}>
                       <CardContent className="p-0 flex flex-col items-center gap-2">
                         <div className={cn(
@@ -488,7 +488,7 @@ export default function ProfilePage() {
               <Accordion type="single" collapsible className="w-full max-w-2xl mb-8">
                   <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisi</h3>
                    {currentDivisions.map((division) => (
-                      <AccordionItem key={division.id} value={division.id} className="bg-transparent border-b-2 rounded-lg mb-2 px-4">
+                      <AccordionItem key={division.id} value={division.id} className="bg-card/80 backdrop-blur-sm border-b-2 rounded-lg mb-2 px-4">
                           <AccordionTrigger className="text-left font-semibold hover:no-underline">{division.name}</AccordionTrigger>
                           <AccordionContent className="text-muted-foreground">
                               {division.description}
@@ -563,7 +563,7 @@ export default function ProfilePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {currentPrograms.length > 0 ? (
                   currentPrograms.map((program, index) => (
-                      <Card key={index} className="bg-transparent rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+                      <Card key={index} className="bg-card/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
                           <CardContent className="p-0">
                                <div className="relative aspect-video">
                                   <Image src={program.image} layout="fill" objectFit="cover" alt={program.title} data-ai-hint={program.hint}/>

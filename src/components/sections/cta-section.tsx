@@ -7,7 +7,7 @@ export function CtaSection() {
   return (
     <section id="cta" className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <div className="relative max-w-4xl mx-auto p-8 md:p-12 bg-transparent rounded-2xl shadow-lg text-center overflow-hidden">
+        <div className="relative max-w-4xl mx-auto p-8 md:p-12 bg-card/80 backdrop-blur-sm rounded-2xl shadow-lg text-center overflow-hidden">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary/10 rounded-full"></div>
             <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-primary/10 rounded-full"></div>
             <div className='relative z-10'>
