@@ -1,5 +1,6 @@
+
 'use client';
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 const Squares = ({
@@ -7,15 +8,21 @@ const Squares = ({
   speed = 0.5,
   squareSize = 40,
   defaultBorderColor = "hsla(331, 69%, 90%, 0.5)",
-  hoverFillColor = "hsl(331, 69%, 61%)", // primary color
-  gradientColor = "hsl(320, 100%, 98%)", // background color
+  hoverFillColor = "hsl(331, 69%, 61%)",
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const requestRef = useRef<number | null>(null);
   const gridOffset = useRef({ x: 0, y: 0 });
   const hoveredSquareRef = useRef<{ x: number; y: number } | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -30,13 +37,17 @@ const Squares = ({
 
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
+    
+    // Determine gradient color based on the current theme
+    const gradientColor = resolvedTheme === 'dark' 
+      ? 'hsl(331 25% 10%)' 
+      : 'hsl(320 100% 98%)';
 
     const drawGrid = () => {
       if (!ctx) return;
       
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // We need to calculate the start based on the offset to create a seamless loop
       const startX = - (gridOffset.current.x % squareSize);
       const startY = - (gridOffset.current.y % squareSize);
       
@@ -110,10 +121,6 @@ const Squares = ({
         const rect = canvas.getBoundingClientRect();
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
-
-        const squareX = Math.floor(mouseX / squareSize) * squareSize + (gridOffset.current.x % squareSize);
-        const squareY = Math.floor(mouseY / squareSize) * squareSize + (gridOffset.current.y % squareSize);
-
         hoveredSquareRef.current = { x: mouseX, y: mouseY };
     };
 
@@ -132,7 +139,11 @@ const Squares = ({
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [direction, speed, defaultBorderColor, hoverFillColor, squareSize, gradientColor]);
+  }, [isMounted, direction, speed, defaultBorderColor, hoverFillColor, squareSize, resolvedTheme]);
+
+  if (!isMounted) {
+    return null; // Don't render canvas on the server
+  }
 
   return (
     <canvas

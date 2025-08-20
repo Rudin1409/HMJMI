@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -39,7 +40,6 @@ export default function RootLayout({
                 direction='diagonal'
                 defaultBorderColor='hsla(331, 69%, 90%, 0.2)'
                 hoverFillColor='hsla(331, 69%, 80%, 0.3)'
-                gradientColor='hsl(var(--background))'
               />
             </div>
             <SiteHeader />
