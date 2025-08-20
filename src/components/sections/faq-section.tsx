@@ -37,7 +37,7 @@ export function FaqSection() {
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">FAQ</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Pertanyaan yang <span className="text-primary">Sering Diajukan</span>
+            Frequently <span className="text-primary">Asked Questions</span>
           </h2>
         </div>
         

@@ -134,10 +134,10 @@ export default function ProkerPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Program Kerja
+            Work Program
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Inisiatif & <span className="text-primary">Kegiatan</span>
+            Initiatives & <span className="text-primary">Activities</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
             Jelajahi berbagai program kerja yang telah dan akan dilaksanakan oleh HMJMI. Temukan program yang sesuai dengan minat dan kebutuhan Anda.
@@ -157,7 +157,7 @@ export default function ProkerPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Program Kerja <span className="text-primary">HMJMI POLSRI</span>
+              Our <span className="text-primary">Programs</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
               Kami berdedikasi untuk menyelenggarakan acara yang berdampak, mulai dari pelatihan teknis hingga acara pengembangan komunitas yang dinamis.
