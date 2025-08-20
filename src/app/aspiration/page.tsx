@@ -1,71 +1,32 @@
 
 'use client';
 
-import { useFormStatus } from 'react-dom';
-import { useEffect, useActionState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/hooks/use-toast';
-import { ChevronDown, Send, CheckCircle, MessageSquareQuote, FileText } from 'lucide-react';
-import { submitContactForm } from '@/app/actions';
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button type="submit" disabled={pending} className="w-full" size="lg">
-      {pending ? 'Mengirim Aspirasi...' : 'Kirim Aspirasi Anda'}
-      {!pending && <Send className="ml-2 h-4 w-4" />}
-    </Button>
-  );
-}
+import { Card, CardContent } from '@/components/ui/card';
+import { ChevronDown, MessageSquareQuote, FileText, CheckCircle, ArrowUpRight } from 'lucide-react';
 
 const processSteps = [
   {
     icon: <MessageSquareQuote className="h-8 w-8 text-primary" />,
-    title: "1. Pengajuan Aspirasi",
-    description: "Anda mengirimkan saran, kritik, atau ide melalui formulir yang tersedia."
+    title: "1. Buka Google Form",
+    description: "Klik tombol di bawah untuk membuka formulir aspirasi kami di halaman baru."
   },
   {
     icon: <FileText className="h-8 w-8 text-primary" />,
-    title: "2. Peninjauan Tim",
-    description: "Tim kami akan meninjau setiap aspirasi yang masuk untuk memahami konteksnya."
+    title: "2. Isi & Kirim Aspirasi",
+    description: "Sampaikan saran, kritik, atau ide Anda melalui kolom yang tersedia di Google Form."
   },
   {
     icon: <CheckCircle className="h-8 w-8 text-primary" />,
-    title: "3. Tindak Lanjut",
-    description: "Aspirasi yang relevan akan didiskusikan dan dijadikan bahan pertimbangan kami."
+    title: "3. Peninjauan Tim",
+    description: "Setiap aspirasi yang masuk akan ditinjau oleh tim kami untuk ditindaklanjuti."
   }
 ];
 
 export default function AspirationPage() {
-  const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useActionState(submitContactForm, initialState);
-  const { toast } = useToast();
-
-  useEffect(() => {
-    if (state.message) {
-      if (state.message.startsWith('Success')) {
-        toast({
-          title: 'Sukses!',
-          description: state.message,
-          variant: 'default',
-        });
-      } else {
-        toast({
-          title: 'Error',
-          description: state.message,
-          variant: 'destructive',
-        });
-      }
-    }
-  }, [state, toast]);
-
 
   return (
     <div className="flex flex-col">
@@ -73,9 +34,9 @@ export default function AspirationPage() {
         id="hero-aspiration" 
         className="relative w-full flex items-center justify-center min-h-screen bg-transparent"
       >
-        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
+        <div className="absolute inset-0 bg-primary/35"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
+          <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
             Kami Mendengar Anda
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
@@ -86,7 +47,7 @@ export default function AspirationPage() {
           </p>
           <div className="mt-8">
             <a href="#aspiration-form">
-                <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
+                <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce">
                 <ChevronDown className="h-6 w-6" />
                 </Button>
             </a>
@@ -94,42 +55,31 @@ export default function AspirationPage() {
         </div>
       </section>
 
-      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-primary/5 backdrop-blur-sm">
+      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-primary/10 backdrop-blur-sm">
         <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
-                <div>
-                     <div className="text-left mb-8">
-                        <div className="flex justify-start mb-4">
-                        <div className="w-16 h-1 bg-primary rounded-full"></div>
+            <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
+                <div className='flex flex-col items-center text-center'>
+                     <div className="text-center mb-8">
+                        <div className="flex justify-center mb-4">
+                            <div className="w-16 h-1 bg-primary rounded-full"></div>
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Sampaikan <span className="text-primary">Gagasan Anda</span>
+                            Sampaikan <span className="text-primary">Gagasan Anda</span>
                         </h2>
                         <p className="mt-4 max-w-xl text-muted-foreground">
-                            Gunakan formulir ini untuk mengirimkan gagasan, masukan, atau kritik yang membangun. Kami sangat menghargai setiap kontribusi dari Anda.
+                            Kami menggunakan Google Form untuk mengumpulkan semua masukan. Klik tombol di bawah ini untuk menyampaikan aspirasi Anda. Kami sangat menghargai setiap kontribusi dari Anda.
                         </p>
                     </div>
-                     <Card>
-                        <CardContent className="p-8">
-                        <form action={dispatch} className="space-y-6">
-                            <div className="space-y-2">
-                            <Label htmlFor="name">Nama Anda</Label>
-                            <Input id="name" name="name" placeholder="Masukkan nama lengkap" required />
-                            {state.errors?.name && <p className="text-sm font-medium text-destructive">{state.errors.name}</p>}
-                            </div>
-                            <div className="space-y-2">
-                            <Label htmlFor="email">Alamat Email</Label>
-                            <Input id="email" name="email" type="email" placeholder="contoh@email.com" required />
-                            {state.errors?.email && <p className="text-sm font-medium text-destructive">{state.errors.email}</p>}
-                            </div>
-                            <div className="space-y-2">
-                            <Label htmlFor="message">Pesan Aspirasi</Label>
-                            <Textarea id="message" name="message" placeholder="Tuliskan aspirasi, ide, atau saran Anda di sini..." rows={5} required />
-                            {state.errors?.message && <p className="text-sm font-medium text-destructive">{state.errors.message}</p>}
-                            </div>
-                            <input type="hidden" name="subject" value="Aspiration" />
-                            <SubmitButton />
-                        </form>
+                     <Card className='w-full max-w-md'>
+                        <CardContent className="p-8 flex flex-col items-center justify-center">
+                            <p className="text-muted-foreground mb-6 text-center">
+                                Formulir akan terbuka di tab baru.
+                            </p>
+                            <Button asChild size="lg" className="w-full">
+                                <Link href="https://docs.google.com/forms/d/e/your-form-id/viewform" target="_blank" rel="noopener noreferrer">
+                                    Isi Formulir Aspirasi <ArrowUpRight className="ml-2" />
+                                </Link>
+                            </Button>
                         </CardContent>
                     </Card>
                 </div>
@@ -141,7 +91,7 @@ export default function AspirationPage() {
                     {processSteps.map((step, index) => (
                         <Card key={index} className="border-l-4 border-primary shadow-sm">
                             <CardContent className="flex items-center gap-6 p-6">
-                                <div className="flex-shrink-0 bg-pink-100 rounded-full p-3">
+                                <div className="flex-shrink-0 bg-primary/10 text-primary rounded-full p-3">
                                     {step.icon}
                                 </div>
                                 <div>
