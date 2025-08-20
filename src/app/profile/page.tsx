@@ -24,7 +24,7 @@ import {
 
 
 const departments = [
-  { id: 'inti', name: 'Inti (BPH)', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
+  { id: 'inti', name: 'BPH', fullName: 'Badan Pengurus Harian', icon: <Award className="w-8 h-8" />, description: 'Bertanggung jawab atas koordinasi umum dan arah strategis organisasi.' },
   { id: 'ptkp', name: 'PTKP', fullName: 'Perguruan Tinggi dan Kepemudaan', icon: <GraduationCap className="w-8 h-8" />, description: 'Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.' },
   { id: 'humas', name: 'Humas', fullName: 'Hubungan Mahasiswa', icon: <Megaphone className="w-8 h-8" />, description: 'Departemen Hubungan Mahasiswa (HUMAS), yaitu keanggotaan biasa yang bertugas dalam bersosialisasi di lingkungan Politeknik Negeri Sriwijaya dan mengelola akun media sosial HMJ MI serta menjadi wadah informasi bagi Jurusan Manajemen Informatika baik informasi dari dalam maupun dari luar jurusan yang diangkat oleh Badan Pengurus Harian.' },
   { id: 'psdm', name: 'PSDM', fullName: 'Pengembangan Sumber Daya Mahasiswa', icon: <Sparkles className="w-8 h-8" />, description: 'Departemen Pengembangan Sumber Daya Manusia (PSDM), yaitu keanggotaan biasa yang mempunyai tugas dalam mengelola, menyalurkan minat dan bakat di bidang non-akademik serta mengawasi anggota kepengurusan HMJ MI menjadi lebih baik di lingkungan Manajemen Informatika yang diangkat oleh Badan Pengurus Harian.' },
@@ -86,14 +86,6 @@ const teamMembers = {
         { name: 'Nailah Zhafirah Cahyalia Jaya', role: 'Koordinator Jurnalis', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
      ],
     members: {
-      'media-kreatif': [
-          { name: 'M. Dandi Firjatullah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Muhammad Nabil Fadhilah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Finolia Rama Danti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Nuril Maghfiroh', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Helza Framesha', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-          { name: 'Thomas Kristalio Ariflan Santos', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      ],
       kominfo: [
           { name: 'Arien Salsabila Basurini', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
           { name: 'Nadi Kurniawan', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
@@ -102,7 +94,15 @@ const teamMembers = {
           { name: 'Diana Mareta', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
           { name: 'Anggun Ayu Tria Rahmah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
-      jurnalistik: [
+      medkraf: [
+          { name: 'M. Dandi Firjatullah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Muhammad Nabil Fadhilah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Finolia Rama Danti', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Nuril Maghfiroh', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Helza Framesha', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+          { name: 'Thomas Kristalio Ariflan Santos', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      ],
+      jurnalis: [
           { name: 'Regas Sonjaya', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
           { name: 'Sulthan Muhammad Diftha Annashira', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
           { name: 'Arau Imanuel Siritoitet', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
@@ -117,7 +117,7 @@ const teamMembers = {
         { name: 'Sri Rahayu Rezeki', role: 'Sekretaris', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
         { name: 'Shoofiyah Maharani', role: 'Bendahara', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
         { name: 'Handika Putra', role: 'Koordinator Minat Bakat', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-        { name: 'Koordinator HRD', role: 'Koordinator Bidang HRD PSDM', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+        { name: 'Nama Anggota HRD', role: 'Koordinator Bidang HRD PSDM', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
       ],
     members: {
       minatbakat: [
@@ -135,7 +135,8 @@ const teamMembers = {
           { name: 'Kayla Syakirah', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
           { name: 'M. Faizal Alfriandy', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
           { name: 'Muhammad Ridho Pratama', role: 'Anggota', class: 'MI 2023', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      ]
+      ],
+       hrd: []
     }
   },
   kesma: {
@@ -231,9 +232,9 @@ const divisions = {
     { id: 'kepemudaan', name: 'Divisi Kepemudaan', description: 'bertugas memantau isu-isu yang berkembang dan mewakili mahasiswa dalam menyampaikan permasalahan tersebut di lingkungan jurusan Manajemen Informatika.' },
   ],
   humas: [
-    { id: 'media-kreatif', name: 'Media Kreatif', description: 'Media Kreatif (Medkraf) berperan sebagai pusat pengembangan konten visual dan narasi digital. Tanggung jawab utamanya meliputi eksekusi ide kreatif dalam bentuk desain grafis, videografi, fotografi, serta copywriting. Selain itu, divisi ini bertugas mengelola seluruh platform media sosial dan menjadi garda terdepan dalam menyebarluaskan informasi secara inovatif, khususnya untuk lingkungan Jurusan Manajemen Informatika.' },
+    { id: 'medkraf', name: 'Media Kreatif', description: 'Media Kreatif (Medkraf) berperan sebagai pusat pengembangan konten visual dan narasi digital. Tanggung jawab utamanya meliputi eksekusi ide kreatif dalam bentuk desain grafis, videografi, fotografi, serta copywriting. Selain itu, divisi ini bertugas mengelola seluruh platform media sosial dan menjadi garda terdepan dalam menyebarluaskan informasi secara inovatif, khususnya untuk lingkungan Jurusan Manajemen Informatika.' },
     { id: 'kominfo', name: 'Komunikasi dan Informasi', description: 'Komunikasi dan Informasi (Kominfo) bertanggung jawab untuk menjadi perwakilan bagi Himpunan Mahasiswa Jurusan Manajemen Informatika dan menjadi wadah informasi yang dibutuhkan oleh seluruh mahasiswa baik dari dalam maupun dari luar Jurusan Manajemen Informatika.' },
-    { id: 'jurnalistik', name: 'Jurnalistik', description: 'Divisi Jurnalistik adalah pilar utama dalam penyediaan informasi yang akurat dan terpercaya. Divisi ini bertanggung jawab penuh atas seluruh proses jurnalistik, mulai dari peliputan acara, melakukan wawancara, hingga riset mendalam. Semua informasi yang terkumpul diolah dan disajikan secara objektif dalam bentuk berita, artikel feature, maupun tulisan inspiratif. Tujuannya adalah untuk memastikan seluruh lingkungan Jurusan Manajemen Informatika mendapatkan informasi yang kredibel dan beretika.' },
+    { id: 'jurnalis', name: 'Jurnalistik', description: 'Divisi Jurnalistik adalah pilar utama dalam penyediaan informasi yang akurat dan terpercaya. Divisi ini bertanggung jawab penuh atas seluruh proses jurnalistik, mulai dari peliputan acara, melakukan wawancara, hingga riset mendalam. Semua informasi yang terkumpul diolah dan disajikan secara objektif dalam bentuk berita, artikel feature, maupun tulisan inspiratif. Tujuannya adalah untuk memastikan seluruh lingkungan Jurusan Manajemen Informatika mendapatkan informasi yang kredibel dan beretika.' },
   ],
   psdm: [
     { id: 'minatbakat', name: 'Minat Bakat', description: 'Minat Bakat berfungsi mendata serta menyalurkan artis dan atlet yang berpotensi di Jurusan Manajemen Informatika.' },
@@ -389,13 +390,13 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
                  <div className="relative z-10 text-center md:text-left">
                     <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-                        Tim Kami
+                        Meet Our Team
                     </Badge>
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-                        Kekuatan Kami <span className="text-primary">Terletak Pada Tim</span>
+                        Our Strength <span className="text-primary">is Our Team</span>
                     </h1>
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
-                        Kami persembahkan jajaran kabinet HMJMI yang penuh semangat! Bersama, kita wujudkan perubahan dan inovasi untuk masa depan yang lebih baik.
+                        Meet the passionate and dedicated team behind HMJMI. Together, we are driving change and innovation for a better future.
                     </p>
                 </div>
                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
@@ -434,10 +435,10 @@ export default function ProfilePage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Jelajahi <span className="text-primary">Kabinet Kami</span>
+              Explore Our <span className="text-primary">Cabinet</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Temukan berbagai departemen yang ada di HMJMI POLSRI, masing-masing dengan fokus dan program unggulan yang berbeda untuk pengembangan mahasiswa.
+              Discover the various departments at HMJMI POLSRI, each with its own focus and flagship programs for student development.
             </p>
           </div>
 
@@ -445,7 +446,7 @@ export default function ProfilePage() {
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
-                <h3 className="text-xl font-bold text-center text-gray-700">Departemen</h3>
+                <h3 className="text-xl font-bold text-center text-gray-700">Departments</h3>
                 <span className="text-primary text-xl font-bold">*</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -487,7 +488,7 @@ export default function ProfilePage() {
 
             {activeDept.id !== 'inti' && currentDivisions.length > 0 && (
               <Accordion type="single" collapsible className="w-full max-w-2xl mb-8">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisi</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisions</h3>
                    {currentDivisions.map((division) => (
                       <AccordionItem key={division.id} value={division.id} className="bg-white/60 border-b-2 rounded-lg mb-2 px-4">
                           <AccordionTrigger className="text-left font-semibold hover:no-underline">{division.name}</AccordionTrigger>
@@ -509,7 +510,7 @@ export default function ProfilePage() {
                 )}
                 variant={activeView === 'members' ? 'default' : 'outline'}
               >
-                <Users className="mr-2 h-4 w-4" /> Anggota
+                <Users className="mr-2 h-4 w-4" /> Members
               </Button>
               <Button
                 size="lg"
@@ -520,7 +521,7 @@ export default function ProfilePage() {
                 )}
                 variant={activeView === 'programs' ? 'default' : 'outline'}
                >
-                <Briefcase className="mr-2 h-4 w-4" /> Program
+                <Briefcase className="mr-2 h-4 w-4" /> Programs
               </Button>
             </div>
           </div>
@@ -528,7 +529,7 @@ export default function ProfilePage() {
           {activeView === 'members' && (
              <div className="space-y-12">
                 <MemberGroup 
-                    title={activeDept.id === 'inti' ? 'Badan Pengurus Harian' : 'Kepala Departemen & Koordinator'}
+                    title={activeDept.id === 'inti' ? 'Executive Board' : 'Department Heads & Coordinators'}
                     members={currentDepartmentData.heads}
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
@@ -541,7 +542,7 @@ export default function ProfilePage() {
                     return (
                         <MemberGroup 
                             key={division.id}
-                            title={`Anggota Divisi ${division.name}`}
+                            title={`Members of ${division.name} Division`}
                             members={divisionMembers}
                             featuredMember={featuredMembers[division.id] || null}
                             setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
@@ -557,7 +558,7 @@ export default function ProfilePage() {
             <div>
               <div className="text-center mb-8">
                  <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
-                    Program Kerja
+                    Our Initiatives
                     <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
                 </h3>
               </div>
@@ -578,14 +579,14 @@ export default function ProfilePage() {
                                     {program.description}
                                   </p>
                                   <Button variant="link" className="text-primary p-0 h-auto">
-                                      Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
+                                      Learn More <ArrowUpRight className="ml-1 h-4 w-4" />
                                   </Button>
                               </div>
                           </CardContent>
                       </Card>
                   ))
                 ) : (
-                  <p className="text-muted-foreground col-span-full text-center">Belum ada program kerja yang tersedia untuk departemen ini.</p>
+                  <p className="text-muted-foreground col-span-full text-center">Work programs for this department are not yet available.</p>
                 )}
               </div>
             </div>
