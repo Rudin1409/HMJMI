@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks } from 'lucide-react';
 import {
   Dialog,
@@ -151,6 +151,9 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
+                <div className="relative aspect-square md:hidden">
+                    <Image src="https://placehold.co/600x600.png" layout="fill" objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                </div>
                 <div className='flex flex-col items-center md:items-start text-center md:text-left'>
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-16 h-16 bg-pink-100 text-primary rounded-2xl flex items-center justify-center flex-shrink-0">
