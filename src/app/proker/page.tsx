@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowUpRight, Award, Calendar, Lightbulb, Users, Mic, Briefcase, Heart, Rocket } from 'lucide-react';
+import { ArrowUpRight, Award, Calendar, Lightbulb, Users, Mic, Briefcase, Heart, Rocket, ChevronDown } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -115,6 +115,13 @@ export default function ProkerPage() {
           <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
             Temukan berbagai program dan kegiatan yang kami selenggarakan untuk mengasah potensi, memperluas wawasan, dan memberikan kontribusi positif.
           </p>
+          <div className="mt-8">
+            <a href="#proker-list">
+                <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce mx-auto">
+                <ChevronDown className="h-6 w-6" />
+                </Button>
+            </a>
+          </div>
         </div>
       </section>
 

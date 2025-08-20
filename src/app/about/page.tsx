@@ -140,13 +140,6 @@ export default function AboutPage() {
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
                       Temukan bagaimana Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berkomitmen mencetak pemimpin teknologi masa depan.
                     </p>
-                    <div className="mt-8">
-                      <a href="#vision-mission">
-                        <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce mx-auto md:mx-0">
-                          <ChevronDown className="h-6 w-6" />
-                        </Button>
-                      </a>
-                    </div>
                 </div>
                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
                     <div className="absolute inset-0 flex items-center justify-center">

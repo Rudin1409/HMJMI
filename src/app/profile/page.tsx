@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Briefcase, Award, Instagram, ArrowUpRight, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store } from 'lucide-react';
+import { Users, Briefcase, Award, Instagram, ArrowUpRight, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -392,6 +392,13 @@ export default function ProfilePage() {
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
               Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
           </p>
+          <div className="mt-8">
+            <a href="#explore-cabinet">
+              <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce mx-auto">
+                <ChevronDown className="h-6 w-6" />
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
