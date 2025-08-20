@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck } from 'lucide-react';
 import {
   Dialog,
@@ -18,41 +18,41 @@ import {
 const stats = [
   {
     icon: <Calendar className="h-8 w-8 text-primary" />,
-    title: 'Est. 2002',
-    description: '20+ tahun pengalaman dalam mencetak talenta teknologi.',
+    title: 'Didirikan Sejak 2002',
+    description: 'Lebih dari 20 tahun mencetak talenta digital.',
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
     title: '5 Departemen',
-    description: 'Divisi khusus untuk pengembangan yang komprehensif.',
+    description: 'Kolaborasi lintas bidang untuk hasil optimal.',
   },
   {
     icon: <Code className="h-8 w-8 text-primary" />,
-    title: '11 Divisi',
-    description: 'Tim yang fokus untuk pengembangan keterampilan yang ditargetkan.',
+    title: '11 Divisi Khusus',
+    description: 'Fokus pada pengembangan keahlian spesifik.',
   },
   {
     icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '25+ Program',
-    description: 'Berbagai kegiatan dan inisiatif yang beragam.',
+    title: '25+ Program Kerja',
+    description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
   },
 ];
 
-const logoPhilosophy = [
+const values = [
     {
         icon: <Leaf className="w-5 h-5 text-primary" />,
-        title: "Padi dan Kapas",
-        description: "Melambangkan kemakmuran dan kesejahteraan bagi seluruh anggota."
+        title: "Kesejahteraan",
+        description: "Diwakili oleh padi dan kapas, simbol kemakmuran bagi seluruh anggota."
     },
     {
         icon: <Feather className="w-5 h-5 text-primary" />,
-        title: "Perisai",
-        description: "Melambangkan pertahanan dalam menghadapi tantangan dan rintangan."
+        title: "Ketahanan",
+        description: "Diwakili oleh perisai, simbol kekuatan dalam menghadapi setiap tantangan."
     },
     {
         icon: <BookOpenCheck className="w-5 h-5 text-primary" />,
-        title: "Buku dan Pena",
-        description: "Melambangkan ilmu pengetahuan dan kreativitas tanpa batas."
+        title: "Intelektualitas",
+        description: "Diwakili oleh buku dan pena, simbol ilmu pengetahuan dan kreativitas tanpa batas."
     }
 ]
 
@@ -117,40 +117,83 @@ export default function AboutPage() {
     <div className="flex flex-col">
       <section 
         id="hero-about" 
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white flex items-center justify-center min-h-screen"
+        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white flex items-center justify-center min-h-[70vh]"
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
             Perjalanan Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Kisah di Balik <span className="text-primary">Inovasi</span>
+            Kisah di Balik <span className="text-primary">Inovasi Digital</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
             Selami lebih dalam tentang Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan komitmen kami dalam membina pemimpin teknologi masa depan.
           </p>
           <div className="mt-8">
-            <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200">
-              <ChevronDown className="h-6 w-6" />
-            </Button>
+            <a href="#our-story">
+              <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200">
+                <ChevronDown className="h-6 w-6" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="about-hmif" className="w-full bg-white py-16 md:py-24">
+      <section id="our-story" className="w-full bg-white py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+              <div className="flex justify-start mb-4">
+                  <div className="w-16 h-1 bg-primary rounded-full"></div>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                  Cerita Kami: Dari <span className="text-primary">Gagasan Menjadi Gerakan</span>
+              </h2>
+              <p className="text-muted-foreground mb-4">
+               Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) lahir pada tahun 2002 dari sebuah gagasan sederhana: menciptakan sebuah wadah bagi para mahasiswa Manajemen Informatika di Politeknik Negeri Sriwijaya untuk tumbuh, berkolaborasi, dan berinovasi bersama. Kami berdedikasi untuk menjadi pusat pengembangan bakat akademik dan non-akademik.
+              </p>
+              <p className="text-muted-foreground mb-6">
+                Dengan semangat "Spirit Perubahan", kami menjalankan organisasi yang SMART—Solid, Melayani, Aktif, Responsif, dan Terdampak—dalam setiap langkah kami.
+              </p>
+              <div className="grid grid-cols-2 gap-8">
+                  <div className="flex items-start gap-4">
+                      <div className="bg-pink-100 text-primary w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Target className="w-6 h-6"/>
+                      </div>
+                      <div>
+                          <h3 className="text-lg font-bold text-gray-800">Visi Kami</h3>
+                          <p className="text-muted-foreground text-sm">Menjadi pusat pengembangan potensi mahasiswa yang aktif, kreatif, dan inovatif.</p>
+                      </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                      <div className="bg-pink-100 text-primary w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <Rocket className="w-6 h-6"/>
+                      </div>
+                      <div>
+                          <h3 className="text-lg font-bold text-gray-800">Misi Kami</h3>
+                          <p className="text-muted-foreground text-sm">Menciptakan organisasi yang SMART dalam setiap ekspresi, kreasi, dan prestasi.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+             <div className="relative aspect-square">
+                <Image src="https://placehold.co/600x600.png" layout="fill" objectFit="cover" alt="Team discussing" className="rounded-2xl shadow-lg" data-ai-hint="students brainstorming whiteboard"/>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="our-impact" className="w-full bg-pink-50/50 py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Mengenal <span className="text-primary">HMJMI</span>
+              Jejak dan <span className="text-primary">Dampak Kami</span>
             </h2>
-            <p className="text-muted-foreground mt-6 max-w-4xl mx-auto">
-             Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) merupakan organisasi kemahasiswaan yang berdedikasi untuk mahasiswa di Jurusan Manajemen Informatika, Politeknik Negeri Sriwijaya. Didirikan pada tahun 2002, HMJMI menjadi pusat pengembangan bakat akademik dan non-akademik melalui beragam program yang bermanfaat.
-            </p>
-            <p className="text-muted-foreground mt-4 max-w-4xl mx-auto">
-              Dengan 5 departemen dan 11 divisi, kami fokus pada peningkatan kompetensi dan kolaborasi untuk seluruh anggota.
+             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+              Angka-angka ini bukan sekadar statistik, melainkan cerminan dari dedikasi dan pertumbuhan komunitas kami dari waktu ke waktu.
             </p>
           </div>
 
@@ -170,42 +213,6 @@ export default function AboutPage() {
         </div>
       </section>
       
-      <section className="bg-pink-50/50 py-16 md:py-24">
-        <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-                <div className="flex justify-center mb-4">
-                    <div className="w-16 h-1 bg-primary rounded-full"></div>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Arah & <span className="text-primary">Tujuan</span>
-                </h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
-                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
-                    <div className="relative z-10">
-                        <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                            <Target className="w-8 h-8"/>
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Visi Kami</h3>
-                        <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai pusat pengembangan potensi mahasiswa yang aktif, kreatif, dan inovatif, sambil memperkuat kolaborasi internal dan eksternal.</p>
-                    </div>
-                </Card>
-                <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
-                    <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
-                     <div className="relative z-10">
-                        <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
-                            <Rocket className="w-8 h-8"/>
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Misi Kami</h3>
-                        <p className="text-muted-foreground">Menciptakan HMJ Manajemen Informatika sebagai organisasi yang SMART—Solid, Melayani, Aktif, Responsif, dan Terdampak—dalam setiap ekspresi, kreasi, dan prestasi.</p>
-                    </div>
-                </Card>
-            </div>
-             <p className="text-center italic text-muted-foreground mt-8 text-lg">"Spirit Perubahan"</p>
-        </div>
-      </section>
-      
        <section className="bg-white py-16 md:py-24">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
@@ -213,33 +220,30 @@ export default function AboutPage() {
                         <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Makna di Balik <span className="text-primary">Simbol</span>
+                        Nilai-Nilai <span className="text-primary">Inti Kami</span>
                     </h2>
+                    <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+                        Logo kami bukan sekadar simbol, melainkan representasi dari tiga pilar utama yang menopang seluruh gerakan dan semangat kami di HMJMI.
+                    </p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                     <div className="relative aspect-square">
                         <Image src="https://placehold.co/500x500.png" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo gears book" />
                     </div>
                     <div>
-                        <Card className="p-8 shadow-lg rounded-2xl bg-white">
-                            <h3 className="text-2xl font-bold text-gray-800 mb-4">Filosofi Logo</h3>
-                            <p className="text-muted-foreground mb-6">
-                                Logo kami merepresentasikan semangat, inovasi, dan profesionalisme. Setiap elemennya memiliki makna yang mendalam, mencerminkan nilai-nilai inti kami: mulai dari kemakmuran, ketahanan dalam menghadapi tantangan, hingga penghargaan tinggi terhadap ilmu pengetahuan dan kreativitas.
-                            </p>
-                            <div className="space-y-4">
-                               {logoPhilosophy.map((item, index) => (
-                                     <div key={index} className="flex items-start gap-4">
-                                        <div className="flex-shrink-0 w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
-                                            {item.icon}
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-gray-800">{item.title}</h4>
-                                            <p className="text-muted-foreground text-sm">{item.description}</p>
-                                        </div>
+                        <div className="space-y-6">
+                           {values.map((item, index) => (
+                                <div key={index} className="flex items-start gap-4 p-4 rounded-lg hover:bg-pink-50/50 transition-colors">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
+                                        {item.icon}
                                     </div>
-                               ))}
-                            </div>
-                        </Card>
+                                    <div>
+                                        <h4 className="font-bold text-lg text-gray-800">{item.title}</h4>
+                                        <p className="text-muted-foreground text-sm">{item.description}</p>
+                                    </div>
+                                </div>
+                           ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -252,7 +256,7 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Momen <span className="text-primary">Berharga</span>
+                    Jejak Langkah <span className="text-primary">Dalam Gambar</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
                     Lihatlah dokumentasi berbagai kegiatan dan momen tak terlupakan yang menangkap semangat perjalanan kami dalam mengembangkan potensi mahasiswa.
