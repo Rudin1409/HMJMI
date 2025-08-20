@@ -390,13 +390,13 @@ export default function ProfilePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
                  <div className="relative z-10 text-center md:text-left">
                     <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-                        Meet Our Team
+                        Temui Tim Kami
                     </Badge>
                     <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
                         Our Strength <span className="text-primary">is Our Team</span>
                     </h1>
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
-                        Meet the passionate and dedicated team behind HMJMI. Together, we are driving change and innovation for a better future.
+                        Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
                     </p>
                 </div>
                 <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
@@ -435,10 +435,10 @@ export default function ProfilePage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Explore Our <span className="text-primary">Cabinet</span>
+              Jelajahi <span className="text-primary">Kabinet Kami</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Discover the various departments at HMJMI POLSRI, each with its own focus and flagship programs for student development.
+              Temukan berbagai departemen di HMJMI POLSRI, masing-masing dengan fokus dan program unggulan untuk pengembangan mahasiswa.
             </p>
           </div>
 
@@ -446,7 +446,7 @@ export default function ProfilePage() {
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
-                <h3 className="text-xl font-bold text-center text-gray-700">Departments</h3>
+                <h3 className="text-xl font-bold text-center text-gray-700">Departemen</h3>
                 <span className="text-primary text-xl font-bold">*</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -488,7 +488,7 @@ export default function ProfilePage() {
 
             {activeDept.id !== 'inti' && currentDivisions.length > 0 && (
               <Accordion type="single" collapsible className="w-full max-w-2xl mb-8">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisions</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisi</h3>
                    {currentDivisions.map((division) => (
                       <AccordionItem key={division.id} value={division.id} className="bg-white/60 border-b-2 rounded-lg mb-2 px-4">
                           <AccordionTrigger className="text-left font-semibold hover:no-underline">{division.name}</AccordionTrigger>
@@ -510,7 +510,7 @@ export default function ProfilePage() {
                 )}
                 variant={activeView === 'members' ? 'default' : 'outline'}
               >
-                <Users className="mr-2 h-4 w-4" /> Members
+                <Users className="mr-2 h-4 w-4" /> Anggota
               </Button>
               <Button
                 size="lg"
@@ -521,7 +521,7 @@ export default function ProfilePage() {
                 )}
                 variant={activeView === 'programs' ? 'default' : 'outline'}
                >
-                <Briefcase className="mr-2 h-4 w-4" /> Programs
+                <Briefcase className="mr-2 h-4 w-4" /> Program
               </Button>
             </div>
           </div>
@@ -529,7 +529,7 @@ export default function ProfilePage() {
           {activeView === 'members' && (
              <div className="space-y-12">
                 <MemberGroup 
-                    title={activeDept.id === 'inti' ? 'Executive Board' : 'Department Heads & Coordinators'}
+                    title={activeDept.id === 'inti' ? 'Pengurus Inti' : 'Kepala & Koordinator Departemen'}
                     members={currentDepartmentData.heads}
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
@@ -542,7 +542,7 @@ export default function ProfilePage() {
                     return (
                         <MemberGroup 
                             key={division.id}
-                            title={`Members of ${division.name} Division`}
+                            title={`Anggota Divisi ${division.name}`}
                             members={divisionMembers}
                             featuredMember={featuredMembers[division.id] || null}
                             setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
@@ -558,7 +558,7 @@ export default function ProfilePage() {
             <div>
               <div className="text-center mb-8">
                  <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
-                    Our Initiatives
+                    Inisiatif Kami
                     <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
                 </h3>
               </div>
@@ -586,7 +586,7 @@ export default function ProfilePage() {
                       </Card>
                   ))
                 ) : (
-                  <p className="text-muted-foreground col-span-full text-center">Work programs for this department are not yet available.</p>
+                  <p className="text-muted-foreground col-span-full text-center">Program kerja untuk departemen ini belum tersedia.</p>
                 )}
               </div>
             </div>
@@ -597,7 +597,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
-
-    

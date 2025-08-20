@@ -121,10 +121,10 @@ export default function AboutPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            About Us
+            Tentang Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Get to Know <span className="text-primary">Our Story</span>
+            Kenali <span className="text-primary">Kisah Kami</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
             Kenali lebih dekat Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan perjalanan kami dalam membentuk generasi teknologi masa depan.
@@ -144,7 +144,7 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              About <span className="text-primary">HMJMI</span>
+              Tentang <span className="text-primary">HMJMI</span>
             </h2>
             <p className="text-muted-foreground mt-6 max-w-4xl mx-auto">
              Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) adalah organisasi kemahasiswaan khusus untuk mahasiswa Jurusan Manajemen Informatika di Politeknik Negeri Sriwijaya. Berdiri sejak tahun 2002, HMJMI berperan sebagai wadah yang mendukung pengembangan di bidang akademik dan non-akademik, serta menyediakan berbagai kegiatan yang bermanfaat bagi para mahasiswa.
@@ -177,7 +177,7 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Vision & <span className="text-primary">Mission</span>
+                    Visi & <span className="text-primary">Misi</span>
                 </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -187,7 +187,7 @@ export default function AboutPage() {
                         <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
                             <Target className="w-8 h-8"/>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h3>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Visi Kami</h3>
                         <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai wadah untuk menyalurkan dan mengembangkan potensi mahasiswa yang aktif, kreatif, dan inovatif, serta menjalin hubungan baik di tingkat internal maupun eksternal.</p>
                     </div>
                 </Card>
@@ -197,7 +197,7 @@ export default function AboutPage() {
                         <div className="bg-pink-100 text-primary w-16 h-16 rounded-full flex items-center justify-center mb-4">
                             <Rocket className="w-8 h-8"/>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h3>
+                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Misi Kami</h3>
                         <p className="text-muted-foreground">Mewujudkan HMJ Manajemen Informatika sebagai organisasi yang SMART (Solid, Melayani, Aktif, Responsif, dan Terdampak) dalam berekspresi, berkreasi, dan berprestasi.</p>
                     </div>
                 </Card>
@@ -213,7 +213,7 @@ export default function AboutPage() {
                         <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Logo <span className="text-primary">Philosophy</span>
+                        Filosofi <span className="text-primary">Logo</span>
                     </h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -252,7 +252,7 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Our <span className="text-primary">Gallery</span>
+                    Galeri <span className="text-primary">Kami</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
                     Dokumentasi kegiatan dan momen berharga HMJMI Politeknik Negeri Sriwijaya yang menggambarkan perjalanan kami dalam mengembangkan potensi mahasiswa.

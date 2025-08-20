@@ -18,8 +18,8 @@ export function HeroSection() {
               Selamat Datang di HMJMI POLSRI
             </Badge>
             <h1 className="text-4xl md:text-6xl font-extrabold text-foreground leading-tight">
-              Memberdayakan <br />
-              <span className="text-primary">Pemimpin Teknologi Masa Depan</span>
+              Empowering Future <br />
+              <span className="text-primary">Tech Leaders</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-lg">
              Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya adalah pusat kreativitas, inovasi, dan pengembangan potensi untuk menghadapi era digital.
