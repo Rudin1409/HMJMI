@@ -71,7 +71,7 @@ export default function AspirationPage() {
     <div className="flex flex-col">
        <section 
         id="hero-aspiration" 
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white flex items-center justify-center min-h-[70vh]"
+        className="relative w-full bg-gradient-to-b from-pink-100/50 to-background flex items-center justify-center min-h-[70vh]"
       >
          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -94,7 +94,7 @@ export default function AspirationPage() {
         </div>
       </section>
 
-      <section id="aspiration-form" className="w-full bg-white py-16 md:py-24">
+      <section id="aspiration-form" className="w-full bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
                 <div>

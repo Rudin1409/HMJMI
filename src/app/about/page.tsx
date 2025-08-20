@@ -125,9 +125,10 @@ export default function AboutPage() {
     <div className="flex flex-col">
       <section 
         id="hero-about" 
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-white flex items-center justify-center min-h-[70vh]"
+        className="relative w-full bg-gradient-to-b from-pink-100/50 to-background flex items-center justify-center min-h-[70vh]"
       >
-        <div className="container mx-auto px-4 text-center">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
+        <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
             Jejak Langkah Kami
           </Badge>
@@ -147,7 +148,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="vision-mission" className="w-full bg-white py-16 md:py-24">
+      <section id="vision-mission" className="w-full bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
@@ -223,7 +224,7 @@ export default function AboutPage() {
         </div>
       </section>
       
-       <section className="bg-white py-16 md:py-24">
+       <section className="bg-background py-16 md:py-24">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex justify-center mb-4">

@@ -381,6 +381,7 @@ export default function ProfilePage() {
         id="hero-profile"
         className="relative w-full bg-background flex items-center justify-center min-h-screen overflow-hidden"
       >
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
         <div className="container mx-auto px-4 relative z-10">
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
@@ -425,7 +426,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="explore-cabinet" className="w-full py-16 md:py-24">
+      <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-gradient-to-b from-background to-pink-50/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
@@ -471,7 +472,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="department-details" className="w-full pb-16 md:pb-24">
+      <section id="department-details" className="w-full pb-16 md:pb-24 bg-gradient-to-b from-pink-50/30 to-background">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
             <div className="relative w-24 h-24 mb-4 bg-pink-100 text-primary rounded-full flex items-center justify-center">
