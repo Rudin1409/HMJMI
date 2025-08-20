@@ -71,8 +71,9 @@ export default function AspirationPage() {
     <div className="flex flex-col">
        <section 
         id="hero-aspiration" 
-        className="relative w-full flex items-center justify-center min-h-[70vh]"
+        className="relative w-full flex items-center justify-center min-h-[70vh] bg-transparent"
       >
+        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
             Kami Mendengar Anda
@@ -93,7 +94,7 @@ export default function AspirationPage() {
         </div>
       </section>
 
-      <section id="aspiration-form" className="w-full py-16 md:py-24">
+      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
                 <div>
@@ -108,7 +109,7 @@ export default function AspirationPage() {
                             Gunakan formulir ini untuk mengirimkan gagasan, masukan, atau kritik yang membangun. Kami sangat menghargai setiap kontribusi dari Anda.
                         </p>
                     </div>
-                     <Card className="shadow-2xl rounded-2xl bg-card/80 backdrop-blur-sm">
+                     <Card>
                         <CardContent className="p-8">
                         <form action={dispatch} className="space-y-6">
                             <div className="space-y-2">
@@ -138,7 +139,7 @@ export default function AspirationPage() {
                         <p className="text-muted-foreground mt-2">Kami percaya pada transparansi. Berikut adalah tahapan yang akan dilalui oleh setiap aspirasi yang kami terima.</p>
                     </div>
                     {processSteps.map((step, index) => (
-                        <Card key={index} className="bg-card/80 backdrop-blur-sm border-l-4 border-primary shadow-sm">
+                        <Card key={index} className="border-l-4 border-primary shadow-sm">
                             <CardContent className="flex items-center gap-6 p-6">
                                 <div className="flex-shrink-0 bg-pink-100 rounded-full p-3">
                                     {step.icon}

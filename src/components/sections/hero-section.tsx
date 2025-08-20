@@ -9,7 +9,7 @@ import { ArrowRight, Users, Calendar, Award } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full overflow-hidden">
+    <section id="home" className="relative w-full overflow-hidden bg-transparent">
       <div className="absolute inset-0 opacity-50"></div>
       <div className="container mx-auto px-4 min-h-screen flex items-center pt-10 pb-20 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

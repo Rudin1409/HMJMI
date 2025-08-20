@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 
 const highlightedPrograms = [
   {
-    title: 'IT Festival',
+    title: 'IT-Festival',
     category: 'Kompetisi & Edukasi',
     image: 'https://placehold.co/400x250.png',
     hint: 'tech competition stage',
@@ -23,7 +23,7 @@ const highlightedPrograms = [
 
 export function ProgramHighlightsSection() {
   return (
-    <section id="program-highlights" className="w-full py-16 md:py-24">
+    <section id="program-highlights" className="w-full py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">
@@ -39,7 +39,7 @@ export function ProgramHighlightsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {highlightedPrograms.map((program, index) => (
-            <Card key={index} className="group relative overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-card/80 backdrop-blur-sm hover:bg-primary/10">
+            <Card key={index}>
               <CardContent className="p-0">
                 <div className="relative aspect-video overflow-hidden">
                     <Image 
@@ -56,7 +56,6 @@ export function ProgramHighlightsSection() {
                   <h3 className="text-xl font-bold text-gray-800">{program.title}</h3>
                 </div>
               </CardContent>
-               <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-primary/20 rounded-xl rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Card>
           ))}
         </div>

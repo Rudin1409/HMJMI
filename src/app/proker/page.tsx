@@ -102,8 +102,9 @@ export default function ProkerPage() {
     <div className="flex flex-col">
       <section 
         id="hero-proker" 
-        className="relative w-full flex items-center justify-center min-h-[70vh] py-20"
+        className="relative w-full flex items-center justify-center min-h-[70vh] py-20 bg-transparent"
       >
+        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary shadow-sm">
             Aktivitas & Inisiatif
@@ -117,7 +118,7 @@ export default function ProkerPage() {
         </div>
       </section>
 
-      <section id="proker-list" className="w-full py-16 md:py-24">
+      <section id="proker-list" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="unggulan" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto mb-10 md:mb-12 shadow-md max-w-2xl mx-auto">
@@ -128,7 +129,7 @@ export default function ProkerPage() {
             </TabsList>
             
             <TabsContent value="unggulan">
-              <Card className="w-full max-w-5xl mx-auto shadow-2xl rounded-3xl overflow-hidden border-2 border-primary/20 bg-card/80 backdrop-blur-sm">
+              <Card className="w-full max-w-5xl mx-auto">
                 {mainPrograms.map((program) => (
                     <div key={program.title} className="grid md:grid-cols-2 items-center">
                          <div className="p-8 md:p-12">
@@ -148,7 +149,7 @@ export default function ProkerPage() {
             </TabsContent>
 
             <TabsContent value="pengembangan">
-                 <Card className="w-full max-w-5xl mx-auto shadow-xl rounded-3xl overflow-hidden bg-card/80 backdrop-blur-sm">
+                 <Card className="w-full max-w-5xl mx-auto">
                     {additionalPrograms.map((program) => (
                         <div key={program.title} className="grid md:grid-cols-2 items-center">
                             <div className="relative w-full h-64 md:h-full min-h-[300px] order-last md:order-first">
@@ -175,7 +176,7 @@ export default function ProkerPage() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {communityActivities.map((activity) => (
-                            <Card key={activity.title} className="bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-shadow rounded-2xl">
+                            <Card key={activity.title}>
                                 <CardContent className="p-6 flex items-center gap-6">
                                     <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 shadow-md">
                                         <Image src={activity.image} alt={`${activity.title} logo`} layout="fill" objectFit="cover" data-ai-hint={activity.hint} />
@@ -197,7 +198,7 @@ export default function ProkerPage() {
                         <h2 className="text-3xl font-bold text-gray-800">Agenda Rutin Tahunan</h2>
                         <p className="text-muted-foreground mt-2">Kegiatan terjadwal yang menjadi bagian dari siklus organisasi kami.</p>
                     </div>
-                     <Card className="bg-card/80 backdrop-blur-sm shadow-lg rounded-2xl">
+                     <Card>
                         <CardContent className="p-6 md:p-8">
                              <Accordion type="single" collapsible className="w-full">
                                 {agendas.map((agenda, index) => (

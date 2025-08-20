@@ -15,7 +15,7 @@ const departments = [
 
 export function DivisionsSection() {
   return (
-    <section id="divisions" className="w-full py-16 md:py-24">
+    <section id="divisions" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">
@@ -31,7 +31,7 @@ export function DivisionsSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {departments.map((dept) => (
-            <Card key={dept.name} className="group relative text-center p-6 shadow-md hover:shadow-lg transition-all duration-300 bg-card/80 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-primary/10">
+            <Card key={dept.name} className="text-center p-6">
               <CardContent className="flex flex-col items-center gap-4 p-0">
                 <div className="bg-pink-100 p-4 rounded-full">
                   {dept.icon}
@@ -39,7 +39,6 @@ export function DivisionsSection() {
                 <h3 className="text-lg font-bold">{dept.name}</h3>
                 <p className="text-muted-foreground text-xs hidden sm:block">{dept.fullName}</p>
               </CardContent>
-              <div className="absolute -bottom-8 -right-8 w-16 h-16 bg-primary/20 rounded-xl rotate-45 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Card>
           ))}
         </div>

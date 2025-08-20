@@ -379,9 +379,9 @@ export default function ProfilePage() {
     <div className="flex flex-col">
        <section
         id="hero-profile"
-        className="relative w-full flex items-center justify-center min-h-screen overflow-hidden"
+        className="relative w-full flex items-center justify-center min-h-screen overflow-hidden bg-transparent"
       >
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 relative z-10">
             <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
             <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
@@ -426,7 +426,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="explore-cabinet" className="w-full py-16 md:py-24">
+      <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
@@ -440,7 +440,7 @@ export default function ProfilePage() {
             </p>
           </div>
 
-          <Card className="max-w-5xl mx-auto p-6 md:p-8 shadow-lg rounded-2xl bg-card/80 backdrop-blur-sm">
+          <Card className="max-w-5xl mx-auto p-6 md:p-8">
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
@@ -472,7 +472,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="department-details" className="w-full pb-16 md:pb-24">
+      <section id="department-details" className="w-full pb-16 md:pb-24 pt-16 md:pt-24 bg-transparent">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
             <div className="relative w-24 h-24 mb-4 bg-pink-100 text-primary rounded-full flex items-center justify-center">
@@ -563,7 +563,7 @@ export default function ProfilePage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {currentPrograms.length > 0 ? (
                   currentPrograms.map((program, index) => (
-                      <Card key={index} className="bg-card/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+                      <Card key={index}>
                           <CardContent className="p-0">
                                <div className="relative aspect-video">
                                   <Image src={program.image} layout="fill" objectFit="cover" alt={program.title} data-ai-hint={program.hint}/>
