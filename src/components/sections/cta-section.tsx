@@ -10,14 +10,13 @@ export function CtaSection() {
       <div className="container mx-auto px-4">
         <div className="relative bg-primary text-primary-foreground rounded-2xl overflow-visible">
           <div className="grid md:grid-cols-2 items-center">
-            <div className="relative h-64 md:h-96 -mt-20 md:mt-0 order-last md:order-first">
-               <div className="absolute top-0 left-4 md:left-12 w-[250px] md:w-[320px] h-auto">
+            <div className="relative h-64 md:h-auto order-last md:order-first">
+               <div className="absolute -bottom-16 left-4 md:left-12 w-[250px] md:w-[320px] h-auto">
                     <Image 
-                        src="https://placehold.co/400x600.png"
+                        src="/hand-iphone.png"
                         width={400}
                         height={600}
                         alt="Hand holding phone"
-                        data-ai-hint="hand holding phone"
                         className="drop-shadow-2xl"
                     />
                </div>
