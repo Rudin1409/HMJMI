@@ -10,8 +10,8 @@ export function CtaSection() {
       <div className="container mx-auto px-4">
         <div className="relative bg-primary text-primary-foreground rounded-2xl overflow-visible">
           <div className="grid md:grid-cols-2 items-center">
-            <div className="relative h-64 md:h-96 -mb-20 md:mb-0">
-               <div className="absolute bottom-0 left-4 md:left-12 w-[250px] md:w-[320px] h-auto">
+            <div className="relative h-64 md:h-96 -mt-20 md:mt-0 order-last md:order-first">
+               <div className="absolute top-0 left-4 md:left-12 w-[250px] md:w-[320px] h-auto">
                     <Image 
                         src="https://placehold.co/400x600.png"
                         width={400}
@@ -23,7 +23,7 @@ export function CtaSection() {
                </div>
             </div>
             <div className="relative z-10 p-8 md:p-12 text-center md:text-left">
-                <h2 className="text-3xl md:text-4xl font-bold">
+                <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">
                     Ikuti Kami di Media Sosial!
                 </h2>
                 <p className="mt-4 mb-6 text-primary-foreground/80">
