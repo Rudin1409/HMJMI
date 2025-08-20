@@ -15,7 +15,7 @@ const departments = [
 
 export function DivisionsSection() {
   return (
-    <section id="divisions" className="w-full py-16 md:py-24 bg-card/40 backdrop-blur-sm">
+    <section id="divisions" className="w-full py-16 md:py-24 bg-primary/5 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">
