@@ -39,21 +39,29 @@ const communityActivities = [
     title: "UPGRADING",
     description: "Pelatihan yang dikhususkan untuk kepengurusan baru Himpunan Mahasiswa Jurusan Manajemen Informatika demi meningkatkan kemampuan dalam bidang berbicara di depan umum serta menambah kemampuan di bidang desain grafis.",
     icon: <Award className="h-6 w-6 text-primary" />,
+    image: 'https://placehold.co/100x100.png',
+    hint: 'certificate award'
   },
   {
     title: "BAKSOMI",
     description: "Bakti sosial jurusan manajemen informatika yang didalamnya terdapat rangkaian kegiatan bermanfaat seperti bantuan sosial, kunjungan ke panti, tausiyah serta bagi-bagi takjil dijalan.",
     icon: <Heart className="h-6 w-6 text-primary" />,
+    image: 'https://placehold.co/100x100.png',
+    hint: 'charity donation'
   },
   {
     title: "SINTAK",
     description: "Sebuah study club yang dibentuk sebagai wadah mahasiswa/i Jurusan Manajemen Informatika untuk mengembangkan soft skill dalam pemrograman terutama di bidang web development.",
     icon: <Lightbulb className="h-6 w-6 text-primary" />,
+    image: 'https://placehold.co/100x100.png',
+    hint: 'coding gears'
   },
   {
     title: "POSMI",
     description: "Acara kompetisi yang menyatukan peserta dari berbagai tim, kelas, dan program studi untuk berkompetisi dalam beragam cabang olahraga dan seni khusus untuk mahasiswa/i Jurusan Manajemen Informatika.",
     icon: <Users className="h-6 w-6 text-primary" />,
+    image: 'https://placehold.co/100x100.png',
+    hint: 'sports trophy'
   },
 ];
 
@@ -147,9 +155,9 @@ export default function ProkerPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {communityActivities.map((activity) => (
                             <Card key={activity.title} className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-2xl">
-                                <CardContent className="p-6 flex items-start gap-6">
-                                    <div className="flex-shrink-0 bg-pink-100 text-primary rounded-xl p-4">
-                                        {activity.icon}
+                                <CardContent className="p-6 flex items-center gap-6">
+                                    <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 shadow-md">
+                                        <Image src={activity.image} alt={`${activity.title} logo`} layout="fill" objectFit="cover" data-ai-hint={activity.hint} />
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-gray-800 mb-2">{activity.title}</h3>
@@ -195,5 +203,3 @@ export default function ProkerPage() {
     </div>
   );
 }
-
-    
