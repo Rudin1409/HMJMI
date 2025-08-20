@@ -9,8 +9,8 @@ import { ArrowRight, Users, Calendar, Award } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative w-full overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent opacity-50"></div>
+    <section id="home" className="relative w-full overflow-hidden">
+      <div className="absolute inset-0 opacity-50"></div>
       <div className="container mx-auto px-4 min-h-screen flex items-center pt-10 pb-20 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="z-10">
@@ -55,7 +55,7 @@ export function HeroSection() {
              <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
              <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
              <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-pink-200 rounded-3xl transform rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
-            <div className="relative z-10 p-2 bg-white rounded-3xl shadow-2xl h-full border">
+            <div className="relative z-10 p-2 bg-transparent rounded-3xl shadow-2xl h-full border">
                 <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
                     <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden">
                         <Image src="https://placehold.co/600x300.png" layout="fill" objectFit="cover" alt="Group photo 1" data-ai-hint="university student group" className="transition-transform duration-500 hover:scale-110"/>

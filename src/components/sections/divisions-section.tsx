@@ -16,7 +16,7 @@ const departments = [
 
 export function DivisionsSection() {
   return (
-    <section id="divisions" className="w-full bg-pink-50/30 py-16 md:py-24">
+    <section id="divisions" className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">
@@ -32,7 +32,7 @@ export function DivisionsSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {departments.map((dept) => (
-            <Card key={dept.name} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-white rounded-xl">
+            <Card key={dept.name} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-transparent rounded-xl">
               <CardContent className="flex flex-col items-center gap-4 p-0">
                 <div className="bg-pink-100 p-4 rounded-full">
                   {dept.icon}

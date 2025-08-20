@@ -28,7 +28,7 @@ const stats = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="w-full bg-pink-50/30 py-16 md:py-24">
+    <section id="about" className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
            <Badge variant="default" className="bg-pink-100 text-primary mb-4">
@@ -44,7 +44,7 @@ export function AboutSection() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {stats.map((stat, index) => (
-            <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-white rounded-xl">
+            <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-transparent rounded-xl">
               <CardContent className="flex flex-col items-center gap-4 p-0">
                 <div className="bg-pink-100 p-4 rounded-full">
                    {stat.icon}
@@ -57,15 +57,15 @@ export function AboutSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
+            <Card className="p-8 shadow-lg rounded-2xl bg-transparent relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 rounded-full"></div>
                 <div className="relative z-10">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Visi Kami</h3>
                     <p className="text-muted-foreground">Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif bagi seluruh Mahasiswa/i Manajemen Informatika.</p>
                 </div>
             </Card>
-            <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50 rounded-full"></div>
+            <Card className="p-8 shadow-lg rounded-2xl bg-transparent relative overflow-hidden">
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 rounded-full"></div>
                  <div className="relative z-10">
                     <h3 className="text-2xl font-bold text-gray-800 mb-2">Misi Kami</h3>
                     <p className="text-muted-foreground">Meningkatkan kepedulian sosial dan religius, mendorong pengembangan kompetensi dan aspirasi, menjadi pusat informasi yang kreatif, mewadahi minat bakat, serta menumbuhkan jiwa kewirausahaan mahasiswa.</p>

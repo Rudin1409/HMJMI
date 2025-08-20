@@ -26,7 +26,7 @@ export function SiteFooter() {
 
 
   return (
-    <footer className="bg-white text-foreground border-t">
+    <footer className="bg-transparent text-foreground border-t">
       <div className="container py-12 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Column 1: Logo and About */}

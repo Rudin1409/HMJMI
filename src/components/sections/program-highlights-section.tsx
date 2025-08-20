@@ -28,7 +28,7 @@ const highlightedPrograms = [
 
 export function ProgramHighlightsSection() {
   return (
-    <section id="program-highlights" className="w-full bg-white py-16 md:py-24">
+    <section id="program-highlights" className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">
@@ -44,7 +44,7 @@ export function ProgramHighlightsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {highlightedPrograms.map((program, index) => (
-            <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white group">
+            <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-transparent group">
               <CardContent className="p-0">
                 <div className="relative aspect-video overflow-hidden">
                     <Image 

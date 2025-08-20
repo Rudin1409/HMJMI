@@ -122,7 +122,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="flex flex-col bg-background">
+    <div className="flex flex-col">
       <section 
         id="hero-about" 
         className="relative w-full flex items-center justify-center min-h-[70vh]"
@@ -193,7 +193,7 @@ export default function AboutPage() {
         </div>
       </section>
       
-      <section id="our-impact" className="w-full bg-pink-50/50 py-16 md:py-24">
+      <section id="our-impact" className="w-full py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
@@ -209,7 +209,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-white rounded-xl">
+              <Card key={index} className="text-center p-6 shadow-md hover:shadow-lg transition-shadow bg-transparent rounded-xl">
                 <CardContent className="flex flex-col items-center gap-4">
                   <div className="bg-pink-100 p-4 rounded-full">
                      {stat.icon}
@@ -259,7 +259,7 @@ export default function AboutPage() {
             </div>
       </section>
 
-      <section id="gallery" className="bg-pink-50/50 py-16 md:py-24">
+      <section id="gallery" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
             <div className="text-center mb-12">
                 <div className="flex justify-center mb-4">
@@ -277,7 +277,7 @@ export default function AboutPage() {
                 {galleryItems.map((item, index) => (
                     <Card 
                       key={index} 
-                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-white cursor-pointer group"
+                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-transparent cursor-pointer group"
                       onClick={() => setSelectedImage(item)}
                     >
                         <CardContent className="p-0">

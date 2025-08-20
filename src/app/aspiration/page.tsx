@@ -68,7 +68,7 @@ export default function AspirationPage() {
 
 
   return (
-    <div className="flex flex-col bg-background">
+    <div className="flex flex-col">
        <section 
         id="hero-aspiration" 
         className="relative w-full flex items-center justify-center min-h-[70vh]"
@@ -108,7 +108,7 @@ export default function AspirationPage() {
                             Gunakan formulir ini untuk mengirimkan gagasan, masukan, atau kritik yang membangun. Kami sangat menghargai setiap kontribusi dari Anda.
                         </p>
                     </div>
-                     <Card className="shadow-2xl rounded-2xl">
+                     <Card className="shadow-2xl rounded-2xl bg-transparent">
                         <CardContent className="p-8">
                         <form action={dispatch} className="space-y-6">
                             <div className="space-y-2">
@@ -138,7 +138,7 @@ export default function AspirationPage() {
                         <p className="text-muted-foreground mt-2">Kami percaya pada transparansi. Berikut adalah tahapan yang akan dilalui oleh setiap aspirasi yang kami terima.</p>
                     </div>
                     {processSteps.map((step, index) => (
-                        <Card key={index} className="bg-pink-50/50 border-l-4 border-primary shadow-sm">
+                        <Card key={index} className="bg-transparent border-l-4 border-primary shadow-sm">
                             <CardContent className="flex items-center gap-6 p-6">
                                 <div className="flex-shrink-0 bg-pink-100 rounded-full p-3">
                                     {step.icon}

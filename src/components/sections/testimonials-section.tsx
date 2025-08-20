@@ -42,7 +42,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="w-full py-16 md:py-24 bg-pink-50/50 overflow-hidden">
+    <section id="testimonials" className="w-full py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
            <Badge variant="default" className="bg-pink-100 text-primary mb-2">Testimoni</Badge>
@@ -58,7 +58,7 @@ export function TestimonialsSection() {
           <div className="flex w-max animate-marquee space-x-4 pr-4">
             {[...testimonials, ...testimonials].map((testimonial, index) => (
                <div key={index} className="w-[350px] md:w-[400px]">
-                  <Card className="h-full bg-white shadow-lg rounded-xl overflow-hidden">
+                  <Card className="h-full bg-transparent shadow-lg rounded-xl overflow-hidden">
                     <CardContent className="p-8 flex flex-col items-center text-center">
                       <div className="relative mb-6">
                         <p className="text-6xl text-primary/20 absolute -top-8 left-0 font-serif">“</p>
