@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import Squares from '@/components/squares';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,9 +32,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={cn('min-h-screen text-foreground font-sans antialiased', inter.variable)}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <div className="relative flex min-h-dvh flex-col bg-background">
+          <div className="fixed inset-0 -z-10">
+            <Squares />
+          </div>
+          <div className="relative flex min-h-dvh flex-col bg-transparent">
             <SiteHeader />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 bg-background">{children}</main>
             <SiteFooter />
           </div>
           <Toaster />

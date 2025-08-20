@@ -102,9 +102,8 @@ export default function ProkerPage() {
     <div className="flex flex-col">
       <section 
         id="hero-proker" 
-        className="relative w-full bg-gradient-to-b from-pink-100/50 to-background flex items-center justify-center min-h-[70vh] py-20"
+        className="relative w-full bg-background flex items-center justify-center min-h-[70vh] py-20"
       >
-        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary shadow-sm">
             Aktivitas & Inisiatif
@@ -118,7 +117,7 @@ export default function ProkerPage() {
         </div>
       </section>
 
-      <section id="proker-list" className="w-full py-16 md:py-24 bg-gradient-to-b from-background to-pink-50/30">
+      <section id="proker-list" className="w-full py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="unggulan" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto mb-10 md:mb-12 shadow-md max-w-2xl mx-auto">

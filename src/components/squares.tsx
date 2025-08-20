@@ -1,4 +1,3 @@
-
 'use client';
 import { useRef, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
@@ -38,7 +37,6 @@ const Squares = ({
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     
-    // Determine gradient color based on the current theme
     const gradientColor = resolvedTheme === 'dark' 
       ? 'hsl(331 25% 10%)' 
       : 'hsl(320 100% 98%)';
