@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Send } from 'lucide-react';
+import { Instagram } from 'lucide-react';
+import Link from 'next/link';
 
 export function CtaSection() {
   return (
@@ -12,21 +12,16 @@ export function CtaSection() {
             <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-primary/10 rounded-full"></div>
             <div className='relative z-10'>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Tetap Terhubung dengan <span className="text-primary">HMJMI</span>
+                    Ikuti Kami di <span className="text-primary">Media Sosial</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto">
-                    Daftarkan diri Anda untuk mendapatkan pembaruan terbaru, info acara, dan berbagai peluang eksklusif langsung dari kami.
+                    Dapatkan pembaruan terbaru, info acara, dan berbagai peluang eksklusif dengan mengikuti akun Instagram kami.
                 </p>
-                <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                    <Input 
-                        type="email" 
-                        placeholder="Masukkan email Anda" 
-                        className="bg-white/80 focus:bg-white border-gray-300" 
-                    />
-                    <Button type="submit" size="lg" className="rounded-full">
-                        Berlangganan <Send className="ml-2 h-4 w-4" />
-                    </Button>
-                </form>
+                <Button asChild size="lg" className="rounded-full">
+                    <Link href="https://www.instagram.com/hmjmi.polsri/" target="_blank" rel="noopener noreferrer">
+                        <Instagram className="mr-2 h-5 w-5" /> Kunjungi Instagram
+                    </Link>
+                </Button>
             </div>
         </div>
       </div>
