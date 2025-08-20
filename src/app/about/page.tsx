@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck } from 'lucide-react';
 import {
   Dialog,
@@ -121,13 +121,13 @@ export default function AboutPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Perjalanan Kami
+            Jejak Langkah Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Kisah di Balik <span className="text-primary">Inovasi Digital</span>
+            Merangkai Inovasi, <span className="text-primary">Mencetak Talenta</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Selami lebih dalam tentang Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan komitmen kami dalam membina pemimpin teknologi masa depan.
+            Temukan bagaimana Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berkomitmen mencetak pemimpin teknologi masa depan.
           </p>
           <div className="mt-8">
             <a href="#our-story">
@@ -147,13 +147,13 @@ export default function AboutPage() {
                   <div className="w-16 h-1 bg-primary rounded-full"></div>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                  Cerita Kami: Dari <span className="text-primary">Gagasan Menjadi Gerakan</span>
+                  Awal Mula: <span className="text-primary">Visi Menjadi Aksi</span>
               </h2>
               <p className="text-muted-foreground mb-4">
-               Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) lahir pada tahun 2002 dari sebuah gagasan sederhana: menciptakan sebuah wadah bagi para mahasiswa Manajemen Informatika di Politeknik Negeri Sriwijaya untuk tumbuh, berkolaborasi, dan berinovasi bersama. Kami berdedikasi untuk menjadi pusat pengembangan bakat akademik dan non-akademik.
+               Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) didirikan pada tahun 2002 sebagai wadah bagi mahasiswa Manajemen Informatika Politeknik Negeri Sriwijaya untuk berkembang, berkolaborasi, dan berinovasi. Kami fokus pada pengembangan bakat akademik dan non-akademik.
               </p>
               <p className="text-muted-foreground mb-6">
-                Dengan semangat "Spirit Perubahan", kami menjalankan organisasi yang SMART—Solid, Melayani, Aktif, Responsif, dan Terdampak—dalam setiap langkah kami.
+                Mengusung semangat "Spirit Perubahan", kami berkomitmen menjalankan organisasi yang SMART—Solid, Melayani, Aktif, Responsif, dan Terdampak—dalam setiap program kerja kami.
               </p>
               <div className="grid grid-cols-2 gap-8">
                   <div className="flex items-start gap-4">
@@ -161,7 +161,7 @@ export default function AboutPage() {
                           <Target className="w-6 h-6"/>
                       </div>
                       <div>
-                          <h3 className="text-lg font-bold text-gray-800">Visi Kami</h3>
+                          <h3 className="text-lg font-bold text-gray-800">Tujuan Kami</h3>
                           <p className="text-muted-foreground text-sm">Menjadi pusat pengembangan potensi mahasiswa yang aktif, kreatif, dan inovatif.</p>
                       </div>
                   </div>
@@ -170,7 +170,7 @@ export default function AboutPage() {
                           <Rocket className="w-6 h-6"/>
                       </div>
                       <div>
-                          <h3 className="text-lg font-bold text-gray-800">Misi Kami</h3>
+                          <h3 className="text-lg font-bold text-gray-800">Strategi Kami</h3>
                           <p className="text-muted-foreground text-sm">Menciptakan organisasi yang SMART dalam setiap ekspresi, kreasi, dan prestasi.</p>
                       </div>
                   </div>
@@ -190,10 +190,10 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Jejak dan <span className="text-primary">Dampak Kami</span>
+              Capaian dan <span className="text-primary">Kontribusi Kami</span>
             </h2>
              <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Angka-angka ini bukan sekadar statistik, melainkan cerminan dari dedikasi dan pertumbuhan komunitas kami dari waktu ke waktu.
+              Angka-angka ini adalah cerminan dedikasi dan pertumbuhan berkelanjutan dari komunitas kami selama bertahun-tahun.
             </p>
           </div>
 
@@ -220,10 +220,10 @@ export default function AboutPage() {
                         <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Nilai-Nilai <span className="text-primary">Inti Kami</span>
+                        Makna di Balik <span className="text-primary">Simbol Kami</span>
                     </h2>
                     <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-                        Logo kami bukan sekadar simbol, melainkan representasi dari tiga pilar utama yang menopang seluruh gerakan dan semangat kami di HMJMI.
+                        Logo kami adalah representasi dari tiga nilai fundamental yang menjadi landasan semangat dan gerakan kami di HMJMI.
                     </p>
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -256,10 +256,10 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Jejak Langkah <span className="text-primary">Dalam Gambar</span>
+                    Momen <span className="text-primary">Dalam Lensa</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-                    Lihatlah dokumentasi berbagai kegiatan dan momen tak terlupakan yang menangkap semangat perjalanan kami dalam mengembangkan potensi mahasiswa.
+                    Saksikan dokumentasi berbagai momen tak terlupakan yang menangkap semangat, kolaborasi, dan pencapaian kami.
                 </p>
             </div>
 
