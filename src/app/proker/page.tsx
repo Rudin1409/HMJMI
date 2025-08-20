@@ -66,13 +66,34 @@ const communityActivities = [
 ];
 
 const agendas = [
-    'Sertijab & Demisioner',
-    'Open Recruitment & Gathering HMJ MI',
-    'Gathering Mahasiswa Baru',
-    'Malam Keakraban HMJMI',
-    'Latihan Dasar Organisasi',
-    'Perpisahan Mahasiswa Semester Akhir',
-    'VIBE (Voice of Informatics and Business Event)',
+    { 
+        title: 'Sertijab & Demisioner', 
+        description: 'Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.' 
+    },
+    { 
+        title: 'Open Recruitment & Gathering HMJ MI', 
+        description: 'Proses rekrutmen terbuka untuk menjaring anggota baru yang potensial, dilanjutkan dengan acara gathering untuk menyambut dan mengakrabkan seluruh anggota.' 
+    },
+    { 
+        title: 'Gathering Mahasiswa Baru', 
+        description: 'Acara penyambutan khusus untuk mahasiswa baru Jurusan Manajemen Informatika, bertujuan untuk memperkenalkan lingkungan jurusan dan organisasi.' 
+    },
+    { 
+        title: 'Malam Keakraban HMJMI', 
+        description: 'Acara tahunan yang dirancang untuk mempererat tali persaudaraan dan kebersamaan antar seluruh anggota HMJMI melalui kegiatan yang santai dan menyenangkan.' 
+    },
+    { 
+        title: 'Latihan Dasar Organisasi', 
+        description: 'Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi, kepemimpinan, dan manajemen.' 
+    },
+    { 
+        title: 'Perpisahan Mahasiswa Semester Akhir', 
+        description: 'Sebuah acara apresiasi dan pelepasan bagi para senior yang telah menyelesaikan masa studinya, sebagai bentuk penghargaan atas kontribusi mereka.' 
+    },
+    { 
+        title: 'VIBE (Voice of Informatics and Business Event)', 
+        description: 'Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis untuk memperluas wawasan mahasiswa.' 
+    },
 ];
 
 
@@ -184,11 +205,11 @@ export default function ProkerPage() {
                                         <AccordionTrigger className="text-lg font-semibold text-gray-700 hover:no-underline">
                                             <span className='flex items-center gap-4'>
                                               <Calendar className="h-5 w-5 text-primary/80" />
-                                              {agenda}
+                                              {agenda.title}
                                             </span>
                                         </AccordionTrigger>
                                         <AccordionContent className="text-muted-foreground pl-10">
-                                            Detail untuk agenda ini akan segera diperbarui.
+                                            {agenda.description}
                                         </AccordionContent>
                                     </AccordionItem>
                                 ))}
