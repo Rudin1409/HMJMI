@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/s
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/icons';
 import { usePathname } from 'next/navigation';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const navLinks = [
   { href: '/', label: 'Beranda' },
@@ -72,6 +73,7 @@ export function SiteHeader() {
         </nav>
         
         <div className="flex items-center gap-2">
+           <ThemeToggle />
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" className="lg:hidden" size="icon">
