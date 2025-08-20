@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -13,16 +14,10 @@ const highlightedPrograms = [
     hint: 'tech competition stage',
   },
   {
-    title: 'Pelatihan Intensif',
-    category: 'Pengembangan Skill',
+    title: 'Seminar Bisnis',
+    category: 'Edukasi & Wawasan',
     image: 'https://placehold.co/400x250.png',
-    hint: 'students in workshop',
-  },
-  {
-    title: 'Kunjungan Industri',
-    category: 'Wawasan Karir',
-    image: 'https://placehold.co/400x250.png',
-    hint: 'corporate office tour',
+    hint: 'business seminar',
   },
 ];
 
@@ -42,7 +37,7 @@ export function ProgramHighlightsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {highlightedPrograms.map((program, index) => (
             <Card key={index} className="group relative overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl bg-card/80 backdrop-blur-sm hover:bg-primary/10">
               <CardContent className="p-0">
