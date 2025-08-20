@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -320,27 +321,29 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
             )}
             
             {members.length > 1 && (
-                <Carousel
-                  opts={{
-                    align: "center",
-                    loop: members.length > 5,
-                  }}
-                  className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
-                >
-                  <CarouselContent className="-ml-4">
-                    {members.map((member, index) => (
-                      <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center">
-                          <SmallMemberCard 
-                            member={member} 
-                            onSelect={() => handleSelectMember(member)}
-                            isActive={featuredMember?.name === member.name}
-                          />
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious className={cn("flex z-20", !showNavOnDesktop && "md:hidden")} />
-                  <CarouselNext className={cn("flex z-20", !showNavOnDesktop && "md:hidden")} />
-                </Carousel>
+                <div className="py-4">
+                  <Carousel
+                    opts={{
+                      align: "center",
+                      loop: members.length > 5,
+                    }}
+                    className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl mx-auto"
+                  >
+                    <CarouselContent className="-ml-4">
+                      {members.map((member, index) => (
+                        <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center">
+                            <SmallMemberCard 
+                              member={member} 
+                              onSelect={() => handleSelectMember(member)}
+                              isActive={featuredMember?.name === member.name}
+                            />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className={cn("flex z-20", !showNavOnDesktop && "md:hidden")} />
+                    <CarouselNext className={cn("flex z-20", !showNavOnDesktop && "md:hidden")} />
+                  </Carousel>
+                </div>
             )}
             <div className="w-full pt-8 mt-8 border-t border-primary/20"></div>
         </div>
