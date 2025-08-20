@@ -35,7 +35,6 @@ export function CtaSection() {
                             <Instagram className="mr-2 h-5 w-5" /> Kunjungi Instagram
                         </Link>
                     </Button>
-                    <div className="font-semibold text-primary-foreground/90">@hmjmi.polsri</div>
                 </div>
             </div>
           </div>
