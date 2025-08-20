@@ -121,13 +121,13 @@ export default function AboutPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Tentang Kami
+            Perjalanan Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Kenali <span className="text-primary">Kisah Kami</span>
+            Kisah di Balik <span className="text-primary">Inovasi</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Kenali lebih dekat Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan perjalanan kami dalam membentuk generasi teknologi masa depan.
+            Selami lebih dalam tentang Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya dan komitmen kami dalam membina pemimpin teknologi masa depan.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200">
@@ -144,13 +144,13 @@ export default function AboutPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Tentang <span className="text-primary">HMJMI</span>
+              Mengenal <span className="text-primary">HMJMI</span>
             </h2>
             <p className="text-muted-foreground mt-6 max-w-4xl mx-auto">
-             Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) adalah organisasi kemahasiswaan khusus untuk mahasiswa Jurusan Manajemen Informatika di Politeknik Negeri Sriwijaya. Berdiri sejak tahun 2002, HMJMI berperan sebagai wadah yang mendukung pengembangan di bidang akademik dan non-akademik, serta menyediakan berbagai kegiatan yang bermanfaat bagi para mahasiswa.
+             Himpunan Mahasiswa Jurusan Manajemen Informatika (HMJMI) merupakan organisasi kemahasiswaan yang berdedikasi untuk mahasiswa di Jurusan Manajemen Informatika, Politeknik Negeri Sriwijaya. Didirikan pada tahun 2002, HMJMI menjadi pusat pengembangan bakat akademik dan non-akademik melalui beragam program yang bermanfaat.
             </p>
             <p className="text-muted-foreground mt-4 max-w-4xl mx-auto">
-              HMJMI memiliki 5 departemen dengan 11 divisi yang berfokus pada berbagai aspek untuk meningkatkan kompetensi dan kolaborasi mahasiswa.
+              Dengan 5 departemen dan 11 divisi, kami fokus pada peningkatan kompetensi dan kolaborasi untuk seluruh anggota.
             </p>
           </div>
 
@@ -177,7 +177,7 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Visi & <span className="text-primary">Misi</span>
+                    Arah & <span className="text-primary">Tujuan</span>
                 </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -188,7 +188,7 @@ export default function AboutPage() {
                             <Target className="w-8 h-8"/>
                         </div>
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">Visi Kami</h3>
-                        <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai wadah untuk menyalurkan dan mengembangkan potensi mahasiswa yang aktif, kreatif, dan inovatif, serta menjalin hubungan baik di tingkat internal maupun eksternal.</p>
+                        <p className="text-muted-foreground">Menjadikan HMJ Manajemen Informatika sebagai pusat pengembangan potensi mahasiswa yang aktif, kreatif, dan inovatif, sambil memperkuat kolaborasi internal dan eksternal.</p>
                     </div>
                 </Card>
                 <Card className="p-8 shadow-lg rounded-2xl bg-white relative overflow-hidden">
@@ -198,7 +198,7 @@ export default function AboutPage() {
                             <Rocket className="w-8 h-8"/>
                         </div>
                         <h3 className="text-2xl font-bold text-gray-800 mb-2">Misi Kami</h3>
-                        <p className="text-muted-foreground">Mewujudkan HMJ Manajemen Informatika sebagai organisasi yang SMART (Solid, Melayani, Aktif, Responsif, dan Terdampak) dalam berekspresi, berkreasi, dan berprestasi.</p>
+                        <p className="text-muted-foreground">Menciptakan HMJ Manajemen Informatika sebagai organisasi yang SMART—Solid, Melayani, Aktif, Responsif, dan Terdampak—dalam setiap ekspresi, kreasi, dan prestasi.</p>
                     </div>
                 </Card>
             </div>
@@ -213,7 +213,7 @@ export default function AboutPage() {
                         <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                        Filosofi <span className="text-primary">Logo</span>
+                        Makna di Balik <span className="text-primary">Simbol</span>
                     </h2>
                 </div>
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
@@ -224,7 +224,7 @@ export default function AboutPage() {
                         <Card className="p-8 shadow-lg rounded-2xl bg-white">
                             <h3 className="text-2xl font-bold text-gray-800 mb-4">Filosofi Logo</h3>
                             <p className="text-muted-foreground mb-6">
-                                Logo HMJMI melambangkan semangat, inovasi, dan profesionalisme. Setiap elemen memiliki makna mendalam yang mencerminkan nilai-nilai inti organisasi, dari kemakmuran hingga pertahanan dalam menghadapi tantangan, serta menjunjung tinggi ilmu pengetahuan dan kreativitas.
+                                Logo kami merepresentasikan semangat, inovasi, dan profesionalisme. Setiap elemennya memiliki makna yang mendalam, mencerminkan nilai-nilai inti kami: mulai dari kemakmuran, ketahanan dalam menghadapi tantangan, hingga penghargaan tinggi terhadap ilmu pengetahuan dan kreativitas.
                             </p>
                             <div className="space-y-4">
                                {logoPhilosophy.map((item, index) => (
@@ -252,10 +252,10 @@ export default function AboutPage() {
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-                    Galeri <span className="text-primary">Kami</span>
+                    Momen <span className="text-primary">Berharga</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-                    Dokumentasi kegiatan dan momen berharga HMJMI Politeknik Negeri Sriwijaya yang menggambarkan perjalanan kami dalam mengembangkan potensi mahasiswa.
+                    Lihatlah dokumentasi berbagai kegiatan dan momen tak terlupakan yang menangkap semangat perjalanan kami dalam mengembangkan potensi mahasiswa.
                 </p>
             </div>
 

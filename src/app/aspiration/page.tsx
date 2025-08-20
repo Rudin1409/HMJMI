@@ -57,13 +57,13 @@ export default function AspirationPage() {
          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Suara Anda Penting
+            Kami Mendengar
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Sampaikan <span className="text-primary">Aspirasi Anda!</span>
+            Salurkan <span className="text-primary">Ide Anda</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Bagikan aspirasi, saran, dan ide Anda untuk membantu kami tumbuh dan berkembang. Pendapat Anda sangat berarti bagi kemajuan bersama.
+            Setiap suara, saran, dan ide Anda adalah aset berharga yang membantu kami untuk terus berkembang. Mari berkontribusi untuk kemajuan bersama.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
@@ -80,10 +80,10 @@ export default function AspirationPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Formulir <span className="text-primary">Aspirasi</span>
+              Kotak <span className="text-primary">Saran</span>
             </h2>
              <p className="mt-4 max-w-3xl mx-auto text-muted-foreground">
-                Gunakan formulir di bawah ini untuk mengirimkan ide, saran, atau kritik membangun. Setiap masukan akan kami terima dengan baik.
+                Silakan gunakan formulir di bawah ini untuk mengirimkan gagasan, masukan, atau kritik yang membangun. Kami sangat menghargai setiap kontribusi dari Anda.
             </p>
           </div>
 

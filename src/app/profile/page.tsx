@@ -435,10 +435,10 @@ export default function ProfilePage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Jelajahi <span className="text-primary">Kabinet Kami</span>
+              Jelajahi <span className="text-primary">Struktur Kami</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Temukan berbagai departemen di HMJMI POLSRI, masing-masing dengan fokus dan program unggulan untuk pengembangan mahasiswa.
+              Temukan berbagai departemen di HMJMI, masing-masing dengan fokus dan program unggulan untuk mendukung pengembangan potensi mahasiswa secara menyeluruh.
             </p>
           </div>
 
@@ -529,7 +529,7 @@ export default function ProfilePage() {
           {activeView === 'members' && (
              <div className="space-y-12">
                 <MemberGroup 
-                    title={activeDept.id === 'inti' ? 'Pengurus Inti' : 'Kepala & Koordinator Departemen'}
+                    title={activeDept.id === 'inti' ? 'Pengurus Inti' : 'Pimpinan Departemen'}
                     members={currentDepartmentData.heads}
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
@@ -542,7 +542,7 @@ export default function ProfilePage() {
                     return (
                         <MemberGroup 
                             key={division.id}
-                            title={`Anggota Divisi ${division.name}`}
+                            title={`Tim Divisi ${division.name}`}
                             members={divisionMembers}
                             featuredMember={featuredMembers[division.id] || null}
                             setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
@@ -558,7 +558,7 @@ export default function ProfilePage() {
             <div>
               <div className="text-center mb-8">
                  <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
-                    Inisiatif Kami
+                    Program Unggulan
                     <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
                 </h3>
               </div>
@@ -579,14 +579,14 @@ export default function ProfilePage() {
                                     {program.description}
                                   </p>
                                   <Button variant="link" className="text-primary p-0 h-auto">
-                                      Learn More <ArrowUpRight className="ml-1 h-4 w-4" />
+                                      Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
                                   </Button>
                               </div>
                           </CardContent>
                       </Card>
                   ))
                 ) : (
-                  <p className="text-muted-foreground col-span-full text-center">Program kerja untuk departemen ini belum tersedia.</p>
+                  <p className="text-muted-foreground col-span-full text-center">Program kerja untuk departemen ini akan segera diperbarui.</p>
                 )}
               </div>
             </div>

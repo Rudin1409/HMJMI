@@ -19,13 +19,13 @@ export function InstagramSection() {
                 @hmjmi.polsri
              </Badge>
             <h2 className="text-3xl md:text-4xl font-bold">
-              Ikuti kami di Instagram untuk update terbaru dan aktivitas seru!
+              Ikuti Aktivitas Terbaru Kami di Media Sosial!
             </h2>
             <p className="text-white/80 max-w-lg">
-              Tetap terhubung dengan HMJMI POLSRI dan jangan lewatkan acara menarik, workshop, dan sorotan komunitas kami.
+              Tetap terhubung dengan kami melalui Instagram untuk mendapatkan informasi terbaru seputar acara, workshop, dan berbagai momen seru lainnya.
             </p>
             <Button asChild variant="secondary" size="lg" className="bg-white text-pink-500 hover:bg-gray-100 rounded-full">
-              <Link href="https://www.instagram.com/hmjmi.polsri/" target="_blank">Ikuti Kami <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="https://www.instagram.com/hmjmi.polsri/" target="_blank">Kunjungi Instagram <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
           <div className="relative h-full min-h-[450px] flex items-center justify-center">

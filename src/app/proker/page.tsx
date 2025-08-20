@@ -134,13 +134,13 @@ export default function ProkerPage() {
       >
         <div className="container mx-auto px-4 text-center">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-            Program Kerja
+            Agenda Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-            Inisiatif & <span className="text-primary">Kegiatan</span>
+            Program & <span className="text-primary">Kegiatan</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Jelajahi berbagai program kerja yang telah dan akan dilaksanakan oleh HMJMI. Temukan program yang sesuai dengan minat dan kebutuhan Anda.
+            Temukan berbagai program kerja yang kami rancang untuk memberdayakan mahasiswa. Lihat agenda yang sesuai dengan minat dan tujuan karir Anda.
           </p>
           <div className="mt-8">
             <Button variant="ghost" size="icon" className="rounded-full bg-pink-100 text-primary hover:bg-pink-200 animate-bounce">
@@ -157,10 +157,10 @@ export default function ProkerPage() {
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-              Program <span className="text-primary">Kami</span>
+              Agenda <span className="text-primary">Unggulan</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Kami berdedikasi untuk menyelenggarakan acara yang berdampak, mulai dari pelatihan teknis hingga acara pengembangan komunitas yang dinamis.
+              Kami berkomitmen untuk menyelenggarakan acara-acara berdampak, mulai dari pelatihan teknis hingga kegiatan pengembangan komunitas yang interaktif.
             </p>
           </div>
 

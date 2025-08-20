@@ -17,16 +17,16 @@ const faqItems = [
     answer: 'Program utama kami adalah IT Festival (Information Technology Festival), sebuah acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar sebagai sarana edukasi bagi mahasiswa dan masyarakat umum.',
   },
   {
-    question: 'Bagaimana cara mendaftar menjadi anggota HMJMI?',
+    question: 'Bagaimana cara bergabung menjadi anggota HMJMI?',
     answer: 'Setiap tahun ajaran baru, HMJMI membuka proses rekrutmen terbuka untuk seluruh mahasiswa aktif Jurusan Manajemen Informatika. Informasi lengkap mengenai jadwal, persyaratan, dan alur pendaftaran akan diumumkan melalui situs web dan media sosial resmi kami.',
   },
   {
-    question: 'Apa saja manfaat bergabung dengan HMJMI?',
-    answer: 'Bergabung dengan HMJMI memberikan banyak keuntungan, seperti memperluas jaringan pertemanan, mendapatkan pengalaman berorganisasi yang berharga, meningkatkan soft skill (kepemimpinan, kerja tim) dan hard skill, serta menjadi bagian dari komunitas yang suportif dan inovatif.',
+    question: 'Apa manfaat menjadi bagian dari HMJMI?',
+    answer: 'Menjadi anggota HMJMI memberikan banyak keuntungan, seperti memperluas jaringan profesional, mendapatkan pengalaman organisasi yang berharga, meningkatkan soft skill (seperti kepemimpinan dan kerja tim) serta hard skill, dan menjadi bagian dari komunitas yang solid dan inovatif.',
   },
   {
     question: 'Berapa lama masa jabatan kepengurusan di HMJMI?',
-    answer: 'Satu periode kepengurusan di HMJMI berlangsung selama dua tahun (dua periode). Prosesnya dimulai dari pelantikan pengurus baru dan diakhiri dengan serah terima jabatan kepada pengurus periode berikutnya melalui Musyawarah Besar (MUBES).',
+    answer: 'Satu periode kepengurusan di HMJMI berlangsung selama satu tahun. Prosesnya dimulai dari pelantikan pengurus baru dan diakhiri dengan serah terima jabatan kepada pengurus periode berikutnya melalui Musyawarah Besar (MUBES).',
   },
 ];
 
@@ -37,7 +37,7 @@ export function FaqSection() {
         <div className="text-center mb-12">
           <Badge variant="default" className="bg-pink-100 text-primary mb-4">FAQ</Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-            Frequently <span className="text-primary">Asked Questions</span>
+            Pertanyaan yang <span className="text-primary">Sering Diajukan</span>
           </h2>
         </div>
         
