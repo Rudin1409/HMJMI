@@ -71,7 +71,7 @@ export default function AspirationPage() {
     <div className="flex flex-col">
        <section 
         id="hero-aspiration" 
-        className="relative w-full flex items-center justify-center min-h-[70vh] bg-transparent"
+        className="relative w-full flex items-center justify-center min-h-screen bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 text-center relative z-10">

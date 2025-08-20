@@ -102,7 +102,7 @@ export default function ProkerPage() {
     <div className="flex flex-col">
       <section 
         id="hero-proker" 
-        className="relative w-full flex items-center justify-center min-h-[70vh] py-20 bg-transparent"
+        className="relative w-full flex items-center justify-center min-h-screen py-20 bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 text-center relative z-10">

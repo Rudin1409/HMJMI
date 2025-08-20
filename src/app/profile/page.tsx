@@ -382,47 +382,16 @@ export default function ProfilePage() {
         className="relative w-full flex items-center justify-center min-h-screen overflow-hidden bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
-        <div className="container mx-auto px-4 relative z-10">
-            <div className="absolute w-72 h-72 bg-pink-100/50 rounded-full -top-10 -left-20 blur-2xl"></div>
-            <div className="absolute w-72 h-72 bg-blue-100/50 rounded-full -bottom-10 -right-20 blur-2xl"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 min-h-screen">
-                 <div className="relative z-10 text-center md:text-left">
-                    <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
-                        Temui Tim Kami
-                    </Badge>
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
-                        Meet Our <span className="text-primary">Visionaries</span>
-                    </h1>
-                    <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
-                        Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
-                    </p>
-                </div>
-                <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-48 h-48 md:w-64 md:h-64 bg-pink-100 rounded-full shadow-inner"></div>
-                    </div>
-                    
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10">
-                         <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Main" className="rounded-full object-cover shadow-2xl border-8 border-white" data-ai-hint="team leader" />
-                    </div>
-                    
-                    <div className="absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32">
-                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                    </div>
-                    
-                    <div className="absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32">
-                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                    </div>
-
-                    <div className="absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28">
-                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
-                    </div>
-
-                     <div className="absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28">
-                          <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
-                    </div>
-                </div>
-            </div>
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
+              Temui Tim Kami
+          </Badge>
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+              Meet Our <span className="text-primary">Visionaries</span>
+          </h1>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+              Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
+          </p>
         </div>
       </section>
 
