@@ -35,16 +35,16 @@ export function FaqSection() {
     <section id="faq" className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <Badge variant="default" className="bg-pink-100 text-primary mb-4">FAQ</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <Badge variant="default" className="bg-pink-100 text-primary mb-4 dark:bg-primary/10">FAQ</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Pertanyaan yang <span className="text-primary">Sering Diajukan</span>
           </h2>
         </div>
         
         <Accordion type="single" collapsible className="w-full space-y-4">
           {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`} className="bg-transparent border border-gray-200 rounded-lg shadow-sm px-6">
-              <AccordionTrigger className="text-left font-semibold text-gray-700 hover:no-underline">
+            <AccordionItem key={index} value={`item-${index}`} className="bg-transparent border border-gray-200 dark:border-border rounded-lg shadow-sm px-6">
+              <AccordionTrigger className="text-left font-semibold text-foreground/80 hover:no-underline">
                 <span className='flex items-center gap-4'>
                   <span className='text-primary'>•</span>
                   {item.question}
@@ -60,3 +60,5 @@ export function FaqSection() {
     </section>
   );
 }
+
+    

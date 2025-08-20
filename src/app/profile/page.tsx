@@ -260,7 +260,7 @@ const MemberCard = ({ member }: { member: Member }) => {
     return (
         <div className="grid md:grid-cols-2 items-center gap-8 w-full">
             <div className="relative mx-auto w-full max-w-xs h-[380px] flex items-center justify-center">
-                 <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] bg-pink-100/80"></div>
+                 <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] bg-pink-100/80 dark:bg-primary/20"></div>
                  <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] border-4 border-primary"></div>
                  <div className="relative w-[240px] h-[320px] rounded-t-[120px] rounded-b-[5rem] overflow-hidden">
                     <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
@@ -268,7 +268,7 @@ const MemberCard = ({ member }: { member: Member }) => {
             </div>
             <div className="flex flex-col gap-2 text-center md:text-left">
                 <h3 className="text-3xl font-bold text-primary">{member.name}</h3>
-                <p className="text-xl font-semibold text-gray-800">{member.role}</p>
+                <p className="text-xl font-semibold text-foreground">{member.role}</p>
                 <p className="text-muted-foreground">{member.class}</p>
                 {member.instagram && (
                     <a 
@@ -299,7 +299,7 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
         >
             <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
         </div>
-        <p className="text-xs text-center font-semibold text-gray-700 w-24 md:w-32 truncate">{member.name}</p>
+        <p className="text-xs text-center font-semibold text-foreground/80 w-24 md:w-32 truncate">{member.name}</p>
     </div>
 );
 
@@ -313,7 +313,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
 
     return (
         <div className="space-y-8">
-            <h3 className="text-2xl font-bold text-gray-700 text-center">{title}</h3>
+            <h3 className="text-2xl font-bold text-foreground text-center">{title}</h3>
             {featuredMember && (
                  <div className="flex justify-center">
                     <MemberCard member={featuredMember} />
@@ -321,7 +321,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
             )}
             
             {members.length > 1 && (
-                <div className="py-4">
+                <div className="py-8">
                   <Carousel
                     opts={{
                       align: "center",
@@ -389,29 +389,29 @@ export default function ProfilePage() {
           <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
               Temui Tim Kami
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground">
               Meet Our <span className="text-primary">Visionaries</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
               Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
           </p>
-          <div className="mt-8">
+           <div className="mt-8">
             <a href="#explore-cabinet">
-              <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce mx-auto">
+                <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce">
                 <ChevronDown className="h-6 w-6" />
-              </Button>
+                </Button>
             </a>
           </div>
         </div>
       </section>
 
-      <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-primary/10 backdrop-blur-sm">
+      <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Jelajahi <span className="text-primary">Struktur Kami</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
@@ -423,7 +423,7 @@ export default function ProfilePage() {
             <CardContent className="p-0">
               <div className="flex items-center justify-center gap-2 mb-6">
                 <span className="text-primary text-xl font-bold">*</span>
-                <h3 className="text-xl font-bold text-center text-gray-700">Departemen</h3>
+                <h3 className="text-xl font-bold text-center text-foreground/80">Departemen</h3>
                 <span className="text-primary text-xl font-bold">*</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -436,7 +436,7 @@ export default function ProfilePage() {
                       <CardContent className="p-0 flex flex-col items-center gap-2">
                         <div className={cn(
                           'p-3 rounded-full transition-colors',
-                           activeDept.id === dept.id ? 'bg-white/20' : 'bg-pink-100'
+                           activeDept.id === dept.id ? 'bg-white/20' : 'bg-pink-100 dark:bg-primary/10'
                         )}>
                            {React.cloneElement(dept.icon, {className: cn("w-8 h-8", activeDept.id === dept.id ? 'text-white' : 'text-primary')})}
                         </div>
@@ -465,7 +465,7 @@ export default function ProfilePage() {
 
             {activeDept.id !== 'inti' && currentDivisions.length > 0 && (
               <Accordion type="single" collapsible className="w-full max-w-2xl mb-8">
-                  <h3 className="text-lg font-semibold text-gray-700 mb-2">Divisi</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">Divisi</h3>
                    {currentDivisions.map((division) => (
                       <AccordionItem key={division.id} value={division.id} className="bg-card/80 backdrop-blur-sm border-b-2 rounded-lg mb-2 px-4">
                           <AccordionTrigger className="text-left font-semibold hover:no-underline">{division.name}</AccordionTrigger>
@@ -483,7 +483,7 @@ export default function ProfilePage() {
                 onClick={() => setActiveView('members')}
                 className={cn(
                   'rounded-full',
-                  activeView === 'members' ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-gray-700'
+                  activeView === 'members' ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-gray-700 dark:text-foreground dark:bg-card'
                 )}
                 variant={activeView === 'members' ? 'default' : 'outline'}
               >
@@ -494,7 +494,7 @@ export default function ProfilePage() {
                 onClick={() => setActiveView('programs')}
                 className={cn(
                     'rounded-full',
-                    activeView === 'programs' ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-gray-700'
+                    activeView === 'programs' ? 'bg-primary text-white hover:bg-primary/90' : 'bg-white text-gray-700 dark:text-foreground dark:bg-card'
                 )}
                 variant={activeView === 'programs' ? 'default' : 'outline'}
                >
@@ -534,7 +534,7 @@ export default function ProfilePage() {
           {activeView === 'programs' && (
             <div>
               <div className="text-center mb-8">
-                 <h3 className="text-2xl font-bold text-gray-800 relative inline-block">
+                 <h3 className="text-2xl font-bold text-foreground relative inline-block">
                     Program Unggulan
                     <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-2/3 h-0.5 bg-primary/50 rounded-full"></span>
                 </h3>
@@ -551,7 +551,7 @@ export default function ProfilePage() {
                                   </div>
                               </div>
                               <div className="p-6">
-                                  <h4 className="text-xl font-bold text-gray-800 mb-2">{program.title}</h4>
+                                  <h4 className="text-xl font-bold text-foreground mb-2">{program.title}</h4>
                                   <p className="text-muted-foreground mb-4 text-sm">
                                     {program.description}
                                   </p>

@@ -106,18 +106,18 @@ export default function ProkerPage() {
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
-          <Badge variant="default" className="mb-4 bg-pink-100 text-primary shadow-sm">
+          <Badge variant="default" className="mb-4 bg-primary/10 text-primary shadow-sm">
             Aktivitas & Inisiatif
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-800">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground">
             Inovasi Melalui <span className="text-primary">Aksi Nyata</span>
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
             Temukan berbagai program dan kegiatan yang kami selenggarakan untuk mengasah potensi, memperluas wawasan, dan memberikan kontribusi positif.
           </p>
-          <div className="mt-8">
+           <div className="mt-8">
             <a href="#proker-list">
-                <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce mx-auto">
+                <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce">
                 <ChevronDown className="h-6 w-6" />
                 </Button>
             </a>
@@ -125,7 +125,7 @@ export default function ProkerPage() {
         </div>
       </section>
 
-      <section id="proker-list" className="w-full py-16 md:py-24 bg-primary/5 backdrop-blur-sm">
+      <section id="proker-list" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="unggulan" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto mb-10 md:mb-12 shadow-md max-w-2xl mx-auto">
@@ -141,7 +141,7 @@ export default function ProkerPage() {
                     <div key={program.title} className="grid md:grid-cols-2 items-center">
                          <div className="p-8 md:p-12">
                             <Badge variant="secondary" className="mb-4">Program Kerja Utama</Badge>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{program.title}</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                             <p className="text-muted-foreground mb-6">{program.description}</p>
                             <Button size="lg">
                                 Lihat Info Lengkap <ArrowUpRight className="ml-2" />
@@ -164,7 +164,7 @@ export default function ProkerPage() {
                             </div>
                             <div className="p-8 md:p-12">
                                 <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800">Program Kerja Tambahan</Badge>
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{program.title}</h2>
+                                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                                 <p className="text-muted-foreground mb-6">{program.description}</p>
                                 <Button>
                                     Pelajari Lebih Lanjut <ArrowUpRight className="ml-2" />
@@ -178,18 +178,18 @@ export default function ProkerPage() {
             <TabsContent value="komunitas">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-gray-800">Aktivitas Internal & Sosial</h2>
+                        <h2 className="text-3xl font-bold text-foreground">Aktivitas Internal & Sosial</h2>
                         <p className="text-muted-foreground mt-2">Inisiatif yang memperkuat ikatan dan mengembangkan soft skill anggota.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {communityActivities.map((activity) => (
                             <Card key={activity.title}>
                                 <CardContent className="p-6 flex items-center gap-6">
-                                    <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 shadow-md">
+                                    <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 dark:border-primary/20 shadow-md">
                                         <Image src={activity.image} alt={`${activity.title} logo`} layout="fill" objectFit="cover" data-ai-hint={activity.hint} />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-bold text-gray-800 mb-2">{activity.title}</h3>
+                                        <h3 className="text-xl font-bold text-foreground mb-2">{activity.title}</h3>
                                         <p className="text-muted-foreground text-sm">{activity.description}</p>
                                     </div>
                                 </CardContent>
@@ -202,7 +202,7 @@ export default function ProkerPage() {
             <TabsContent value="agenda">
                  <div className="max-w-3xl mx-auto">
                     <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-gray-800">Agenda Rutin Tahunan</h2>
+                        <h2 className="text-3xl font-bold text-foreground">Agenda Rutin Tahunan</h2>
                         <p className="text-muted-foreground mt-2">Kegiatan terjadwal yang menjadi bagian dari siklus organisasi kami.</p>
                     </div>
                      <Card>
@@ -210,7 +210,7 @@ export default function ProkerPage() {
                              <Accordion type="single" collapsible className="w-full">
                                 {agendas.map((agenda, index) => (
                                     <AccordionItem key={index} value={`item-${index}`} className="border-b last:border-b-0">
-                                        <AccordionTrigger className="text-lg font-semibold text-gray-700 hover:no-underline">
+                                        <AccordionTrigger className="text-lg font-semibold text-foreground/80 hover:no-underline">
                                             <span className='flex items-center gap-4'>
                                               <Calendar className="h-5 w-5 text-primary/80" />
                                               {agenda.title}
@@ -232,3 +232,5 @@ export default function ProkerPage() {
     </div>
   );
 }
+
+    

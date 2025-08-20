@@ -44,8 +44,8 @@ export function TestimonialsSection() {
     <section id="testimonials" className="w-full py-16 md:py-24 overflow-hidden bg-transparent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-           <Badge variant="default" className="bg-pink-100 text-primary mb-2">Testimoni</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+           <Badge variant="default" className="bg-pink-100 text-primary mb-2 dark:bg-primary/10">Testimoni</Badge>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Kisah dari <span className="text-primary">Komunitas Kami</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
@@ -67,7 +67,7 @@ export function TestimonialsSection() {
                         </p>
                          <p className="text-6xl text-primary/20 absolute -bottom-8 right-0 font-serif rotate-180">“</p>
                       </div>
-                      <Avatar className="w-20 h-20 mb-4 border-4 border-pink-100">
+                      <Avatar className="w-20 h-20 mb-4 border-4 border-pink-100 dark:border-primary/20">
                         <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint="headshot portrait" />
                         <AvatarFallback>{testimonial.name.substring(0, 2)}</AvatarFallback>
                       </Avatar>
@@ -83,3 +83,5 @@ export function TestimonialsSection() {
     </section>
   );
 }
+
+    

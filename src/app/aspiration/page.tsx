@@ -39,7 +39,7 @@ export default function AspirationPage() {
           <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
             Kami Mendengar Anda
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+          <h1 className="text-5xl md:text-6xl font-bold text-foreground">
             Suara Anda, <span className="text-primary">Perubahan Kita</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -55,7 +55,7 @@ export default function AspirationPage() {
         </div>
       </section>
 
-      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-primary/10 backdrop-blur-sm">
+      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
                 <div className='flex flex-col items-center text-center'>
@@ -63,7 +63,7 @@ export default function AspirationPage() {
                         <div className="flex justify-center mb-4">
                             <div className="w-16 h-1 bg-primary rounded-full"></div>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                             Sampaikan <span className="text-primary">Gagasan Anda</span>
                         </h2>
                         <p className="mt-4 max-w-xl text-muted-foreground">
@@ -85,7 +85,7 @@ export default function AspirationPage() {
                 </div>
                  <div className="space-y-8">
                     <div className="text-left">
-                        <h3 className="text-2xl font-bold text-gray-800">Bagaimana Aspirasi Anda Diproses?</h3>
+                        <h3 className="text-2xl font-bold text-foreground">Bagaimana Aspirasi Anda Diproses?</h3>
                         <p className="text-muted-foreground mt-2">Kami percaya pada transparansi. Berikut adalah tahapan yang akan dilalui oleh setiap aspirasi yang kami terima.</p>
                     </div>
                     {processSteps.map((step, index) => (
@@ -95,7 +95,7 @@ export default function AspirationPage() {
                                     {step.icon}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-lg text-gray-800">{step.title}</h4>
+                                    <h4 className="font-bold text-lg text-foreground">{step.title}</h4>
                                     <p className="text-muted-foreground text-sm">{step.description}</p>
                                 </div>
                             </CardContent>
@@ -108,3 +108,5 @@ export default function AspirationPage() {
     </div>
   );
 }
+
+    

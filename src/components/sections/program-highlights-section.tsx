@@ -26,10 +26,10 @@ export function ProgramHighlightsSection() {
     <section id="program-highlights" className="w-full py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <Badge variant="default" className="bg-pink-100 text-primary mb-4">
+          <Badge variant="default" className="bg-pink-100 text-primary mb-4 dark:bg-primary/10">
             Aktivitas Unggulan
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Dari <span className="text-primary">Teori</span> ke <span className="text-primary">Aksi</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
@@ -53,7 +53,7 @@ export function ProgramHighlightsSection() {
                 </div>
                 <div className="p-6">
                   <Badge variant="secondary" className="mb-2">{program.category}</Badge>
-                  <h3 className="text-xl font-bold text-gray-800">{program.title}</h3>
+                  <h3 className="text-xl font-bold text-foreground">{program.title}</h3>
                 </div>
               </CardContent>
             </Card>
@@ -70,3 +70,5 @@ export function ProgramHighlightsSection() {
     </section>
   );
 }
+
+    

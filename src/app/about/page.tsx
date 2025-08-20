@@ -134,7 +134,7 @@ export default function AboutPage() {
                     <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
                       Jejak Langkah Kami
                     </Badge>
-                    <h1 className="text-5xl md:text-6xl font-bold text-gray-800">
+                    <h1 className="text-5xl md:text-6xl font-bold text-foreground">
                       Merangkai Inovasi, <span className="text-primary">Mencetak Talenta</span>
                     </h1>
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
@@ -170,7 +170,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="vision-mission" className="w-full py-16 md:py-24 bg-primary/10 backdrop-blur-sm">
+      <section id="vision-mission" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
@@ -182,7 +182,7 @@ export default function AboutPage() {
                         <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center flex-shrink-0">
                             <Eye className="w-8 h-8"/>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Visi Kami</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground">Visi Kami</h2>
                     </div>
                     <p className="text-muted-foreground">
                     Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif bagi seluruh Mahasiswa/i Manajemen Informatika.
@@ -198,7 +198,7 @@ export default function AboutPage() {
                           <div className="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center flex-shrink-0">
                               <ListChecks className="w-8 h-8"/>
                           </div>
-                          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Misi Kami</h2>
+                          <h2 className="text-3xl md:text-4xl font-bold text-foreground">Misi Kami</h2>
                   </div>
                 </div>
                 <ul className="space-y-4">
@@ -222,7 +222,7 @@ export default function AboutPage() {
             <div className="flex justify-center mb-4">
               <div className="w-16 h-1 bg-primary rounded-full"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
               Capaian dan <span className="text-primary">Kontribusi Kami</span>
             </h2>
              <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
@@ -246,13 +246,13 @@ export default function AboutPage() {
         </div>
       </section>
       
-       <section className="py-16 md:py-24 bg-primary/10 backdrop-blur-sm">
+       <section className="py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex justify-center mb-4">
                         <div className="w-16 h-1 bg-primary rounded-full"></div>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                         Makna di Balik <span className="text-primary">Simbol Kami</span>
                     </h2>
                     <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
@@ -271,7 +271,7 @@ export default function AboutPage() {
                                         {item.icon}
                                     </div>
                                     <div>
-                                        <h4 className="font-bold text-lg text-gray-800">{item.title}</h4>
+                                        <h4 className="font-bold text-lg text-foreground">{item.title}</h4>
                                         <p className="text-muted-foreground text-sm">{item.description}</p>
                                     </div>
                                 </div>
@@ -288,7 +288,7 @@ export default function AboutPage() {
                 <div className="flex justify-center mb-4">
                     <div className="w-16 h-1 bg-primary rounded-full"></div>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
                     Momen <span className="text-primary">Dalam Lensa</span>
                 </h2>
                 <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">

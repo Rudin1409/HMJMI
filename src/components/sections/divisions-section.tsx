@@ -15,13 +15,13 @@ const departments = [
 
 export function DivisionsSection() {
   return (
-    <section id="divisions" className="w-full py-16 md:py-24 bg-primary/5 backdrop-blur-sm">
+    <section id="divisions" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <Badge variant="default" className="bg-pink-100 text-primary mb-4">
+          <Badge variant="default" className="bg-pink-100 text-primary mb-4 dark:bg-primary/10">
             Struktur Kami
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Fondasi Penggerak <span className="text-primary">Inovasi</span>
           </h2>
           <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
@@ -33,7 +33,7 @@ export function DivisionsSection() {
           {departments.map((dept) => (
             <Card key={dept.name} className="text-center p-6">
               <CardContent className="flex flex-col items-center gap-4 p-0">
-                <div className="bg-pink-100 p-4 rounded-full">
+                <div className="bg-pink-100 dark:bg-primary/10 p-4 rounded-full">
                   {dept.icon}
                 </div>
                 <h3 className="text-lg font-bold">{dept.name}</h3>
@@ -54,3 +54,5 @@ export function DivisionsSection() {
     </section>
   );
 }
+
+    
