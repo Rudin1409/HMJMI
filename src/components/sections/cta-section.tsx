@@ -5,7 +5,7 @@ import { Send } from 'lucide-react';
 
 export function CtaSection() {
   return (
-    <section id="cta" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
+    <section id="cta" className="w-full py-16 md:py-24 bg-card/40 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="relative max-w-4xl mx-auto p-8 md:p-12 bg-card rounded-2xl shadow-lg text-center overflow-hidden">
             <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary/10 rounded-full"></div>

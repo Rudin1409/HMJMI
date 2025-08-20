@@ -118,7 +118,7 @@ export default function ProkerPage() {
         </div>
       </section>
 
-      <section id="proker-list" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
+      <section id="proker-list" className="w-full py-16 md:py-24 bg-card/40 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="unggulan" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto mb-10 md:mb-12 shadow-md max-w-2xl mx-auto">

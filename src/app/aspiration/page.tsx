@@ -94,7 +94,7 @@ export default function AspirationPage() {
         </div>
       </section>
 
-      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
+      <section id="aspiration-form" className="w-full py-16 md:py-24 bg-card/40 backdrop-blur-sm">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
                 <div>

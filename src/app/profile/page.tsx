@@ -219,7 +219,7 @@ const programs = {
         { title: 'BAKSOMI', category: 'SOSIAL', description: 'Bakti sosial yang mencakup kunjungan ke panti, tausiyah, serta bagi-bagi takjil.', image: 'https://placehold.co/400x200.png', hint: 'social charity' },
     ],
     bistra: [
-        { title: 'Seminar Bisnis', category: 'EDUKASI', description: 'Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha.', image: 'https://placehold.co/400x200.png', hint: 'business seminar' }
+        { title: 'Seminar Bisnis', category: 'EDUKASI', description: 'Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha sejak dini.', image: 'https://placehold.co/400x200.png', hint: 'business seminar' }
     ]
 };
 
@@ -426,7 +426,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-card/60 backdrop-blur-sm">
+      <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-card/40 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-4">
