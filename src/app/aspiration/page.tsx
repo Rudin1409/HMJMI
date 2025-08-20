@@ -68,10 +68,10 @@ export default function AspirationPage() {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-background">
        <section 
         id="hero-aspiration" 
-        className="relative w-full bg-background flex items-center justify-center min-h-[70vh]"
+        className="relative w-full flex items-center justify-center min-h-[70vh]"
       >
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
@@ -93,7 +93,7 @@ export default function AspirationPage() {
         </div>
       </section>
 
-      <section id="aspiration-form" className="w-full bg-background py-16 md:py-24">
+      <section id="aspiration-form" className="w-full py-16 md:py-24">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
                 <div>

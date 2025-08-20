@@ -7,7 +7,7 @@ import { DivisionsSection } from '@/components/sections/divisions-section';
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-background">
       <HeroSection />
       <AboutSection />
       <ProgramHighlightsSection />

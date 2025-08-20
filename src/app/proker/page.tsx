@@ -99,10 +99,10 @@ const agendas = [
 
 export default function ProkerPage() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-background">
       <section 
         id="hero-proker" 
-        className="relative w-full bg-background flex items-center justify-center min-h-[70vh] py-20"
+        className="relative w-full flex items-center justify-center min-h-[70vh] py-20"
       >
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary shadow-sm">
@@ -117,7 +117,7 @@ export default function ProkerPage() {
         </div>
       </section>
 
-      <section id="proker-list" className="w-full py-16 md:py-24 bg-background">
+      <section id="proker-list" className="w-full py-16 md:py-24">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="unggulan" className="w-full">
             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto mb-10 md:mb-12 shadow-md max-w-2xl mx-auto">

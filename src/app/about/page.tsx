@@ -122,10 +122,10 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-background">
       <section 
         id="hero-about" 
-        className="relative w-full bg-background flex items-center justify-center min-h-[70vh]"
+        className="relative w-full flex items-center justify-center min-h-[70vh]"
       >
         <div className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-pink-100 text-primary">
@@ -147,7 +147,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section id="vision-mission" className="w-full bg-background py-16 md:py-24">
+      <section id="vision-mission" className="w-full py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
@@ -223,7 +223,7 @@ export default function AboutPage() {
         </div>
       </section>
       
-       <section className="bg-background py-16 md:py-24">
+       <section className="py-16 md:py-24">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
                     <div className="flex justify-center mb-4">

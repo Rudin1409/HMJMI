@@ -37,7 +37,7 @@ export default function RootLayout({
           </div>
           <div className="relative flex min-h-dvh flex-col bg-transparent">
             <SiteHeader />
-            <main className="flex-1 bg-background">{children}</main>
+            <main className="flex-1">{children}</main>
             <SiteFooter />
           </div>
           <Toaster />
