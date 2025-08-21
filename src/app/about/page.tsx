@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks, Palette, Sparkles, Wind, Cpu, BrainCircuit } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -38,23 +38,40 @@ const stats = [
   },
 ];
 
-const values = [
-    {
-        icon: <Leaf className="w-5 h-5 text-primary" />,
-        title: "Kesejahteraan",
-        description: "Diwakili oleh padi dan kapas, simbol kemakmuran bagi seluruh anggota."
-    },
-    {
-        icon: <Feather className="w-5 h-5 text-primary" />,
-        title: "Ketahanan",
-        description: "Diwakili oleh perisai, simbol kekuatan dalam menghadapi setiap tantangan."
-    },
-    {
-        icon: <BookOpenCheck className="w-5 h-5 text-primary" />,
-        title: "Intelektualitas",
-        description: "Diwakili oleh buku dan pena, simbol ilmu pengetahuan dan kreativitas tanpa batas."
-    }
-]
+const logoPhilosophy = {
+    colors: [
+        { name: "Merah & Oranye", description: "Melambangkan keberanian dan semangat.", class: "bg-red-500" },
+        { name: "Emas & Kuning", description: "Melambangkan keunggulan dan kepemimpinan.", class: "bg-yellow-500" },
+        { name: "Putih", description: "Melambangkan kedamaian dan netral.", class: "bg-white border border-gray-300" },
+        { name: "Biru", description: "Melambangkan kebijaksanaan dan ketenangan.", class: "bg-blue-500" },
+        { name: "Pink", description: "Melambangkan kelembutan dan perubahan yang positif.", class: "bg-pink-500" },
+        { name: "Abu-abu", description: "Melambangkan kebijaksanaan dan kedewasaan.", class: "bg-gray-500" },
+    ],
+    symbols: [
+        { 
+            icon: <Feather className="w-6 h-6 text-primary" />,
+            title: "Ekor di Bawah", 
+            description: "Melambangkan 5 divisi dengan warna merah dan oranye, merepresentasikan energi, semangat juang, keberanian menyuarakan aspirasi, dan peran aktif dalam memperjuangkan kepentingan jurusan." 
+        },
+        { 
+            icon: <Wind className="w-6 h-6 text-primary" />,
+            title: "Sayap Terbentang", 
+            description: "Melambangkan 11 divisi dan kesiapan untuk terbang tinggi, menjangkau luas, dan menyebarkan pengaruh positif sebagai wadah aspirasi, ide, dan semangat kolaboratif." 
+        },
+        { 
+            icon: <Sparkles className="w-6 h-6 text-primary" />,
+            title: "Hiasan Biru di Atas Kepala", 
+            description: "Melambangkan sikap berkepala dingin dan ketenangan dalam menghadapi setiap masalah, baik di dalam maupun di luar himpunan." 
+        },
+        { 
+            icon: <Cpu className="w-6 h-6 text-primary" />,
+            title: "Elemen IT di Dada Phoenix", 
+            description: "Pola sirkuit motherboard yang menjadi inti dari Jurusan Manajemen Informatika, mencerminkan inovasi, teknologi, serta peran utama dalam dunia digital." 
+        },
+    ],
+    overall: "Secara keseluruhan, logo ini mencerminkan semangat kebangkitan, adaptasi, dan inovasi dalam bidang teknologi dan manajemen organisasi, menjadikan Himpunan Mahasiswa Manajemen Informatika sebagai entitas yang selalu berkembang dan siap menghadapi tantangan zaman."
+};
+
 
 const galleryItems = [
     {
@@ -249,36 +266,68 @@ export default function AboutPage() {
        <section className="py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
-                    <div className="flex justify-center mb-4">
-                        <div className="w-16 h-1 bg-primary rounded-full"></div>
-                    </div>
+                    <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
+                      Kabinet Karsadhikara
+                    </Badge>
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                        Makna di Balik <span className="text-primary">Simbol Kami</span>
+                        Filosofi di Balik <span className="text-primary">Logo Kami</span>
                     </h2>
                     <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-                        Logo kami adalah representasi dari tiga nilai fundamental yang menjadi landasan semangat dan gerakan kami di HMJMI.
+                        Setiap elemen dalam logo Kabinet Karsadhikara dirancang dengan makna mendalam, mencerminkan semangat, visi, dan nilai-nilai yang kami junjung tinggi.
                     </p>
                 </div>
+
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                     <div className="relative aspect-square">
-                        <Image src="https://placehold.co/500x500.png" layout="fill" objectFit="contain" alt="Filosofi Logo" data-ai-hint="abstract logo gears book" />
+                        <Image src="https://placehold.co/500x500.png" layout="fill" objectFit="contain" alt="Filosofi Logo Kabinet Karsadhikara" data-ai-hint="phoenix emblem" />
                     </div>
-                    <div>
-                        <div className="space-y-6">
-                           {values.map((item, index) => (
-                                <div key={index} className="flex items-start gap-4 p-4 rounded-lg hover:bg-primary/5 transition-colors">
-                                    <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                                        {item.icon}
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2"><Palette className="w-5 h-5 text-primary"/> Makna Warna</h3>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                {logoPhilosophy.colors.map(color => (
+                                    <div key={color.name} className="flex items-center gap-2">
+                                        <div className={`w-4 h-4 rounded-full flex-shrink-0 ${color.class}`}></div>
+                                        <span className="text-sm text-muted-foreground">{color.name}</span>
                                     </div>
-                                    <div>
-                                        <h4 className="font-bold text-lg text-foreground">{item.title}</h4>
-                                        <p className="text-muted-foreground text-sm">{item.description}</p>
+                                ))}
+                            </div>
+                             <div className="mt-4 space-y-2">
+                                {logoPhilosophy.colors.map(color => (
+                                    <p key={color.name} className="text-sm text-muted-foreground pl-6 relative">
+                                        <span className={`absolute left-0 top-1.5 w-4 h-4 rounded-full ${color.class}`}></span>
+                                        <strong>{color.name}:</strong> {color.description}
+                                    </p>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 className="text-xl font-bold text-foreground mb-4 flex items-center gap-2"><BrainCircuit className="w-5 h-5 text-primary"/> Makna Simbol</h3>
+                             <div className="space-y-4">
+                               {logoPhilosophy.symbols.map((item) => (
+                                    <div key={item.title} className="flex items-start gap-4 p-3 rounded-lg hover:bg-primary/5 transition-colors">
+                                        <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                                            {item.icon}
+                                        </div>
+                                        <div>
+                                            <h4 className="font-semibold text-foreground">{item.title}</h4>
+                                            <p className="text-muted-foreground text-sm">{item.description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                           ))}
+                               ))}
+                            </div>
                         </div>
                     </div>
                 </div>
+                 <Card className="mt-12 max-w-4xl mx-auto">
+                    <CardHeader>
+                        <CardTitle className="text-center">Arti Keseluruhan Logo</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-center text-muted-foreground">{logoPhilosophy.overall}</p>
+                    </CardContent>
+                </Card>
             </div>
       </section>
 
