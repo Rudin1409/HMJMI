@@ -166,9 +166,6 @@ export default function ProkerPage() {
                                 <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800">Program Kerja Tambahan</Badge>
                                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                                 <p className="text-muted-foreground mb-6">{program.description}</p>
-                                <Button>
-                                    Pelajari Lebih Lanjut <ArrowUpRight className="ml-2" />
-                                </Button>
                             </div>
                         </div>
                     ))}
