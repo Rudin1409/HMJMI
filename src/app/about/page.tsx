@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
+import { AnimatedLogo } from '@/components/ui/animated-logo';
 
 const stats = [
   {
@@ -279,7 +280,7 @@ export default function AboutPage() {
 
                 <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                     <div className="relative aspect-square">
-                        <Image src="https://placehold.co/500x500.png" layout="fill" objectFit="contain" alt="Filosofi Logo Kabinet Karsadhikara" data-ai-hint="phoenix emblem" />
+                        <AnimatedLogo />
                     </div>
                     <div className="space-y-8">
                         <div>
