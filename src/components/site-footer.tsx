@@ -35,7 +35,7 @@ export function SiteFooter() {
               <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
-                <span className="text-sm font-semibold leading-tight text-muted-foreground">bersatu beraksi, bersinar berprestasi</span>
+                <span className="text-sm font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
               </div>
             </Link>
             <p className="text-sm text-muted-foreground">

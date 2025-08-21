@@ -57,7 +57,7 @@ export function AboutSection() {
         </div>
 
         <div className="text-center my-12">
-          <p className="text-2xl font-semibold text-primary/80 italic">"bersatu beraksi, bersinar berprestasi"</p>
+          <p className="text-2xl font-semibold text-primary/80 italic">"Bersatu Beraksi, Bersinar Berprestasi"</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

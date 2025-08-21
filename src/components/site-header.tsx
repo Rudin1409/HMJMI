@@ -53,7 +53,7 @@ export function SiteHeader() {
           <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
            <div className="flex flex-col">
               <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
-              <span className="text-xs font-semibold leading-tight text-muted-foreground">bersatu beraksi, bersinar berprestasi</span>
+              <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
             </div>
         </Link>
         
@@ -88,7 +88,7 @@ export function SiteHeader() {
                    <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
                    <div className="flex flex-col">
                       <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
-                      <span className="text-xs font-semibold leading-tight text-muted-foreground">bersatu beraksi, bersinar berprestasi</span>
+                      <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
                     </div>
                 </div>
                 <nav className="mt-6 flex flex-col gap-2 p-6">
