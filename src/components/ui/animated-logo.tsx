@@ -27,7 +27,7 @@ export function AnimatedLogo() {
         <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-pink-200 dark:from-primary/10 dark:to-primary/30 rounded-full shadow-lg"></div>
         <div className="relative p-4 w-full h-full flex items-center justify-center">
             <Image
-            src="https://placehold.co/500x500.png"
+            src="/logo/logokabinet.png"
             width={500}
             height={500}
             alt="Logo Kabinet Karsadhikara"
