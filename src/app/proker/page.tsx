@@ -91,8 +91,8 @@ const agendas = [
         description: 'Sebuah acara apresiasi dan pelepasan bagi para senior yang telah menyelesaikan masa studinya, sebagai bentuk penghargaan atas kontribusi mereka.' 
     },
     { 
-        title: 'VIBE (Voice of Informatics and Business Event)', 
-        description: 'Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis untuk memperluas wawasan mahasiswa.' 
+        title: 'VIBE (Visiting - Interacting - Building - Exchanging)', 
+        description: 'Sebuah program kunjungan ke organisasi mahasiswa (Ormawa) lain di lingkungan Politeknik Negeri Sriwijaya untuk mempererat silaturahmi, berinteraksi, dan saling bertukar ide serta gagasan mengenai program kerja masing-masing.' 
     },
 ];
 
@@ -229,5 +229,3 @@ export default function ProkerPage() {
     </div>
   );
 }
-
-    
