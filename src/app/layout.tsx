@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   },
   description: 'Website Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya',
   keywords: ['HMJMI', 'Polsri', 'Manajemen Informatika', 'Politeknik Negeri Sriwijaya'],
+  icons: {
+    icon: '/logo/logohmj.png',
+  },
 };
 
 export default function RootLayout({
