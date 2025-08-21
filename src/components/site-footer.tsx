@@ -91,8 +91,17 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} HMJMI POLSRI. Seluruh hak cipta dilindungi.</p>
+        <div className="mt-12 border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            <p>&copy; {new Date().getFullYear()} HMJMI POLSRI.</p>
+            <p className="hidden sm:block">|</p>
+            <p>Build & Maintenance by PTKP</p>
+          </div>
+          <div className="flex items-center gap-4 mt-4 sm:mt-0">
+            <Image src="/logo/logopolsri.png" width={40} height={40} alt="Logo Polsri" className="h-10 w-auto" />
+            <Image src="/logo/logokabinet.png" width={40} height={40} alt="Logo Kabinet" className="h-10 w-auto" />
+            <Image src="/logo/logohmj.png" width={40} height={40} alt="Logo HMJMI" className="h-10 w-auto" />
+          </div>
         </div>
       </div>
     </footer>
