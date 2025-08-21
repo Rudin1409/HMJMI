@@ -11,15 +11,15 @@ export function AnimatedLogo() {
       duration: 'animate-[spin_40s_linear_infinite]',
       elements: [
         { position: 'top-1/4 left-0 -translate-x-1/2 -translate-y-1/2', size: 'w-5 h-5', color: 'bg-pink-400', shape: 'rounded-md' },
-        { position: 'bottom-1/4 right-0 -translate-x-1/2 -translate-y-1/2', size: 'w-4 h-4', color: 'bg-blue-400', shape: 'rounded-full' },
+        { position: 'bottom-1/4 right-0 translate-x-1/2 translate-y-1/2', size: 'w-4 h-4', color: 'bg-blue-400', shape: 'rounded-full' },
       ],
     },
     {
       size: 'w-[80%] h-[80%]',
       duration: 'animate-[spin_30s_linear_infinite_reverse]',
       elements: [
-        { position: 'top-0 right-1/3 -translate-x-1/2 -translate-y-1/2', size: 'w-4 h-4', color: 'bg-pink-400', shape: 'rounded-full' },
-        { position: 'bottom-0 left-1/3 -translate-x-1/2 -translate-y-1/2', size: 'w-5 h-5', color: 'bg-blue-400', shape: 'rounded-md' },
+        { position: 'top-0 right-1/3 translate-x-1/2 -translate-y-1/2', size: 'w-4 h-4', color: 'bg-pink-400', shape: 'rounded-full' },
+        { position: 'bottom-0 left-1/3 -translate-x-1/2 translate-y-1/2', size: 'w-5 h-5', color: 'bg-blue-400', shape: 'rounded-md' },
       ],
     },
   ];
