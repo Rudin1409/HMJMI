@@ -76,7 +76,7 @@ export default function AspirationPage() {
                                 Formulir akan terbuka di tab baru.
                             </p>
                             <Button asChild size="lg" className="w-full">
-                                <Link href="https://docs.google.com/forms/d/e/your-form-id/viewform" target="_blank" rel="noopener noreferrer">
+                                <Link href="https://bit.ly/ASKMIPOLSRI2025" target="_blank" rel="noopener noreferrer">
                                     Isi Formulir Aspirasi <ArrowUpRight className="ml-2" />
                                 </Link>
                             </Button>
