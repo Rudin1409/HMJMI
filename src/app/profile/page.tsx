@@ -35,12 +35,12 @@ const departments = [
 const teamMembers = {
   inti: {
     heads: [
-      { name: 'Muhammad Farhan Pratama', role: 'Ketua Himpunan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Muhammad Dava Prayoga', role: 'Wakil Ketua Himpunan', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Siti Nabila Zhafirah', role: 'Sekretaris Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Eka Rahayu Putri', role: 'Wakil Sekretaris Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Muthia Maylafayza Inayah', role: 'Bendahara Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
-      { name: 'Putri Afifah Khairunnisa', role: 'Wakil Bendahara Umum', class: 'MI 2022', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Muhammad Farhan Pratama', role: 'Ketua Himpunan', class: 'MI 2024', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Muhammad Dava Prayoga', role: 'Wakil Ketua Himpunan', class: 'MI 2024', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Siti Nabila Zhafirah', role: 'Sekretaris Umum', class: 'MI 2024', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Eka Rahayu Putri', role: 'Wakil Sekretaris Umum', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Muthia Maylafayza Inayah', role: 'Bendahara Umum', class: 'MI 2024', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
+      { name: 'Putri Afifah Khairunnisa', role: 'Wakil Bendahara Umum', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "-" },
     ],
     members: {}
   },
@@ -521,7 +521,7 @@ export default function ProfilePage() {
                     members={currentDepartmentData.heads}
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
-                    showNavOnDesktop={false}
+                    showNavOnDesktop={activeDept.id !== 'inti'}
                 />
                 {Object.keys(currentDepartmentData.members).length > 0 && currentDivisions.length > 0 && (
                   currentDivisions.map(division => {
