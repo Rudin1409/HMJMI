@@ -136,10 +136,10 @@ export default function ProkerPage() {
             </TabsList>
             
             <TabsContent value="unggulan">
-              <Card className="w-full max-w-5xl mx-auto">
+              <Card className="w-full max-w-5xl mx-auto overflow-hidden">
                 {mainPrograms.map((program) => (
-                    <div key={program.title} className="grid md:grid-cols-2 items-center">
-                         <div className="p-8 md:p-12">
+                    <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center">
+                         <div className="p-8 md:p-12 order-2 md:order-1">
                             <Badge variant="secondary" className="mb-4">Program Kerja Utama</Badge>
                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                             <p className="text-muted-foreground mb-6">{program.description}</p>
@@ -147,7 +147,7 @@ export default function ProkerPage() {
                                 Lihat Info Lengkap <ArrowUpRight className="ml-2" />
                             </Button>
                         </div>
-                        <div className="relative w-full h-64 md:h-full min-h-[300px]">
+                        <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-2">
                              <Image src={program.image} alt={program.title} layout="fill" objectFit="cover" data-ai-hint={program.hint} />
                         </div>
                     </div>
@@ -156,13 +156,13 @@ export default function ProkerPage() {
             </TabsContent>
 
             <TabsContent value="pengembangan">
-                 <Card className="w-full max-w-5xl mx-auto">
+                 <Card className="w-full max-w-5xl mx-auto overflow-hidden">
                     {additionalPrograms.map((program) => (
-                        <div key={program.title} className="grid md:grid-cols-2 items-center">
-                            <div className="relative w-full h-64 md:h-full min-h-[300px] order-last md:order-first">
+                        <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center">
+                            <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-first">
                                 <Image src={program.image} alt={program.title} layout="fill" objectFit="cover" data-ai-hint={program.hint}/>
                             </div>
-                            <div className="p-8 md:p-12">
+                            <div className="p-8 md:p-12 order-2 md:order-last">
                                 <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800">Program Kerja Tambahan</Badge>
                                 <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                                 <p className="text-muted-foreground mb-6">{program.description}</p>
