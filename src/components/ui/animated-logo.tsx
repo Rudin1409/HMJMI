@@ -10,16 +10,16 @@ export function AnimatedLogo() {
       size: 'w-full h-full',
       duration: 'animate-[spin_40s_linear_infinite]',
       elements: [
-        { position: 'top-1/4 left-0', size: 'w-4 h-4', color: 'bg-pink-400', shape: 'rounded-md' },
-        { position: 'bottom-1/4 right-0', size: 'w-3 h-3', color: 'bg-blue-400', shape: 'rounded-full' },
+        { position: 'top-1/4 left-0 -translate-x-1/2 -translate-y-1/2', size: 'w-5 h-5', color: 'bg-pink-400', shape: 'rounded-md' },
+        { position: 'bottom-1/4 right-0 -translate-x-1/2 -translate-y-1/2', size: 'w-4 h-4', color: 'bg-blue-400', shape: 'rounded-full' },
       ],
     },
     {
       size: 'w-[80%] h-[80%]',
       duration: 'animate-[spin_30s_linear_infinite_reverse]',
       elements: [
-        { position: 'top-0 right-1/3', size: 'w-3 h-3', color: 'bg-pink-400', shape: 'rounded-full' },
-        { position: 'bottom-0 left-1/3', size: 'w-4 h-4', color: 'bg-blue-400', shape: 'rounded-md' },
+        { position: 'top-0 right-1/3 -translate-x-1/2 -translate-y-1/2', size: 'w-4 h-4', color: 'bg-pink-400', shape: 'rounded-full' },
+        { position: 'bottom-0 left-1/3 -translate-x-1/2 -translate-y-1/2', size: 'w-5 h-5', color: 'bg-blue-400', shape: 'rounded-md' },
       ],
     },
   ];
@@ -27,7 +27,7 @@ export function AnimatedLogo() {
   return (
     <div className="relative flex items-center justify-center w-full aspect-square">
       {/* Dashed Rings */}
-      <div className="absolute w-[95%] h-[95%] border-2 border-dashed border-primary/30 rounded-full animate-[spin_60s_linear_infinite]"></div>
+      <div className="absolute w-[95%] h-[95%] border-2 border-dashed border-blue-500/30 rounded-full animate-[spin_60s_linear_infinite]"></div>
       <div className="absolute w-[75%] h-[75%] border-2 border-dashed border-primary/30 rounded-full animate-[spin_50s_linear_infinite_reverse]"></div>
 
       {/* Orbiting Shapes */}
