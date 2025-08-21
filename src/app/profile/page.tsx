@@ -1,5 +1,4 @@
 
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -321,7 +320,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
             )}
             
             {members.length > 1 && (
-                <div className="bg-muted p-4 rounded-2xl">
+                <div className="bg-pink-100/50 dark:bg-primary/20 p-4 rounded-2xl">
                   <Carousel
                     opts={{
                       align: "center",
@@ -574,5 +573,7 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    
 
     
