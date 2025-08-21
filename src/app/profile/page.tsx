@@ -294,7 +294,7 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
         <div 
             className={cn(
                 "relative aspect-square w-24 md:w-32 rounded-full overflow-hidden transition-all duration-300 border-4",
-                isActive ? "scale-110 border-primary" : "border-primary/50 group-hover:scale-105 group-hover:border-primary/80"
+                isActive ? "scale-110 border-primary z-10" : "border-primary/50 group-hover:scale-105 group-hover:border-primary/80"
             )}
         >
             <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
@@ -331,7 +331,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
                   >
                     <CarouselContent className="-ml-4">
                       {members.map((member, index) => (
-                        <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center">
+                        <CarouselItem key={index} className="pl-4 basis-1/3 sm:basis-1/4 md:basis-1/5 lg:basis-1/6 flex justify-center py-4">
                             <SmallMemberCard 
                               member={member} 
                               onSelect={() => handleSelectMember(member)}
