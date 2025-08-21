@@ -210,13 +210,13 @@ export default function ProkerPage() {
                              <Accordion type="single" collapsible className="w-full">
                                 {agendas.map((agenda, index) => (
                                     <AccordionItem key={index} value={`item-${index}`} className="border-b last:border-b-0">
-                                        <AccordionTrigger className="text-lg font-semibold text-foreground/80 hover:no-underline">
+                                        <AccordionTrigger className="text-lg text-left font-semibold text-foreground/80 hover:no-underline">
                                             <span className='flex items-center gap-4'>
                                               <Calendar className="h-5 w-5 text-primary/80" />
                                               {agenda.title}
                                             </span>
                                         </AccordionTrigger>
-                                        <AccordionContent className="text-muted-foreground pl-10">
+                                        <AccordionContent className="text-muted-foreground pl-10 text-left">
                                             {agenda.description}
                                         </AccordionContent>
                                     </AccordionItem>
@@ -232,5 +232,3 @@ export default function ProkerPage() {
     </div>
   );
 }
-
-    
