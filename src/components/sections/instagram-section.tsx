@@ -16,7 +16,7 @@ export function InstagramSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6">
              <Badge variant="secondary" className="bg-white/20 text-white rounded-full px-4 py-1">
-                @hmjmi.polsri
+                @hmjmi_polsri
              </Badge>
             <h2 className="text-3xl md:text-4xl font-bold">
               Ikuti Aktivitas Terbaru Kami di Media Sosial!
@@ -25,7 +25,7 @@ export function InstagramSection() {
               Tetap terhubung dengan kami melalui Instagram untuk mendapatkan informasi terbaru seputar acara, workshop, dan berbagai momen seru lainnya.
             </p>
             <Button asChild variant="secondary" size="lg" className="bg-white text-pink-500 hover:bg-gray-100 rounded-full">
-              <Link href="https://www.instagram.com/hmjmi.polsri/" target="_blank">Kunjungi Instagram <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              <Link href="https://www.instagram.com/hmjmi_polsri/" target="_blank">Kunjungi Instagram <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
           <div className="relative h-full min-h-[450px] flex items-center justify-center">

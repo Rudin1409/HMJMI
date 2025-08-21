@@ -34,7 +34,7 @@ export function CtaSection() {
                     Dapatkan pembaruan terbaru, info acara, dan berbagai peluang eksklusif dengan mengikuti akun Instagram kami.
                 </p>
                 <Button asChild size="lg" variant="secondary" className="rounded-full bg-white text-primary hover:bg-white/90">
-                    <Link href="https://www.instagram.com/hmjmi.polsri/" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://www.instagram.com/hmjmi_polsri/" target="_blank" rel="noopener noreferrer">
                         <Instagram className="mr-2 h-5 w-5" /> Kunjungi Instagram
                     </Link>
                 </Button>

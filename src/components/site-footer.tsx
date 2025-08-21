@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export function SiteFooter() {
   const socialLinks = [
-    { href: 'https://www.instagram.com/hmjmi.polsri/', icon: Instagram, label: 'Instagram' },
+    { href: 'https://www.instagram.com/hmjmi_polsri/', icon: Instagram, label: 'Instagram' },
     { href: '#', icon: Phone, label: 'WhatsApp' },
     { href: 'mailto:hmjmi@polsri.ac.id', icon: Mail, label: 'Email' },
   ];
