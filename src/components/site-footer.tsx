@@ -7,9 +7,8 @@ import Image from 'next/image';
 export function SiteFooter() {
   const socialLinks = [
     { href: 'https://www.instagram.com/hmjmi.polsri/', icon: Instagram, label: 'Instagram' },
-    { href: '#', icon: Linkedin, label: 'LinkedIn' },
-    { href: '#', icon: Github, label: 'GitHub' },
-    { href: '#', icon: Mail, label: 'Email' },
+    { href: '#', icon: Phone, label: 'WhatsApp' },
+    { href: 'mailto:hmjmi@polsri.ac.id', icon: Mail, label: 'Email' },
   ];
 
   const menuLinks = [
@@ -80,20 +79,20 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
+             <div className="flex space-x-1 mt-4">
+               {socialLinks.map((social) => (
+                <Button key={social.label} variant="ghost" size="icon" asChild className="text-muted-foreground hover:bg-primary/10 hover:text-primary">
+                  <Link href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer">
+                    <social.icon className="h-5 w-5" />
+                  </Link>
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className="mt-12 border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} HMJMI POLSRI. Seluruh hak cipta dilindungi.</p>
-          <div className="flex space-x-1 mt-4 sm:mt-0">
-             {socialLinks.map((social) => (
-              <Button key={social.label} variant="ghost" size="icon" asChild className="text-muted-foreground hover:bg-primary/10 hover:text-primary">
-                <Link href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer">
-                  <social.icon className="h-5 w-5" />
-                </Link>
-              </Button>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
