@@ -34,8 +34,8 @@ export function SiteFooter() {
             <Link href="/" className="flex items-center space-x-3">
               <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold leading-tight text-primary">HMJMI POLSRI</span>
-                <span className="text-sm font-semibold leading-tight text-muted-foreground">Straight for Perfection</span>
+                <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
+                <span className="text-sm font-semibold leading-tight text-muted-foreground">bersatu beraksi, bersinar berprestasi</span>
               </div>
             </Link>
             <p className="text-sm text-muted-foreground">
@@ -93,7 +93,7 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between">
           <div className="flex flex-col sm:flex-row items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} HMJMI POLSRI.</p>
+            <p>&copy; {new Date().getFullYear()} HMJ MI POLSRI.</p>
             <p className="hidden sm:block">|</p>
             <p>Build & Maintenance by PTKP</p>
           </div>
