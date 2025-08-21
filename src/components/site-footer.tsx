@@ -1,8 +1,8 @@
 
 import Link from 'next/link';
 import { Github, Instagram, Linkedin, Mail, Twitter, MapPin, Phone } from 'lucide-react';
-import { Logo } from '@/components/icons';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 export function SiteFooter() {
   const socialLinks = [
@@ -33,7 +33,7 @@ export function SiteFooter() {
           {/* Column 1: Logo and About */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
-              <Logo className="h-10 w-10" />
+              <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold leading-tight text-primary">HMJMI POLSRI</span>
                 <span className="text-sm font-semibold leading-tight text-muted-foreground">Manajemen Informatika</span>
