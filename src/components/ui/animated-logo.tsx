@@ -32,7 +32,7 @@ export function AnimatedLogo() {
             height={500}
             alt="Logo Kabinet Karsadhikara"
             data-ai-hint="phoenix emblem"
-            className="drop-shadow-lg w-[85%] h-[85%]"
+            className="drop-shadow-lg"
             />
         </div>
       </div>
