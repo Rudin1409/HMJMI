@@ -73,7 +73,7 @@ export default function AspirationPage() {
                      <Card className='w-full max-w-md'>
                         <CardContent className="p-8 flex flex-col items-center justify-center">
                             <p className="text-muted-foreground mb-6 text-center">
-                                Formulir akan terbuka di tab baru.
+                                "Dari Kami, Oleh Kami, Untuk MI"
                             </p>
                             <Button asChild size="lg" className="w-full">
                                 <Link href="https://bit.ly/ASKMIPOLSRI2025" target="_blank" rel="noopener noreferrer">
@@ -108,5 +108,3 @@ export default function AspirationPage() {
     </div>
   );
 }
-
-    
