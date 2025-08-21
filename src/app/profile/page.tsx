@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Briefcase, Award, Instagram, ArrowUpRight, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store, ChevronDown } from 'lucide-react';
+import { Users, Briefcase, Award, Instagram, ArrowUpRight, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -255,32 +255,50 @@ type Member = {
     instagram?: string;
 };
 
-const MemberCard = ({ member }: { member: Member }) => {
+const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPrev: () => void, onNext: () => void, showNav: boolean }) => {
     return (
-        <div className="grid md:grid-cols-2 items-center gap-8 w-full">
-            <div className="relative mx-auto w-full max-w-xs h-[380px] flex items-center justify-center">
-                 <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] bg-pink-100/80 dark:bg-primary/20"></div>
-                 <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] border-4 border-primary"></div>
-                 <div className="relative w-[240px] h-[320px] rounded-t-[120px] rounded-b-[5rem] overflow-hidden">
-                    <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
-                 </div>
+        <div className="flex items-center justify-center gap-4 w-full">
+            <Button 
+                variant="outline" 
+                size="icon" 
+                onClick={onPrev}
+                className={cn("rounded-full h-12 w-12", !showNav && "hidden")}
+            >
+                <ChevronLeft className="h-6 w-6" />
+            </Button>
+            <div className="grid md:grid-cols-2 items-center gap-8 w-full max-w-2xl">
+                <div className="relative mx-auto w-full max-w-xs h-[380px] flex items-center justify-center">
+                     <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] bg-pink-100/80 dark:bg-primary/20"></div>
+                     <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] border-4 border-primary"></div>
+                     <div className="relative w-[240px] h-[320px] rounded-t-[120px] rounded-b-[5rem] overflow-hidden">
+                        <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
+                     </div>
+                </div>
+                <div className="flex flex-col gap-2 text-center md:text-left">
+                    <h3 className="text-3xl font-bold text-primary">{member.name}</h3>
+                    <p className="text-xl font-semibold text-foreground">{member.role}</p>
+                    <p className="text-muted-foreground">{member.class}</p>
+                    {member.instagram && (
+                        <a 
+                          href={member.instagram === '-' ? 'https://instagram.com' : `https://instagram.com/${member.instagram}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start"
+                        >
+                            <Instagram className="h-5 w-5" />
+                            {member.instagram !== '-' && <span>{member.instagram}</span>}
+                        </a>
+                    )}
+                </div>
             </div>
-            <div className="flex flex-col gap-2 text-center md:text-left">
-                <h3 className="text-3xl font-bold text-primary">{member.name}</h3>
-                <p className="text-xl font-semibold text-foreground">{member.role}</p>
-                <p className="text-muted-foreground">{member.class}</p>
-                {member.instagram && (
-                    <a 
-                      href={member.instagram === '-' ? 'https://instagram.com' : `https://instagram.com/${member.instagram}`} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start"
-                    >
-                        <Instagram className="h-5 w-5" />
-                        {member.instagram !== '-' && <span>{member.instagram}</span>}
-                    </a>
-                )}
-            </div>
+             <Button 
+                variant="outline" 
+                size="icon" 
+                onClick={onNext}
+                className={cn("rounded-full h-12 w-12", !showNav && "hidden")}
+             >
+                <ChevronRight className="h-6 w-6" />
+            </Button>
         </div>
     )
 };
@@ -310,12 +328,31 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
         setFeaturedMember(member);
     };
 
+    const handleNext = () => {
+        if (!featuredMember || members.length <= 1) return;
+        const currentIndex = members.findIndex(m => m.name === featuredMember.name);
+        const nextIndex = (currentIndex + 1) % members.length;
+        setFeaturedMember(members[nextIndex]);
+    };
+
+    const handlePrev = () => {
+        if (!featuredMember || members.length <= 1) return;
+        const currentIndex = members.findIndex(m => m.name === featuredMember.name);
+        const prevIndex = (currentIndex - 1 + members.length) % members.length;
+        setFeaturedMember(members[prevIndex]);
+    };
+
     return (
         <div className="space-y-8">
             <h3 className="text-2xl font-bold text-foreground text-center">{title}</h3>
             {featuredMember && (
                  <div className="flex justify-center">
-                    <MemberCard member={featuredMember} />
+                    <MemberCard 
+                        member={featuredMember} 
+                        onPrev={handlePrev}
+                        onNext={handleNext}
+                        showNav={members.length > 1}
+                    />
                 </div>
             )}
             
@@ -521,7 +558,7 @@ export default function ProfilePage() {
                     members={currentDepartmentData.heads}
                     featuredMember={featuredHead}
                     setFeaturedMember={setFeaturedHead}
-                    showNavOnDesktop={activeDept.id !== 'inti'}
+                    showNavOnDesktop={true}
                 />
                 {Object.keys(currentDepartmentData.members).length > 0 && currentDivisions.length > 0 && (
                   currentDivisions.map(division => {
@@ -585,8 +622,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
-    
-
-    
