@@ -321,7 +321,7 @@ const MemberGroup = ({ title, members, featuredMember, setFeaturedMember, showNa
             )}
             
             {members.length > 1 && (
-                <div className="py-8">
+                <div className="bg-muted p-4 rounded-2xl">
                   <Carousel
                     opts={{
                       align: "center",
