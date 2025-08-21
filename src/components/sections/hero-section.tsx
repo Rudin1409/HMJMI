@@ -15,7 +15,7 @@ export function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="z-10">
             <Badge variant="outline" className="border-primary/50 text-primary mb-4 py-1 px-3 font-semibold">
-              Selamat Datang di HMJMI POLSRI
+              Selamat Datang di HMJ MI POLSRI
             </Badge>
             <h1 className="text-4xl md:text-6xl font-extrabold text-foreground leading-tight">
               Building The Next <br />
@@ -76,3 +76,5 @@ export function HeroSection() {
     </section>
   );
 }
+
+    

@@ -32,7 +32,7 @@ export function SiteFooter() {
           {/* Column 1: Logo and About */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-3">
-              <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
+              <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-10 w-10" />
               <div className="flex flex-col">
                 <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
                 <span className="text-sm font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
@@ -100,7 +100,7 @@ export function SiteFooter() {
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
             <Image src="/logo/logopolsri.png" width={40} height={40} alt="Logo Polsri" className="h-10 w-auto" />
             <Image src="/logo/logomi.webp" width={40} height={40} alt="Logo MI" className="h-10 w-auto" />
-            <Image src="/logo/logohmj.png" width={40} height={40} alt="Logo HMJMI" className="h-10 w-auto" />
+            <Image src="/logo/logohmj.png" width={40} height={40} alt="Logo HMJ MI" className="h-10 w-auto" />
             <Image src="/logo/logokabinet.png" width={40} height={40} alt="Logo Kabinet" className="h-10 w-auto" />
           </div>
         </div>
@@ -108,3 +108,5 @@ export function SiteFooter() {
     </footer>
   );
 }
+
+    

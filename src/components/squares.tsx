@@ -1,3 +1,4 @@
+
 'use client';
 import { useRef, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
@@ -121,7 +122,7 @@ const Squares = ({
   }, [isMounted, direction, speed, defaultBorderColor, hoverFillColor, squareSize, resolvedTheme]);
 
   if (!isMounted) {
-    return null; // Don't render canvas on the server
+    return null; // Don't render canvas on the server to prevent hydration mismatch
   }
 
   return (
@@ -133,3 +134,5 @@ const Squares = ({
 };
 
 export default Squares;
+
+    

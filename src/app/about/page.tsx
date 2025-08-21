@@ -77,37 +77,37 @@ const logoPhilosophy = {
 const galleryItems = [
     {
         src: "https://placehold.co/800x600.png",
-        title: "LKMM-PD HMJMI POLSRI",
+        title: "LKMM-PD HMJ MI POLSRI",
         year: "2024",
         hint: "student presentation"
     },
     {
         src: "https://placehold.co/800x600.png",
-        title: "LKMM-PD HMJMI POLSRI",
+        title: "LKMM-PD HMJ MI POLSRI",
         year: "2024",
         hint: "student audience"
     },
     {
         src: "https://placehold.co/800x600.png",
-        title: "UPGRADING HMJMI POLSRI",
+        title: "UPGRADING HMJ MI POLSRI",
         year: "2024",
         hint: "group photo"
     },
     {
         src: "https://placehold.co/800x600.png",
-        title: "UPGRADING HMJMI POLSRI",
+        title: "UPGRADING HMJ MI POLSRI",
         year: "2024",
         hint: "students sitting"
     },
     {
         src: "https://placehold.co/800x600.png",
-        title: "MUSYAWARAH BESAR HMJMI",
+        title: "MUSYAWARAH BESAR HMJ MI",
         year: "2024",
         hint: "large group"
     },
     {
         src: "https://placehold.co/800x600.png",
-        title: "MUSYAWARAH BESAR HMJMI",
+        title: "MUSYAWARAH BESAR HMJ MI",
         year: "2024",
         hint: "students listening"
     },
@@ -386,3 +386,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    

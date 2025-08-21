@@ -16,8 +16,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'HMJMI POLSRI',
-    template: `%s - HMJMI POLSRI`,
+    default: 'HMJ MI POLSRI',
+    template: `%s - HMJ MI POLSRI`,
   },
   description: 'Website Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya',
   keywords: ['HMJMI', 'Polsri', 'Manajemen Informatika', 'Politeknik Negeri Sriwijaya'],
@@ -49,3 +49,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    

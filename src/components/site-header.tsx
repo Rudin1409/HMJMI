@@ -50,7 +50,7 @@ export function SiteHeader() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
+          <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-10 w-10" />
            <div className="flex flex-col">
               <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
               <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
@@ -85,7 +85,7 @@ export function SiteHeader() {
               <SheetTitle className="sr-only">Menu Seluler</SheetTitle>
               <div className="flex h-full flex-col">
                 <div className="flex items-center gap-2 border-b p-6">
-                   <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJMI POLSRI Logo" className="h-10 w-10" />
+                   <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-10 w-10" />
                    <div className="flex flex-col">
                       <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
                       <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
@@ -111,3 +111,5 @@ export function SiteHeader() {
     </header>
   );
 }
+
+    

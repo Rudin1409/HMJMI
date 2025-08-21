@@ -404,7 +404,7 @@ export default function ProfilePage() {
               Kenali <span className="text-primary">Visioner Kami</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-              Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
+              Kenali tim yang penuh semangat dan dedikasi di balik HMJ MI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
           </p>
            <div className="mt-8">
             <a href="#explore-cabinet">
@@ -426,7 +426,7 @@ export default function ProfilePage() {
               Jelajahi <span className="text-primary">Struktur Kami</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-              Temukan berbagai departemen di HMJMI, masing-masing dengan fokus dan program unggulan untuk mendukung pengembangan potensi mahasiswa secara menyeluruh.
+              Temukan berbagai departemen di HMJ MI, masing-masing dengan fokus dan program unggulan untuk mendukung pengembangan potensi mahasiswa secara menyeluruh.
             </p>
           </div>
 

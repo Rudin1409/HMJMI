@@ -79,8 +79,8 @@ const agendas = [
         description: 'Acara penyambutan khusus untuk mahasiswa baru Jurusan Manajemen Informatika, bertujuan untuk memperkenalkan lingkungan jurusan dan organisasi.' 
     },
     { 
-        title: 'Malam Keakraban HMJMI', 
-        description: 'Acara tahunan yang dirancang untuk mempererat tali persaudaraan dan kebersamaan antar seluruh anggota HMJMI melalui kegiatan yang santai dan menyenangkan.' 
+        title: 'Malam Keakraban HMJ MI', 
+        description: 'Acara tahunan yang dirancang untuk mempererat tali persaudaraan dan kebersamaan antar seluruh anggota HMJ MI melalui kegiatan yang santai dan menyenangkan.' 
     },
     { 
         title: 'Latihan Dasar Organisasi', 
@@ -229,3 +229,5 @@ export default function ProkerPage() {
     </div>
   );
 }
+
+    

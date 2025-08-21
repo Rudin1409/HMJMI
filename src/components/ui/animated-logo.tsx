@@ -6,36 +6,35 @@ import Image from 'next/image';
 export function AnimatedLogo() {
   return (
     <div className="relative flex items-center justify-center w-full h-full aspect-square">
-      {/* Orbiting Shapes - Pink/Primary */}
-      <div className="absolute w-full h-full animate-spin-slow" style={{ animationDuration: '25s' }}>
-        <div className="absolute top-[15%] left-[15%] w-10 h-10 bg-primary/50 rounded-lg"></div>
-        <div className="absolute bottom-[10%] left-[20%] w-8 h-8 bg-primary/70 rounded-full"></div>
+      <div className="absolute w-full h-full animate-orbit-1">
+        <div className="absolute top-[10%] left-[10%] w-3 h-3 bg-primary/80 rounded-full" />
+        <div className="absolute bottom-[10%] right-[10%] w-4 h-4 bg-primary/80 rounded-full" />
       </div>
-
-       {/* Orbiting Shapes - Blue */}
-      <div className="absolute w-full h-full animate-spin-slow" style={{ animationDuration: '35s', animationDirection: 'reverse' }}>
-        <div className="absolute bottom-[20%] right-[10%] w-12 h-12 bg-blue-400/50 rounded-full"></div>
-        <div className="absolute top-[10%] right-[25%] w-6 h-6 bg-blue-400/70 rounded-md"></div>
+      <div className="absolute w-full h-full animate-orbit-2">
+        <div className="absolute top-[20%] right-[5%] w-2 h-2 bg-blue-400/80 rounded-full" />
+        <div className="absolute bottom-[15%] left-[25%] w-3 h-3 bg-blue-400/80 rounded-full" />
       </div>
-      
-      {/* Rotating Dashed Circles */}
-      <div className="absolute w-[85%] h-[85%] border-2 border-dashed border-primary/40 rounded-full animate-spin-slow" style={{ animationDuration: '60s' }}></div>
-      <div className="absolute w-[70%] h-[70%] border-2 border-dashed border-blue-400/40 rounded-full animate-spin-slow" style={{ animationDuration: '50s', animationDirection: 'reverse' }}></div>
+      <div className="absolute w-full h-full animate-orbit-3">
+        <div className="absolute top-[5%] right-[50%] w-3 h-3 bg-pink-400/80 rounded-full" />
+        <div className="absolute bottom-[5%] left-[50%] w-2 h-2 bg-pink-400/80 rounded-full" />
+      </div>
 
       {/* Central Logo Container */}
-      <div className="relative w-[65%] h-[65%]">
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-pink-200 dark:from-primary/10 dark:to-primary/30 rounded-full shadow-lg"></div>
-        <div className="relative p-4 w-full h-full flex items-center justify-center">
-            <Image
+      <div className="relative p-4 w-[65%] h-[65%] flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-pink-200 dark:from-primary/10 dark:to-primary/30 rounded-full shadow-lg" />
+        <div className="relative w-full h-full flex items-center justify-center">
+          <Image
             src="/logo/logokabinet.png"
             width={500}
             height={500}
             alt="Logo Kabinet Karsadhikara"
             data-ai-hint="phoenix emblem"
-            className="drop-shadow-lg"
-            />
+            className="drop-shadow-lg object-contain"
+          />
         </div>
       </div>
     </div>
   );
 }
+
+    
