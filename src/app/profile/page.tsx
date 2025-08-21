@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -355,6 +355,8 @@ export default function ProfilePage() {
   const [activeView, setActiveView] = useState('members');
   const [featuredHead, setFeaturedHead] = useState<Member | null>(null);
   const [featuredMembers, setFeaturedMembers] = useState<{[key: string]: Member | null}>({});
+  const detailsRef = useRef<HTMLDivElement>(null);
+  const isInitialMount = useRef(true);
   
   const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: {} };
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
@@ -371,7 +373,17 @@ export default function ProfilePage() {
         initialFeaturedMembers[divisionId] = divisionMembers.length > 0 ? divisionMembers[0] : null;
     }
     setFeaturedMembers(initialFeaturedMembers);
+
+    if (isInitialMount.current) {
+        isInitialMount.current = false;
+    } else {
+        detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [activeDept]);
+
+  const handleDeptClick = (dept: typeof departments[0]) => {
+    setActiveDept(dept);
+  };
 
   const setFeaturedMemberForDivision = (divisionId: string, member: Member | null) => {
     setFeaturedMembers(prev => ({...prev, [divisionId]: member}));
@@ -389,7 +401,7 @@ export default function ProfilePage() {
               Temui Tim Kami
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-              Meet Our <span className="text-primary">Visionaries</span>
+              Kenali <span className="text-primary">Visioner Kami</span>
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
               Kenali tim yang penuh semangat dan dedikasi di balik HMJMI. Bersama, kami mendorong perubahan dan inovasi untuk masa depan yang lebih baik.
@@ -427,7 +439,7 @@ export default function ProfilePage() {
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                 {departments.map((dept) => (
-                  <button key={dept.id} onClick={() => setActiveDept(dept)}>
+                  <button key={dept.id} onClick={() => handleDeptClick(dept)}>
                     <Card className={cn(
                       'text-center p-4 shadow-md hover:shadow-lg transition-all duration-300 rounded-xl hover:scale-105 h-full',
                       activeDept.id === dept.id ? 'bg-primary text-primary-foreground shadow-primary/40' : 'bg-card'
@@ -450,7 +462,7 @@ export default function ProfilePage() {
         </div>
       </section>
 
-      <section id="department-details" className="w-full pb-16 md:pb-24 pt-16 md:pt-24 bg-transparent">
+      <section id="department-details" ref={detailsRef} className="w-full pb-16 md:pb-24 pt-16 md:pt-24 bg-transparent scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
             <div className="relative w-24 h-24 mb-4 bg-primary/10 text-primary rounded-full flex items-center justify-center">
@@ -573,7 +585,5 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-    
 
     
