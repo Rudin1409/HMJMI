@@ -35,7 +35,7 @@ export function HeroSection() {
             <div className="mt-12 grid grid-cols-3 gap-4 text-center">
               <div>
                 <Users className="h-7 w-7 mx-auto text-primary mb-2" />
-                <p className="font-bold text-xl">108</p>
+                <p className="font-bold text-xl">101</p>
                 <p className="text-sm text-muted-foreground">Anggota Aktif</p>
               </div>
               <div>
