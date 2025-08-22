@@ -19,7 +19,7 @@ const mainPrograms = [
     title: "IT Festival",
     icon: <Rocket className="h-8 w-8 text-primary" />,
     description: "Information Technology Festival atau yang disingkat dengan IT Festival merupakan serangkaian acara IT tahunan. Dengan rangkaian acara kompetisi, pelatihan, dan seminar sebagai ajang edukatif bagi mahasiswa maupun masyarakat umum dalam meningkatkan kreativitas dan kesadaran tentang pentingnya penggunaan teknologi informasi di era globalisasi.",
-    image: "https://placehold.co/1200x600.png",
+    image: "/proker/ITF2024.png",
     hint: "tech festival stage competition",
   },
 ];
@@ -29,7 +29,7 @@ const additionalPrograms = [
     title: "Seminar Bisnis",
     icon: <Briefcase className="h-8 w-8 text-primary" />,
     description: "Kegiatan Seminar Bisnis bertujuan menambah wawasan dan pengetahuan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa/i se-Indonesia dan umum untuk memulai usaha sejak dini dan siap bersaing di dunia bisnis.",
-    image: "https://placehold.co/600x400.png",
+    image: "/proker/sembis.png",
     hint: "business seminar presentation",
   },
 ];
@@ -39,28 +39,28 @@ const communityActivities = [
     title: "UPGRADING",
     description: "Pelatihan yang dikhususkan untuk kepengurusan baru Himpunan Mahasiswa Jurusan Manajemen Informatika demi meningkatkan kemampuan dalam bidang berbicara di depan umum serta menambah kemampuan di bidang desain grafis.",
     icon: <Award className="h-6 w-6 text-primary" />,
-    image: 'https://placehold.co/100x100.png',
+    image: '/proker/upgrading.png',
     hint: 'certificate award'
   },
   {
     title: "BAKSOMI",
     description: "Bakti sosial jurusan manajemen informatika yang didalamnya terdapat rangkaian kegiatan bermanfaat seperti bantuan sosial, kunjungan ke panti, tausiyah serta bagi-bagi takjil dijalan.",
     icon: <Heart className="h-6 w-6 text-primary" />,
-    image: 'https://placehold.co/100x100.png',
+    image: '/proker/baksomiii.png',
     hint: 'charity donation'
   },
   {
     title: "SINTAK",
     description: "Sebuah study club yang dibentuk sebagai wadah mahasiswa/i Jurusan Manajemen Informatika untuk mengembangkan soft skill dalam pemrograman terutama di bidang web development.",
     icon: <Lightbulb className="h-6 w-6 text-primary" />,
-    image: 'https://placehold.co/100x100.png',
+    image: '/proker/sintak.png',
     hint: 'coding gears'
   },
   {
     title: "POSMI",
     description: "Acara kompetisi yang menyatukan peserta dari berbagai tim, kelas, dan program studi untuk berkompetisi dalam beragam cabang olahraga dan seni khusus untuk mahasiswa/i Jurusan Manajemen Informatika.",
     icon: <Users className="h-6 w-6 text-primary" />,
-    image: 'https://placehold.co/100x100.png',
+    image: '/proker/posmi2024.png',
     hint: 'sports trophy'
   },
 ];
