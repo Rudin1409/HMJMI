@@ -4,20 +4,14 @@ export const homeHeroImages = [
         src: "https://placehold.co/600x300.png",
         alt: "Group photo 1",
         hint: "university student group",
-        className: "col-span-2 row-span-1 relative rounded-2xl overflow-hidden"
+        className: "row-span-1 relative rounded-2xl overflow-hidden"
     },
     {
-        src: "https://placehold.co/300x300.png",
+        src: "https://placehold.co/600x300.png",
         alt: "Group photo 2",
         hint: "students coding event",
-        className: "col-span-1 row-span-1 relative rounded-2xl overflow-hidden"
+        className: "row-span-1 relative rounded-2xl overflow-hidden"
     },
-    {
-        src: "https://placehold.co/300x300.png",
-        alt: "Group photo 3",
-        hint: "classroom presentation",
-        className: "col-span-1 row-span-1 relative rounded-2xl overflow-hidden"
-    }
 ];
 
 export const aboutHeroImages = [
@@ -149,5 +143,3 @@ export const testimonials = [
     text: 'Kegiatan dan program kerja di HMJ MI sangat membantu saya dalam mengembangkan soft skill dan mempersiapkan diri untuk karir masa depan di industri teknologi.',
   },
 ];
-
-    

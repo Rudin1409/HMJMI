@@ -58,7 +58,7 @@ export function HeroSection() {
                  <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
                  <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-pink-200 rounded-3xl transform rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
                 <div className="relative z-10 p-2 bg-transparent rounded-3xl shadow-2xl h-full border border-white">
-                    <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
+                    <div className="grid grid-cols-1 grid-rows-2 gap-2 h-full">
                         {homeHeroImages.map((image, index) => (
                            <div key={index} className={image.className}>
                              <Image src={image.src} layout="fill" objectFit="cover" alt={image.alt} data-ai-hint={image.hint} className="transition-transform duration-500 hover:scale-110"/>
@@ -73,5 +73,3 @@ export function HeroSection() {
     </section>
   );
 }
-
-    
