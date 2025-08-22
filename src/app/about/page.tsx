@@ -81,7 +81,7 @@ export default function AboutPage() {
     "Meningkatkan kepedulian sosial dan memperkuat nilai-nilai religius bagi Mahasiswa/i Jurusan Manajemen Informatika.",
     "Mendorong pengembangan kompetensi dan prestasi akademik serta mengelola dan menyalurkan aspirasi Mahasiswa/i Jurusan Manajemen Informatika.",
     "Menjadikan Himpunan Mahasiswa Jurusan Informatika sebagai pusat informasi melalui Media Kreatif dan penyebaran berita yang informatif bagi Mahasiswa/i Manajemen Informatika.",
-    "Mewadahi serta Menyalurkan minat dan bakat di bidang non-akademik yang terdapat pada Mahasiswa/i Jurusan Manajemen Informatika.",
+    "Mewadahi serta Menyalurkan minat dan bakat di bidang non-akademik yang terdapat pada Mahasiswa/i Manajemen Informatika.",
     "Mengembangkan jiwa kewirausahaan Mahasiswa/i Jurusan Manajemen Informatika melalui pengelolaan bisnis dan layanan kemitraan."
   ];
 
@@ -109,17 +109,12 @@ export default function AboutPage() {
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-primary/10 rounded-full shadow-inner"></div>
                     </div>
-                    {aboutHeroImages.map((image, index) => (
-                      <Image 
-                        key={index} 
-                        src={image.src} 
-                        width={image.width} 
-                        height={image.height} 
-                        alt={image.alt} 
-                        className={`rounded-full object-cover shadow-lg border-4 border-white ${image.className}`} 
-                        data-ai-hint={image.hint}
-                      />
-                    ))}
+                    
+                    <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Main" data-ai-hint="team leader" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10" />
+                    <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 1" data-ai-hint="student group" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32" />
+                    <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 2" data-ai-hint="university event" className="rounded-full object-cover shadow-lg border-4 border-white absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32" />
+                    <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 3" data-ai-hint="students studying" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28" />
+                    <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" data-ai-hint="students collaborating" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28" />
                 </div>
             </div>
         </div>
@@ -323,3 +318,5 @@ export default function AboutPage() {
     </div>
   );
 }
+
+    
