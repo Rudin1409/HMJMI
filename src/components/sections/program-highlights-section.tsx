@@ -10,13 +10,13 @@ const highlightedPrograms = [
   {
     title: 'IT-Festival',
     category: 'Kompetisi & Edukasi',
-    image: 'https://placehold.co/400x250.png',
+    image: '/proker/ITF2024.png',
     hint: 'tech competition stage',
   },
   {
     title: 'Seminar Bisnis',
     category: 'Edukasi & Wawasan',
-    image: 'https://placehold.co/400x250.png',
+    image: '/proker/sembis.png',
     hint: 'business seminar',
   },
 ];

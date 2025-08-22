@@ -176,7 +176,7 @@ export const teamMembers = {
 
 export const programs = {
     inti: [
-        { title: 'IT Festival', category: 'KOMPETISI & EDUKASI', description: 'Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.', image: 'https://placehold.co/400x200.png', hint: 'tech festival stage competition' },
+        { title: 'IT Festival', category: 'KOMPETISI & EDUKASI', description: 'Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.', image: '/proker/ITF2024.png', hint: 'tech festival stage competition' },
         { title: 'Sertijab & Demisioner', category: 'INTERNAL', description: 'Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru.', image: 'https://placehold.co/400x200.png', hint: 'organization meeting' }
     ],
     ptkp: [
@@ -194,7 +194,7 @@ export const programs = {
         { title: 'BAKSOMI', category: 'SOSIAL', description: 'Bakti sosial yang mencakup kunjungan ke panti, tausiyah, serta bagi-bagi takjil.', image: 'https://placehold.co/400x200.png', hint: 'social charity' },
     ],
     bistra: [
-        { title: 'Seminar Bisnis', category: 'EDUKASI', description: 'Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha sejak dini.', image: 'https://placehold.co/400x200.png', hint: 'business seminar' }
+        { title: 'Seminar Bisnis', category: 'EDUKASI', description: 'Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha sejak dini.', image: '/proker/sembis.png', hint: 'business seminar' }
     ]
 };
 
