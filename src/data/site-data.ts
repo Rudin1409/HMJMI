@@ -4,13 +4,19 @@ export const homeHeroImages = [
         src: "https://placehold.co/600x300.png",
         alt: "Group photo 1",
         hint: "university student group",
-        className: "row-span-1 relative rounded-2xl overflow-hidden"
+        className: "row-span-1 col-span-2 relative rounded-2xl overflow-hidden"
     },
     {
-        src: "https://placehold.co/600x300.png",
+        src: "https://placehold.co/300x300.png",
         alt: "Group photo 2",
         hint: "students coding event",
-        className: "row-span-1 relative rounded-2xl overflow-hidden"
+        className: "row-span-1 col-span-1 relative rounded-2xl overflow-hidden"
+    },
+    {
+        src: "https://placehold.co/300x300.png",
+        alt: "Group photo 3",
+        hint: "tech conference audience",
+        className: "row-span-1 col-span-1 relative rounded-2xl overflow-hidden"
     },
 ];
 

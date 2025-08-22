@@ -110,9 +110,15 @@ export default function AboutPage() {
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-primary/10 rounded-full shadow-inner"></div>
                     </div>
                     {aboutHeroImages.map((image, index) => (
-                      <div key={index} className={image.className}>
-                        <Image src={image.src} width={image.width} height={image.height} alt={image.alt} className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint={image.hint}/>
-                      </div>
+                      <Image 
+                        key={index} 
+                        src={image.src} 
+                        width={image.width} 
+                        height={image.height} 
+                        alt={image.alt} 
+                        className={`rounded-full object-cover shadow-lg border-4 border-white ${image.className}`} 
+                        data-ai-hint={image.hint}
+                      />
                     ))}
                 </div>
             </div>
