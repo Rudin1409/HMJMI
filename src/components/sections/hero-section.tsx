@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Users, Calendar, Award } from 'lucide-react';
+import { homeHeroImages } from '@/data/site-data';
 
 export function HeroSection() {
   return (
@@ -58,15 +59,11 @@ export function HeroSection() {
                  <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-pink-200 rounded-3xl transform rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
                 <div className="relative z-10 p-2 bg-transparent rounded-3xl shadow-2xl h-full border border-white">
                     <div className="grid grid-cols-2 grid-rows-2 gap-2 h-full">
-                        <div className="col-span-2 row-span-1 relative rounded-2xl overflow-hidden">
-                            <Image src="https://placehold.co/600x300.png" layout="fill" objectFit="cover" alt="Group photo 1" data-ai-hint="university student group" className="transition-transform duration-500 hover:scale-110"/>
-                        </div>
-                        <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
-                            <Image src="https://placehold.co/300x300.png" layout="fill" objectFit="cover" alt="Group photo 2" data-ai-hint="students coding event" className="transition-transform duration-500 hover:scale-110"/>
-                        </div>
-                        <div className="col-span-1 row-span-1 relative rounded-2xl overflow-hidden">
-                            <Image src="https://placehold.co/300x300.png" layout="fill" objectFit="cover" alt="Group photo 3" data-ai-hint="classroom presentation" className="transition-transform duration-500 hover:scale-110"/>
-                        </div>
+                        {homeHeroImages.map((image, index) => (
+                           <div key={index} className={image.className}>
+                             <Image src={image.src} layout="fill" objectFit="cover" alt={image.alt} data-ai-hint={image.hint} className="transition-transform duration-500 hover:scale-110"/>
+                           </div>
+                        ))}
                     </div>
                 </div>
              </div>

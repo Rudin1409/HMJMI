@@ -15,6 +15,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 import { AnimatedLogo } from '@/components/ui/animated-logo';
+import { aboutHeroImages, galleryItems, GalleryItem } from '@/data/site-data';
 
 const stats = [
   {
@@ -73,61 +74,6 @@ const logoPhilosophy = {
     overall: "Secara keseluruhan, logo ini mencerminkan semangat kebangkitan, adaptasi, dan inovasi dalam bidang teknologi dan manajemen organisasi, menjadikan Himpunan Mahasiswa Manajemen Informatika sebagai entitas yang selalu berkembang dan siap menghadapi tantangan zaman."
 };
 
-
-const galleryItems = [
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "LKMM-PD HMJ MI POLSRI",
-        year: "2024",
-        hint: "student presentation"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "LKMM-PD HMJ MI POLSRI",
-        year: "2024",
-        hint: "student audience"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "UPGRADING HMJ MI POLSRI",
-        year: "2024",
-        hint: "group photo"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "UPGRADING HMJ MI POLSRI",
-        year: "2024",
-        hint: "students sitting"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "MUSYAWARAH BESAR HMJ MI",
-        year: "2024",
-        hint: "large group"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "MUSYAWARAH BESAR HMJ MI",
-        year: "2024",
-        hint: "students listening"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "SEMINAR NASIONAL",
-        year: "2024",
-        hint: "student team"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "SEMINAR NASIONAL",
-        year: "2024",
-        hint: "student speaking"
-    },
-];
-
-type GalleryItem = typeof galleryItems[0];
-
-
 export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
@@ -163,26 +109,11 @@ export default function AboutPage() {
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-primary/10 rounded-full shadow-inner"></div>
                     </div>
-                    
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10">
-                         <Image src="https://placehold.co/300x300.png" width={300} height={300} alt="Team Main" className="rounded-full object-cover shadow-2xl border-8 border-white" data-ai-hint="team leader" />
-                    </div>
-                    
-                    <div className="absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32">
-                         <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 1" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="student group"/>
-                    </div>
-                    
-                    <div className="absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32">
-                          <Image src="https://placehold.co/200x200.png" width={200} height={200} alt="Team 2" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="university event"/>
-                    </div>
-
-                    <div className="absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28">
-                        <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 3" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students studying"/>
-                    </div>
-
-                     <div className="absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28">
-                          <Image src="https://placehold.co/150x150.png" width={150} height={150} alt="Team 4" className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint="students collaborating"/>
-                    </div>
+                    {aboutHeroImages.map((image, index) => (
+                      <div key={index} className={image.className}>
+                        <Image src={image.src} width={image.width} height={image.height} alt={image.alt} className="rounded-full object-cover shadow-lg border-4 border-white" data-ai-hint={image.hint}/>
+                      </div>
+                    ))}
                 </div>
             </div>
         </div>

@@ -5,40 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import React from 'react';
-
-const testimonials = [
-  {
-    name: 'Alumni MI 2020',
-    role: 'Ketua Himpunan 2019-2020',
-    avatar: 'https://placehold.co/100x100.png',
-    text: 'Menjadi Ketua HMJ MI adalah salah satu pengalaman paling berharga. Saya belajar tentang kepemimpinan, tanggung jawab, dan kerja sama tim yang nyata.',
-  },
-  {
-    name: 'Alumni MI 2021',
-    role: 'Sekretaris Umum 2020-2021',
-    avatar: 'https://placehold.co/100x100.png',
-    text: 'Bergabung dengan HMJ MI adalah keputusan terbaik. Saya tidak hanya mendapatkan relasi yang luas, tetapi juga pengalaman baru yang tak ternilai harganya.',
-  },
-  {
-    name: 'Pengurus Aktif',
-    role: 'Kepala Dept. Akademik',
-    avatar: 'https://placehold.co/100x100.png',
-    text: 'Di HMJ MI, saya merasakan bagaimana riset dan inovasi berpadu, menantang batas konvensional dan mengubah ide menjadi karya nyata.',
-  },
-  {
-    name: 'Alumni MI 2019',
-    role: 'Software Engineer',
-    avatar: 'https://placehold.co/100x100.png',
-    text: 'HMJ MI adalah tempat terbaik untuk tumbuh. Keterampilan yang saya pelajari di sini sangat relevan dan membantu saya di dunia kerja profesional.',
-  },
-  {
-    name: 'Mahasiswa MI 2022',
-    role: 'Anggota Aktif',
-    avatar: 'https://placehold.co/100x100.png',
-    text: 'Kegiatan dan program kerja di HMJ MI sangat membantu saya dalam mengembangkan soft skill dan mempersiapkan diri untuk karir masa depan di industri teknologi.',
-  },
-];
-
+import { testimonials } from '@/data/site-data';
 
 export function TestimonialsSection() {
   return (
