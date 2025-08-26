@@ -72,7 +72,7 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
                           className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start"
                         >
                             <Instagram className="h-5 w-5" />
-                            <span>{member.instagram.substring(member.instagram.lastIndexOf('/') + 1)}</span>
+                            <span>{member.instagram.substring(member.instagram.lastIndexOf('/') + 1).replace(/\/$/, '')}</span>
                         </a>
                     )}
                 </div>

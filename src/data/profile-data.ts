@@ -22,17 +22,17 @@ export const teamMembers = {
   },
   ptkp: {
     heads: [
-        { name: 'Al Fajri Nur Ramadhan', role: 'Kepala Departemen', class: 'MI 2024', avatar: '/anggota/ptkp24/AL FAJRI NUR RAMADHAN.png', instagram: "https://www.instagram.com/fajriii._/" },
+        { name: 'Al Fajri Nur Ramadhan', role: 'Kepala Departemen', class: 'MI 2024', avatar: '/anggota/ptkp24/AL FAJRI NUR RAMADHAN.png', instagram: "https://www.instagram.com/fajriii.___" },
         { name: 'Agnes', role: 'Wakil Kepala Departemen', class: 'MI 2024', avatar: '/anggota/ptkp24/agnes.png', instagram: "https://www.instagram.com/lavienagn/" },
         { name: 'Shofi Nanda Rismaliani', role: 'Sekretaris', class: 'MI 2024', avatar: '/anggota/ptkp24/SHOFI NANDA R.png', instagram: "https://www.instagram.com/shofinanda_/" },
-        { name: 'Lara Amelia Apriani', role: 'Bendahara', class: 'MI 2024', avatar: '/anggota/ptkp24/lara.png', instagram: "https://www.instagram.com/laraamelia_/" },
+        { name: 'Lara Amelia Apriani', role: 'Bendahara', class: 'MI 2024', avatar: '/anggota/ptkp24/lara.png', instagram: "https://www.instagram.com/laraaamelia_/" },
         { name: 'Lenno Nardo', role: 'Koordinator Akademik', class: 'MI 2024', avatar: '/anggota/ptkp24/leno.png', instagram: "https://www.instagram.com/lenno_nar/" },
         { name: 'Muhammad Ichwan', role: 'Koordinator Kepemudaan', class: 'MI 2024', avatar: '/anggota/ptkp24/M.ICWHAN.png', instagram: "https://www.instagram.com/mhm.ichwnnn_/" },
     ],
     members: {
       akademik: [
         { name: 'Devi Aprianti', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/devi.png', instagram: "https://www.instagram.com/_deviafrnti/" },
-        { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/M.IRFAN APRIANSYAH.png', instagram: "https://www.instagram.com/panzya/" },
+        { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/M.IRFAN APRIANSYAH.png', instagram: "https://www.instagram.com/panzya_/" },
         { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/kmsamarf_/" },
         { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/m.bhrdnnn_/" },
         { name: 'Dimas Yuda Pratama', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/dimytma.17/" },
