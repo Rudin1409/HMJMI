@@ -66,13 +66,13 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
                     <p className="text-muted-foreground">{member.class}</p>
                     {member.instagram && (
                         <a 
-                          href={member.instagram === '-' ? 'https://instagram.com' : `https://instagram.com/${member.instagram}`} 
+                          href={member.instagram} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start"
                         >
                             <Instagram className="h-5 w-5" />
-                            {member.instagram !== '-' && <span>{member.instagram}</span>}
+                            <span>{member.instagram.substring(member.instagram.lastIndexOf('/') + 1)}</span>
                         </a>
                     )}
                 </div>
