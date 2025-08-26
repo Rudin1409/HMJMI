@@ -42,11 +42,11 @@ export const teamMembers = {
       kepemudaan: [
         { name: 'Miftahul Jannah', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/MIFTAHUL JANNAH-.png', instagram: "https://www.instagram.com/mitaeez_/" },
         { name: 'Nis Murib', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/nismurib.png' },
-        { name: 'Briliana Azizah', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/brlnaazzh/" },
+        { name: 'Briliana Azizah', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/brlnaazz/" },
         { name: 'Muhammad Fadlil', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/koharuitsuka_/" },
         { name: 'Innayah Dwikhailah Putri', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/nayyaaa.a_/" },
         { name: 'Irham Bagus Sanjaya', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/leoirham1/" },
-        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/rragaa_/" },
+        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/rragaa__/" },
         { name: 'Rasya Ratu Juanna', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/rsyratuu/" },
       ]
     }
