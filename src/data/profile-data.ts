@@ -11,11 +11,11 @@ export const departments = [
 export const teamMembers = {
   inti: {
     heads: [
-      { name: 'Muhammad Farhan Pratama', role: 'Ketua Himpunan', class: 'MI 2024', avatar: '/anggota/M. FARHAN PRATAMA.png', instagram: "https://www.instagram.com/frhnprtmaa_/" },
-      { name: 'Muhammad Dava Prayoga', role: 'Wakil Ketua Himpunan', class: 'MI 2024', avatar: '/anggota/M.DAVA PRAYOGA.png', instagram: "https://www.instagram.com/davapryga/" },
-      { name: 'Siti Nabila Zhafirah', role: 'Sekretaris Umum', class: 'MI 2024', avatar: '/anggota/SITI NABILA ZHAFIRAH.png', instagram: "https://www.instagram.com/nabilazhafirh/" },
+      { name: 'Muhammad Farhan Pratama', role: 'Ketua Himpunan', class: 'MI 2024', avatar: '/anggota/M. FARHAN PRATAMAcrp.png', instagram: "https://www.instagram.com/frhnprtmaa_/" },
+      { name: 'Muhammad Dava Prayoga', role: 'Wakil Ketua Himpunan', class: 'MI 2024', avatar: '/anggota/M.DAVA PRAYOGAcrp.png', instagram: "https://www.instagram.com/davapryga/" },
+      { name: 'Siti Nabila Zhafirah', role: 'Sekretaris Umum', class: 'MI 2024', avatar: '/anggota/SITI NABILA ZHAFIRAHcrp.png', instagram: "https://www.instagram.com/nabilazhafirh/" },
       { name: 'Eka Rahayu Putri', role: 'Wakil Sekretaris Umum', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/ekarhyptr/" },
-      { name: 'Muthia Maylafayza Inayah', role: 'Bendahara Umum', class: 'MI 2024', avatar: '/anggota/MUTIA MAYLAFAYZA INAYAH.png', instagram: "https://www.instagram.com/muthiamaylaa/" },
+      { name: 'Muthia Maylafayza Inayah', role: 'Bendahara Umum', class: 'MI 2024', avatar: '/anggota/MUTIA MAYLAFAYZA INAYAHcrp.png', instagram: "https://www.instagram.com/muthiamaylaa/" },
       { name: 'Putri Afifah Khairunnisa', role: 'Wakil Bendahara Umum', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/put__t/" },
     ],
     members: {}
@@ -223,3 +223,5 @@ export const divisions = {
   ],
 };
 
+
+    
