@@ -59,7 +59,7 @@ export const teamMembers = {
         { name: 'Ajeng Alieffiyah Safitri', role: 'Bendahara', class: 'MI 2024', avatar: '/anggota/humas24/AJENG.png', instagram: "https://www.instagram.com/aalieffiyah/" },
         { name: 'Zakira Surani', role: 'Koordinator Kominfo', class: 'MI 2024', avatar: '/anggota/humas24/ZAKIRA.png', instagram: "https://www.instagram.com/zakiraa_sr/" },
         { name: 'Vanessa Septia Putri', role: 'Koordinator Medkraf', class: 'MI 2024', avatar: '/anggota/humas24/VANESSA.png', instagram: "https://www.instagram.com/vanessaasp_/" },
-        { name: 'Nailah Zhafirah Cahyalia Jaya', role: 'Koordinator Jurnalis', class: 'MI 2024', avatar: '/anggota/humas24/NAILAH.png', instagram: "https://www.instagram.com/nzcj_/" },
+        { name: 'Nailah Zhafirah Cahyalia Jaya', role: 'Koordinator Jurnalis', class: 'MI 2024', avatar: '/anggota/humas24/NAILAH.png', instagram: "https://www.instagram.com/_snzcj_/" },
      ],
     members: {
       kominfo: [

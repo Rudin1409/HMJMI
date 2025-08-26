@@ -42,6 +42,17 @@ const iconMap: { [key: string]: React.ReactNode } = {
 };
 
 const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPrev: () => void, onNext: () => void, showNav: boolean }) => {
+    const getInstagramUsername = (url: string) => {
+        if (!url) return '';
+        try {
+            const path = new URL(url).pathname;
+            return path.split('/').filter(Boolean).pop() || '';
+        } catch (e) {
+            return '';
+        }
+    };
+    const username = member.instagram ? getInstagramUsername(member.instagram) : '';
+
     return (
         <div className="flex items-center justify-center gap-4 w-full">
             <Button 
@@ -64,7 +75,7 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
                     <h3 className="text-3xl font-bold text-primary">{member.name}</h3>
                     <p className="text-xl font-semibold text-foreground">{member.role}</p>
                     <p className="text-muted-foreground">{member.class}</p>
-                    {member.instagram && (
+                    {member.instagram && username && (
                         <a 
                           href={member.instagram} 
                           target="_blank" 
@@ -72,7 +83,7 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
                           className="inline-flex items-center gap-2 mt-4 text-muted-foreground hover:text-primary transition-colors justify-center md:justify-start"
                         >
                             <Instagram className="h-5 w-5" />
-                            <span>{member.instagram.substring(member.instagram.lastIndexOf('/') + 1).replace(/\/$/, '')}</span>
+                            <span>{username}</span>
                         </a>
                     )}
                 </div>
