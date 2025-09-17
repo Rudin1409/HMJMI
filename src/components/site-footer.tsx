@@ -20,7 +20,6 @@ export function SiteFooter() {
   ];
 
   const infoLinks = [
-    { href: '#testimonials', label: 'Testimoni' },
     { href: '#faq', label: 'FAQ' },
   ];
 
