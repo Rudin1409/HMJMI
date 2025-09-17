@@ -138,7 +138,6 @@ export const teamMembers = {
         { name: 'Adinda Rahmalia', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/dinda (2).png', instagram: "https://www.instagram.com/ddindae_/" },
         { name: 'Amira Luthfia Alkamila', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/Amira Luthfia Alkamila_ (2).png', instagram: "https://www.instagram.com/mira_kmilaa/" },
         { name: 'Frans Ahmad Zharif', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/Frans Ahmad Zhariif (2).png', instagram: "https://www.instagram.com/franzhariif_/" },
-        { name: 'Jihan Syahiro Az-Zahra', role: 'Anggota Sosial', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png' },
         { name: 'Muhammad Rasya Syakir', role: 'Anggota Sosial', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/mhmdrsya_s/" },
       ],
     }
