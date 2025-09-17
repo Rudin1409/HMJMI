@@ -33,7 +33,7 @@ export const teamMembers = {
       akademik: [
         { name: 'Devi Aprianti', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/devi.png', instagram: "https://www.instagram.com/_deviafrnti/" },
         { name: 'M. Irfan Apriansyah', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/M.IRFAN APRIANSYAH.png', instagram: "https://www.instagram.com/panzya_/" },
-        { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/kmsamarf_/" },
+        { name: 'Kemas Muhammad Amar Fauzan', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/Kemas Muhammad Amar Fauzan (2).png', instagram: "https://www.instagram.com/kmsamarf_/" },
         { name: 'M. Bahrudin', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/M. Bahrudin (2).png', instagram: "https://www.instagram.com/m.bhrdnnn_/" },
         { name: 'Dimas Yuda Pratama', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/Dimas Yuda Pratama (2).png', instagram: "https://www.instagram.com/dimytma.17/" },
         { name: 'Niken Septi Andini', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/Niken S Andini (2).png', instagram: "https://www.instagram.com/nsandiny/" },
@@ -41,12 +41,11 @@ export const teamMembers = {
       ],
       kepemudaan: [
         { name: 'Miftahul Jannah', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/MIFTAHUL JANNAH-.png', instagram: "https://www.instagram.com/mitaeez_/" },
-        { name: 'Nis Murib', role: 'Anggota', class: 'MI 2024', avatar: '/anggota/ptkp24/nismurib.png' },
         { name: 'Briliana Azizah', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/Briliana Azizah (2).png', instagram: "https://www.instagram.com/brlnaazz/" },
         { name: 'Muhammad Fadlil', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/Muhammad Fadlil (2).png', instagram: "https://www.instagram.com/koharuitsuka_/" },
         { name: 'Innayah Dwikhailah Putri', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/Innayah DwiKhailah Putri (2).png', instagram: "https://www.instagram.com/nayyaaa.a_/" },
         { name: 'Irham Bagus Sanjaya', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/irham bagus sanjaya (2).png', instagram: "https://www.instagram.com/leoirham1/" },
-        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/rragaa__/" },
+        { name: 'Muhammad Satria Anugrah', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/muhammad satria anugrah (2).png', instagram: "https://www.instagram.com/rragaa__/" },
         { name: 'Rasya Ratu Juanna', role: 'Anggota', class: 'MI 2025', avatar: '/anggota/ptkp25/rasya ratu juanna (2).png', instagram: "https://www.instagram.com/rsyratuu/" },
       ]
     }
