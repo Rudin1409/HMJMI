@@ -78,7 +78,7 @@ export const teamMembers = {
       ],
       jurnalis: [
           { name: 'Regas Sonjaya', role: 'Anggota Jurnalis', class: 'MI 2024', avatar: '/anggota/humas24/REGAS.png', instagram: "https://www.instagram.com/regasss._/" },
-          { name: 'Sulthan Muhammad Diftha Annashira', role: 'Anggota Jurnalis', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/sulthan.difthaa/" },
+          { name: 'Sulthan Muhammad Diftha Annashira', role: 'Anggota Jurnalis', class: 'MI 2025', avatar: '/anggota/humas25/sulthan (2).png', instagram: "https://www.instagram.com/sulthan.difthaa/" },
           { name: 'Arau Imanuel Siritoitet', role: 'Anggota Jurnalis', class: 'MI 2025', avatar: '/anggota/humas25/Arau Imanuel Siritoitet (2).png', instagram: "https://www.instagram.com/arauimanuell/" },
           { name: 'Muhammad Kevin Fadhilah Akmal', role: 'Anggota Jurnalis', class: 'MI 2025', avatar: '/anggota/humas25/Muhammad Kevin F.A (2).png', instagram: "https://www.instagram.com/vynn.flx/" },
       ],
@@ -91,7 +91,7 @@ export const teamMembers = {
         { name: 'Sri Rahayu Rezeki', role: 'Sekretaris', class: 'MI 2024', avatar: '/anggota/psdm24/SRI RAHAYU.png' },
         { name: 'Shoofiyah Maharani', role: 'Bendahara', class: 'MI 2024', avatar: '/anggota/psdm24/SHOOFIYAH.png', instagram: "https://www.instagram.com/shoofiyah_maharani/" },
         { name: 'Handika Putra', role: 'Koordinator Minat Bakat', class: 'MI 2024', avatar: '/anggota/psdm24/HANDIKA.png', instagram: "https://www.instagram.com/hndkptr_/" },
-        { name: 'Annisa Aulya Fitri', role: 'Koordinator Bidang HRD PSDM', class: 'MI 2024', avatar: '/anggota/psdm24/anonym.png' },
+        { name: '???', role: 'Koordinator Bidang HRD PSDM', class: 'MI 2024', avatar: '/anggota/psdm24/anonym.png' },
       ],
     members: {
       minatbakat: [
@@ -100,15 +100,15 @@ export const teamMembers = {
           { name: 'Nanda Meylani Putri', role: 'Anggota Minat Bakat', class: 'MI 2024', avatar: '/anggota/psdm24/NANDA MELYANI.png' },
           { name: 'Luluk Anggraini', role: 'Anggota Minat Bakat', class: 'MI 2024', avatar: '/anggota/psdm24/LULUK.png' },
           { name: 'Ridho Dwi Restiandi', role: 'Anggota Minat Bakat', class: 'MI 2024', avatar: '/anggota/psdm24/RIDHO DWI.png', instagram: "https://www.instagram.com/ridhdwir/" },
-          { name: 'Muhammad Haekal Saleh', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/kallnm_/" },
-          { name: 'Muhammad Fathir Romeo', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/fthiromeo/" },
-          { name: 'Shafia Aurajannah Marza', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/shafiaura/" },
-          { name: 'Renjiro Alief Daniswara', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/renjiroad/" },
-          { name: 'Fika Dwi Jayanti', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/fikadwijy/" },
-          { name: 'Nurin Nabya', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/nurinnabya/" },
-          { name: 'Kayla Syakirah', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/kela_syakeerah/" },
-          { name: 'M. Faizal Alfriandy', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/alfriqndy/" },
-          { name: 'Muhammad Ridho Pratama', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/ridhopratamaapril/" },
+          { name: 'Muhammad Haekal Saleh', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Muhammad Haekal Saleh (2).png', instagram: "https://www.instagram.com/kallnm_/" },
+          { name: 'Muhammad Fathir Romeo', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Fathir (2).png', instagram: "https://www.instagram.com/fthiromeo/" },
+          { name: 'Shafia Aurajannah Marza', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/shafia_aurajannah_marza (2).png', instagram: "https://www.instagram.com/shafiaura/" },
+          { name: 'Renjiro Alief Daniswara', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Renjiro Alief PDH (2).png', instagram: "https://www.instagram.com/renjiroad/" },
+          { name: 'Fika Dwi Jayanti', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Fika Dwi Jayanti (2).png', instagram: "https://www.instagram.com/fikadwijy/" },
+          { name: 'Nurin Nabya', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Nurin Nabya.png', instagram: "https://www.instagram.com/nurinnabya/" },
+          { name: 'Kayla Syakirah', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Kayla Syakirah (2).png', instagram: "https://www.instagram.com/kela_syakeerah/" },
+          { name: 'M. Faizal Alfriandy', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Muhammad Faizal Alfriandy (2).png', instagram: "https://www.instagram.com/alfriqndy/" },
+          { name: 'Muhammad Ridho Pratama', role: 'Anggota Minat Bakat', class: 'MI 2025', avatar: '/anggota/psdm25/Muhammad Ridho Pratama (2).png', instagram: "https://www.instagram.com/ridhopratamaapril/" },
       ],
        hrd: []
     }
