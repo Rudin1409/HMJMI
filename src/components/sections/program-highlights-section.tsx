@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 
 const highlightedPrograms = [
   {
-    title: 'IT-Festival',
+    title: 'IT Festival',
     category: 'Kompetisi & Edukasi',
     image: '/proker/ITF2024.png',
     hint: 'tech competition stage',
@@ -70,5 +70,3 @@ export function ProgramHighlightsSection() {
     </section>
   );
 }
-
-    

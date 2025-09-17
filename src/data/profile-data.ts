@@ -219,6 +219,3 @@ export const divisions = {
     { id: 'kemitraan', name: 'Kemitraan', description: 'Kemitraan berfungsi untuk mengatur dan mengelolah jalannnya kerja sama antar divisi bistra dengan usaha dari pihak luar maupun di dalam lingkungan jurusan Manajemen Informatika Politeknik Negeri Sriwijaya.' },
   ],
 };
-
-
-    
