@@ -61,7 +61,7 @@ export function AboutSection() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8">
+            <Card className="p-8 relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 dark:bg-primary/20 rounded-full"></div>
                 <div className="relative z-10">
                     <div className="w-16 h-16 bg-pink-100 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center flex-shrink-0 mb-4">
@@ -71,7 +71,7 @@ export function AboutSection() {
                     <p className="text-muted-foreground">Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif bagi seluruh Mahasiswa/i Manajemen Informatika.</p>
                 </div>
             </Card>
-            <Card className="p-8">
+            <Card className="p-8 relative overflow-hidden">
                 <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 dark:bg-primary/20 rounded-full"></div>
                  <div className="relative z-10">
                     <div className="w-16 h-16 bg-pink-100 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center flex-shrink-0 mb-4">
