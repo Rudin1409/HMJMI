@@ -125,7 +125,7 @@ export const teamMembers = {
     members: {
       agama: [
         { name: 'Annisa Nurhidayah', role: 'Anggota Agama', class: 'MI 2024', avatar: '/anggota/kesma24/ANNISA NURHIDAYAH.png', instagram: "https://www.instagram.com/niisaanrh/" },
-        { name: 'Muhammad Ghani Yusha', role: 'Anggota Agama', class: 'MI 2024', avatar: '/anggota/kesma25/M. Ghani Yusha (2).png', instagram: "https://www.instagram.com/ghani.ys/" },
+        { name: 'Muhammad Ghani Yusha', role: 'Anggota Agama', class: 'MI 2025', avatar: '/anggota/kesma25/M. Ghani Yusha (2).png', instagram: "https://www.instagram.com/ghani.ys/" },
         { name: 'Muhammad Rizky Pratama', role: 'Anggota Agama', class: 'MI 2025', avatar: '/anggota/kesma25/M Rizky Pratama (2).png' },
         { name: 'Nabila Huwaida', role: 'Anggota Agama', class: 'MI 2025', avatar: '/anggota/kesma25/Nabila Huwaida.png', instagram: "https://www.instagram.com/neabielaaa/" },
         { name: 'Muhammad Rizki Wijaya', role: 'Anggota Agama', class: 'MI 2025', avatar: '/anggota/kesma25/Rizky wijaya (2).png', instagram: "https://www.instagram.com/rzkiwjy/" },
@@ -138,7 +138,7 @@ export const teamMembers = {
         { name: 'Adinda Rahmalia', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/dinda (2).png', instagram: "https://www.instagram.com/ddindae_/" },
         { name: 'Amira Luthfia Alkamila', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/Amira Luthfia Alkamila_ (2).png', instagram: "https://www.instagram.com/mira_kmilaa/" },
         { name: 'Frans Ahmad Zharif', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/Frans Ahmad Zhariif (2).png', instagram: "https://www.instagram.com/franzhariif_/" },
-        { name: 'Muhammad Rasya Syakir', role: 'Anggota Sosial', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/mhmdrsya_s/" },
+        { name: 'Muhammad Rasya Syakir', role: 'Anggota Sosial', class: 'MI 2025', avatar: '/anggota/kesma25/Muhammad Rasya Syakir (2).png', instagram: "https://www.instagram.com/mhmdrsya_s/" },
       ],
     }
   },
@@ -155,18 +155,18 @@ export const teamMembers = {
       bisnis: [
         { name: 'Henny Daraditha Salsabilla', role: 'Anggota Bisnis', class: 'MI 2024', avatar: '/anggota/bistra24/HENNY DARADHITA SALSABILLA.png' },
         { name: 'Tri Aji Alhuda', role: 'Anggota Bisnis', class: 'MI 2024', avatar: '/anggota/bistra24/TRI AJI ALHUDA.png', instagram: "https://www.instagram.com/aji_alhd/" },
-        { name: 'Munzillin Zahri Aji', role: 'Anggota Bisnis', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/bukanmunjilin_/" },
-        { name: 'Muhammad Azrin', role: 'Anggota Bisnis', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/zrnnn07/" },
-        { name: 'Alfaris Abiyyu Ramadhan', role: 'Anggota Bisnis', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/alfarisabiyyu.r_28/" },
-        { name: 'Fadhlan Lordiansyah', role: 'Anggota Bisnis', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/flydoans_/" },
+        { name: 'Munzillin Zahri Aji', role: 'Anggota Bisnis', class: 'MI 2025', avatar: '/anggota/bistra25/munzilin zahri aji (2).png', instagram: "https://www.instagram.com/bukanmunjilin_/" },
+        { name: 'Muhammad Azrin', role: 'Anggota Bisnis', class: 'MI 2025', avatar: '/anggota/bistra25/Muhammad Azrin.png', instagram: "https://www.instagram.com/zrnnn07/" },
+        { name: 'Alfaris Abiyyu Ramadhan', role: 'Anggota Bisnis', class: 'MI 2025', avatar: '/anggota/bistra25/Alfaris Abiyyu Ramadhan (2).png', instagram: "https://www.instagram.com/alfarisabiyyu.r_28/" },
+        { name: 'Fadhlan Lordiansyah', role: 'Anggota Bisnis', class: 'MI 2025', avatar: '/anggota/bistra25/Fadhlan lordiansyah (2).png', instagram: "https://www.instagram.com/flydoans_/" },
       ],
       kemitraan: [
         { name: 'Aldi Kurniawan', role: 'Anggota Kemitraan', class: 'MI 2024', avatar: '/anggota/bistra24/ALDI KURNIAWAN.png' },
         { name: 'Sharla Imanda', role: 'Anggota Kemitraan', class: 'MI 2024', avatar: '/anggota/bistra24/SHARLA IMANDA.png', instagram: "https://www.instagram.com/sharlamnd/" },
-        { name: 'Afifah Saharani', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/fifhshrnii_/" },
-        { name: 'Fenita Harlina', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/fnytahrlna_/" },
-        { name: 'Ayu Sari Romadhon', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/ayusr_ay/" },
-        { name: 'Nabila Salsabila', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: 'https://placehold.co/400x400.png', instagram: "https://www.instagram.com/nbilaslsbilla/" },
+        { name: 'Afifah Saharani', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: '/anggota/bistra25/Afifah Saharani_ (2).png', instagram: "https://www.instagram.com/fifhshrnii_/" },
+        { name: 'Fenita Harlina', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: '/anggota/bistra25/Fenita Harlina (2).png', instagram: "https://www.instagram.com/fnytahrlna_/" },
+        { name: 'Ayu Sari Romadhon', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: '/anggota/bistra25/Ayu Sari Romadhon_ (2).png', instagram: "https://www.instagram.com/ayusr_ay/" },
+        { name: 'Nabila Salsabila', role: 'Anggota Kemitraan', class: 'MI 2025', avatar: '/anggota/bistra25/Nabila.png', instagram: "https://www.instagram.com/nbilaslsbilla/" },
       ],
     }
   }
