@@ -143,9 +143,7 @@ export default function ProkerPage() {
                             <Badge variant="secondary" className="mb-4">Program Kerja Utama</Badge>
                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                             <p className="text-muted-foreground mb-6">{program.description}</p>
-                            <Button size="lg">
-                                Lihat Info Lengkap <ArrowUpRight className="ml-2" />
-                            </Button>
+                            
                         </div>
                         <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-2">
                              <Image src={program.image} alt={program.title} layout="fill" objectFit="cover" data-ai-hint={program.hint} />
