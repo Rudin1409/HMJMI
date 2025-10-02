@@ -77,7 +77,7 @@ const agendas = [
         description: 'Proses rekrutmen terbuka untuk menjaring anggota baru yang potensial, dilanjutkan dengan acara gathering untuk menyambut dan mengakrabkan seluruh anggota.' 
     },
     { 
-        title: 'Gathering Mahasiswa Baru', 
+        title: 'SIGMA', 
         description: 'Acara penyambutan khusus untuk mahasiswa baru Jurusan Manajemen Informatika, bertujuan untuk memperkenalkan lingkungan jurusan dan organisasi.' 
     },
     { 
