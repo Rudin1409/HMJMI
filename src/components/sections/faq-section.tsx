@@ -26,7 +26,7 @@ const faqItems = [
   },
   {
     question: 'Berapa lama masa jabatan kepengurusan di HMJMI?',
-    answer: 'Satu periode kepengurusan di HMJMI berlangsung selama satu tahun. Prosesnya dimulai dari pelantikan pengurus baru dan diakhiri dengan serah terima jabatan kepada pengurus periode berikutnya melalui Musyawarah Besar (MUBES).',
+    answer: 'Satu periode kepengurusan di HMJMI berlangsung selama dua periode, jadi selama dua tahun. Prosesnya dimulai dari pelantikan pengurus baru dan diakhiri dengan serah terima jabatan kepada pengurus periode berikutnya melalui Musyawarah Besar (MUBES).',
   },
 ];
 
