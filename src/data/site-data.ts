@@ -46,12 +46,6 @@ export const galleryItems = [
         hint: "tech conference"
     },
     {
-        src: "/Galeri/IT-fest2.JPG",
-        title: "IT Festival",
-        year: "2025",
-        hint: "stage presentation"
-    },
-    {
         src: "/Galeri/LDOHMJMI.JPG",
         title: "LDO HMJMI",
         year: "2025",
@@ -130,3 +124,5 @@ export const testimonials = [
     text: 'Kegiatan dan program kerja di HMJ MI sangat membantu saya dalam mengembangkan soft skill dan mempersiapkan diri untuk karir masa depan di industri teknologi.',
   },
 ];
+
+    
