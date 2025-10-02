@@ -289,58 +289,58 @@ export default function AboutPage() {
             </div>
       </section>
 
-      <section id="gallery" className="py-16 md:py-24 bg-transparent overflow-hidden">
-        <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-                <div className="flex justify-center mb-4">
-                    <div className="w-16 h-1 bg-primary rounded-full"></div>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                    Momen <span className="text-primary">Dalam Lensa</span>
-                </h2>
-                <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
-                    Saksikan dokumentasi berbagai momen tak terlupakan yang menangkap semangat, kolaborasi, dan pencapaian kami.
-                </p>
-            </div>
-            <div className="w-full overflow-hidden">
-                <Carousel
-                    plugins={[plugin.current]}
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
-                    className="w-full"
-                    onMouseEnter={plugin.current.stop}
-                    onMouseLeave={plugin.current.reset}
-                >
-                    <CarouselContent>
-                        {galleryItems.map((item, index) => (
-                            <CarouselItem key={index} className="basis-full sm:basis-1/2 lg:basis-1/4">
-                                <div className="p-2">
-                                    <Card 
-                                        className="overflow-hidden shadow-lg hover:shadow-primary/20 hover:shadow-xl transition-all duration-300 rounded-2xl cursor-pointer group h-full flex flex-col"
-                                        onClick={() => setSelectedImage(item)}
-                                    >
-                                        <CardContent className="p-0">
-                                            <div className="relative aspect-w-4 aspect-h-3">
-                                                <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
-                                            </div>
-                                        </CardContent>
-                                        <CardFooter className="p-4 text-center flex-col items-center justify-center flex-grow">
-                                            <p className="font-semibold text-primary text-sm">{item.title}</p>
-                                            <p className="text-xs text-primary/80">{item.year}</p>
-                                        </CardFooter>
-                                    </Card>
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 lg:-translate-x-12" />
-                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 lg:translate-x-12" />
-                </Carousel>
-            </div>
-        </div>
-      </section>
+      <div className="w-full overflow-hidden">
+        <section id="gallery" className="py-16 md:py-24 bg-transparent">
+          <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                  <div className="flex justify-center mb-4">
+                      <div className="w-16 h-1 bg-primary rounded-full"></div>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+                      Momen <span className="text-primary">Dalam Lensa</span>
+                  </h2>
+                  <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+                      Saksikan dokumentasi berbagai momen tak terlupakan yang menangkap semangat, kolaborasi, dan pencapaian kami.
+                  </p>
+              </div>
+              <Carousel
+                  plugins={[plugin.current]}
+                  opts={{
+                      align: "start",
+                      loop: true,
+                  }}
+                  className="w-full"
+                  onMouseEnter={plugin.current.stop}
+                  onMouseLeave={plugin.current.reset}
+              >
+                  <CarouselContent>
+                      {galleryItems.map((item, index) => (
+                          <CarouselItem key={index} className="basis-full sm:basis-1/2 lg:basis-1/4">
+                              <div className="p-2">
+                                  <Card 
+                                      className="overflow-hidden shadow-lg hover:shadow-primary/20 hover:shadow-xl transition-all duration-300 rounded-2xl cursor-pointer group h-full flex flex-col"
+                                      onClick={() => setSelectedImage(item)}
+                                  >
+                                      <CardContent className="p-0">
+                                          <div className="relative aspect-w-4 aspect-h-3">
+                                              <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
+                                          </div>
+                                      </CardContent>
+                                      <CardFooter className="p-4 text-center flex-col items-center justify-center flex-grow">
+                                          <p className="font-semibold text-primary text-sm">{item.title}</p>
+                                          <p className="text-xs text-primary/80">{item.year}</p>
+                                      </CardFooter>
+                                  </Card>
+                              </div>
+                          </CarouselItem>
+                      ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 lg:-translate-x-12" />
+                  <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 lg:translate-x-12" />
+              </Carousel>
+          </div>
+        </section>
+      </div>
 
       {selectedImage && (
         <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
