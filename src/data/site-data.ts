@@ -20,49 +20,6 @@ export const homeHeroImages = [
     },
 ];
 
-export const aboutHeroImages = [
-    { 
-        src: "https://placehold.co/300x300.png", 
-        width: 300, 
-        height: 300, 
-        alt: "Team Main", 
-        hint: "team leader",
-        className: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10"
-    },
-    { 
-        src: "https://placehold.co/200x200.png", 
-        width: 200, 
-        height: 200, 
-        alt: "Team 1", 
-        hint: "student group",
-        className: "absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32"
-    },
-    { 
-        src: "https://placehold.co/200x200.png", 
-        width: 200, 
-        height: 200, 
-        alt: "Team 2", 
-        hint: "university event",
-        className: "absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32"
-    },
-    { 
-        src: "https://placehold.co/150x150.png", 
-        width: 150, 
-        height: 150, 
-        alt: "Team 3", 
-        hint: "students studying",
-        className: "absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28"
-    },
-    { 
-        src: "https://placehold.co/150x150.png", 
-        width: 150, 
-        height: 150, 
-        alt: "Team 4", 
-        hint: "students collaborating",
-        className: "absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28"
-    }
-];
-
 export const galleryItems = [
     {
         src: "/Galeri/BUKBER MI.JPG",
