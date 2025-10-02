@@ -2,11 +2,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks, Palette, Sparkles, Wind, Cpu, BrainCircuit } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks, Palette, Sparkles, Wind, Cpu, BrainCircuit, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -21,6 +21,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 import { AnimatedLogo } from '@/components/ui/animated-logo';
 import { galleryItems, GalleryItem } from '@/data/site-data';
 
@@ -83,6 +84,7 @@ const logoPhilosophy = {
 
 export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   const missionPoints = [
     "Meningkatkan kepedulian sosial dan memperkuat nilai-nilai religius bagi Mahasiswa/i Jurusan Manajemen Informatika.",
@@ -91,6 +93,22 @@ export default function AboutPage() {
     "Mewadahi serta Menyalurkan minat dan bakat di bidang non-akademik yang terdapat pada Mahasiswa/i Manajemen Informatika.",
     "Mengembangkan jiwa kewirausahaan Mahasiswa/i Jurusan Manajemen Informatika melalui pengelolaan bisnis dan layanan kemitraan."
   ];
+
+  const handleNextImage = () => {
+    if (selectedImage) {
+      const currentIndex = galleryItems.findIndex(item => item.src === selectedImage.src);
+      const nextIndex = (currentIndex + 1) % galleryItems.length;
+      setSelectedImage(galleryItems[nextIndex]);
+    }
+  };
+
+  const handlePrevImage = () => {
+    if (selectedImage) {
+      const currentIndex = galleryItems.findIndex(item => item.src === selectedImage.src);
+      const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      setSelectedImage(galleryItems[prevIndex]);
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -286,10 +304,14 @@ export default function AboutPage() {
             </div>
 
             <Carousel
+                plugins={[plugin.current]}
                 opts={{
                     align: "start",
+                    loop: true,
                 }}
                 className="w-full max-w-6xl mx-auto"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
             >
                 <CarouselContent>
                     {galleryItems.map((item, index) => (
@@ -322,6 +344,12 @@ export default function AboutPage() {
           <DialogContent className="max-w-4xl p-0">
             <div className="relative aspect-video">
               <Image src={selectedImage.src} alt={selectedImage.title} layout="fill" objectFit="contain" data-ai-hint={selectedImage.hint} />
+              <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white hover:bg-black/75" onClick={handlePrevImage}>
+                <ChevronLeft className="h-6 w-6" />
+              </Button>
+              <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white hover:bg-black/75" onClick={handleNextImage}>
+                <ChevronRight className="h-6 w-6" />
+              </Button>
             </div>
             <DialogHeader className="p-6 pt-2">
                 <DialogTitle>{selectedImage.title}</DialogTitle>
