@@ -150,7 +150,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
                 <div className="relative aspect-square md:hidden">
-                    <Image src="https://placehold.co/450x450.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                    <Image src="/Visi.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
                 </div>
                 <div className='flex flex-col items-center md:items-start text-center md:text-left'>
                     <div className="flex items-center gap-4 mb-4">
@@ -164,7 +164,7 @@ export default function AboutPage() {
                     </p>
                 </div>
                  <div className="relative aspect-square hidden md:block">
-                    <Image src="https://placehold.co/450x450.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                    <Image src="/Visi.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
                 </div>
             </div>
              <div className='space-y-8'>
