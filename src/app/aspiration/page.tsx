@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChevronDown, MessageSquareQuote, FileText, CheckCircle, ArrowUpRight } from 'lucide-react';
+import { ScrollAnimation } from '@/components/scroll-animation';
 
 const processSteps = [
   {
@@ -35,7 +36,7 @@ export default function AspirationPage() {
         className="relative w-full flex items-center justify-center min-h-screen bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <ScrollAnimation className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
             Kami Mendengar Anda
           </Badge>
@@ -52,9 +53,10 @@ export default function AspirationPage() {
                 </Button>
             </a>
           </div>
-        </div>
+        </ScrollAnimation>
       </section>
 
+      <ScrollAnimation>
       <section id="aspiration-form" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-center">
@@ -105,6 +107,7 @@ export default function AspirationPage() {
             </div>
         </div>
       </section>
+      </ScrollAnimation>
     </div>
   );
 }

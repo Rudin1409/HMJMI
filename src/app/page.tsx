@@ -4,16 +4,27 @@ import { FaqSection } from '@/components/sections/faq-section';
 import { CtaSection } from '@/components/sections/cta-section';
 import { ProgramHighlightsSection } from '@/components/sections/program-highlights-section';
 import { DivisionsSection } from '@/components/sections/divisions-section';
+import { ScrollAnimation } from '@/components/scroll-animation';
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
-      <AboutSection />
-      <ProgramHighlightsSection />
-      <DivisionsSection />
-      <FaqSection />
-      <CtaSection />
+      <ScrollAnimation>
+        <AboutSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <ProgramHighlightsSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <DivisionsSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <FaqSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <CtaSection />
+      </ScrollAnimation>
     </div>
   );
 }

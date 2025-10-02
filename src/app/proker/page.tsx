@@ -14,6 +14,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { ScrollAnimation } from '@/components/scroll-animation';
 
 const mainPrograms = [
   {
@@ -107,7 +108,7 @@ export default function ProkerPage() {
         className="relative w-full flex items-center justify-center min-h-screen py-20 bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
+        <ScrollAnimation className="container mx-auto px-4 text-center relative z-10">
           <Badge variant="default" className="mb-4 bg-primary/10 text-primary shadow-sm">
             Aktivitas & Inisiatif
           </Badge>
@@ -124,9 +125,10 @@ export default function ProkerPage() {
                 </Button>
             </a>
           </div>
-        </div>
+        </ScrollAnimation>
       </section>
 
+      <ScrollAnimation>
       <section id="proker-list" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="unggulan" className="w-full">
@@ -231,6 +233,7 @@ export default function ProkerPage() {
           </Tabs>
         </div>
       </section>
+      </ScrollAnimation>
     </div>
   );
 }

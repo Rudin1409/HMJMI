@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Users, Calendar, Award } from 'lucide-react';
 import { homeHeroImages } from '@/data/site-data';
+import { ScrollAnimation } from '../scroll-animation';
 
 export function HeroSection() {
   return (
@@ -14,7 +15,7 @@ export function HeroSection() {
       <div className="absolute inset-0 opacity-50"></div>
       <div className="container mx-auto px-4 min-h-screen flex items-center pt-10 pb-20 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="z-10">
+          <ScrollAnimation className="z-10">
             <Badge variant="outline" className="border-primary/50 text-primary mb-4 py-1 px-3 font-semibold">
               Selamat Datang di HMJ MI POLSRI
             </Badge>
@@ -50,9 +51,9 @@ export function HeroSection() {
                 <p className="text-sm text-muted-foreground">Tahun Pengalaman</p>
               </div>
             </div>
-          </div>
+          </ScrollAnimation>
           
-          <div className="relative h-full min-h-[450px] flex items-center justify-center md:justify-end">
+          <ScrollAnimation className="relative h-full min-h-[450px] flex items-center justify-center md:justify-end">
              <div className="relative w-full max-w-md h-[480px]">
                  <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-300 rounded-3xl transform -rotate-6 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
                  <div className="absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 rounded-3xl transform rotate-3 transition-transform duration-500 hover:rotate-0 hover:scale-105"></div>
@@ -67,7 +68,7 @@ export function HeroSection() {
                     </div>
                 </div>
              </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </div>
     </section>

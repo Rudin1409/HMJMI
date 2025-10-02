@@ -22,7 +22,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { departments, teamMembers, programs, divisions } from '@/data/profile-data';
-
+import { ScrollAnimation } from '@/components/scroll-animation';
 
 type Member = {
     name: string;
@@ -232,7 +232,7 @@ export default function ProfilePage() {
         className="relative w-full flex items-center justify-center min-h-screen overflow-hidden bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
-        <div className="container mx-auto px-4 relative z-10 text-center">
+        <ScrollAnimation className="container mx-auto px-4 relative z-10 text-center">
           <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
               Temui Tim Kami
           </Badge>
@@ -249,9 +249,10 @@ export default function ProfilePage() {
                 </Button>
             </a>
           </div>
-        </div>
+        </ScrollAnimation>
       </section>
 
+      <ScrollAnimation>
       <section id="explore-cabinet" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -302,7 +303,9 @@ export default function ProfilePage() {
           </Card>
         </div>
       </section>
+      </ScrollAnimation>
 
+      <ScrollAnimation>
       <section id="department-details" ref={detailsRef} className="w-full pb-16 md:pb-24 pt-16 md:pt-24 bg-transparent scroll-mt-20">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="text-center flex flex-col items-center mb-12">
@@ -423,6 +426,7 @@ export default function ProfilePage() {
 
         </div>
       </section>
+      </ScrollAnimation>
     </div>
   );
 }

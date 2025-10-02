@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -24,6 +24,7 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 import { AnimatedLogo } from '@/components/ui/animated-logo';
 import { galleryItems, GalleryItem } from '@/data/site-data';
+import { ScrollAnimation } from '@/components/scroll-animation';
 
 const stats = [
   {
@@ -84,7 +85,9 @@ const logoPhilosophy = {
 
 export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
 
   const missionPoints = [
     "Meningkatkan kepedulian sosial dan memperkuat nilai-nilai religius bagi Mahasiswa/i Jurusan Manajemen Informatika.",
@@ -119,7 +122,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
-                 <div className="relative z-10 text-center md:text-left">
+                 <ScrollAnimation className="relative z-10 text-center md:text-left">
                     <Badge variant="default" className="mb-4 bg-primary/10 text-primary">
                       Jejak Langkah Kami
                     </Badge>
@@ -129,8 +132,8 @@ export default function AboutPage() {
                     <p className="mt-4 max-w-md mx-auto md:mx-0 text-lg text-muted-foreground">
                       Temukan bagaimana Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berkomitmen mencetak pemimpin teknologi masa depan.
                     </p>
-                </div>
-                <div className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
+                </ScrollAnimation>
+                <ScrollAnimation className="relative flex items-center justify-center h-[500px] md:h-auto md:aspect-square">
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-primary/10 rounded-full shadow-inner"></div>
                     </div>
@@ -140,11 +143,12 @@ export default function AboutPage() {
                     <Image src="/Galeri/Makrab.jpg" width={200} height={200} alt="Team 2" data-ai-hint="university event" className="rounded-full object-cover shadow-lg border-4 border-white absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32" />
                     <Image src="/Galeri/LDOHMJMI.jpg" width={150} height={150} alt="Team 3" data-ai-hint="students studying" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28" />
                     <Image src="/Galeri/OR.jpg" width={150} height={150} alt="Team 4" data-ai-hint="students collaborating" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28" />
-                </div>
+                </ScrollAnimation>
             </div>
         </div>
       </section>
 
+      <ScrollAnimation>
       <section id="vision-mission" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
@@ -190,7 +194,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollAnimation>
       
+      <ScrollAnimation>
       <section id="our-impact" className="w-full py-16 md:py-24 bg-transparent">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -220,7 +226,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      </ScrollAnimation>
       
+       <ScrollAnimation>
        <section className="py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12">
@@ -288,8 +296,10 @@ export default function AboutPage() {
                 </Card>
             </div>
       </section>
+      </ScrollAnimation>
 
       <div className="w-full overflow-hidden">
+      <ScrollAnimation>
         <section id="gallery" className="py-16 md:py-24 bg-transparent">
           <div className="container mx-auto px-4">
               <div className="text-center mb-12">
@@ -340,6 +350,7 @@ export default function AboutPage() {
               </Carousel>
           </div>
         </section>
+      </ScrollAnimation>
       </div>
 
       {selectedImage && (
