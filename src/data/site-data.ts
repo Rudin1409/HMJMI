@@ -1,13 +1,13 @@
 
 export const homeHeroImages = [
     {
-        src: "/Galeri/IT-fest.jpg",
+        src: "/Galeri/IT-fest.JPG",
         alt: "IT Festival 2024",
         hint: "tech festival stage competition",
         className: "row-span-1 col-span-2 relative rounded-2xl overflow-hidden"
     },
     {
-        src: "/Galeri/Sembis.jpg",
+        src: "/Galeri/Sembis.JPG",
         alt: "Seminar Bisnis",
         hint: "business seminar presentation",
         className: "row-span-1 col-span-1 relative rounded-2xl overflow-hidden"
@@ -22,7 +22,7 @@ export const homeHeroImages = [
 
 export const galleryItems = [
     {
-        src: "/Galeri/BUKBERMI.jpg",
+        src: "/Galeri/BUKBERMI.JPG",
         title: "BUKBER MI",
         year: "2025",
         hint: "group photo"
@@ -34,55 +34,49 @@ export const galleryItems = [
         hint: "group photo"
     },
     {
-        src: "/Galeri/FamilyGatrhing.jpg",
+        src: "/Galeri/FamilyGatrhing.JPG",
         title: "Family Gathering",
         year: "2025",
         hint: "group photo outdoor"
     },
     {
-        src: "/Galeri/IT-fest.jpg",
-        title: "IT Festival",
-        year: "2025",
-        hint: "tech conference"
-    },
-    {
-        src: "/Galeri/LDOHMJMI.jpg",
+        src: "/Galeri/LDOHMJMI.JPG",
         title: "LDO HMJMI",
         year: "2025",
         hint: "student leadership"
     },
     {
-        src: "/Galeri/Makrab.jpg",
+        src: "/Galeri/Makrab.JPG",
         title: "Makrab",
         year: "2025",
         hint: "student event"
     },
     {
-        src: "/Galeri/OR.jpg",
+        src: "/Galeri/OR.JPG",
         title: "Open Recruitment",
         year: "2025",
         hint: "student gathering"
     },
     {
-        src: "/Galeri/Posmi.jpg",
+        src: "/Galeri/Posmi.JPG",
         title: "POSMI",
         year: "2025",
         hint: "sports competition"
     },
     {
-        src: "/Galeri/Sembis.jpg",
+        src: "/Galeri/Sembis.JPG",
         title: "Seminar Bisnis",
         year: "2025",
         hint: "business seminar"
     },
     {
-        src: "/Galeri/Sintak.jpg",
+        src: "/Galeri/Sintak.JPG",
         title: "SINTAK",
         year: "2025",
         hint: "coding workshop"
     },
     {
-        src: "/Galeri/Upgrading.jpg",
+        src: "/Galeri/Upgrading.JPG",
         title: "Upgrading",
         year: "2025",
         hint: "student training"
