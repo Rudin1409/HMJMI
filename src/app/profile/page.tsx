@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/carousel"
 import { departments, teamMembers, programs, divisions } from '@/data/profile-data';
 import { ScrollAnimation } from '@/components/scroll-animation';
+import Link from 'next/link';
 
 type Member = {
     name: string;
@@ -410,8 +411,10 @@ export default function ProfilePage() {
                                   <p className="text-muted-foreground mb-4 text-sm">
                                     {program.description}
                                   </p>
-                                  <Button variant="link" className="text-primary p-0 h-auto">
-                                      Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
+                                  <Button asChild variant="link" className="text-primary p-0 h-auto">
+                                      <Link href="/proker">
+                                        Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
+                                      </Link>
                                   </Button>
                               </div>
                           </CardContent>

@@ -825,14 +825,6 @@ export const programs = {
             image: "/Galeri/IT-fest.jpg",
             hint: "tech festival stage competition",
         },
-        {
-            title: "Sertijab & Demisioner",
-            category: "INTERNAL",
-            description:
-                "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru.",
-            image: "/proker/sertijab.png",
-            hint: "organization meeting",
-        },
     ],
     ptkp: [
         {
@@ -845,14 +837,6 @@ export const programs = {
         },
     ],
     humas: [
-        {
-            title: "VIBE (Voice of Informatics and Business Event)",
-            category: "EDUKASI",
-            description:
-                "Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis.",
-            image: "/proker/vibe.png",
-            hint: "seminar event",
-        },
         {
             title: "UPGRADING",
             category: "PELATIHAN",
