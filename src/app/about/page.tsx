@@ -150,7 +150,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
                 <div className="relative aspect-square md:hidden">
-                    <Image src="https://placehold.co/450x450.png" layout="fill" objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                    <Image src="https://placehold.co/450x450.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
                 </div>
                 <div className='flex flex-col items-center md:items-start text-center md:text-left'>
                     <div className="flex items-center gap-4 mb-4">
@@ -164,7 +164,7 @@ export default function AboutPage() {
                     </p>
                 </div>
                  <div className="relative aspect-square hidden md:block">
-                    <Image src="https://placehold.co/450x450.png" layout="fill" objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                    <Image src="https://placehold.co/450x450.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
                 </div>
             </div>
              <div className='space-y-8'>
@@ -347,7 +347,7 @@ export default function AboutPage() {
         <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
           <DialogContent className="max-w-4xl p-0">
             <div className="relative aspect-video">
-              <Image src={selectedImage.src} alt={selectedImage.title} layout="fill" objectFit="contain" data-ai-hint={selectedImage.hint} />
+              <Image src={selectedImage.src} alt={selectedImage.title} fill objectFit="contain" data-ai-hint={selectedImage.hint} />
               <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white hover:bg-black/75" onClick={handlePrevImage}>
                 <ChevronLeft className="h-6 w-6" />
               </Button>
