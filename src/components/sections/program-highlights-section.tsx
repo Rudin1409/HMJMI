@@ -45,10 +45,9 @@ export function ProgramHighlightsSection() {
                     <Image 
                         src={program.image} 
                         fill 
-                        objectFit="cover" 
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                         alt={program.title} 
                         data-ai-hint={program.hint}
-                        className="transition-transform duration-300 group-hover:scale-105"
                     />
                 </div>
                 <div className="p-6">

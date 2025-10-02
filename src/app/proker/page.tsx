@@ -154,7 +154,7 @@ export default function ProkerPage() {
                             )}
                         </div>
                         <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-2">
-                             <Image src={program.image} alt={program.title} fill objectFit="cover" data-ai-hint={program.hint} />
+                             <Image src={program.image} alt={program.title} fill className="object-cover" data-ai-hint={program.hint} />
                         </div>
                     </div>
                 ))}
@@ -166,7 +166,7 @@ export default function ProkerPage() {
                     {additionalPrograms.map((program) => (
                         <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center">
                             <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-first">
-                                <Image src={program.image} alt={program.title} fill objectFit="cover" data-ai-hint={program.hint}/>
+                                <Image src={program.image} alt={program.title} fill className="object-cover" data-ai-hint={program.hint}/>
                             </div>
                             <div className="p-8 md:p-12 order-2 md:order-last">
                                 <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800">Program Kerja Tambahan</Badge>
@@ -189,7 +189,7 @@ export default function ProkerPage() {
                             <Card key={activity.title}>
                                 <CardContent className="p-6 flex items-center gap-6">
                                     <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 dark:border-primary/20 shadow-md">
-                                        <Image src={activity.image} alt={`${activity.title} logo`} fill objectFit="cover" data-ai-hint={activity.hint} />
+                                        <Image src={activity.image} alt={`${activity.title} logo`} fill className="object-cover" data-ai-hint={activity.hint} />
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-foreground mb-2">{activity.title}</h3>
@@ -206,8 +206,7 @@ export default function ProkerPage() {
                  <div className="max-w-3xl mx-auto">
                     <div className="text-center mb-10">
                         <h2 className="text-3xl font-bold text-foreground">Agenda Rutin Tahunan</h2>
-                        <p className="text-muted-foreground mt-2">Kegiatan terjadwal yang menjadi bagian dari siklus organisasi kami.</p>
-                    </div>
+                        <p className="text-muted-foreground mt-2">Kegiatan terjadwal yang menjadi bagian dari siklus organisasi kami.</p>                    </div>
                      <Card>
                         <CardContent className="p-6 md:p-8">
                              <Accordion type="single" collapsible className="w-full">

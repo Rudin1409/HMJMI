@@ -30,7 +30,7 @@ export function InstagramSection() {
           </div>
           <div className="relative h-full min-h-[450px] flex items-center justify-center">
             <div className="relative w-full aspect-square max-w-md rounded-2xl overflow-hidden shadow-2xl">
-                 <Image src="https://placehold.co/600x600.png" layout="fill" objectFit="cover" alt="Instagram Post" data-ai-hint="student community event" className="transition-transform duration-500 hover:scale-105"/>
+                 <Image src="https://placehold.co/600x600.png" fill className="object-cover transition-transform duration-500 hover:scale-105" alt="Instagram Post" data-ai-hint="student community event"/>
             </div>
           </div>
         </div>

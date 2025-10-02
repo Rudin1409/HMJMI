@@ -61,7 +61,7 @@ export function HeroSection() {
                     <div className="grid grid-cols-1 grid-rows-2 gap-2 h-full">
                         {homeHeroImages.map((image, index) => (
                            <div key={index} className={image.className}>
-                             <Image src={image.src} layout="fill" objectFit="cover" alt={image.alt} data-ai-hint={image.hint} className="transition-transform duration-500 hover:scale-110"/>
+                             <Image src={image.src} fill objectFit="cover" alt={image.alt} data-ai-hint={image.hint} className="transition-transform duration-500 hover:scale-110"/>
                            </div>
                         ))}
                     </div>

@@ -150,7 +150,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             <div className='space-y-12'>
                 <div className="relative aspect-square md:hidden">
-                    <Image src="/Visi.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                    <Image src="/Visi.png" fill alt="Visi dan Misi" className="rounded-2xl shadow-lg object-cover" data-ai-hint="team vision planning"/>
                 </div>
                 <div className='flex flex-col items-center md:items-start text-center md:text-left'>
                     <div className="flex items-center gap-4 mb-4">
@@ -164,7 +164,7 @@ export default function AboutPage() {
                     </p>
                 </div>
                  <div className="relative aspect-square hidden md:block">
-                    <Image src="/Visi.png" fill objectFit="cover" alt="Visi dan Misi" className="rounded-2xl shadow-lg" data-ai-hint="team vision planning"/>
+                    <Image src="/Visi.png" fill alt="Visi dan Misi" className="rounded-2xl shadow-lg object-cover" data-ai-hint="team vision planning"/>
                 </div>
             </div>
              <div className='space-y-8'>
@@ -322,8 +322,8 @@ export default function AboutPage() {
                                       onClick={() => setSelectedImage(item)}
                                   >
                                       <CardContent className="p-0">
-                                          <div className="relative aspect-w-4 aspect-h-3">
-                                              <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
+                                          <div className="relative aspect-[4/3]">
+                                              <Image src={item.src} alt={item.title} fill data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105 object-cover" />
                                           </div>
                                       </CardContent>
                                       <CardFooter className="p-4 text-center flex-col items-center justify-center flex-grow">
@@ -346,7 +346,7 @@ export default function AboutPage() {
         <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
           <DialogContent className="max-w-4xl p-0">
             <div className="relative aspect-video">
-              <Image src={selectedImage.src} alt={selectedImage.title} fill objectFit="contain" data-ai-hint={selectedImage.hint} />
+              <Image src={selectedImage.src} alt={selectedImage.title} fill className="object-contain" data-ai-hint={selectedImage.hint} />
               <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white hover:bg-black/75" onClick={handlePrevImage}>
                 <ChevronLeft className="h-6 w-6" />
               </Button>

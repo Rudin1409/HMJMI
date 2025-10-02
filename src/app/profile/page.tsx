@@ -68,7 +68,7 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
                      <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] bg-pink-100/80 dark:bg-primary/20"></div>
                      <div className="absolute w-[280px] h-full rounded-t-[140px] rounded-b-[6rem] border-4 border-primary"></div>
                      <div className="relative w-[240px] h-[320px] rounded-t-[120px] rounded-b-[5rem] overflow-hidden">
-                        <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
+                        <Image src={member.avatar} alt={member.name} fill className="object-cover object-top" data-ai-hint="headshot portrait" />
                      </div>
                 </div>
                 <div className="flex flex-col gap-2 text-center md:text-left">
@@ -111,7 +111,7 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
                 isActive ? "scale-110 border-primary z-10" : "border-primary/50 group-hover:scale-105 group-hover:border-primary/80"
             )}
         >
-            <Image src={member.avatar} alt={member.name} layout="fill" className="object-cover object-top" data-ai-hint="headshot portrait" />
+            <Image src={member.avatar} alt={member.name} fill className="object-cover object-top" data-ai-hint="headshot portrait" />
         </div>
         <p className="text-xs text-center font-semibold text-foreground/80 w-24 md:w-32 truncate">{member.name}</p>
     </div>
@@ -397,7 +397,7 @@ export default function ProfilePage() {
                       <Card key={index}>
                           <CardContent className="p-0">
                                <div className="relative aspect-video">
-                                  <Image src={program.image} layout="fill" objectFit="cover" alt={program.title} data-ai-hint={program.hint}/>
+                                  <Image src={program.image} fill className="object-cover" alt={program.title} data-ai-hint={program.hint}/>
                                   <div className="absolute top-2 right-2">
                                        <Badge className="bg-yellow-300 text-yellow-900 font-bold">{program.category}</Badge>
                                   </div>

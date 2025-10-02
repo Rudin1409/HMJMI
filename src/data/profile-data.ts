@@ -17,7 +17,7 @@ export const departments = [
             "Departemen Perguruan Tinggi dan Kepemudaan (PTKP), yaitu keanggotaan yang mempunyai tugas dalam mengelola Akademik dan kepemudaan di lingkungan Manajemen Informatika Politeknik Negeri Sriwijaya yang diangkat oleh Badan Pengurus Harian.",
     },
     {
-        id: "Humas",
+        id: "humas",
         name: "HUMAS",
         fullName: "Hubungan Mahasiswa",
         icon: "Megaphone",
