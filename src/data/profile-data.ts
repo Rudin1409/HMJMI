@@ -450,7 +450,7 @@ export const teamMembers = {
                 instagram: "https://www.instagram.com/hndkptr_/",
             },
             {
-                name: "???",
+                name: "Kemas Muhammad Amar Fauzan",
                 role: "Koordinator Bidang HRD PSDM",
                 class: "MI 2024",
                 avatar: "/anggota/psdm24/anonym.png",
@@ -476,7 +476,7 @@ export const teamMembers = {
                     name: "Nanda Meylani Putri",
                     role: "Anggota Minat Bakat",
                     class: "MI 2024",
-                    avatar: "/anggota/psdm24/NANDA MELYANI.png",
+                    avatar: "/anggota/psdm24/anonym.png",
                 },
                 {
                     name: "Ridho Dwi Restiandi",
@@ -706,7 +706,7 @@ export const teamMembers = {
                 name: "Adellia Nurain",
                 role: "Sekretaris",
                 class: "MI 2024",
-                avatar: "/anggota/bistra24/ADELLIA NURAIN.png",
+                avatar: "/anggota/bistra24/anonym.png",
             },
             {
                 name: "Liana Melisa",
@@ -773,7 +773,7 @@ export const teamMembers = {
                     name: "Aldi Kurniawan",
                     role: "Anggota Kemitraan",
                     class: "MI 2024",
-                    avatar: "/anggota/bistra24/ALDI KURNIAWAN.png",
+                    avatar: "/anggota/bistra24/anonym.png",
                 },
                 {
                     name: "Sharla Imanda",
@@ -818,13 +818,12 @@ export const teamMembers = {
 export const programs = {
     inti: [
         {
-            title: "IT Festival",
-            category: "KOMPETISI & EDUKASI",
-            description:
-                "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
-            image: "/Galeri/IT-fest.jpg",
-            hint: "tech festival stage competition",
-        },
+            title: "Sertijab & Demisioner",
+            category: "Agenda Rutin",
+            description: "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.",
+            image: "/anggota/psdm24/anonym.png",
+            hint: "group discussion"
+        }
     ],
     ptkp: [
         {
@@ -845,6 +844,13 @@ export const programs = {
             image: "/proker/upgrading.png",
             hint: "skill workshop",
         },
+        {
+            title: "VIBE (Visiting - Interacting - Building - Exchanging)",
+            category: "HUBUNGAN EKSTERNAL",
+            description: "Sebuah program kunjungan ke organisasi mahasiswa (Ormawa) lain di lingkungan Politeknik Negeri Sriwijaya untuk mempererat silaturahmi, berinteraksi, dan saling bertukar ide serta gagasan mengenai program kerja masing-masing.",
+            image: "/anggota/psdm24/anonym.png",
+            hint: "team collaboration"
+        }
     ],
     psdm: [
         {
@@ -883,6 +889,13 @@ export const programs = {
             image: "/Galeri/Sembis.jpg",
             hint: "business seminar",
         },
+        {
+            title: "IT Festival",
+            category: "KOMPETISI & EDUKASI",
+            description: "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
+            image: "/Galeri/IT-fest.jpg",
+            hint: "tech festival stage competition"
+        }
     ],
 };
 
