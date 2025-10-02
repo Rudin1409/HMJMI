@@ -22,19 +22,19 @@ export const homeHeroImages = [
 
 export const galleryItems = [
     {
-        src: "/Galeri/BUKBER MI.JPG",
+        src: "/Galeri/BUKBERMI.JPG",
         title: "BUKBER MI",
         year: "2025",
         hint: "group photo"
     },
     {
-        src: "/Galeri/BUKBR HMJ.JPG",
+        src: "/Galeri/BUKBRHMJ.JPG",
         title: "BUKBER HMJ",
         year: "2025",
         hint: "group photo"
     },
     {
-        src: "/Galeri/Family Gatrhing.JPG",
+        src: "/Galeri/FamilyGatrhing.JPG",
         title: "Family Gathering",
         year: "2025",
         hint: "group photo outdoor"
@@ -52,7 +52,7 @@ export const galleryItems = [
         hint: "stage presentation"
     },
     {
-        src: "/Galeri/LDO HMJMI.JPG",
+        src: "/Galeri/LDOHMJMI.JPG",
         title: "LDO HMJMI",
         year: "2025",
         hint: "student leadership"
