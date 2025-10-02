@@ -313,30 +313,28 @@ export default function AboutPage() {
                 onMouseEnter={plugin.current.stop}
                 onMouseLeave={plugin.current.reset}
             >
-                <div className="-ml-4">
-                    <CarouselContent>
-                        {galleryItems.map((item, index) => (
-                            <CarouselItem key={index} className="basis-full sm:basis-1/2 lg:basis-1/4 pl-4">
-                                <div className="p-1">
-                                    <Card 
-                                        className="overflow-hidden shadow-lg hover:shadow-primary/20 hover:shadow-xl transition-all duration-300 rounded-2xl cursor-pointer group h-full flex flex-col"
-                                        onClick={() => setSelectedImage(item)}
-                                    >
-                                        <CardContent className="p-0">
-                                            <div className="relative aspect-w-4 aspect-h-3">
-                                                <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
-                                            </div>
-                                        </CardContent>
-                                        <CardFooter className="p-4 text-center flex-col items-center justify-center flex-grow">
-                                            <p className="font-semibold text-primary text-sm">{item.title}</p>
-                                            <p className="text-xs text-primary/80">{item.year}</p>
-                                        </CardFooter>
-                                    </Card>
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </div>
+                <CarouselContent className="-ml-4">
+                    {galleryItems.map((item, index) => (
+                        <CarouselItem key={index} className="basis-full sm:basis-1/2 lg:basis-1/4 pl-4">
+                            <div className="p-1">
+                                <Card 
+                                    className="overflow-hidden shadow-lg hover:shadow-primary/20 hover:shadow-xl transition-all duration-300 rounded-2xl cursor-pointer group h-full flex flex-col"
+                                    onClick={() => setSelectedImage(item)}
+                                >
+                                    <CardContent className="p-0">
+                                        <div className="relative aspect-w-4 aspect-h-3">
+                                            <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
+                                        </div>
+                                    </CardContent>
+                                    <CardFooter className="p-4 text-center flex-col items-center justify-center flex-grow">
+                                        <p className="font-semibold text-primary text-sm">{item.title}</p>
+                                        <p className="text-xs text-primary/80">{item.year}</p>
+                                    </CardFooter>
+                                </Card>
+                            </div>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
                 <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 lg:-translate-x-12" />
                 <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 lg:translate-x-12" />
             </Carousel>
