@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import Link from 'next/link';
 
 const mainPrograms = [
   {
@@ -21,6 +22,7 @@ const mainPrograms = [
     description: "Information Technology Festival atau yang disingkat dengan IT Festival merupakan serangkaian acara IT tahunan. Dengan rangkaian acara kompetisi, pelatihan, dan seminar sebagai ajang edukatif bagi mahasiswa maupun masyarakat umum dalam meningkatkan kreativitas dan kesadaran tentang pentingnya penggunaan teknologi informasi di era globalisasi.",
     image: "/proker/ITF2024.png",
     hint: "tech festival stage competition",
+    link: "https://it-fest-2025-pi.vercel.app/",
   },
 ];
 
@@ -143,7 +145,13 @@ export default function ProkerPage() {
                             <Badge variant="secondary" className="mb-4">Program Kerja Utama</Badge>
                             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
                             <p className="text-muted-foreground mb-6">{program.description}</p>
-                            
+                             {program.link && (
+                                <Button asChild>
+                                    <Link href={program.link} target="_blank" rel="noopener noreferrer">
+                                        Kunjungi Situs Web <ArrowUpRight className="ml-2" />
+                                    </Link>
+                                </Button>
+                            )}
                         </div>
                         <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-2">
                              <Image src={program.image} alt={program.title} layout="fill" objectFit="cover" data-ai-hint={program.hint} />
@@ -227,3 +235,5 @@ export default function ProkerPage() {
     </div>
   );
 }
+
+    
