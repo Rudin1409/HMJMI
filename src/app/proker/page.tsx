@@ -20,7 +20,7 @@ const mainPrograms = [
     title: "IT Festival",
     icon: <Rocket className="h-8 w-8 text-primary" />,
     description: "Information Technology Festival atau yang disingkat dengan IT Festival merupakan serangkaian acara IT tahunan. Dengan rangkaian acara kompetisi, pelatihan, dan seminar sebagai ajang edukatif bagi mahasiswa maupun masyarakat umum dalam meningkatkan kreativitas dan kesadaran tentang pentingnya penggunaan teknologi informasi di era globalisasi.",
-    image: "/Galeri/IT-fest.JPG",
+    image: "/Galeri/IT-fest.jpg",
     hint: "tech festival stage competition",
     link: "https://it-fest-2025-pi.vercel.app/",
   },
@@ -31,7 +31,7 @@ const additionalPrograms = [
     title: "Seminar Bisnis",
     icon: <Briefcase className="h-8 w-8 text-primary" />,
     description: "Kegiatan Seminar Bisnis bertujuan menambah wawasan dan pengetahuan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa/i se-Indonesia dan umum untuk memulai usaha sejak dini dan siap bersaing di dunia bisnis.",
-    image: "/Galeri/Sembis.JPG",
+    image: "/Galeri/Sembis.jpg",
     hint: "business seminar presentation",
   },
 ];

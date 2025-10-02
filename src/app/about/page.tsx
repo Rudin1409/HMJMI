@@ -135,11 +135,11 @@ export default function AboutPage() {
                         <div className="w-48 h-48 md:w-64 md:h-64 bg-primary/10 rounded-full shadow-inner"></div>
                     </div>
                     
-                    <Image src="/Galeri/BUKBERMI.JPG" width={300} height={300} alt="Team Main" data-ai-hint="team leader" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10" />
-                    <Image src="/Galeri/BUKBRHMJ.JPG" width={200} height={200} alt="Team 1" data-ai-hint="student group" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32" />
-                    <Image src="/Galeri/Makrab.JPG" width={200} height={200} alt="Team 2" data-ai-hint="university event" className="rounded-full object-cover shadow-lg border-4 border-white absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32" />
-                    <Image src="/Galeri/LDOHMJMI.JPG" width={150} height={150} alt="Team 3" data-ai-hint="students studying" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28" />
-                    <Image src="/Galeri/OR.JPG" width={150} height={150} alt="Team 4" data-ai-hint="students collaborating" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28" />
+                    <Image src="/Galeri/BUKBERMI.jpg" width={300} height={300} alt="Team Main" data-ai-hint="team leader" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 z-10" />
+                    <Image src="/Galeri/BUKBRHMJ.jpg" width={200} height={200} alt="Team 1" data-ai-hint="student group" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-8 left-1/2 -translate-x-[80%] w-24 h-24 md:w-32 md:h-32" />
+                    <Image src="/Galeri/Makrab.jpg" width={200} height={200} alt="Team 2" data-ai-hint="university event" className="rounded-full object-cover shadow-lg border-4 border-white absolute bottom-8 left-1/2 -translate-x-[20%] w-24 h-24 md:w-32 md:h-32" />
+                    <Image src="/Galeri/LDOHMJMI.jpg" width={150} height={150} alt="Team 3" data-ai-hint="students studying" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 -translate-y-[120%] left-10 w-20 h-20 md:w-28 md:h-28" />
+                    <Image src="/Galeri/OR.jpg" width={150} height={150} alt="Team 4" data-ai-hint="students collaborating" className="rounded-full object-cover shadow-lg border-4 border-white absolute top-1/2 translate-y-[20%] right-10 w-20 h-20 md:w-28 md:h-28" />
                 </div>
             </div>
         </div>

@@ -10,13 +10,13 @@ const highlightedPrograms = [
   {
     title: 'IT Festival',
     category: 'Kompetisi & Edukasi',
-    image: '/Galeri/IT-fest.JPG',
+    image: '/Galeri/IT-fest.jpg',
     hint: 'tech competition stage',
   },
   {
     title: 'Seminar Bisnis',
     category: 'Edukasi & Wawasan',
-    image: '/Galeri/Sembis.JPG',
+    image: '/Galeri/Sembis.jpg',
     hint: 'business seminar',
   },
 ];

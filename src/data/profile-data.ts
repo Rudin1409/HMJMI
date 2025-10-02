@@ -822,7 +822,7 @@ export const programs = {
             category: "KOMPETISI & EDUKASI",
             description:
                 "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
-            image: "/Galeri/IT-fest.JPG",
+            image: "/Galeri/IT-fest.jpg",
             hint: "tech festival stage competition",
         },
         {
@@ -830,7 +830,7 @@ export const programs = {
             category: "INTERNAL",
             description:
                 "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru.",
-            image: "https://placehold.co/400x200.png",
+            image: "/proker/sertijab.png",
             hint: "organization meeting",
         },
     ],
@@ -840,7 +840,7 @@ export const programs = {
             category: "PENGEMBANGAN DIRI",
             description:
                 "Study club untuk mengembangkan soft skill dalam pemrograman, terutama di bidang web development.",
-            image: "https://placehold.co/400x200.png",
+            image: "/proker/sintak.png",
             hint: "coding workshop",
         },
     ],
@@ -850,7 +850,7 @@ export const programs = {
             category: "EDUKASI",
             description:
                 "Acara yang menggabungkan seminar dan talk show inspiratif di bidang informatika dan bisnis.",
-            image: "https://placehold.co/400x200.png",
+            image: "/proker/vibe.png",
             hint: "seminar event",
         },
         {
@@ -858,7 +858,7 @@ export const programs = {
             category: "PELATIHAN",
             description:
                 "Pelatihan yang dikhususkan untuk kepengurusan baru demi meningkatkan kemampuan public speaking dan desain grafis.",
-            image: "https://placehold.co/400x200.png",
+            image: "/proker/upgrading.png",
             hint: "skill workshop",
         },
     ],
@@ -868,7 +868,7 @@ export const programs = {
             category: "PELATIHAN",
             description:
                 "Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi.",
-            image: "https://placehold.co/400x200.png",
+            image: "/Galeri/LDOHMJMI.jpg",
             hint: "leadership training",
         },
         {
@@ -876,7 +876,7 @@ export const programs = {
             category: "MINAT BAKAT",
             description:
                 "Kompetisi olahraga dan seni untuk mahasiswa Jurusan Manajemen Informatika.",
-            image: "https://placehold.co/400x200.png",
+            image: "/proker/posmi2024.png",
             hint: "student competition",
         },
     ],
@@ -886,7 +886,7 @@ export const programs = {
             category: "SOSIAL",
             description:
                 "Bakti sosial yang mencakup kunjungan ke panti, tausiyah, serta bagi-bagi takjil.",
-            image: "https://placehold.co/400x200.png",
+            image: "/proker/baksomiii.png",
             hint: "social charity",
         },
     ],
@@ -896,7 +896,7 @@ export const programs = {
             category: "EDUKASI",
             description:
                 "Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha sejak dini.",
-            image: "/Galeri/Sembis.JPG",
+            image: "/Galeri/Sembis.jpg",
             hint: "business seminar",
         },
     ],
