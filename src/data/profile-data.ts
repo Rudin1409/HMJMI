@@ -163,7 +163,7 @@ export const teamMembers = {
                     name: "Kemas Muhammad Amar Fauzan",
                     role: "Anggota",
                     class: "MI 2025",
-                    avatar: "/anggota/ptkp25/Kemas Muhammad Amar Fauzan (2).png",
+                    avatar: "/anggota/psdm24/anonym.png",
                     instagram: "https://www.instagram.com/kmsamarf_/",
                 },
                 {
@@ -235,7 +235,7 @@ export const teamMembers = {
                     name: "Muhammad Satria Anugrah",
                     role: "Anggota",
                     class: "MI 2025",
-                    avatar: "/anggota/ptkp25/muhammad satria anugrah (2).png",
+                    avatar: "/anggota/psdm24/anonym.png",
                     instagram: "https://www.instagram.com/rragaa__/",
                 },
                 {
@@ -393,7 +393,7 @@ export const teamMembers = {
                     name: "Sulthan Muhammad Diftha Annashira",
                     role: "Anggota Jurnalis",
                     class: "MI 2025",
-                    avatar: "/anggota/humas25/sulthan (2).png",
+                    avatar: "/anggota/psdm24/anonym.png",
                     instagram: "https://www.instagram.com/sulthan.difthaa/",
                 },
                 {
@@ -450,7 +450,7 @@ export const teamMembers = {
                 instagram: "https://www.instagram.com/hndkptr_/",
             },
             {
-                name: "Kemas Muhammad Amar Fauzan",
+                name: "???",
                 role: "Koordinator Bidang HRD PSDM",
                 class: "MI 2024",
                 avatar: "/anggota/psdm24/anonym.png",
@@ -476,7 +476,7 @@ export const teamMembers = {
                     name: "Nanda Meylani Putri",
                     role: "Anggota Minat Bakat",
                     class: "MI 2024",
-                    avatar: "/anggota/psdm24/anonym.png",
+                    avatar: "/anggota/psdm24/NANDA MELYANI.png",
                 },
                 {
                     name: "Ridho Dwi Restiandi",
@@ -680,7 +680,7 @@ export const teamMembers = {
                     name: "Muhammad Rasya Syakir",
                     role: "Anggota Sosial",
                     class: "MI 2025",
-                    avatar: "/anggota/kesma25/Muhammad Rasya Syakir (2).png",
+                    avatar: "/anggota/psdm24/anonym.png",
                     instagram: "https://www.instagram.com/mhmdrsya_s/",
                 },
             ],
@@ -706,7 +706,7 @@ export const teamMembers = {
                 name: "Adellia Nurain",
                 role: "Sekretaris",
                 class: "MI 2024",
-                avatar: "/anggota/bistra24/anonym.png",
+                avatar: "/anggota/bistra24/ADELLIA NURAIN.png",
             },
             {
                 name: "Liana Melisa",
@@ -773,7 +773,7 @@ export const teamMembers = {
                     name: "Aldi Kurniawan",
                     role: "Anggota Kemitraan",
                     class: "MI 2024",
-                    avatar: "/anggota/bistra24/anonym.png",
+                    avatar: "/anggota/bistra24/ALDI KURNIAWAN.png",
                 },
                 {
                     name: "Sharla Imanda",
