@@ -13,7 +13,7 @@ export const homeHeroImages = [
         className: "row-span-1 col-span-1 relative rounded-2xl overflow-hidden"
     },
     {
-        src: "https://placehold.co/300x300.png",
+        src: "/proker/baksomiii.png",
         alt: "HMJ MI Event",
         hint: "tech conference audience",
         className: "row-span-1 col-span-1 relative rounded-2xl overflow-hidden"
@@ -65,52 +65,76 @@ export const aboutHeroImages = [
 
 export const galleryItems = [
     {
-        src: "https://placehold.co/800x600.png",
-        title: "LKMM-PD HMJ MI POLSRI",
-        year: "2024",
-        hint: "student presentation"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "LKMM-PD HMJ MI POLSRI",
-        year: "2024",
-        hint: "student audience"
-    },
-    {
-        src: "https://placehold.co/800x600.png",
-        title: "UPGRADING HMJ MI POLSRI",
+        src: "/Galeri/BUKBER MI.JPG",
+        title: "BUKBER MI",
         year: "2024",
         hint: "group photo"
     },
     {
-        src: "https://placehold.co/800x600.png",
-        title: "UPGRADING HMJ MI POLSRI",
+        src: "/Galeri/BUKBR HMJ.JPG",
+        title: "BUKBER HMJ",
         year: "2024",
-        hint: "students sitting"
+        hint: "group photo"
     },
     {
-        src: "https://placehold.co/800x600.png",
-        title: "MUSYAWARAH BESAR HMJ MI",
+        src: "/Galeri/Family Gatrhing.JPG",
+        title: "Family Gathering",
         year: "2024",
-        hint: "large group"
+        hint: "group photo outdoor"
     },
     {
-        src: "https://placehold.co/800x600.png",
-        title: "MUSYAWARAH BESAR HMJ MI",
+        src: "/Galeri/IT-fest.JPG",
+        title: "IT Festival",
         year: "2024",
-        hint: "students listening"
+        hint: "tech conference"
     },
     {
-        src: "https://placehold.co/800x600.png",
-        title: "SEMINAR NASIONAL",
+        src: "/Galeri/IT-fest2.JPG",
+        title: "IT Festival",
         year: "2024",
-        hint: "student team"
+        hint: "stage presentation"
     },
     {
-        src: "https://placehold.co/800x600.png",
-        title: "SEMINAR NASIONAL",
+        src: "/Galeri/LDO HMJMI.JPG",
+        title: "LDO HMJMI",
         year: "2024",
-        hint: "student speaking"
+        hint: "student leadership"
+    },
+    {
+        src: "/Galeri/Makrab.JPG",
+        title: "Makrab",
+        year: "2024",
+        hint: "student event"
+    },
+    {
+        src: "/Galeri/OR.JPG",
+        title: "Open Recruitment",
+        year: "2024",
+        hint: "student gathering"
+    },
+    {
+        src: "/Galeri/Posmi.JPG",
+        title: "POSMI",
+        year: "2024",
+        hint: "sports competition"
+    },
+    {
+        src: "/Galeri/Sembis.JPG",
+        title: "Seminar Bisnis",
+        year: "2024",
+        hint: "business seminar"
+    },
+    {
+        src: "/Galeri/Sintak.JPG",
+        title: "SINTAK",
+        year: "2024",
+        hint: "coding workshop"
+    },
+    {
+        src: "/Galeri/Upgrading.JPG",
+        title: "Upgrading",
+        year: "2024",
+        hint: "student training"
     },
 ];
 
