@@ -67,73 +67,73 @@ export const galleryItems = [
     {
         src: "/Galeri/BUKBER MI.JPG",
         title: "BUKBER MI",
-        year: "2024",
+        year: "2025",
         hint: "group photo"
     },
     {
         src: "/Galeri/BUKBR HMJ.JPG",
         title: "BUKBER HMJ",
-        year: "2024",
+        year: "2025",
         hint: "group photo"
     },
     {
         src: "/Galeri/Family Gatrhing.JPG",
         title: "Family Gathering",
-        year: "2024",
+        year: "2025",
         hint: "group photo outdoor"
     },
     {
         src: "/Galeri/IT-fest.JPG",
         title: "IT Festival",
-        year: "2024",
+        year: "2025",
         hint: "tech conference"
     },
     {
         src: "/Galeri/IT-fest2.JPG",
         title: "IT Festival",
-        year: "2024",
+        year: "2025",
         hint: "stage presentation"
     },
     {
         src: "/Galeri/LDO HMJMI.JPG",
         title: "LDO HMJMI",
-        year: "2024",
+        year: "2025",
         hint: "student leadership"
     },
     {
         src: "/Galeri/Makrab.JPG",
         title: "Makrab",
-        year: "2024",
+        year: "2025",
         hint: "student event"
     },
     {
         src: "/Galeri/OR.JPG",
         title: "Open Recruitment",
-        year: "2024",
+        year: "2025",
         hint: "student gathering"
     },
     {
         src: "/Galeri/Posmi.JPG",
         title: "POSMI",
-        year: "2024",
+        year: "2025",
         hint: "sports competition"
     },
     {
         src: "/Galeri/Sembis.JPG",
         title: "Seminar Bisnis",
-        year: "2024",
+        year: "2025",
         hint: "business seminar"
     },
     {
         src: "/Galeri/Sintak.JPG",
         title: "SINTAK",
-        year: "2024",
+        year: "2025",
         hint: "coding workshop"
     },
     {
         src: "/Galeri/Upgrading.JPG",
         title: "Upgrading",
-        year: "2024",
+        year: "2025",
         hint: "student training"
     },
 ];

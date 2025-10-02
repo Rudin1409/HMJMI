@@ -14,6 +14,13 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { AnimatedLogo } from '@/components/ui/animated-logo';
 import { aboutHeroImages, galleryItems, GalleryItem } from '@/data/site-data';
 
@@ -278,25 +285,36 @@ export default function AboutPage() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {galleryItems.map((item, index) => (
-                    <Card 
-                      key={index} 
-                      className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl cursor-pointer group"
-                      onClick={() => setSelectedImage(item)}
-                    >
-                        <CardContent className="p-0">
-                            <div className="relative aspect-w-4 aspect-h-3">
-                                <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
-                            </div>
-                        </CardContent>
-                        <CardFooter className="p-4 text-center flex-col items-center justify-center">
-                            <p className="font-semibold text-primary text-sm">{item.title}</p>
-                            <p className="text-xs text-primary/80">{item.year}</p>
-                        </CardFooter>
-                    </Card>
-                ))}
-            </div>
+            <Carousel
+                opts={{
+                    align: "start",
+                    loop: true,
+                }}
+                className="w-full"
+            >
+                <CarouselContent>
+                    {galleryItems.map((item, index) => (
+                        <CarouselItem key={index} className="basis-full sm:basis-1/2 lg:basis-1/4 p-3">
+                            <Card 
+                                className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-2xl cursor-pointer group h-full"
+                                onClick={() => setSelectedImage(item)}
+                            >
+                                <CardContent className="p-0">
+                                    <div className="relative aspect-w-4 aspect-h-3">
+                                        <Image src={item.src} alt={item.title} width={800} height={600} objectFit="cover" data-ai-hint={item.hint} className="transition-transform duration-300 group-hover:scale-105" />
+                                    </div>
+                                </CardContent>
+                                <CardFooter className="p-4 text-center flex-col items-center justify-center">
+                                    <p className="font-semibold text-primary text-sm">{item.title}</p>
+                                    <p className="text-xs text-primary/80">{item.year}</p>
+                                </CardFooter>
+                            </Card>
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12" />
+            </Carousel>
         </div>
       </section>
 
@@ -318,5 +336,3 @@ export default function AboutPage() {
     </div>
   );
 }
-
-    
