@@ -1,3 +1,4 @@
+
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Award, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store, ArrowRight } from 'lucide-react';
@@ -31,7 +32,7 @@ export function DivisionsSection() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {departments.map((dept) => (
-            <Card key={dept.name} className="text-center p-6">
+            <Card key={dept.name} className="text-center p-6 transition-all duration-300 ease-in-out hover:shadow-primary/20 hover:shadow-lg hover:scale-105">
               <CardContent className="flex flex-col items-center gap-4 p-0">
                 <div className="bg-pink-100 dark:bg-primary/10 p-4 rounded-full">
                   {dept.icon}
