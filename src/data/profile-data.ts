@@ -1,3 +1,4 @@
+
 export const departments = [
     {
         id: "inti",
@@ -821,7 +822,7 @@ export const programs = {
             category: "KOMPETISI & EDUKASI",
             description:
                 "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
-            image: "/proker/ITF2024.png",
+            image: "/Galeri/IT-fest.JPG",
             hint: "tech festival stage competition",
         },
         {
@@ -895,7 +896,7 @@ export const programs = {
             category: "EDUKASI",
             description:
                 "Menambah wawasan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa untuk memulai usaha sejak dini.",
-            image: "/proker/sembis.png",
+            image: "/Galeri/Sembis.JPG",
             hint: "business seminar",
         },
     ],

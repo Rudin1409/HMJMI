@@ -10,13 +10,13 @@ const highlightedPrograms = [
   {
     title: 'IT Festival',
     category: 'Kompetisi & Edukasi',
-    image: '/proker/ITF2024.png',
+    image: '/Galeri/IT-fest.JPG',
     hint: 'tech competition stage',
   },
   {
     title: 'Seminar Bisnis',
     category: 'Edukasi & Wawasan',
-    image: '/proker/sembis.png',
+    image: '/Galeri/Sembis.JPG',
     hint: 'business seminar',
   },
 ];
@@ -44,7 +44,7 @@ export function ProgramHighlightsSection() {
                 <div className="relative aspect-video overflow-hidden">
                     <Image 
                         src={program.image} 
-                        layout="fill" 
+                        fill 
                         objectFit="cover" 
                         alt={program.title} 
                         data-ai-hint={program.hint}

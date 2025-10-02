@@ -20,7 +20,7 @@ const mainPrograms = [
     title: "IT Festival",
     icon: <Rocket className="h-8 w-8 text-primary" />,
     description: "Information Technology Festival atau yang disingkat dengan IT Festival merupakan serangkaian acara IT tahunan. Dengan rangkaian acara kompetisi, pelatihan, dan seminar sebagai ajang edukatif bagi mahasiswa maupun masyarakat umum dalam meningkatkan kreativitas dan kesadaran tentang pentingnya penggunaan teknologi informasi di era globalisasi.",
-    image: "/proker/ITF2024.png",
+    image: "/Galeri/IT-fest.JPG",
     hint: "tech festival stage competition",
     link: "https://it-fest-2025-pi.vercel.app/",
   },
@@ -31,7 +31,7 @@ const additionalPrograms = [
     title: "Seminar Bisnis",
     icon: <Briefcase className="h-8 w-8 text-primary" />,
     description: "Kegiatan Seminar Bisnis bertujuan menambah wawasan dan pengetahuan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa/i se-Indonesia dan umum untuk memulai usaha sejak dini dan siap bersaing di dunia bisnis.",
-    image: "/proker/sembis.png",
+    image: "/Galeri/Sembis.JPG",
     hint: "business seminar presentation",
   },
 ];
@@ -154,7 +154,7 @@ export default function ProkerPage() {
                             )}
                         </div>
                         <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-2">
-                             <Image src={program.image} alt={program.title} layout="fill" objectFit="cover" data-ai-hint={program.hint} />
+                             <Image src={program.image} alt={program.title} fill objectFit="cover" data-ai-hint={program.hint} />
                         </div>
                     </div>
                 ))}
@@ -166,7 +166,7 @@ export default function ProkerPage() {
                     {additionalPrograms.map((program) => (
                         <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center">
                             <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-first">
-                                <Image src={program.image} alt={program.title} layout="fill" objectFit="cover" data-ai-hint={program.hint}/>
+                                <Image src={program.image} alt={program.title} fill objectFit="cover" data-ai-hint={program.hint}/>
                             </div>
                             <div className="p-8 md:p-12 order-2 md:order-last">
                                 <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800">Program Kerja Tambahan</Badge>
@@ -189,7 +189,7 @@ export default function ProkerPage() {
                             <Card key={activity.title}>
                                 <CardContent className="p-6 flex items-center gap-6">
                                     <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 dark:border-primary/20 shadow-md">
-                                        <Image src={activity.image} alt={`${activity.title} logo`} layout="fill" objectFit="cover" data-ai-hint={activity.hint} />
+                                        <Image src={activity.image} alt={`${activity.title} logo`} fill objectFit="cover" data-ai-hint={activity.hint} />
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-foreground mb-2">{activity.title}</h3>
@@ -235,5 +235,3 @@ export default function ProkerPage() {
     </div>
   );
 }
-
-    
