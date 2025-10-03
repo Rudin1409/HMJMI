@@ -818,7 +818,7 @@ export const teamMembers = {
 export const programs = {
     inti: [
         {
-            title: "Sertijab & Demisioner",
+            title: "Sertijab &amp; Demisioner",
             category: "Agenda Rutin",
             description: "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.",
             image: "/anggota/psdm24/anonym.png",
@@ -826,7 +826,7 @@ export const programs = {
         },
         {
             title: "IT Festival",
-            category: "KOMPETISI & EDUKASI",
+            category: "KOMPETISI &amp; EDUKASI",
             description: "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
             image: "/Galeri/IT-fest.jpg",
             hint: "tech festival stage competition"
@@ -838,7 +838,7 @@ export const programs = {
             category: "PENGEMBANGAN DIRI",
             description:
                 "Study club untuk mengembangkan soft skill dalam pemrograman, terutama di bidang web development.",
-            image: "/proker/sintak.png",
+            image: "/Galeri/Sintak.jpg",
             hint: "coding workshop",
         },
     ],
@@ -848,7 +848,7 @@ export const programs = {
             category: "PELATIHAN",
             description:
                 "Pelatihan yang dikhususkan untuk kepengurusan baru demi meningkatkan kemampuan public speaking dan desain grafis.",
-            image: "/proker/upgrading.png",
+            image: "/Galeri/Upgrading.jpg",
             hint: "skill workshop",
         },
         {
@@ -873,7 +873,7 @@ export const programs = {
             category: "MINAT BAKAT",
             description:
                 "Kompetisi olahraga dan seni untuk mahasiswa Jurusan Manajemen Informatika.",
-            image: "/proker/posmi2024.png",
+            image: "/Galeri/Posmi.jpg",
             hint: "student competition",
         },
     ],
@@ -978,4 +978,5 @@ export const divisions = {
     ],
 };
 
+    
     
