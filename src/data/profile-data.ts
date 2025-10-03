@@ -818,13 +818,6 @@ export const teamMembers = {
 export const programs = {
     inti: [
         {
-            title: "Sertijab & Demisioner",
-            category: "Agenda Rutin",
-            description: "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.",
-            image: "/anggota/psdm24/anonym.png",
-            hint: "group discussion"
-        },
-        {
             title: "IT Festival",
             category: "KOMPETISI & EDUKASI",
             description: "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
@@ -851,13 +844,6 @@ export const programs = {
             image: "/Galeri/Upgrading.jpg",
             hint: "skill workshop",
         },
-        {
-            title: "VIBE (Visiting - Interacting - Building - Exchanging)",
-            category: "HUBUNGAN EKSTERNAL",
-            description: "Sebuah program kunjungan ke organisasi mahasiswa (Ormawa) lain di lingkungan Politeknik Negeri Sriwijaya untuk mempererat silaturahmi, berinteraksi, dan saling bertukar ide serta gagasan mengenai program kerja masing-masing.",
-            image: "/anggota/psdm24/anonym.png",
-            hint: "team collaboration"
-        }
     ],
     psdm: [
         {
@@ -977,6 +963,3 @@ export const divisions = {
         },
     ],
 };
-
-    
-    
