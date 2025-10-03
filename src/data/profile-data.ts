@@ -818,7 +818,7 @@ export const teamMembers = {
 export const programs = {
     inti: [
         {
-            title: "Sertijab &amp; Demisioner",
+            title: "Sertijab & Demisioner",
             category: "Agenda Rutin",
             description: "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.",
             image: "/anggota/psdm24/anonym.png",
@@ -826,7 +826,7 @@ export const programs = {
         },
         {
             title: "IT Festival",
-            category: "KOMPETISI &amp; EDUKASI",
+            category: "KOMPETISI & EDUKASI",
             description: "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
             image: "/Galeri/IT-fest.jpg",
             hint: "tech festival stage competition"
@@ -883,7 +883,7 @@ export const programs = {
             category: "SOSIAL",
             description:
                 "Bakti sosial yang mencakup kunjungan ke panti, tausiyah, serta bagi-bagi takjil.",
-            image: "/proker/baksomiii.png",
+            image: "/Galeri/BUKBRHMJ.jpg",
             hint: "social charity",
         },
     ],
