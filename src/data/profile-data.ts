@@ -823,6 +823,13 @@ export const programs = {
             description: "Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.",
             image: "/anggota/psdm24/anonym.png",
             hint: "group discussion"
+        },
+        {
+            title: "IT Festival",
+            category: "KOMPETISI & EDUKASI",
+            description: "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
+            image: "/Galeri/IT-fest.jpg",
+            hint: "tech festival stage competition"
         }
     ],
     ptkp: [
@@ -889,13 +896,6 @@ export const programs = {
             image: "/Galeri/Sembis.jpg",
             hint: "business seminar",
         },
-        {
-            title: "IT Festival",
-            category: "KOMPETISI & EDUKASI",
-            description: "Acara IT tahunan yang mencakup kompetisi, pelatihan, dan seminar untuk mahasiswa dan masyarakat umum.",
-            image: "/Galeri/IT-fest.jpg",
-            hint: "tech festival stage competition"
-        }
     ],
 };
 
@@ -977,3 +977,5 @@ export const divisions = {
         },
     ],
 };
+
+    
