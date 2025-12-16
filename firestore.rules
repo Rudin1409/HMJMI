@@ -16,7 +16,7 @@ service cloud.firestore {
     }
 
     // Rules for the 'berita_acara' (news/events) collection.
-    // Public read for single documents (get) and lists (list). Authenticated write.
+    // Public can read list and get single documents. Write is authenticated.
     match /berita_acara/{beritaAcaraId} {
       allow get: if true;
       allow list: if true;
@@ -24,7 +24,7 @@ service cloud.firestore {
     }
 
     // Rules for the 'users' collection.
-    // Authenticated users can read their own profile and list all users.
+    // Authenticated users can read and list all users.
     // Only they can write to their own profile.
     match /users/{userId} {
       allow get: if isSignedIn();
