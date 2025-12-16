@@ -27,6 +27,7 @@ interface BeritaListProps {
     description: string;
     berita: BeritaAcara[] | null;
     isLoading: boolean;
+    showHero?: boolean;
 }
 
 const BeritaItemSkeleton = () => (
@@ -49,7 +50,62 @@ const BeritaItemSkeleton = () => (
   </Card>
 );
 
-export default function BeritaList({ title, description, berita, isLoading }: BeritaListProps) {
+export default function BeritaList({ title, description, berita, isLoading, showHero = true }: BeritaListProps) {
+  
+  const ListContent = () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {isLoading && Array.from({ length: 3 }).map((_, i) => <BeritaItemSkeleton key={i} />)}
+      
+      {!isLoading && berita && berita.length > 0 ? (
+        berita.map((item) => (
+          <ScrollAnimation key={item.id}>
+            <Card className="flex flex-col h-full overflow-hidden transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/20">
+              <CardContent className="p-0">
+                <div className="relative w-full aspect-video">
+                  <Image
+                    src={item.imageUrl || '/placeholder.png'}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    data-ai-hint="event photo"
+                  />
+                </div>
+              </CardContent>
+              <CardHeader>
+                <CardTitle className="text-xl line-clamp-2">{item.title}</CardTitle>
+                <div className="flex items-center text-sm text-muted-foreground pt-2">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span>{format(new Date(item.date), 'd MMMM yyyy', { locale: id })}</span>
+                </div>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                 <div className="text-muted-foreground line-clamp-3 text-sm" dangerouslySetInnerHTML={{ __html: item.content }} />
+              </CardContent>
+              <CardFooter>
+                <Button asChild variant="link" className="p-0 text-primary">
+                  <Link href={`/berita/${item.id}`}>
+                    Baca Selengkapnya <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardFooter>
+            </Card>
+          </ScrollAnimation>
+        ))
+      ) : null}
+
+      {!isLoading && (!berita || berita.length === 0) && (
+        <div className="text-center col-span-full py-16">
+            <h2 className="text-2xl font-semibold text-foreground">Belum Ada Postingan</h2>
+            <p className="text-muted-foreground mt-2">Silakan cek kembali nanti untuk melihat pembaruan terbaru.</p>
+        </div>
+      )}
+    </div>
+  );
+
+  if (!showHero) {
+      return <ListContent />;
+  }
+  
   return (
     <div className="flex flex-col">
       <section
@@ -76,51 +132,7 @@ export default function BeritaList({ title, description, berita, isLoading }: Be
 
       <section id="berita-list-content" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading && Array.from({ length: 3 }).map((_, i) => <BeritaItemSkeleton key={i} />)}
-            
-            {!isLoading && berita && berita.map((item) => (
-              <ScrollAnimation key={item.id}>
-                <Card className="flex flex-col h-full overflow-hidden transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/20">
-                  <CardContent className="p-0">
-                    <div className="relative w-full aspect-video">
-                      <Image
-                        src={item.imageUrl || '/placeholder.png'}
-                        alt={item.title}
-                        fill
-                        className="object-cover"
-                        data-ai-hint="event photo"
-                      />
-                    </div>
-                  </CardContent>
-                  <CardHeader>
-                    <CardTitle className="text-xl line-clamp-2">{item.title}</CardTitle>
-                    <div className="flex items-center text-sm text-muted-foreground pt-2">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        <span>{format(new Date(item.date), 'd MMMM yyyy', { locale: id })}</span>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-grow">
-                    <p className="text-muted-foreground line-clamp-3 text-sm">{item.content}</p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button asChild variant="link" className="p-0 text-primary">
-                      <Link href={`/berita/${item.id}`}>
-                        Baca Selengkapnya <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </ScrollAnimation>
-            ))}
-          </div>
-
-          {!isLoading && (!berita || berita.length === 0) && (
-            <div className="text-center col-span-full py-16">
-                <h2 className="text-2xl font-semibold text-foreground">Belum Ada Postingan</h2>
-                <p className="text-muted-foreground mt-2">Silakan cek kembali nanti untuk melihat pembaruan terbaru.</p>
-            </div>
-          )}
+          <ListContent />
         </div>
       </section>
     </div>

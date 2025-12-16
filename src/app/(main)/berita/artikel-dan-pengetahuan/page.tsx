@@ -36,6 +36,7 @@ export default function ArtikelPage() {
       description="Jelajahi artikel mendalam, wawasan teknologi, dan tulisan-tulisan informatif lainnya dari komunitas kami."
       berita={berita}
       isLoading={isLoading}
+      showHero={false}
     />
   );
 }

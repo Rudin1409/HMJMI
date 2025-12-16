@@ -36,6 +36,7 @@ export default function BeritaHmjPage() {
       description="Ikuti perkembangan terbaru, pengumuman penting, dan liputan acara dari Himpunan Mahasiswa Jurusan Manajemen Informatika."
       berita={berita}
       isLoading={isLoading}
+      showHero={false}
     />
   );
 }

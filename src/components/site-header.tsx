@@ -22,6 +22,7 @@ const mainNavLinks = [
   { href: '/about', label: 'Tentang' },
   { href: '/profile', label: 'Profil' },
   { href: '/proker', label: 'Program' },
+  { href: '/berita', label: 'Berita' },
 ];
 
 const trailingNavLink = { href: '/aspiration', label: 'Aspirasi' };
@@ -91,28 +92,6 @@ export function SiteHeader() {
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className={cn(
-                    'relative font-semibold transition-colors hover:text-primary py-2 text-sm px-0 hover:bg-transparent',
-                    getIsActive('/berita') ? 'text-primary' : 'text-foreground/80'
-                )}>
-                    Berita
-                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
-                     {getIsActive('/berita') && (
-                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
-                    )}
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-                {beritaSubLinks.map(subLink => (
-                    <DropdownMenuItem key={subLink.href} asChild>
-                        <Link href={subLink.href}>{subLink.label}</Link>
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
-
           <NavLink href={trailingNavLink.href} label={trailingNavLink.label} />
         </nav>
         
@@ -136,7 +115,7 @@ export function SiteHeader() {
                     </div>
                 </div>
                 <nav className="mt-6 flex flex-col gap-2 p-6">
-                  {[...mainNavLinks, ...beritaSubLinks, trailingNavLink].map((link) => (
+                  {[...mainNavLinks, trailingNavLink].map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
