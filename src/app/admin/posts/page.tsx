@@ -2,14 +2,15 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useAuth, useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, deleteDoc, doc, orderBy, query, Timestamp } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { PlusCircle, Edit, Trash2, Loader2, AlertCircle } from 'lucide-react';
+import { PlusCircle, Edit, Trash2, Loader2, AlertCircle, MoreHorizontal } from 'lucide-react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import {
@@ -23,18 +24,24 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { cn } from '@/lib/utils';
 
 interface BeritaAcara {
   id: string;
   title: string;
   date: Timestamp;
-  author: string;
   status: 'published' | 'draft';
+  category: string;
+  imageUrl: string;
 }
 
 export default function AdminPostsPage() {
-  const auth = useAuth();
   const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
@@ -84,13 +91,11 @@ export default function AdminPostsPage() {
           <CardTitle>Postingan Berita</CardTitle>
           <CardDescription>Kelola semua postingan berita untuk website.</CardDescription>
         </div>
-        <div className="flex items-center gap-4">
-           <Button asChild>
-            <Link href="/admin/post?id=new">
-              <PlusCircle className="mr-2 h-4 w-4" /> Buat Postingan Baru
-            </Link>
-          </Button>
-        </div>
+        <Button asChild>
+          <Link href="/admin/post?id=new">
+            <PlusCircle className="mr-2 h-4 w-4" /> Buat Postingan Baru
+          </Link>
+        </Button>
       </CardHeader>
       <CardContent>
         {isBeritaLoading && (
@@ -108,10 +113,11 @@ export default function AdminPostsPage() {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="w-[80px]">Gambar</TableHead>
                 <TableHead>Judul</TableHead>
+                <TableHead>Kategori</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Tanggal</TableHead>
-                <TableHead>Penulis</TableHead>
+                <TableHead>Tanggal Dibuat</TableHead>
                 <TableHead className="text-right">Aksi</TableHead>
               </TableRow>
             </TableHeader>
@@ -119,49 +125,73 @@ export default function AdminPostsPage() {
               {berita && berita.length > 0 ? (
                 berita.map((item) => (
                   <TableRow key={item.id}>
+                    <TableCell>
+                      <Image 
+                        src={item.imageUrl || '/placeholder.png'} 
+                        alt={item.title}
+                        width={64}
+                        height={64}
+                        className="rounded-md object-cover aspect-square"
+                      />
+                    </TableCell>
                     <TableCell className="font-medium">{item.title}</TableCell>
                     <TableCell>
-                      <Badge variant={item.status === 'published' ? 'default' : 'secondary'} className={cn(item.status === 'published' ? 'bg-green-600' : 'bg-gray-600')}>
-                        {item.status}
+                      <Badge variant="outline">{item.category}</Badge>
+                    </TableCell>
+                    <TableCell>
+                      <Badge variant={item.status === 'published' ? 'default' : 'secondary'} className={cn(
+                        item.status === 'published' 
+                          ? 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300' 
+                          : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300'
+                      )}>
+                        {item.status === 'published' ? 'Published' : 'Draft'}
                       </Badge>
                     </TableCell>
                     <TableCell>{formatDate(item.date)}</TableCell>
-                    <TableCell>
-                      <Badge variant="secondary">{item.author}</Badge>
-                    </TableCell>
                     <TableCell className="text-right">
-                      <Button asChild variant="ghost" size="icon">
-                        <Link href={`/admin/post?id=${item.id}`}>
-                          <Edit className="h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                           <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent>
-                          <AlertDialogHeader>
-                            <AlertDialogTitle>Apakah Anda yakin?</AlertDialogTitle>
-                            <AlertDialogDescription>
-                              Tindakan ini tidak bisa dibatalkan. Ini akan menghapus postingan secara permanen.
-                            </AlertDialogDescription>
-                          </AlertDialogHeader>
-                          <AlertDialogFooter>
-                            <AlertDialogCancel>Batal</AlertDialogCancel>
-                            <AlertDialogAction onClick={() => handleDelete(item.id)} className="bg-destructive hover:bg-destructive/90">
-                              Hapus
-                            </AlertDialogAction>
-                          </AlertDialogFooter>
-                        </AlertDialogContent>
+                       <AlertDialog>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon">
+                                <MoreHorizontal className="h-4 w-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem asChild>
+                                <Link href={`/admin/post?id=${item.id}`}>
+                                  <Edit className="mr-2 h-4 w-4" />
+                                  Edit
+                                </Link>
+                              </DropdownMenuItem>
+                              <AlertDialogTrigger asChild>
+                                <DropdownMenuItem className="text-destructive focus:bg-destructive/10 focus:text-destructive">
+                                  <Trash2 className="mr-2 h-4 w-4" />
+                                  Hapus
+                                </DropdownMenuItem>
+                              </AlertDialogTrigger>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                           <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Apakah Anda yakin?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Tindakan ini tidak bisa dibatalkan. Ini akan menghapus postingan secara permanen.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Batal</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => handleDelete(item.id)} className="bg-destructive hover:bg-destructive/90">
+                                Hapus
+                              </AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
                       </AlertDialog>
                     </TableCell>
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center">
+                  <TableCell colSpan={6} className="text-center h-24">
                     Belum ada postingan berita.
                   </TableCell>
                 </TableRow>
