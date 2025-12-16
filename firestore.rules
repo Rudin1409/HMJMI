@@ -7,35 +7,27 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // Rules for the 'divisions' collection.
-    // Public can read, authenticated users can write.
+    // Rules for the 'divisions' collection
     match /divisions/{divisionId} {
       allow read: if true;
       allow write: if isSignedIn();
     }
-    match /divisions {
-        allow list: if true;
-    }
 
-    // Rules for the 'berita_acara' collection.
-    // Public can read, authenticated users can write.
+    // Rules for the 'berita_acara' collection
     match /berita_acara/{beritaAcaraId} {
-      allow get: if true;
+      allow read: if true;
       allow write: if isSignedIn();
     }
-    match /berita_acara {
-      allow list: if true;
-    }
 
-    // Rules for the 'users' collection.
-    // Only authenticated users can access anything in this collection.
+    // Rules for the 'users' collection
     // An individual user can only write to their own document.
+    // Reading other user profiles is allowed for signed-in users.
     match /users/{userId} {
       allow get: if isSignedIn();
       allow write: if isSignedIn() && request.auth.uid == userId;
     }
     match /users {
-        allow list: if isSignedIn();
+      allow list: if isSignedIn();
     }
   }
 }

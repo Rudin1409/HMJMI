@@ -5,9 +5,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Calendar, ChevronDown } from 'lucide-react';
+import { ArrowRight, Calendar } from 'lucide-react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -23,11 +22,8 @@ interface BeritaAcara {
 }
 
 interface BeritaListProps {
-    title: string;
-    description: string;
     berita: BeritaAcara[] | null;
     isLoading: boolean;
-    showHero?: boolean;
 }
 
 const BeritaItemSkeleton = () => (
@@ -50,9 +46,9 @@ const BeritaItemSkeleton = () => (
   </Card>
 );
 
-export default function BeritaList({ title, description, berita, isLoading, showHero = true }: BeritaListProps) {
+export default function BeritaList({ berita, isLoading }: BeritaListProps) {
   
-  const ListContent = () => (
+  return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {isLoading && Array.from({ length: 3 }).map((_, i) => <BeritaItemSkeleton key={i} />)}
       
@@ -99,42 +95,6 @@ export default function BeritaList({ title, description, berita, isLoading, show
             <p className="text-muted-foreground mt-2">Silakan cek kembali nanti untuk melihat pembaruan terbaru.</p>
         </div>
       )}
-    </div>
-  );
-
-  if (!showHero) {
-      return <ListContent />;
-  }
-  
-  return (
-    <div className="flex flex-col">
-      <section
-        className="relative w-full flex items-center justify-center min-h-screen py-20 bg-transparent"
-      >
-        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
-        <ScrollAnimation className="container mx-auto px-4 text-center relative z-10">
-          <Badge variant="default" className="mb-4 bg-primary/10 text-primary shadow-sm">
-            Kabar Terkini
-          </Badge>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground" dangerouslySetInnerHTML={{ __html: title.replace('&', '&amp;') }}></h1>
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
-            {description}
-          </p>
-          <div className="mt-8">
-            <a href="#berita-list-content">
-              <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce">
-                <ChevronDown className="h-6 w-6" />
-              </Button>
-            </a>
-          </div>
-        </ScrollAnimation>
-      </section>
-
-      <section id="berita-list-content" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <ListContent />
-        </div>
-      </section>
     </div>
   );
 }
