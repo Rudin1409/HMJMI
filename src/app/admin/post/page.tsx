@@ -19,20 +19,21 @@ import { Loader2, AlertCircle, Upload } from 'lucide-react';
 import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { TiptapEditor } from '@/components/ui/tiptap-editor';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 const formSchema = z.object({
   title: z.string().min(5, 'Judul harus memiliki setidaknya 5 karakter.'),
   content: z.string().min(20, 'Konten harus memiliki setidaknya 20 karakter.'),
-  author: z.string().min(2, 'Author is required.'),
-  divisionId: z.string().optional(),
   imageUrl: z.string().optional(),
   category: z.string({ required_error: 'Kategori harus dipilih.' }),
+  status: z.enum(['draft', 'published'], { required_error: 'Status harus dipilih' }),
 });
 
 type BeritaFormData = z.infer<typeof formSchema>;
 
 interface BeritaAcara extends BeritaFormData {
   date: any; // Firestore timestamp
+  author: string;
 }
 
 function PostForm() {
@@ -61,10 +62,9 @@ function PostForm() {
     defaultValues: {
       title: '',
       content: '',
-      author: 'Dept. Humas',
-      divisionId: '',
       imageUrl: '',
       category: undefined,
+      status: 'draft',
     },
   });
 
@@ -123,6 +123,7 @@ function PostForm() {
         ...values,
         imageUrl: finalImageUrl,
         date: serverTimestamp(),
+        author: 'Dept. Humas' // Hardcoded author as requested
       };
 
       if (isNewPost) {
@@ -243,6 +244,40 @@ function PostForm() {
                         <CardContent className="space-y-6">
                             <FormField
                                 control={form.control}
+                                name="status"
+                                render={({ field }) => (
+                                    <FormItem className="space-y-3">
+                                    <FormLabel>Status Postingan</FormLabel>
+                                    <FormControl>
+                                        <RadioGroup
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                        className="flex flex-col space-y-1"
+                                        >
+                                        <FormItem className="flex items-center space-x-3 space-y-0">
+                                            <FormControl>
+                                            <RadioGroupItem value="published" />
+                                            </FormControl>
+                                            <FormLabel className="font-normal">
+                                            Publish
+                                            </FormLabel>
+                                        </FormItem>
+                                        <FormItem className="flex items-center space-x-3 space-y-0">
+                                            <FormControl>
+                                            <RadioGroupItem value="draft" />
+                                            </FormControl>
+                                            <FormLabel className="font-normal">
+                                            Draft
+                                            </FormLabel>
+                                        </FormItem>
+                                        </RadioGroup>
+                                    </FormControl>
+                                    <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
                                 name="category"
                                 render={({ field }) => (
                                 <FormItem>
@@ -258,32 +293,6 @@ function PostForm() {
                                         <SelectItem value="Artikel & Pengetahuan">Artikel & Pengetahuan</SelectItem>
                                     </SelectContent>
                                     </Select>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="author"
-                                render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Penulis</FormLabel>
-                                    <FormControl>
-                                    <Input placeholder="cth. Dept. Humas" {...field} disabled={isLoading} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="divisionId"
-                                render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Divisi (Opsional)</FormLabel>
-                                    <FormControl>
-                                    <Input placeholder="cth. Medkraf" {...field} disabled={isLoading} />
-                                    </FormControl>
                                     <FormMessage />
                                 </FormItem>
                                 )}

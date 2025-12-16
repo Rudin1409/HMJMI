@@ -23,6 +23,7 @@ export default function ArtikelPage() {
     return query(
         collection(firestore, 'berita_acara'), 
         where('category', '==', 'Artikel & Pengetahuan'),
+        where('status', '==', 'published'),
         orderBy('date', 'desc')
     );
   }, [firestore]);

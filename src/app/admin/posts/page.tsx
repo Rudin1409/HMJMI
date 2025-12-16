@@ -23,12 +23,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { cn } from '@/lib/utils';
 
 interface BeritaAcara {
   id: string;
   title: string;
   date: Timestamp;
   author: string;
+  status: 'published' | 'draft';
 }
 
 export default function AdminPostsPage() {
@@ -107,6 +109,7 @@ export default function AdminPostsPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Judul</TableHead>
+                <TableHead>Status</TableHead>
                 <TableHead>Tanggal</TableHead>
                 <TableHead>Penulis</TableHead>
                 <TableHead className="text-right">Aksi</TableHead>
@@ -117,6 +120,11 @@ export default function AdminPostsPage() {
                 berita.map((item) => (
                   <TableRow key={item.id}>
                     <TableCell className="font-medium">{item.title}</TableCell>
+                    <TableCell>
+                      <Badge variant={item.status === 'published' ? 'default' : 'secondary'} className={cn(item.status === 'published' ? 'bg-green-600' : 'bg-gray-600')}>
+                        {item.status}
+                      </Badge>
+                    </TableCell>
                     <TableCell>{formatDate(item.date)}</TableCell>
                     <TableCell>
                       <Badge variant="secondary">{item.author}</Badge>
@@ -153,7 +161,7 @@ export default function AdminPostsPage() {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center">
+                  <TableCell colSpan={5} className="text-center">
                     Belum ada postingan berita.
                   </TableCell>
                 </TableRow>

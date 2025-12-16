@@ -23,6 +23,7 @@ export default function BeritaHmjPage() {
     return query(
         collection(firestore, 'berita_acara'), 
         where('category', '==', 'Berita HMJ'),
+        where('status', '==', 'published'),
         orderBy('date', 'desc')
     );
   }, [firestore]);
