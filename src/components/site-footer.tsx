@@ -27,10 +27,14 @@ export function SiteFooter() {
         { href: "/about", label: "Tentang Kami" },
         { href: "/profile", label: "Profil" },
         { href: "/proker", label: "Program Kerja" },
+        { href: "/berita", label: "Berita"},
         { href: "/aspiration", label: "Aspirasi" },
     ];
 
-    const infoLinks = [{ href: "#faq", label: "FAQ" }];
+    const infoLinks = [
+      { href: "#faq", label: "FAQ" },
+      { href: "/login", label: "Admin"},
+    ];
 
     return (
         <footer className="bg-card/80 backdrop-blur-sm text-foreground border-t">
