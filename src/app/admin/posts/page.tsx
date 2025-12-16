@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect } from 'react';
@@ -39,6 +40,7 @@ interface BeritaAcara {
   status: 'published' | 'draft';
   category: string;
   imageUrl: string;
+  author: string;
 }
 
 export default function AdminPostsPage() {
@@ -115,6 +117,7 @@ export default function AdminPostsPage() {
               <TableRow>
                 <TableHead className="w-[80px]">Gambar</TableHead>
                 <TableHead>Judul</TableHead>
+                <TableHead>Penulis</TableHead>
                 <TableHead>Kategori</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Tanggal Dibuat</TableHead>
@@ -135,6 +138,7 @@ export default function AdminPostsPage() {
                       />
                     </TableCell>
                     <TableCell className="font-medium">{item.title}</TableCell>
+                    <TableCell>{item.author}</TableCell>
                     <TableCell>
                       <Badge variant="outline">{item.category}</Badge>
                     </TableCell>
@@ -191,7 +195,7 @@ export default function AdminPostsPage() {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={6} className="text-center h-24">
+                  <TableCell colSpan={7} className="text-center h-24">
                     Belum ada postingan berita.
                   </TableCell>
                 </TableRow>
