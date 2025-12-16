@@ -122,7 +122,7 @@ export default function BeritaDetailPage() {
 
             <div className="text-center mt-16">
                  <Button asChild variant="outline">
-                    <Link href="/berita/hmj">
+                    <Link href="/berita">
                         <ChevronLeft className="mr-2 h-4 w-4" />
                         Kembali ke Semua Berita
                     </Link>
