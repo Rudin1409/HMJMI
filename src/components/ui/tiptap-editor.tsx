@@ -48,26 +48,10 @@ const ToolbarButton = ({
   </Button>
 );
 
-const EditorToolbar = ({ editor }: { editor: Editor }) => {
-  const [isHtmlMode, setIsHtmlMode] = useState(false);
-  const [htmlContent, setHtmlContent] = useState(editor.getHTML());
-
-  const toggleHtmlMode = () => {
-    if (isHtmlMode) {
-      editor.commands.setContent(htmlContent);
-    } else {
-      setHtmlContent(editor.getHTML());
-    }
-    setIsHtmlMode(!isHtmlMode);
-  };
-
-  const handleHtmlChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setHtmlContent(e.target.value);
-  };
-
+const EditorToolbar = ({ editor, isHtmlMode, onToggleHtmlMode, htmlContent, onHtmlChange }: { editor: Editor, isHtmlMode: boolean, onToggleHtmlMode: () => void, htmlContent: string, onHtmlChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void }) => {
   return (
-    <div className="flex flex-col">
-       <div className="flex flex-wrap items-center gap-1 rounded-t-md border border-b-0 border-input bg-background p-2">
+    <>
+      <div className="flex flex-wrap items-center gap-1 rounded-t-md border border-input bg-background p-2">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           isActive={editor.isActive('heading', { level: 1 })}
@@ -159,21 +143,19 @@ const EditorToolbar = ({ editor }: { editor: Editor }) => {
         >
           <Quote className="h-4 w-4" />
         </ToolbarButton>
-        <ToolbarButton onClick={toggleHtmlMode} isActive={isHtmlMode} aria-label="Toggle HTML">
+        <ToolbarButton onClick={onToggleHtmlMode} isActive={isHtmlMode} aria-label="Toggle HTML">
           <Code className="h-4 w-4" />
         </ToolbarButton>
       </div>
-      {isHtmlMode ? (
+      {isHtmlMode && (
         <Textarea
           value={htmlContent}
-          onChange={handleHtmlChange}
+          onChange={onHtmlChange}
           className="min-h-[250px] rounded-t-none resize-y"
           aria-label="HTML Source Editor"
         />
-      ) : (
-        <EditorContent editor={editor} />
       )}
-    </div>
+    </>
   );
 };
 
@@ -184,6 +166,9 @@ interface TiptapEditorProps {
 }
 
 export const TiptapEditor = ({ content, onChange, disabled }: TiptapEditorProps) => {
+  const [isHtmlMode, setIsHtmlMode] = useState(false);
+  const [htmlContent, setHtmlContent] = useState(content);
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -205,20 +190,52 @@ export const TiptapEditor = ({ content, onChange, disabled }: TiptapEditorProps)
     ],
     content: content,
     onUpdate({ editor }) {
-      onChange(editor.getHTML());
+      if (!isHtmlMode) {
+        onChange(editor.getHTML());
+      }
     },
     editorProps: {
       attributes: {
         class:
-          'prose dark:prose-invert prose-sm sm:prose-base min-h-[250px] w-full rounded-b-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          'prose dark:prose-invert prose-sm sm:prose-base min-h-[250px] w-full rounded-b-md border-x border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
       },
     },
     editable: !disabled,
   });
+  
+  const toggleHtmlMode = () => {
+    if(!editor) return;
+    if (isHtmlMode) {
+      // from html mode to visual mode
+      editor.commands.setContent(htmlContent);
+      onChange(htmlContent);
+    } else {
+      // from visual mode to html mode
+      setHtmlContent(editor.getHTML());
+    }
+    setIsHtmlMode(!isHtmlMode);
+  };
+
+  const handleHtmlChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setHtmlContent(e.target.value);
+    onChange(e.target.value);
+  };
+
 
   if (!editor) {
     return null;
   }
 
-  return <EditorToolbar editor={editor} />;
+  return (
+    <div>
+        <EditorToolbar 
+            editor={editor}
+            isHtmlMode={isHtmlMode}
+            onToggleHtmlMode={toggleHtmlMode}
+            htmlContent={htmlContent}
+            onHtmlChange={handleHtmlChange}
+        />
+        {!isHtmlMode && <EditorContent editor={editor} />}
+    </div>
+  );
 };
