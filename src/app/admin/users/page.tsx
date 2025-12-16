@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -9,7 +10,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlusCircle, Loader2, AlertCircle, Mail, Briefcase, Users as UsersIcon } from 'lucide-react';
+import { PlusCircle, Loader2, AlertCircle, Mail, Briefcase, Users as UsersIcon, UserCheck } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -36,6 +37,7 @@ interface UserProfile {
   departmentId: string;
   divisionId?: string;
   avatar?: string;
+  role: 'admin' | 'user';
 }
 
 const userFormSchema = z.object({
@@ -301,15 +303,25 @@ export default function AdminUsersPage() {
                     <Mail className="h-4 w-4"/>
                     <span>{u.email}</span>
                 </div>
-                <div className="text-sm text-muted-foreground flex items-center gap-2">
-                    <Briefcase className="h-4 w-4"/>
-                    <span>{getDepartmentName(u.departmentId)}</span>
-                </div>
-                {u.divisionId && (
-                     <div className="text-sm text-muted-foreground flex items-center gap-2">
-                        <UsersIcon className="h-4 w-4"/>
-                        <span>{getDivisionName(u.departmentId, u.divisionId)}</span>
+                
+                {u.role === 'admin' ? (
+                  <div className="text-sm text-muted-foreground flex items-center gap-2 font-semibold text-primary">
+                    <UserCheck className="h-4 w-4"/>
+                    <span>Admin</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="text-sm text-muted-foreground flex items-center gap-2">
+                        <Briefcase className="h-4 w-4"/>
+                        <span>{getDepartmentName(u.departmentId)}</span>
                     </div>
+                    {u.divisionId && (
+                        <div className="text-sm text-muted-foreground flex items-center gap-2">
+                            <UsersIcon className="h-4 w-4"/>
+                            <span>{getDivisionName(u.departmentId, u.divisionId)}</span>
+                        </div>
+                    )}
+                  </>
                 )}
               </div>
             </CardContent>
