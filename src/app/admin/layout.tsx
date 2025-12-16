@@ -62,7 +62,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
             <div className="flex flex-1 flex-col">
                 {/* Mobile Header */}
-                <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 sm:py-4">
+                <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:h-[60px] sm:px-6">
                     <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                         <SheetTrigger asChild>
                             <Button size="icon" variant="outline" className="sm:hidden">
