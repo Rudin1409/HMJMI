@@ -3,35 +3,36 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Helper functions to improve readability and reuse of logic.
     function isSignedIn() {
       return request.auth != null;
     }
 
     // Rules for the 'divisions' collection.
-    // Public read, authenticated write.
+    // Public can read, authenticated users can write.
     match /divisions/{divisionId} {
       allow read: if true;
       allow write: if isSignedIn();
     }
+    match /divisions {
+        allow list: if true;
+    }
 
     // Rules for the 'berita_acara' collection.
-    // Public can list and get, but only authenticated users can write.
+    // Public can read, authenticated users can write.
     match /berita_acara/{beritaAcaraId} {
       allow get: if true;
       allow write: if isSignedIn();
     }
     match /berita_acara {
-        allow list: if true;
+      allow list: if true;
     }
 
     // Rules for the 'users' collection.
-    // Authenticated users can read and list all users.
-    // Only they can write to their own profile (or admins can write).
+    // Only authenticated users can access anything in this collection.
+    // An individual user can only write to their own document.
     match /users/{userId} {
-      allow get: if isSignedIn();
-      allow list: if isSignedIn();
-      allow write: if isSignedIn();
+      allow get, list: if isSignedIn();
+      allow write: if isSignedIn() && request.auth.uid == userId;
     }
   }
 }
