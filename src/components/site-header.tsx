@@ -33,8 +33,15 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const getIsActive = (href: string) => {
+    if (href === '/') {
+      return pathname === href;
+    }
+    return pathname.startsWith(href);
+  };
+
   const getLinkClass = (href: string) => {
-    const isActive = pathname === href;
+    const isActive = getIsActive(href);
     return cn(
       'relative font-semibold transition-colors hover:text-primary py-2 text-sm',
       isActive ? 'text-primary' : 'text-foreground/80',
@@ -65,7 +72,7 @@ export function SiteHeader() {
               className={getLinkClass(link.href)}
             >
               {link.label}
-               {pathname === link.href && (
+               {getIsActive(link.href) && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
               )}
             </Link>
@@ -111,5 +118,3 @@ export function SiteHeader() {
     </header>
   );
 }
-
-    
