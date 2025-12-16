@@ -22,6 +22,7 @@ interface BeritaAcara {
   imageUrl: string;
   author: string;
   divisionId?: string;
+  category: string;
 }
 
 const DetailBeritaSkeleton = () => (
@@ -82,6 +83,7 @@ export default function BeritaDetailPage() {
         <ScrollAnimation>
         <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
             <header className="text-center mb-12">
+                <Badge variant="secondary" className="mb-4">{berita.category}</Badge>
                 <h1 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
                     {berita.title}
                 </h1>
@@ -97,7 +99,7 @@ export default function BeritaDetailPage() {
                     {berita.divisionId && (
                         <div className="flex items-center">
                              <Tag className="w-4 h-4 mr-2 text-primary" />
-                             <Badge variant="secondary">{berita.divisionId}</Badge>
+                             <Badge variant="outline">{berita.divisionId}</Badge>
                         </div>
                     )}
                 </div>
@@ -114,13 +116,13 @@ export default function BeritaDetailPage() {
             </div>
 
             <div
-                className="prose prose-lg dark:prose-invert max-w-none mx-auto text-foreground/90 prose-p:leading-relaxed prose-headings:text-foreground prose-strong:text-foreground"
-                dangerouslySetInnerHTML={{ __html: berita.content.replace(/\n/g, '<br />') }}
+                className="prose prose-lg dark:prose-invert max-w-none mx-auto text-foreground/90 prose-p:leading-relaxed prose-headings:text-foreground prose-strong:text-foreground prose-ul:list-disc prose-ol:list-decimal"
+                dangerouslySetInnerHTML={{ __html: berita.content }}
             />
 
             <div className="text-center mt-16">
                  <Button asChild variant="outline">
-                    <Link href="/berita">
+                    <Link href="/berita/hmj">
                         <ChevronLeft className="mr-2 h-4 w-4" />
                         Kembali ke Semua Berita
                     </Link>

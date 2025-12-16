@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useEffect, useState, Suspense } from 'react';
@@ -19,7 +18,7 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Loader2, AlertCircle, Upload } from 'lucide-react';
 import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { RichTextEditor } from '@/components/ui/rich-text-editor';
+import { TiptapEditor } from '@/components/ui/tiptap-editor';
 
 const formSchema = z.object({
   title: z.string().min(5, 'Judul harus memiliki setidaknya 5 karakter.'),
@@ -65,6 +64,7 @@ function PostForm() {
       author: 'Dept. Humas',
       divisionId: '',
       imageUrl: '',
+      category: undefined,
     },
   });
 
@@ -195,7 +195,7 @@ function PostForm() {
                                 )}
                             />
 
-                             <FormItem>
+                            <FormItem>
                                 <FormLabel>Gambar Unggulan</FormLabel>
                                 <FormControl>
                                     <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
@@ -222,7 +222,11 @@ function PostForm() {
                                 <FormItem>
                                     <FormLabel>Konten</FormLabel>
                                     <FormControl>
-                                      <RichTextEditor {...field} rows={15} disabled={isLoading} />
+                                      <TiptapEditor 
+                                        content={field.value}
+                                        onChange={field.onChange}
+                                        disabled={isLoading}
+                                      />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -243,7 +247,7 @@ function PostForm() {
                                 render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Kategori</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={isLoading}>
+                                    <Select onValueChange={field.onChange} value={field.value} disabled={isLoading}>
                                     <FormControl>
                                         <SelectTrigger>
                                         <SelectValue placeholder="Pilih kategori" />
@@ -301,4 +305,3 @@ export default function PostFormPage() {
     </Suspense>
   );
 }
-
