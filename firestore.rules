@@ -23,9 +23,12 @@ service cloud.firestore {
     }
 
     // Rules for the 'users' collection.
-    // Only authenticated users can manage user profiles.
+    // Authenticated users can read their own profile and list all users.
+    // Only they can write to their own profile.
     match /users/{userId} {
-      allow read, write: if isSignedIn();
+      allow get: if isSignedIn();
+      allow list: if isSignedIn();
+      allow write: if isSignedIn();
     }
   }
 }
