@@ -18,6 +18,11 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isSignedIn();
     }
+    
+    // Allow listing the entire collection for public access
+    match /berita_acara {
+      allow list: if true;
+    }
 
     // Rules for the 'users' collection
     // An individual user can only write to their own document.

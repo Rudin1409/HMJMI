@@ -1,9 +1,10 @@
+
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy, getCountFromServer } from 'firebase/firestore';
+import { collection, query, orderBy } from 'firebase/firestore';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Users, FileText, BarChart } from 'lucide-react';
 import {
@@ -34,8 +35,6 @@ export default function AdminPage() {
   const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
-  const [totalPosts, setTotalPosts] = useState<number | null>(null);
-  const [isCountLoading, setIsCountLoading] = useState(true);
 
   useEffect(() => {
     if (!isUserLoading && !user) {
@@ -43,23 +42,14 @@ export default function AdminPage() {
     }
   }, [user, isUserLoading, router]);
 
-  useEffect(() => {
-    async function fetchPostCount() {
-        if (!firestore) return;
-        try {
-            setIsCountLoading(true);
-            const beritaCollection = collection(firestore, 'berita_acara');
-            const snapshot = await getCountFromServer(beritaCollection);
-            setTotalPosts(snapshot.data().count);
-        } catch (error) {
-            console.error("Error fetching post count: ", error);
-            setTotalPosts(0);
-        } finally {
-            setIsCountLoading(false);
-        }
-    }
-    fetchPostCount();
+  const beritaQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'berita_acara'));
   }, [firestore]);
+
+  const { data: berita, isLoading: isBeritaLoading } = useCollection<BeritaAcara>(beritaQuery);
+  
+  const totalPosts = berita ? berita.length : 0;
 
 
   if (isUserLoading || !user) {
@@ -83,7 +73,7 @@ export default function AdminPage() {
                     <FileText className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    {isCountLoading ? (
+                    {isBeritaLoading ? (
                         <Skeleton className="h-8 w-1/4" />
                     ) : (
                         <div className="text-2xl font-bold">{totalPosts}</div>
