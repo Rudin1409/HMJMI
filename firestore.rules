@@ -21,5 +21,11 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isSignedIn();
     }
+
+    // Rules for the 'users' collection.
+    // Only authenticated users can manage user profiles.
+    match /users/{userId} {
+      allow read, write: if isSignedIn();
+    }
   }
 }

@@ -82,6 +82,41 @@
         "name",
         "description"
       ]
+    },
+    "UserProfile": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "UserProfile",
+        "type": "object",
+        "description": "Stores additional information for a registered user.",
+        "properties": {
+            "uid": {
+                "type": "string",
+                "description": "The user's unique ID from Firebase Authentication."
+            },
+            "username": {
+                "type": "string",
+                "description": "The user's display name."
+            },
+            "email": {
+                "type": "string",
+                "format": "email",
+                "description": "The user's email address."
+            },
+            "departmentId": {
+                "type": "string",
+                "description": "The ID of the department the user belongs to."
+            },
+            "divisionId": {
+                "type": "string",
+                "description": "The ID of the division the user belongs to (if any)."
+            },
+            "avatar": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL for the user's profile picture."
+            }
+        },
+        "required": ["uid", "username", "email", "departmentId"]
     }
   },
   "auth": {
@@ -103,6 +138,13 @@
         "description": "Stores news and event records for HMJMI Polsri. Includes `divisionId` to associate the event with a specific division.",
         "schema": {
           "$ref": "#/entities/BeritaAcara"
+        }
+      },
+      {
+        "path": "/users",
+        "description": "Stores user profile information linked to Firebase Auth UIDs.",
+        "schema": {
+            "$ref": "#/entities/UserProfile"
         }
       }
     ]

@@ -1,10 +1,9 @@
-
 'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Newspaper, Menu, X, LogOut, User as UserIcon } from 'lucide-react';
+import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth } from '@/firebase';
@@ -21,6 +20,7 @@ import {
 const navItems = [
   { href: '/admin', label: 'Dasbor', icon: Home },
   { href: '/admin/posts', label: 'Postingan', icon: Newspaper },
+  { href: '/admin/users', label: 'Pengguna', icon: Users },
 ];
 
 function SidebarNav() {
