@@ -16,9 +16,10 @@ service cloud.firestore {
     }
 
     // Rules for the 'berita_acara' (news/events) collection.
-    // Public read, authenticated write.
+    // Public read for single documents (get) and lists (list). Authenticated write.
     match /berita_acara/{beritaAcaraId} {
-      allow read: if true;
+      allow get: if true;
+      allow list: if true;
       allow write: if isSignedIn();
     }
 
