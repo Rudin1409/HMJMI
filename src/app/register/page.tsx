@@ -3,9 +3,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useAuth, useUser } from '@/firebase';
+import { useAuth, useUser, useFirestore } from '@/firebase';
 import { useRouter } from 'next/navigation';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc } from 'firebase/firestore';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -16,6 +17,7 @@ import Image from 'next/image';
 
 export default function RegisterPage() {
   const auth = useAuth();
+  const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -31,7 +33,10 @@ export default function RegisterPage() {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!auth) return;
+    if (!auth || !firestore) {
+        setError('Layanan otentikasi tidak tersedia.');
+        return;
+    };
     setIsLoading(true);
     setError(null);
     if(password.length < 6) {
@@ -40,7 +45,21 @@ export default function RegisterPage() {
         return;
     }
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const newUser = userCredential.user;
+
+      // Create user profile in Firestore with 'admin' role
+      const userProfileData = {
+        uid: newUser.uid,
+        username: email.split('@')[0], // Default username from email
+        email: newUser.email,
+        departmentId: 'inti', // Default department
+        avatar: `https://placehold.co/100x100.png?text=${email.charAt(0).toUpperCase()}`,
+        role: 'admin', // Assign 'admin' role
+      };
+
+      await setDoc(doc(firestore, "users", newUser.uid), userProfileData);
+
       // The useEffect hook will handle redirection
     } catch (err: any) {
        if (err.code === 'auth/email-already-in-use') {
