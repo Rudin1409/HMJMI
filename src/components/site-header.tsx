@@ -3,21 +3,32 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from '@/components/theme-toggle';
 import Image from 'next/image';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const navLinks = [
+const mainNavLinks = [
   { href: '/', label: 'Beranda' },
   { href: '/about', label: 'Tentang' },
   { href: '/profile', label: 'Profil' },
   { href: '/proker', label: 'Program' },
-  { href: '/berita', label: 'Berita' },
-  { href: '/aspiration', label: 'Aspirasi' },
+];
+
+const trailingNavLink = { href: '/aspiration', label: 'Aspirasi' };
+
+const beritaSubLinks = [
+    { href: '/berita/hmj', label: 'Berita HMJ' },
+    { href: '/berita/artikel-dan-pengetahuan', label: 'Artikel & Pengetahuan' },
 ];
 
 export function SiteHeader() {
@@ -40,15 +51,25 @@ export function SiteHeader() {
     }
     return pathname.startsWith(href);
   };
-
-  const getLinkClass = (href: string) => {
+  
+  const NavLink = ({ href, label }: { href: string; label: string }) => {
     const isActive = getIsActive(href);
-    return cn(
-      'relative font-semibold transition-colors hover:text-primary py-2 text-sm',
-      isActive ? 'text-primary' : 'text-foreground/80',
+    return (
+      <Link
+        href={href}
+        className={cn(
+          'relative font-semibold transition-colors hover:text-primary py-2 text-sm',
+          isActive ? 'text-primary' : 'text-foreground/80'
+        )}
+      >
+        {label}
+        {isActive && (
+          <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
+        )}
+      </Link>
     );
   };
-  
+
   return (
     <header
       className={cn(
@@ -66,18 +87,33 @@ export function SiteHeader() {
         </Link>
         
         <nav className="hidden items-center space-x-8 text-sm lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={getLinkClass(link.href)}
-            >
-              {link.label}
-               {getIsActive(link.href) && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
-              )}
-            </Link>
+          {mainNavLinks.map((link) => (
+            <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className={cn(
+                    'relative font-semibold transition-colors hover:text-primary py-2 text-sm px-0 hover:bg-transparent',
+                    getIsActive('/berita') ? 'text-primary' : 'text-foreground/80'
+                )}>
+                    Berita
+                    <ChevronDown className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180" />
+                     {getIsActive('/berita') && (
+                        <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-primary rounded-full"></span>
+                    )}
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {beritaSubLinks.map(subLink => (
+                    <DropdownMenuItem key={subLink.href} asChild>
+                        <Link href={subLink.href}>{subLink.label}</Link>
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <NavLink href={trailingNavLink.href} label={trailingNavLink.label} />
         </nav>
         
         <div className="flex items-center gap-2">
@@ -100,7 +136,7 @@ export function SiteHeader() {
                     </div>
                 </div>
                 <nav className="mt-6 flex flex-col gap-2 p-6">
-                  {navLinks.map((link) => (
+                  {[...mainNavLinks, ...beritaSubLinks, trailingNavLink].map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}

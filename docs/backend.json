@@ -36,6 +36,11 @@
         "divisionId": {
           "type": "string",
           "description": "Reference to Division. (Relationship: Division 1:N BeritaAcara)"
+        },
+        "category": {
+            "type": "string",
+            "description": "The category of the news item.",
+            "enum": ["Berita HMJ", "Artikel & Pengetahuan"]
         }
       },
       "required": [
@@ -43,7 +48,8 @@
         "content",
         "date",
         "imageUrl",
-        "author"
+        "author",
+        "category"
       ]
     },
     "Division": {

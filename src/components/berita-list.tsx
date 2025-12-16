@@ -1,11 +1,9 @@
 
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy } from 'firebase/firestore';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -22,6 +20,13 @@ interface BeritaAcara {
   date: string;
   imageUrl: string;
   author: string;
+}
+
+interface BeritaListProps {
+    title: string;
+    description: string;
+    berita: BeritaAcara[] | null;
+    isLoading: boolean;
 }
 
 const BeritaItemSkeleton = () => (
@@ -44,20 +49,10 @@ const BeritaItemSkeleton = () => (
   </Card>
 );
 
-export default function BeritaPage() {
-  const firestore = useFirestore();
-
-  const beritaQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'berita_acara'), orderBy('date', 'desc'));
-  }, [firestore]);
-
-  const { data: berita, isLoading } = useCollection<BeritaAcara>(beritaQuery);
-
+export default function BeritaList({ title, description, berita, isLoading }: BeritaListProps) {
   return (
     <div className="flex flex-col">
       <section
-        id="hero-berita"
         className="relative w-full flex items-center justify-center min-h-screen py-20 bg-transparent"
       >
         <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
@@ -65,14 +60,12 @@ export default function BeritaPage() {
           <Badge variant="default" className="mb-4 bg-primary/10 text-primary shadow-sm">
             Kabar Terkini
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground">
-            Berita & <span className="text-primary">Acara</span>
-          </h1>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground" dangerouslySetInnerHTML={{ __html: title.replace('&', '&amp;') }}></h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
-            Ikuti perkembangan terbaru, pengumuman penting, dan liputan acara dari Himpunan Mahasiswa Jurusan Manajemen Informatika.
+            {description}
           </p>
           <div className="mt-8">
-            <a href="#berita-list">
+            <a href="#berita-list-content">
               <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce">
                 <ChevronDown className="h-6 w-6" />
               </Button>
@@ -81,7 +74,7 @@ export default function BeritaPage() {
         </ScrollAnimation>
       </section>
 
-      <section id="berita-list" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
+      <section id="berita-list-content" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {isLoading && Array.from({ length: 3 }).map((_, i) => <BeritaItemSkeleton key={i} />)}
@@ -124,7 +117,7 @@ export default function BeritaPage() {
 
           {!isLoading && (!berita || berita.length === 0) && (
             <div className="text-center col-span-full py-16">
-                <h2 className="text-2xl font-semibold text-foreground">Belum Ada Berita</h2>
+                <h2 className="text-2xl font-semibold text-foreground">Belum Ada Postingan</h2>
                 <p className="text-muted-foreground mt-2">Silakan cek kembali nanti untuk melihat pembaruan terbaru.</p>
             </div>
           )}
