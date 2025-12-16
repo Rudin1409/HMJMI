@@ -1,7 +1,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth, useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
@@ -45,6 +45,12 @@ export default function AdminPage() {
 
   const { data: berita, isLoading: isBeritaLoading, error: beritaError } = useCollection<BeritaAcara>(beritaQuery);
 
+  useEffect(() => {
+    if (!isUserLoading && !user) {
+      router.push('/login');
+    }
+  }, [user, isUserLoading, router]);
+
   const handleDelete = async (id: string) => {
     if (!firestore) return;
     try {
@@ -54,17 +60,12 @@ export default function AdminPage() {
     }
   };
 
-  if (isUserLoading) {
+  if (isUserLoading || !user) {
     return (
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
-  }
-
-  if (!user) {
-    router.push('/login');
-    return null;
   }
 
   return (
