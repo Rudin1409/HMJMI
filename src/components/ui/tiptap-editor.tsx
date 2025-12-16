@@ -48,10 +48,9 @@ const ToolbarButton = ({
   </Button>
 );
 
-const EditorToolbar = ({ editor, isHtmlMode, onToggleHtmlMode, htmlContent, onHtmlChange }: { editor: Editor, isHtmlMode: boolean, onToggleHtmlMode: () => void, htmlContent: string, onHtmlChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void }) => {
+const EditorToolbar = ({ editor, isHtmlMode, onToggleHtmlMode }: { editor: Editor, isHtmlMode: boolean, onToggleHtmlMode: () => void }) => {
   return (
-    <>
-      <div className="flex flex-wrap items-center gap-1 rounded-t-md border border-input bg-background p-2">
+      <div className="flex flex-wrap items-center gap-1 rounded-t-md border-x border-t border-input bg-background p-2">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           isActive={editor.isActive('heading', { level: 1 })}
@@ -147,15 +146,6 @@ const EditorToolbar = ({ editor, isHtmlMode, onToggleHtmlMode, htmlContent, onHt
           <Code className="h-4 w-4" />
         </ToolbarButton>
       </div>
-      {isHtmlMode && (
-        <Textarea
-          value={htmlContent}
-          onChange={onHtmlChange}
-          className="min-h-[250px] rounded-t-none resize-y"
-          aria-label="HTML Source Editor"
-        />
-      )}
-    </>
   );
 };
 
@@ -227,15 +217,22 @@ export const TiptapEditor = ({ content, onChange, disabled }: TiptapEditorProps)
   }
 
   return (
-    <div>
-        <EditorToolbar 
-            editor={editor}
-            isHtmlMode={isHtmlMode}
-            onToggleHtmlMode={toggleHtmlMode}
-            htmlContent={htmlContent}
-            onHtmlChange={handleHtmlChange}
+    <>
+      <EditorToolbar 
+          editor={editor}
+          isHtmlMode={isHtmlMode}
+          onToggleHtmlMode={toggleHtmlMode}
+      />
+      {isHtmlMode ? (
+        <Textarea
+          value={htmlContent}
+          onChange={handleHtmlChange}
+          className="min-h-[250px] resize-y rounded-t-none border-t-0"
+          aria-label="HTML Source Editor"
         />
-        {!isHtmlMode && <EditorContent editor={editor} />}
-    </div>
+      ) : (
+        <EditorContent editor={editor} />
+      )}
+    </>
   );
 };
