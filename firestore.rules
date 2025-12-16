@@ -15,22 +15,19 @@ service cloud.firestore {
       allow write: if isSignedIn();
     }
 
-    // Rules for the 'berita_acara' collection (listing documents).
-    // Allow public access to list all news items.
-    match /berita_acara {
-      allow list: if true;
-    }
-
-    // Rules for a single 'berita_acara' document.
-    // Allow public read for a single document, but only authenticated users can write.
+    // Rules for the 'berita_acara' collection.
+    // Public can list and get, but only authenticated users can write.
     match /berita_acara/{beritaAcaraId} {
       allow get: if true;
       allow write: if isSignedIn();
     }
+    match /berita_acara {
+        allow list: if true;
+    }
 
     // Rules for the 'users' collection.
     // Authenticated users can read and list all users.
-    // Only they can write to their own profile.
+    // Only they can write to their own profile (or admins can write).
     match /users/{userId} {
       allow get: if isSignedIn();
       allow list: if isSignedIn();

@@ -130,28 +130,17 @@
     ]
   },
   "firestore": {
-    "collections": [
-      {
-        "path": "/divisions",
-        "description": "Stores details about each division within HMJMI Polsri.",
-        "schema": {
-          "$ref": "#/entities/Division"
-        }
-      },
-      {
-        "path": "/berita_acara",
-        "description": "Stores news and event records for HMJMI Polsri. Includes `divisionId` to associate the event with a specific division.",
-        "schema": {
-          "$ref": "#/entities/BeritaAcara"
-        }
-      },
-      {
-        "path": "/users",
-        "description": "Stores user profile information linked to Firebase Auth UIDs.",
-        "schema": {
-            "$ref": "#/entities/UserProfile"
-        }
-      }
-    ]
+    "/divisions/{divisionId}": {
+      "schema": { "$ref": "#/entities/Division" },
+      "description": "Stores details about each division within HMJMI Polsri."
+    },
+    "/berita_acara/{beritaAcaraId}": {
+      "schema": { "$ref": "#/entities/BeritaAcara" },
+      "description": "Stores news and event records for HMJMI Polsri. Includes `divisionId` to associate the event with a specific division."
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "Stores user profile information linked to Firebase Auth UIDs."
+    }
   }
 }
