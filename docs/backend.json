@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "BeritaAcara": {
@@ -16,7 +17,7 @@
         },
         "content": {
           "type": "string",
-          "description": "The main content or description of the news or event."
+          "description": "The main content or description of the news or event, supports HTML."
         },
         "date": {
           "type": "string",
@@ -30,7 +31,7 @@
         },
         "author": {
           "type": "string",
-          "description": "The author or source of the news or event."
+          "description": "The author or source of the news or event, e.g., 'Dept. Humas'."
         },
         "divisionId": {
           "type": "string",
@@ -43,8 +44,7 @@
         "content",
         "date",
         "imageUrl",
-        "author",
-        "divisionId"
+        "author"
       ]
     },
     "Division": {
@@ -80,40 +80,21 @@
     ]
   },
   "firestore": {
-    "structure": [
+    "collections": [
       {
-        "path": "/divisions/{divisionId}",
-        "definition": {
-          "entityName": "Division",
-          "schema": {
-            "$ref": "#/backend/entities/Division"
-          },
-          "description": "Stores details about each division within HMJMI Polsri.",
-          "params": [
-            {
-              "name": "divisionId",
-              "description": "Unique identifier for the division."
-            }
-          ]
+        "path": "/divisions",
+        "description": "Stores details about each division within HMJMI Polsri.",
+        "schema": {
+          "$ref": "#/entities/Division"
         }
       },
       {
-        "path": "/berita_acara/{beritaAcaraId}",
-        "definition": {
-          "entityName": "BeritaAcara",
-          "schema": {
-            "$ref": "#/backend/entities/BeritaAcara"
-          },
-          "description": "Stores news and event records for HMJMI Polsri. Includes `divisionId` to associate the event with a specific division.",
-          "params": [
-            {
-              "name": "beritaAcaraId",
-              "description": "Unique identifier for the news or event record."
-            }
-          ]
+        "path": "/berita_acara",
+        "description": "Stores news and event records for HMJMI Polsri. Includes `divisionId` to associate the event with a specific division.",
+        "schema": {
+          "$ref": "#/entities/BeritaAcara"
         }
       }
-    ],
-    "reasoning": "The Firestore structure is designed to manage 'BeritaAcara' (News/Events) and 'Division' data for the HMJMI Polsri organization. The structure prioritizes Authorization Independence and supports QAPs. Divisions are stored in a top-level collection, and each BeritaAcara document includes a `divisionId` to link it to a specific division. \n\nAuthorization Independence is achieved by avoiding hierarchical dependencies. Security rules can be written to validate the `divisionId` against the Divisions collection.\n\nQAPs are supported by segregating data into separate collections based on type. List operations are secured by ensuring that rules can efficiently filter based on the denormalized fields (specifically `divisionId` for restricting BeritaAcara listing to specific division)."
+    ]
   }
 }

@@ -8,6 +8,7 @@ import { SiteFooter } from '@/components/site-footer';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import Squares from '@/components/squares';
+import { FirebaseClientProvider } from '@/firebase';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -34,20 +35,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('min-h-screen text-foreground font-sans antialiased', inter.variable)}>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <div className="fixed inset-0 -z-10">
-            <Squares />
-          </div>
-          <div className="relative flex min-h-dvh flex-col bg-transparent">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
-          <Toaster />
-        </ThemeProvider>
+        <FirebaseClientProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            <div className="fixed inset-0 -z-10">
+              <Squares />
+            </div>
+            <div className="relative flex min-h-dvh flex-col bg-transparent">
+              <SiteHeader />
+              <main className="flex-1">{children}</main>
+              <SiteFooter />
+            </div>
+            <Toaster />
+          </ThemeProvider>
+        </FirebaseClientProvider>
       </body>
     </html>
   );
 }
-
-    

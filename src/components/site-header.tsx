@@ -16,6 +16,7 @@ const navLinks = [
   { href: '/about', label: 'Tentang' },
   { href: '/profile', label: 'Profil' },
   { href: '/proker', label: 'Program' },
+  { href: '/berita', label: 'Berita' },
   { href: '/aspiration', label: 'Aspirasi' },
 ];
 

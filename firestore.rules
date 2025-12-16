@@ -1,97 +1,25 @@
-/**
- * Core Philosophy: This ruleset implements a "Public Read, Authenticated Write" security model.
- * All data, including divisions and news articles (Berita Acara), is publicly readable by anyone,
- * including unauthenticated users. However, only authenticated users are permitted to create,
- * modify, or delete any data. This model is suitable for an organizational news portal where
- * content is public, but its management is restricted to internal members.
- *
- * Data Structure: The data is organized into two separate, top-level collections:
- * - /divisions/{divisionId}: Contains information about each organizational division.
- * - /berita_acara/{beritaAcaraId}: Contains news articles, each linked to a division via a `divisionId` field.
- * This flat structure promotes performance and simplifies security rules by avoiding nested reads.
- *
- * Key Security Decisions:
- * - Public Read Access: All content is considered public and can be read by any user, signed-in or not.
- * - Authenticated Writes: All write operations (create, update, delete) are restricted to users who
- *   are signed in. This prevents anonymous users from vandalizing the content.
- * - No Ownership Model: The data entities do not contain a verifiable user ID (UID) field for ownership.
- *   Therefore, any authenticated user can edit or delete any document, not just the original author.
- *   This is a trade-off for simplicity in this prototyping phase.
- *
- * Denormalization for Authorization: The model is simple and does not require complex denormalization.
- * The `divisionId` on `BeritaAcara` documents is a good example of denormalization for relational
- * queries, but it is not used for authorization in this ruleset.
- *
- * Structural Segregation: The use of separate top-level collections for `divisions` and `berita_acara`
- * is a form of structural segregation that simplifies list queries and security rules.
- */
+
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
     // Helper functions to improve readability and reuse of logic.
-
-    /**
-     * Checks if the user is authenticated.
-     */
     function isSignedIn() {
       return request.auth != null;
     }
 
-    /**
-     * Ensures an authenticated user is performing an operation on an existing document.
-     * Crucial for preventing unintended writes or deletes on non-existent paths.
-     */
-    function isAuthenticatedUserAndDocExists() {
-      return isSignedIn() && resource != null;
-    }
-
-    /**
-     * On document creation, validates that the document's internal 'id' field
-     * matches the document's ID in the path. This enforces data consistency.
-     */
-    function isNewDocumentConsistent(docId) {
-      return request.resource.data.id == docId;
-    }
-
-    /**
-     * On document update, validates that the document's internal 'id' field
-     * cannot be changed. This enforces the immutability of the primary identifier.
-     */
-    function isIdImmutable() {
-      return request.resource.data.id == resource.data.id;
-    }
-
-    /**
-     * @description Rules for the 'divisions' collection.
-     * @path /divisions/{divisionId}
-     * @allow (get) Any user, authenticated or not, can read a division's details.
-     * @allow (create) An authenticated user can create a new division document.
-     * @deny (create) An anonymous user cannot create a new division.
-     * @principle Public Read, Authenticated Write. Enforces basic relational integrity on creation and updates.
-     */
+    // Rules for the 'divisions' collection.
+    // Public read, authenticated write.
     match /divisions/{divisionId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if isSignedIn() && isNewDocumentConsistent(divisionId);
-      allow update: if isAuthenticatedUserAndDocExists() && isIdImmutable();
-      allow delete: if isAuthenticatedUserAndDocExists();
+      allow read: if true;
+      allow write: if isSignedIn();
     }
 
-    /**
-     * @description Rules for the 'berita_acara' (news/events) collection.
-     * @path /berita_acara/{beritaAcaraId}
-     * @allow (list) Any user, authenticated or not, can list all news articles.
-     * @allow (update) An authenticated user can update an existing news article.
-     * @deny (delete) An anonymous user cannot delete a news article.
-     * @principle Public Read, Authenticated Write. Enforces basic relational integrity on creation and updates.
-     */
+    // Rules for the 'berita_acara' (news/events) collection.
+    // Public read, authenticated write.
     match /berita_acara/{beritaAcaraId} {
-      allow get: if true;
-      allow list: if true;
-      allow create: if isSignedIn() && isNewDocumentConsistent(beritaAcaraId);
-      allow update: if isAuthenticatedUserAndDocExists() && isIdImmutable();
-      allow delete: if isAuthenticatedUserAndDocExists();
+      allow read: if true;
+      allow write: if isSignedIn();
     }
   }
 }

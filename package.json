@@ -1,3 +1,4 @@
+
 {
   "name": "nextn",
   "version": "0.1.0",
@@ -42,7 +43,7 @@
     "dotenv": "^16.5.0",
     "embla-carousel-autoplay": "^8.1.5",
     "embla-carousel-react": "^8.6.0",
-    "firebase": "^11.9.1",
+    "firebase": "^10.12.2",
     "framer-motion": "^11.2.12",
     "genkit": "^1.14.1",
     "lucide-react": "^0.475.0",
@@ -59,6 +60,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
