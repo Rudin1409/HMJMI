@@ -1,0 +1,119 @@
+{
+  "entities": {
+    "BeritaAcara": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "BeritaAcara",
+      "type": "object",
+      "description": "Represents a news or event record for HMJMI Polsri.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the BeritaAcara entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the news or event."
+        },
+        "content": {
+          "type": "string",
+          "description": "The main content or description of the news or event."
+        },
+        "date": {
+          "type": "string",
+          "description": "The date and time when the news or event occurred or was published.",
+          "format": "date-time"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the image associated with the news or event.",
+          "format": "uri"
+        },
+        "author": {
+          "type": "string",
+          "description": "The author or source of the news or event."
+        },
+        "divisionId": {
+          "type": "string",
+          "description": "Reference to Division. (Relationship: Division 1:N BeritaAcara)"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "date",
+        "imageUrl",
+        "author",
+        "divisionId"
+      ]
+    },
+    "Division": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Division",
+      "type": "object",
+      "description": "Represents a division within HMJMI Polsri.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Division entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the division."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the division's responsibilities and activities."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/divisions/{divisionId}",
+        "definition": {
+          "entityName": "Division",
+          "schema": {
+            "$ref": "#/backend/entities/Division"
+          },
+          "description": "Stores details about each division within HMJMI Polsri.",
+          "params": [
+            {
+              "name": "divisionId",
+              "description": "Unique identifier for the division."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/berita_acara/{beritaAcaraId}",
+        "definition": {
+          "entityName": "BeritaAcara",
+          "schema": {
+            "$ref": "#/backend/entities/BeritaAcara"
+          },
+          "description": "Stores news and event records for HMJMI Polsri. Includes `divisionId` to associate the event with a specific division.",
+          "params": [
+            {
+              "name": "beritaAcaraId",
+              "description": "Unique identifier for the news or event record."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to manage 'BeritaAcara' (News/Events) and 'Division' data for the HMJMI Polsri organization. The structure prioritizes Authorization Independence and supports QAPs. Divisions are stored in a top-level collection, and each BeritaAcara document includes a `divisionId` to link it to a specific division. \n\nAuthorization Independence is achieved by avoiding hierarchical dependencies. Security rules can be written to validate the `divisionId` against the Divisions collection.\n\nQAPs are supported by segregating data into separate collections based on type. List operations are secured by ensuring that rules can efficiently filter based on the denormalized fields (specifically `divisionId` for restricting BeritaAcara listing to specific division)."
+  }
+}
