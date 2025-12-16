@@ -39,11 +39,6 @@ interface BeritaAcara {
   divisionId?: string;
 }
 
-// Required for static export with dynamic routes
-export async function generateStaticParams() {
-  return [];
-}
-
 export default function PostFormPage() {
   const auth = useAuth();
   const firestore = useFirestore();
@@ -175,7 +170,7 @@ export default function PostFormPage() {
                   <AlertCircle className="h-4 w-4" />
                   <AlertTitle>An Error Occurred</AlertTitle>
                   <AlertDescription>{error}</AlertDescription>
-                </Alert>
+                </Aler
               )}
 
               <FormField
