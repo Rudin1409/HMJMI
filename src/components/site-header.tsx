@@ -27,11 +27,6 @@ const mainNavLinks = [
 
 const trailingNavLink = { href: '/aspiration', label: 'Aspirasi' };
 
-const beritaSubLinks = [
-    { href: '/berita/hmj', label: 'Berita HMJ' },
-    { href: '/berita/artikel-dan-pengetahuan', label: 'Artikel & Pengetahuan' },
-];
-
 export function SiteHeader() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
