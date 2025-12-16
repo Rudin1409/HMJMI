@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useAuth } from '@/firebase';
+import { useAuth, useUserProfile } from '@/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   DropdownMenu,
@@ -20,11 +20,16 @@ import {
 const navItems = [
   { href: '/admin', label: 'Dasbor', icon: Home },
   { href: '/admin/posts', label: 'Postingan', icon: Newspaper },
-  { href: '/admin/users', label: 'Pengguna', icon: Users },
+];
+
+const adminNavItems = [
+    { href: '/admin/users', label: 'Pengguna', icon: Users, role: 'admin' },
 ];
 
 function SidebarNav() {
     const pathname = usePathname();
+    const { userProfile } = useUserProfile();
+
     return (
         <nav className="flex flex-col gap-2">
             {navItems.map((item) => (
@@ -38,6 +43,17 @@ function SidebarNav() {
                     </Button>
                 </Link>
             ))}
+             {userProfile?.role === 'admin' && adminNavItems.map((item) => (
+                <Link key={item.href} href={item.href}>
+                    <Button
+                        variant={pathname === item.href ? 'secondary' : 'ghost'}
+                        className="w-full justify-start"
+                    >
+                        <item.icon className="mr-2 h-4 w-4" />
+                        {item.label}
+                    </Button>
+                </Link>
+             ))}
         </nav>
     );
 }
@@ -45,6 +61,10 @@ function SidebarNav() {
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const auth = useAuth();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { userProfile } = useUserProfile();
+
+    const allNavItems = userProfile?.role === 'admin' ? [...navItems, ...adminNavItems] : navItems;
+
 
     return (
         <div className="flex min-h-screen w-full bg-muted/40">
@@ -81,7 +101,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                                     <Newspaper className="h-5 w-5 transition-all group-hover:scale-110" />
                                     <span className="sr-only">Admin Panel</span>
                                 </Link>
-                                {navItems.map((item) => (
+                                {allNavItems.map((item) => (
                                     <Link
                                         key={item.href}
                                         href={item.href}
@@ -102,13 +122,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
                                 <Avatar>
-                                    <AvatarImage src="https://placehold.co/32x32" alt="Avatar" />
+                                    <AvatarImage src={userProfile?.avatar || "https://placehold.co/32x32"} alt="Avatar" />
                                     <AvatarFallback><UserIcon /></AvatarFallback>
                                 </Avatar>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Akun Saya</DropdownMenuLabel>
+                            <DropdownMenuLabel>{userProfile?.username || 'Akun Saya'}</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem onClick={() => auth?.signOut()}>
                                 <LogOut className="mr-2 h-4 w-4" />

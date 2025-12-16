@@ -88,7 +88,8 @@ function AddUserForm({ setDialogOpen }: { setDialogOpen: (open: boolean) => void
         email: values.email,
         departmentId: values.departmentId,
         divisionId: values.divisionId || null,
-        avatar: `https://placehold.co/100x100.png?text=${values.username.charAt(0)}`
+        avatar: `https://placehold.co/100x100.png?text=${values.username.charAt(0)}`,
+        role: 'user', // Assign 'user' role by default
       };
       await setDoc(doc(firestore, "users", user.uid), userProfileData);
 

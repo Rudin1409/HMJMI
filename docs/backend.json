@@ -114,9 +114,14 @@
                 "type": "string",
                 "format": "uri",
                 "description": "URL for the user's profile picture."
+            },
+            "role": {
+                "type": "string",
+                "description": "The user's role in the system.",
+                "enum": ["admin", "user"]
             }
         },
-        "required": ["uid", "username", "email", "departmentId"]
+        "required": ["uid", "username", "email", "departmentId", "role"]
     }
   },
   "auth": {
