@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -23,7 +22,6 @@ interface BeritaAcara {
 }
 
 export default function BeritaPage() {
-  const [activeTab, setActiveTab] = useState('hmj');
   const firestore = useFirestore();
 
   const beritaQuery = useMemoFirebase(() => {
@@ -37,16 +35,15 @@ export default function BeritaPage() {
 
   const { data: allBerita, isLoading } = useCollection<BeritaAcara>(beritaQuery);
 
-  const filteredBerita = useMemo(() => {
+  const beritaHmj = useMemo(() => {
     if (!allBerita) return null;
-    if (activeTab === 'hmj') {
-      return allBerita.filter(item => item.category === 'Berita HMJ');
-    }
-    if (activeTab === 'artikel') {
-      return allBerita.filter(item => item.category === 'Artikel & Pengetahuan');
-    }
-    return allBerita;
-  }, [allBerita, activeTab]);
+    return allBerita.filter(item => item.category === 'Berita HMJ');
+  }, [allBerita]);
+
+  const artikel = useMemo(() => {
+    if (!allBerita) return null;
+    return allBerita.filter(item => item.category === 'Artikel & Pengetahuan');
+  }, [allBerita]);
 
   return (
     <div className="flex flex-col">
@@ -72,21 +69,24 @@ export default function BeritaPage() {
 
       <section id="berita-content" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
         <div className="container mx-auto px-4">
-          <Tabs defaultValue="hmj" className="w-full" onValueChange={setActiveTab}>
+          <Tabs defaultValue="hmj" className="w-full">
             <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto h-auto shadow-md">
               <TabsTrigger value="hmj" className="py-2.5">Berita HMJ</TabsTrigger>
               <TabsTrigger value="artikel" className="py-2.5">Artikel & Pengetahuan</TabsTrigger>
             </TabsList>
             
-            <div className="mt-8">
-                 <BeritaList
-                    title=""
-                    description=""
-                    berita={filteredBerita}
-                    isLoading={isLoading}
-                    showHero={false}
-                />
-            </div>
+            <TabsContent value="hmj" className="mt-8">
+              <BeritaList
+                berita={beritaHmj}
+                isLoading={isLoading}
+              />
+            </TabsContent>
+            <TabsContent value="artikel" className="mt-8">
+              <BeritaList
+                berita={artikel}
+                isLoading={isLoading}
+              />
+            </TabsContent>
           </Tabs>
         </div>
       </section>
