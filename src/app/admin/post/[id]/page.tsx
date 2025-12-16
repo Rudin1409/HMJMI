@@ -39,6 +39,11 @@ interface BeritaAcara {
   divisionId?: string;
 }
 
+// Required for static export with dynamic routes
+export async function generateStaticParams() {
+  return [];
+}
+
 export default function PostFormPage() {
   const auth = useAuth();
   const firestore = useFirestore();
