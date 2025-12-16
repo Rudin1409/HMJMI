@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState } from 'react';
@@ -48,7 +49,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     return (
         <div className="flex min-h-screen w-full bg-muted/40">
             {/* Desktop Sidebar */}
-            <aside className="hidden w-64 flex-col border-r bg-background sm:flex">
+            <aside className="sticky top-0 hidden h-screen w-64 flex-col border-r bg-background sm:flex">
                 <div className="flex h-[60px] items-center border-b px-6">
                     <Link href="/admin" className="flex items-center gap-2 font-semibold">
                         <Newspaper className="h-6 w-6 text-primary" />
@@ -116,7 +117,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </header>
-                <main className="flex-1 p-4 sm:p-6">{children}</main>
+                <main className="flex-1 overflow-auto p-4 sm:p-6">{children}</main>
             </div>
         </div>
     );
