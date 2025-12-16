@@ -23,7 +23,7 @@ import TextAlign from '@tiptap/extension-text-align';
 import { cn } from '@/lib/utils';
 import { Button } from './button';
 import { Textarea } from './textarea';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ToolbarButton = ({
   onClick,
@@ -50,7 +50,7 @@ const ToolbarButton = ({
 
 const EditorToolbar = ({ editor, isHtmlMode, onToggleHtmlMode }: { editor: Editor, isHtmlMode: boolean, onToggleHtmlMode: () => void }) => {
   return (
-      <div className="flex flex-wrap items-center gap-1 rounded-t-md border-x border-t border-input bg-background p-2">
+      <div className="flex flex-wrap items-center gap-1 border-b border-input p-2">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           isActive={editor.isActive('heading', { level: 1 })}
@@ -187,17 +187,26 @@ export const TiptapEditor = ({ content, onChange, disabled }: TiptapEditorProps)
     editorProps: {
       attributes: {
         class:
-          'prose dark:prose-invert prose-sm sm:prose-base min-h-[250px] w-full rounded-b-md border-x border-b border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+          'prose dark:prose-invert prose-sm sm:prose-base min-h-[250px] w-full bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
       },
     },
     editable: !disabled,
   });
+
+  useEffect(() => {
+    if (!editor) return;
+    if (editor.isDestroyed) return;
+
+    if (content !== editor.getHTML()) {
+      editor.commands.setContent(content, false);
+    }
+  }, [content, editor]);
   
   const toggleHtmlMode = () => {
     if(!editor) return;
     if (isHtmlMode) {
       // from html mode to visual mode
-      editor.commands.setContent(htmlContent);
+      editor.commands.setContent(htmlContent, false);
       onChange(htmlContent);
     } else {
       // from visual mode to html mode
@@ -211,13 +220,12 @@ export const TiptapEditor = ({ content, onChange, disabled }: TiptapEditorProps)
     onChange(e.target.value);
   };
 
-
   if (!editor) {
     return null;
   }
 
   return (
-    <>
+    <div className="w-full rounded-md border border-input bg-transparent ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
       <EditorToolbar 
           editor={editor}
           isHtmlMode={isHtmlMode}
@@ -227,12 +235,13 @@ export const TiptapEditor = ({ content, onChange, disabled }: TiptapEditorProps)
         <Textarea
           value={htmlContent}
           onChange={handleHtmlChange}
-          className="min-h-[250px] resize-y rounded-t-none border-t-0"
+          className="min-h-[250px] resize-y border-0 rounded-t-none focus-visible:ring-0 focus-visible:ring-offset-0"
           aria-label="HTML Source Editor"
+          disabled={disabled}
         />
       ) : (
         <EditorContent editor={editor} />
       )}
-    </>
+    </div>
   );
 };
