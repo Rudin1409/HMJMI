@@ -1,49 +1,41 @@
-
 'use client';
 
-import React, { useEffect } from 'react';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth, useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, deleteDoc, doc, orderBy, query } from 'firebase/firestore';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
-import { PlusCircle, Edit, Trash2, LogOut, Loader2, AlertCircle } from 'lucide-react';
-import { format } from 'date-fns';
-import { id } from 'date-fns/locale';
+import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
+import { collection, query, orderBy, getCountFromServer } from 'firebase/firestore';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Loader2, Users, FileText, BarChart } from 'lucide-react';
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
+  ResponsiveContainer,
+  BarChart as RechartsBarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from 'recharts';
 
 interface BeritaAcara {
   id: string;
-  title: string;
-  date: string;
-  author: string;
 }
 
+const placeholderVisitorData = [
+  { day: 'Rab', visitors: 2 },
+  { day: 'Kam', visitors: 3 },
+  { day: 'Jum', visitors: 1 },
+  { day: 'Sab', visitors: 4 },
+  { day: 'Min', visitors: 3 },
+  { day: 'Sen', visitors: 5 },
+  { day: 'Har', visitors: 7 },
+];
+
+
 export default function AdminPage() {
-  const auth = useAuth();
   const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
-
-  const beritaQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'berita_acara'), orderBy('date', 'desc'));
-  }, [firestore]);
-
-  const { data: berita, isLoading: isBeritaLoading, error: beritaError } = useCollection<BeritaAcara>(beritaQuery);
+  const [totalPosts, setTotalPosts] = useState<number | null>(null);
+  const [isCountLoading, setIsCountLoading] = useState(true);
 
   useEffect(() => {
     if (!isUserLoading && !user) {
@@ -51,117 +43,105 @@ export default function AdminPage() {
     }
   }, [user, isUserLoading, router]);
 
-  const handleDelete = async (id: string) => {
-    if (!firestore) return;
-    try {
-      await deleteDoc(doc(firestore, 'berita_acara', id));
-    } catch (error) {
-      console.error("Error deleting document: ", error);
+  useEffect(() => {
+    async function fetchPostCount() {
+        if (!firestore) return;
+        try {
+            setIsCountLoading(true);
+            const beritaCollection = collection(firestore, 'berita_acara');
+            const snapshot = await getCountFromServer(beritaCollection);
+            setTotalPosts(snapshot.data().count);
+        } catch (error) {
+            console.error("Error fetching post count: ", error);
+            setTotalPosts(0);
+        } finally {
+            setIsCountLoading(false);
+        }
     }
-  };
+    fetchPostCount();
+  }, [firestore]);
+
 
   if (isUserLoading || !user) {
     return (
-      <div className="flex h-screen items-center justify-center">
+      <div className="flex h-full items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-10">
+    <div className="flex flex-col gap-6">
+        <div>
+            <h1 className="text-3xl font-bold">Dasbor</h1>
+            <p className="text-muted-foreground">Selamat datang kembali! Berikut ringkasan situs Anda.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-2">
+            <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Total Postingan</CardTitle>
+                    <FileText className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                    {isCountLoading ? (
+                        <Skeleton className="h-8 w-1/4" />
+                    ) : (
+                        <div className="text-2xl font-bold">{totalPosts}</div>
+                    )}
+                    <p className="text-xs text-muted-foreground">Jumlah semua postingan</p>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium">Total Pengunjung</CardTitle>
+                    <Users className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                    <div className="text-2xl font-bold">10</div>
+                    <p className="text-xs text-muted-foreground">Total kunjungan unik (placeholder)</p>
+                </CardContent>
+            </Card>
+        </div>
+        
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <div>
-              <CardTitle>Admin Dashboard</CardTitle>
-              <CardDescription>Manage news posts for the website.</CardDescription>
-            </div>
-            <div className="flex items-center gap-4">
-               <Button asChild>
-                <Link href="/admin/post?id=new">
-                  <PlusCircle className="mr-2 h-4 w-4" /> Add New Post
-                </Link>
-              </Button>
-              <Button variant="outline" onClick={() => auth?.signOut()}>
-                <LogOut className="mr-2 h-4 w-4" /> Logout
-              </Button>
-            </div>
-          </CardHeader>
-          <CardContent>
-            {isBeritaLoading && (
-                <div className="flex justify-center py-10">
-                    <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                </div>
-            )}
-            {beritaError && (
-                 <div className="text-destructive-foreground bg-destructive p-4 rounded-md flex items-center gap-4">
-                    <AlertCircle />
-                    <p>Error fetching news data: {beritaError.message}</p>
-                 </div>
-            )}
-            {!isBeritaLoading && !beritaError && (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Title</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Author</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {berita && berita.length > 0 ? (
-                    berita.map((item) => (
-                      <TableRow key={item.id}>
-                        <TableCell className="font-medium">{item.title}</TableCell>
-                        <TableCell>{format(new Date(item.date), 'd MMM yyyy', { locale: id })}</TableCell>
-                        <TableCell>
-                          <Badge variant="secondary">{item.author}</Badge>
-                        </TableCell>
-                        <TableCell className="text-right">
-                          <Button asChild variant="ghost" size="icon">
-                            <Link href={`/admin/post?id=${item.id}`}>
-                              <Edit className="h-4 w-4" />
-                            </Link>
-                          </Button>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                               <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  This action cannot be undone. This will permanently delete the post.
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleDelete(item.id)} className="bg-destructive hover:bg-destructive/90">
-                                  Delete
-                                </AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell colSpan={4} className="text-center">
-                        No news posts found.
-                      </TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            )}
-          </CardContent>
+            <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                    <BarChart className="h-5 w-5" />
+                    Grafik Pengunjung (7 Hari Terakhir)
+                </CardTitle>
+            </CardHeader>
+            <CardContent className="pl-2">
+                <ResponsiveContainer width="100%" height={350}>
+                    <RechartsBarChart data={placeholderVisitorData}>
+                        <XAxis
+                            dataKey="day"
+                            stroke="#888888"
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                        />
+                        <YAxis
+                            stroke="#888888"
+                            fontSize={12}
+                            tickLine={false}
+                            axisLine={false}
+                            tickFormatter={(value) => `${value}`}
+                        />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: 'hsl(var(--background))',
+                            borderColor: 'hsl(var(--border))'
+                          }}
+                        />
+                        <Bar dataKey="visitors" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                    </RechartsBarChart>
+                </ResponsiveContainer>
+            </CardContent>
         </Card>
-      </div>
     </div>
   );
+}
+
+function Skeleton({className}: {className?: string}) {
+    return <div className={`animate-pulse bg-muted rounded-md ${className}`} />;
 }

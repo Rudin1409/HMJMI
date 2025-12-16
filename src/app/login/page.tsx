@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const auth = useAuth();
@@ -28,14 +29,6 @@ export default function LoginPage() {
     }
   }, [user, isUserLoading, router]);
 
-  if (isUserLoading || user) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!auth) return;
@@ -43,7 +36,7 @@ export default function LoginPage() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push('/admin');
+      // The useEffect hook will handle redirection
     } catch (err: any) {
       if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
         setError('Email atau password salah. Silakan coba lagi.');
@@ -55,10 +48,23 @@ export default function LoginPage() {
     }
   };
 
+  if (isUserLoading || (!isUserLoading && user)) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-background">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
+    <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
+       <Card className="w-full max-w-sm">
+        <CardHeader className="text-center">
+            <div className="mx-auto mb-4">
+              <Link href="/" className="flex items-center justify-center space-x-2">
+                <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-12 w-12" />
+              </Link>
+            </div>
           <CardTitle className="text-2xl">Admin Login</CardTitle>
           <CardDescription>Masukkan kredensial Anda untuk mengakses dasbor.</CardDescription>
         </CardHeader>

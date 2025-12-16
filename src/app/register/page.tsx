@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function RegisterPage() {
   const auth = useAuth();
@@ -28,14 +29,6 @@ export default function RegisterPage() {
     }
   }, [user, isUserLoading, router]);
 
-  if (isUserLoading || user) {
-     return (
-      <div className="flex h-screen items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!auth) return;
@@ -48,7 +41,7 @@ export default function RegisterPage() {
     }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      router.push('/admin');
+      // The useEffect hook will handle redirection
     } catch (err: any) {
        if (err.code === 'auth/email-already-in-use') {
         setError('Email ini sudah terdaftar. Silakan gunakan email lain atau login.');
@@ -62,10 +55,23 @@ export default function RegisterPage() {
     }
   };
 
+  if (isUserLoading || (!isUserLoading && user)) {
+     return (
+      <div className="flex h-screen items-center justify-center bg-background">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-background">
+    <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
       <Card className="w-full max-w-sm">
-        <CardHeader>
+        <CardHeader className="text-center">
+           <div className="mx-auto mb-4">
+              <Link href="/" className="flex items-center justify-center space-x-2">
+                <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-12 w-12" />
+              </Link>
+            </div>
           <CardTitle className="text-2xl">Buat Akun Admin</CardTitle>
           <CardDescription>Daftarkan akun baru untuk mengelola konten website.</CardDescription>
         </CardHeader>

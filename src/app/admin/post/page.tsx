@@ -4,7 +4,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth, useUser, useFirestore, useDoc, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, addDoc, collection } from 'firebase/firestore';
+import { doc, setDoc, addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -32,7 +32,7 @@ type BeritaFormData = z.infer<typeof formSchema>;
 interface BeritaAcara {
   title: string;
   content: string;
-  date: string;
+  date: any; // Firestore timestamp
   imageUrl: string;
   author: string;
   divisionId?: string;
@@ -124,7 +124,7 @@ function PostForm() {
       const dataToSave = {
         ...values,
         imageUrl: finalImageUrl,
-        date: new Date().toISOString(),
+        date: serverTimestamp(),
       };
 
       if (isNewPost) {
@@ -133,7 +133,7 @@ function PostForm() {
         const postDocRef = doc(firestore, 'berita_acara', id);
         await setDoc(postDocRef, dataToSave, { merge: true });
       }
-      router.push('/admin');
+      router.push('/admin/posts');
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -150,11 +150,10 @@ function PostForm() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-10">
-      <Card className="max-w-4xl mx-auto">
+    <Card>
         <CardHeader>
-          <Button variant="ghost" size="sm" className="w-fit p-0 h-auto mb-4" onClick={() => router.push('/admin')}>
-            <ChevronLeft className="mr-2 h-4 w-4"/> Back to Dashboard
+          <Button variant="ghost" size="sm" className="w-fit p-0 h-auto mb-4" onClick={() => router.push('/admin/posts')}>
+            <ChevronLeft className="mr-2 h-4 w-4"/> Back to Posts
           </Button>
           <CardTitle>{isNewPost ? 'Create New Post' : 'Edit Post'}</CardTitle>
           <CardDescription>Fill in the details for the news post.</CardDescription>
@@ -241,7 +240,7 @@ function PostForm() {
               </FormItem>
 
               <div className="flex justify-end gap-4">
-                <Button type="button" variant="outline" onClick={() => router.push('/admin')} disabled={isLoading}>
+                <Button type="button" variant="outline" onClick={() => router.push('/admin/posts')} disabled={isLoading}>
                     Cancel
                 </Button>
                 <Button type="submit" disabled={isLoading}>
@@ -253,7 +252,6 @@ function PostForm() {
           </Form>
         </CardContent>
       </Card>
-    </div>
   );
 }
 
