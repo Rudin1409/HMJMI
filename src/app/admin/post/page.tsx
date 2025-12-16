@@ -3,7 +3,8 @@
 
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useAuth, useUser, useFirestore, useDoc, useMemoFirebase } from '@/firebase';
+import { useUser, useFirestore } from '@/firebase';
+import { useDoc, useMemoFirebase } from '@/firebase';
 import { doc, setDoc, addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useForm } from 'react-hook-form';
@@ -13,12 +14,12 @@ import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader2, AlertCircle, ChevronLeft, Upload } from 'lucide-react';
+import { Loader2, AlertCircle, Upload } from 'lucide-react';
 import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { RichTextEditor } from '@/components/ui/rich-text-editor';
 
 const formSchema = z.object({
   title: z.string().min(5, 'Judul harus memiliki setidaknya 5 karakter.'),
@@ -201,37 +202,12 @@ function PostForm() {
                                 <FormItem>
                                     <FormLabel>Konten</FormLabel>
                                     <FormControl>
-                                    <Textarea placeholder="Tulis konten berita di sini..." {...field} rows={15} disabled={isLoading} />
+                                      <RichTextEditor {...field} rows={15} disabled={isLoading} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                                 )}
                             />
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Gambar Unggulan</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                             <FormItem>
-                                <FormControl>
-                                    <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
-                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
-                                            <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Klik untuk mengunggah</span> atau seret file</p>
-                                            <p className="text-xs text-muted-foreground">PNG, JPG, atau WEBP (MAX. 5MB)</p>
-                                        </div>
-                                        <Input type="file" className="hidden" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} disabled={isLoading}/>
-                                    </label>
-                                </FormControl>
-                                {imagePreview && (
-                                        <div className="mt-4 relative w-full max-w-sm aspect-video rounded-md overflow-hidden border-2 border-border">
-                                            <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover"/>
-                                        </div>
-                                )}
-                                <FormMessage className="mt-2" />
-                            </FormItem>
                         </CardContent>
                     </Card>
                 </div>
@@ -290,6 +266,32 @@ function PostForm() {
                             />
                         </CardContent>
                     </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Gambar Unggulan</CardTitle>
+                            <CardDescription>Pilih gambar utama untuk postingan ini.</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                             <FormItem>
+                                <FormControl>
+                                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
+                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
+                                            <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Klik untuk mengunggah</span></p>
+                                            <p className="text-xs text-muted-foreground">PNG, JPG, WEBP</p>
+                                        </div>
+                                        <Input type="file" className="hidden" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} disabled={isLoading}/>
+                                    </label>
+                                </FormControl>
+                                {imagePreview && (
+                                        <div className="mt-4 relative w-full aspect-video rounded-md overflow-hidden border-2 border-border">
+                                            <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover"/>
+                                        </div>
+                                )}
+                                <FormMessage className="mt-2" />
+                            </FormItem>
+                        </CardContent>
+                    </Card>
                 </div>
             </div>
         </form>
@@ -305,5 +307,3 @@ export default function PostFormPage() {
     </Suspense>
   );
 }
-
-    
