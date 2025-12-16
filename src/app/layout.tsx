@@ -3,11 +3,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import { SiteHeader } from '@/components/site-header';
-import { SiteFooter } from '@/components/site-footer';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
-import Squares from '@/components/squares';
 import { FirebaseClientProvider } from '@/firebase';
 
 const inter = Inter({
@@ -37,14 +34,7 @@ export default function RootLayout({
       <body className={cn('min-h-screen text-foreground font-sans antialiased', inter.variable)}>
         <FirebaseClientProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
-            <div className="fixed inset-0 -z-10">
-              <Squares />
-            </div>
-            <div className="relative flex min-h-dvh flex-col bg-transparent">
-              <SiteHeader />
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
-            </div>
+            {children}
             <Toaster />
           </ThemeProvider>
         </FirebaseClientProvider>
