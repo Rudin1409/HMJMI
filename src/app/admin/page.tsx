@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useEffect } from 'react';
+import React, 'useEffect' from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth, useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
@@ -83,7 +83,7 @@ export default function AdminPage() {
                   <PlusCircle className="mr-2 h-4 w-4" /> Add New Post
                 </Link>
               </Button>
-              <Button variant="outline" onClick={() => auth.signOut()}>
+              <Button variant="outline" onClick={() => auth?.signOut()}>
                 <LogOut className="mr-2 h-4 w-4" /> Logout
               </Button>
             </div>
