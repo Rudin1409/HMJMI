@@ -67,7 +67,7 @@ const EditorToolbar = ({ editor }: { editor: Editor }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-wrap items-center gap-1 rounded-t-md border border-b-0 border-input bg-background p-2">
+       <div className="flex flex-wrap items-center gap-1 rounded-t-md border border-b-0 border-input bg-background p-2">
         <ToolbarButton
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           isActive={editor.isActive('heading', { level: 1 })}
