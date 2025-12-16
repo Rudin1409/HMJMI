@@ -195,6 +195,26 @@ function PostForm() {
                                 )}
                             />
 
+                             <FormItem>
+                                <FormLabel>Gambar Unggulan</FormLabel>
+                                <FormControl>
+                                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
+                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
+                                            <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Klik untuk mengunggah</span></p>
+                                            <p className="text-xs text-muted-foreground">PNG, JPG, WEBP</p>
+                                        </div>
+                                        <Input type="file" className="hidden" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} disabled={isLoading}/>
+                                    </label>
+                                </FormControl>
+                                {imagePreview && (
+                                        <div className="mt-4 relative w-full aspect-video rounded-md overflow-hidden border-2 border-border">
+                                            <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover"/>
+                                        </div>
+                                )}
+                                <FormMessage className="mt-2" />
+                            </FormItem>
+
                             <FormField
                                 control={form.control}
                                 name="content"
@@ -266,32 +286,6 @@ function PostForm() {
                             />
                         </CardContent>
                     </Card>
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Gambar Unggulan</CardTitle>
-                            <CardDescription>Pilih gambar utama untuk postingan ini.</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                             <FormItem>
-                                <FormControl>
-                                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
-                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
-                                            <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Klik untuk mengunggah</span></p>
-                                            <p className="text-xs text-muted-foreground">PNG, JPG, WEBP</p>
-                                        </div>
-                                        <Input type="file" className="hidden" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} disabled={isLoading}/>
-                                    </label>
-                                </FormControl>
-                                {imagePreview && (
-                                        <div className="mt-4 relative w-full aspect-video rounded-md overflow-hidden border-2 border-border">
-                                            <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover"/>
-                                        </div>
-                                )}
-                                <FormMessage className="mt-2" />
-                            </FormItem>
-                        </CardContent>
-                    </Card>
                 </div>
             </div>
         </form>
@@ -307,3 +301,4 @@ export default function PostFormPage() {
     </Suspense>
   );
 }
+
