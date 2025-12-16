@@ -31,8 +31,11 @@ service cloud.firestore {
     // Only authenticated users can access anything in this collection.
     // An individual user can only write to their own document.
     match /users/{userId} {
-      allow get, list: if isSignedIn();
+      allow get: if isSignedIn();
       allow write: if isSignedIn() && request.auth.uid == userId;
+    }
+    match /users {
+        allow list: if isSignedIn();
     }
   }
 }
