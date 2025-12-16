@@ -96,14 +96,6 @@ export default function PostFormPage() {
     }
   }, [user, isUserLoading, router]);
 
-  if (isUserLoading || isPostLoading) {
-    return <div className="flex h-screen items-center justify-center"><Loader2 className="h-8 w-8 animate-spin" /></div>;
-  }
-
-  if (!user) {
-    return null;
-  }
-  
   const uploadImage = async (file: File): Promise<string> => {
       if(!firestore) throw new Error("Firestore not initialized");
       const storage = getStorage(firestore.app);
@@ -152,6 +144,14 @@ export default function PostFormPage() {
     }
   };
 
+  if (isUserLoading || isPostLoading) {
+    return <div className="flex h-screen items-center justify-center"><Loader2 className="h-8 w-8 animate-spin" /></div>;
+  }
+
+  if (!user) {
+    return null;
+  }
+
   return (
     <div className="container mx-auto px-4 py-10">
       <Card className="max-w-4xl mx-auto">
@@ -170,7 +170,7 @@ export default function PostFormPage() {
                   <AlertCircle className="h-4 w-4" />
                   <AlertTitle>An Error Occurred</AlertTitle>
                   <AlertDescription>{error}</AlertDescription>
-                </Aler
+                </Alert>
               )}
 
               <FormField
