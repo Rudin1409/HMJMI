@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useAuth, useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle, Loader2 } from 'lucide-react';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const auth = useAuth();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   if (isUserLoading) {
-    return (
+     return (
       <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
@@ -35,18 +35,25 @@ export default function LoginPage() {
     return null;
   }
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
+    if(password.length < 6) {
+        setError('Password harus memiliki setidaknya 6 karakter.');
+        setIsLoading(false);
+        return;
+    }
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
       router.push('/admin');
     } catch (err: any) {
-      if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
-        setError('Email atau password salah. Silakan coba lagi.');
+       if (err.code === 'auth/email-already-in-use') {
+        setError('Email ini sudah terdaftar. Silakan gunakan email lain atau login.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Format email tidak valid.');
       } else {
-        setError(err.message || 'Terjadi kesalahan saat login.');
+        setError(err.message || 'Terjadi kesalahan saat registrasi.');
       }
     } finally {
       setIsLoading(false);
@@ -57,15 +64,15 @@ export default function LoginPage() {
     <div className="flex justify-center items-center min-h-screen bg-background">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Admin Login</CardTitle>
-          <CardDescription>Masukkan kredensial Anda untuk mengakses dasbor.</CardDescription>
+          <CardTitle className="text-2xl">Buat Akun Admin</CardTitle>
+          <CardDescription>Daftarkan akun baru untuk mengelola konten website.</CardDescription>
         </CardHeader>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleRegister}>
           <CardContent className="grid gap-4">
             {error && (
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Login Gagal</AlertTitle>
+                <AlertTitle>Registrasi Gagal</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
@@ -74,7 +81,7 @@ export default function LoginPage() {
               <Input
                 id="email"
                 type="email"
-                placeholder="m@example.com"
+                placeholder="email@example.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -90,18 +97,19 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={isLoading}
+                placeholder="Minimal 6 karakter"
               />
             </div>
           </CardContent>
           <CardFooter className="flex flex-col gap-4">
             <Button className="w-full" type="submit" disabled={isLoading}>
               {isLoading ? <Loader2 className="animate-spin mr-2" /> : null}
-              {isLoading ? 'Masuk...' : 'Masuk'}
+              {isLoading ? 'Mendaftar...' : 'Daftar'}
             </Button>
-            <p className="text-xs text-muted-foreground">
-                Belum punya akun?{' '}
-                <Link href="/register" className="underline text-primary hover:text-primary/80">
-                    Daftar di sini
+             <p className="text-xs text-muted-foreground">
+                Sudah punya akun?{' '}
+                <Link href="/login" className="underline text-primary hover:text-primary/80">
+                    Login di sini
                 </Link>
             </p>
           </CardFooter>
