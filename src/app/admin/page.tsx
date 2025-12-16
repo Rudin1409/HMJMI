@@ -79,7 +79,7 @@ export default function AdminPage() {
             </div>
             <div className="flex items-center gap-4">
                <Button asChild>
-                <Link href="/admin/post/new">
+                <Link href="/admin/post?id=new">
                   <PlusCircle className="mr-2 h-4 w-4" /> Add New Post
                 </Link>
               </Button>
@@ -121,7 +121,7 @@ export default function AdminPage() {
                         </TableCell>
                         <TableCell className="text-right">
                           <Button asChild variant="ghost" size="icon">
-                            <Link href={`/admin/post/${item.id}`}>
+                            <Link href={`/admin/post?id=${item.id}`}>
                               <Edit className="h-4 w-4" />
                             </Link>
                           </Button>

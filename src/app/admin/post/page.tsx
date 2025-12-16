@@ -1,19 +1,18 @@
 
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import React, { useEffect, useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth, useUser, useFirestore, useDoc, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { doc, setDoc, addDoc, collection } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -39,13 +38,12 @@ interface BeritaAcara {
   divisionId?: string;
 }
 
-export default function PostFormPage() {
-  const auth = useAuth();
+function PostForm() {
   const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
-  const params = useParams();
-  const { id } = params;
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
 
   const isNewPost = id === 'new';
 
@@ -56,7 +54,7 @@ export default function PostFormPage() {
 
   const beritaRef = useMemoFirebase(() => {
     if (isNewPost || !firestore || !id) return null;
-    return doc(firestore, 'berita_acara', Array.isArray(id) ? id[0] : id);
+    return doc(firestore, 'berita_acara', id);
   }, [firestore, id, isNewPost]);
 
   const { data: postData, isLoading: isPostLoading } = useDoc<BeritaAcara>(beritaRef);
@@ -106,8 +104,8 @@ export default function PostFormPage() {
   }
 
   const onSubmit = async (values: BeritaFormData) => {
-    if (!firestore) {
-      setError("Database connection not available.");
+    if (!firestore || !id) {
+      setError("Database connection not available or ID is missing.");
       return;
     }
     setIsLoading(true);
@@ -119,10 +117,9 @@ export default function PostFormPage() {
           finalImageUrl = await uploadImage(imageFile);
       }
       
-      if(!finalImageUrl && !isNewPost && !postData?.imageUrl) {
-          throw new Error("Image is required for the post.");
+      if(!finalImageUrl && isNewPost) {
+          throw new Error("Image is required for a new post.");
       }
-
 
       const dataToSave = {
         ...values,
@@ -133,7 +130,7 @@ export default function PostFormPage() {
       if (isNewPost) {
         await addDoc(collection(firestore, 'berita_acara'), dataToSave);
       } else {
-        const postDocRef = doc(firestore, 'berita_acara', Array.isArray(id) ? id[0] : id);
+        const postDocRef = doc(firestore, 'berita_acara', id);
         await setDoc(postDocRef, dataToSave, { merge: true });
       }
       router.push('/admin');
@@ -144,7 +141,7 @@ export default function PostFormPage() {
     }
   };
 
-  if (isUserLoading || isPostLoading) {
+  if (isUserLoading || (!isNewPost && isPostLoading)) {
     return <div className="flex h-screen items-center justify-center"><Loader2 className="h-8 w-8 animate-spin" /></div>;
   }
 
@@ -156,7 +153,7 @@ export default function PostFormPage() {
     <div className="container mx-auto px-4 py-10">
       <Card className="max-w-4xl mx-auto">
         <CardHeader>
-          <Button variant="ghost" size="sm" className="w-fit p-0 h-auto mb-4" onClick={() => router.back()}>
+          <Button variant="ghost" size="sm" className="w-fit p-0 h-auto mb-4" onClick={() => router.push('/admin')}>
             <ChevronLeft className="mr-2 h-4 w-4"/> Back to Dashboard
           </Button>
           <CardTitle>{isNewPost ? 'Create New Post' : 'Edit Post'}</CardTitle>
@@ -257,5 +254,14 @@ export default function PostFormPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+
+export default function PostFormPage() {
+  return (
+    <Suspense fallback={<div className="flex h-screen items-center justify-center"><Loader2 className="h-8 w-8 animate-spin" /></div>}>
+      <PostForm />
+    </Suspense>
   );
 }
