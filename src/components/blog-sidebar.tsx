@@ -85,7 +85,7 @@ export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebar
                 <CardContent className="pt-6 space-y-4">
                     {relatedPosts && relatedPosts.length > 0 ? (
                         relatedPosts.map((post) => (
-                            <Link href={`/berita/${post.id}`} key={post.id} className="flex gap-4 group">
+                            <Link href={`/berita/read?id=${post.id}`} key={post.id} className="flex gap-4 group">
                                 <div className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 border border-border group-hover:border-primary transition-colors">
                                     <Image
                                         src={post.imageUrl || '/placeholder.png'}

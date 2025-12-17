@@ -89,7 +89,7 @@ export default function BeritaList({ berita, isLoading }: BeritaListProps) {
               </CardContent>
               <CardFooter>
                 <Button asChild variant="link" className="p-0 text-primary">
-                  <Link href={`/berita/${item.id}`}>
+                  <Link href={`/berita/read?id=${item.id}`}>
                     Baca Selengkapnya <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>

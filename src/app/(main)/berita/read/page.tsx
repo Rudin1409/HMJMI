@@ -1,13 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { doc } from 'firebase/firestore';
-import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { Calendar, User, ChevronLeft } from 'lucide-react';
+import { Calendar, ChevronLeft, Loader2 } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
@@ -18,13 +18,12 @@ import { CommentSection } from '@/components/comment-section';
 import { LikeButton } from '@/components/like-button';
 
 interface BeritaAcara {
-    id: string; // Include ID for sidebar exclusion logic
+    id: string;
     title: string;
     content: string;
     date: any;
     imageUrl: string;
     author: string;
-    divisionId?: string;
     category: string;
     likes?: number;
 }
@@ -64,18 +63,15 @@ const DetailBeritaSkeleton = () => (
     </div>
 );
 
-
-export default function BeritaDetailPage() {
+function BeritaContent() {
     const firestore = useFirestore();
-    const params = useParams();
-    const { id: beritaId } = params;
-
-    const finalId = Array.isArray(beritaId) ? beritaId[0] : beritaId || '';
+    const searchParams = useSearchParams();
+    const beritaId = searchParams.get('id');
 
     const beritaRef = useMemoFirebase(() => {
-        if (!firestore || !finalId) return null;
-        return doc(firestore, 'berita_acara', finalId);
-    }, [firestore, finalId]);
+        if (!firestore || !beritaId) return null;
+        return doc(firestore, 'berita_acara', beritaId);
+    }, [firestore, beritaId]);
 
     const { data: berita, isLoading } = useDoc<BeritaAcara>(beritaRef);
 
@@ -83,11 +79,11 @@ export default function BeritaDetailPage() {
         return <DetailBeritaSkeleton />;
     }
 
-    if (!berita) {
+    if (!berita || !beritaId) {
         return (
             <div className="container mx-auto px-4 py-24 text-center">
                 <h1 className="text-3xl font-bold text-destructive">Berita Tidak Ditemukan</h1>
-                <p className="text-muted-foreground mt-4">Berita yang Anda cari tidak ada atau mungkin telah dihapus.</p>
+                <p className="text-muted-foreground mt-4">Berita yang Anda cari tidak ada atau judul tautan salah.</p>
                 <Button asChild className="mt-8">
                     <Link href="/berita">
                         <ChevronLeft className="mr-2 h-4 w-4" />
@@ -97,9 +93,6 @@ export default function BeritaDetailPage() {
             </div>
         );
     }
-
-    // Inject ID manually if not returned by fetch (useDoc usually spreads data, but ID might need explicit handling if not in document fields)
-    // Actually useDoc from firebase-hooks usually just returns data. Let's assume data has ID or we pass finalId.
 
     return (
         <article className="min-h-screen bg-background/50 backdrop-blur-sm">
@@ -134,7 +127,7 @@ export default function BeritaDetailPage() {
                                         {berita.title}
                                     </h1>
                                     <div className="shrink-0 md:mt-2">
-                                        <LikeButton postId={finalId} initialLikes={berita.likes} />
+                                        <LikeButton postId={beritaId} initialLikes={berita.likes} />
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
@@ -167,7 +160,7 @@ export default function BeritaDetailPage() {
                             />
 
                             {/* Comment Section */}
-                            <CommentSection postId={finalId} articleTitle={berita.title} />
+                            <CommentSection postId={beritaId} articleTitle={berita.title} />
                         </div>
 
                         {/* Sidebar Area */}
@@ -176,7 +169,7 @@ export default function BeritaDetailPage() {
                                 <BlogSidebar
                                     authorName={berita.author}
                                     category={berita.category}
-                                    currentPostId={finalId}
+                                    currentPostId={beritaId}
                                 />
                             </div>
                         </div>
@@ -184,5 +177,13 @@ export default function BeritaDetailPage() {
                 </div>
             </ScrollAnimation>
         </article>
+    );
+}
+
+export default function BeritaDetailWrapper() {
+    return (
+        <Suspense fallback={<div className="flex h-screen items-center justify-center"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>}>
+            <BeritaContent />
+        </Suspense>
     );
 }
