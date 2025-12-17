@@ -15,14 +15,14 @@ interface BeritaAcara {
   id: string;
   title: string;
   content: string;
-  date: string;
+  date: any; // Changed from string to any to handle Firestore Timestamp
   imageUrl: string;
   author: string;
 }
 
 interface BeritaListProps {
-    berita: BeritaAcara[] | null;
-    isLoading: boolean;
+  berita: BeritaAcara[] | null;
+  isLoading: boolean;
 }
 
 const BeritaItemSkeleton = () => (
@@ -45,12 +45,23 @@ const BeritaItemSkeleton = () => (
   </Card>
 );
 
+const formatDate = (date: any) => {
+  if (!date) return '';
+  try {
+    if (date.toDate) return format(date.toDate(), 'd MMMM yyyy', { locale: id });
+    if (date instanceof Date) return format(date, 'd MMMM yyyy', { locale: id });
+    return format(new Date(date), 'd MMMM yyyy', { locale: id });
+  } catch (e) {
+    return 'Invalid Date';
+  }
+};
+
 export default function BeritaList({ berita, isLoading }: BeritaListProps) {
-  
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {isLoading && Array.from({ length: 3 }).map((_, i) => <BeritaItemSkeleton key={i} />)}
-      
+
       {!isLoading && berita && berita.length > 0 ? (
         berita.map((item) => (
           <ScrollAnimation key={item.id}>
@@ -69,12 +80,12 @@ export default function BeritaList({ berita, isLoading }: BeritaListProps) {
               <CardHeader>
                 <CardTitle className="text-xl line-clamp-2">{item.title}</CardTitle>
                 <div className="flex items-center text-sm text-muted-foreground pt-2">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    <span>{format(new Date(item.date), 'd MMMM yyyy', { locale: id })}</span>
+                  <Calendar className="w-4 h-4 mr-2" />
+                  <span>{formatDate(item.date)}</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
-                 <div className="text-muted-foreground line-clamp-3 text-sm" dangerouslySetInnerHTML={{ __html: item.content }} />
+                <div className="text-muted-foreground line-clamp-3 text-sm" dangerouslySetInnerHTML={{ __html: item.content }} />
               </CardContent>
               <CardFooter>
                 <Button asChild variant="link" className="p-0 text-primary">
@@ -90,8 +101,8 @@ export default function BeritaList({ berita, isLoading }: BeritaListProps) {
 
       {!isLoading && (!berita || berita.length === 0) && (
         <div className="text-center col-span-full py-16">
-            <h2 className="text-2xl font-semibold text-foreground">Belum Ada Postingan</h2>
-            <p className="text-muted-foreground mt-2">Silakan cek kembali nanti untuk melihat pembaruan terbaru.</p>
+          <h2 className="text-2xl font-semibold text-foreground">Belum Ada Postingan</h2>
+          <p className="text-muted-foreground mt-2">Silakan cek kembali nanti untuk melihat pembaruan terbaru.</p>
         </div>
       )}
     </div>

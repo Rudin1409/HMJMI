@@ -3,23 +3,25 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users } from 'lucide-react';
+import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users, MessageCircle, Settings, BarChart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth, useUserProfile } from '@/firebase';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
 const navItems = [
-  { href: '/admin', label: 'Dasbor', icon: Home },
-  { href: '/admin/posts', label: 'Postingan', icon: Newspaper },
+    { href: '/admin', label: 'Dasbor', icon: Home },
+    { href: '/admin/posts', label: 'Postingan', icon: Newspaper },
+    { href: '/admin/comments', label: 'Komentar', icon: MessageCircle },
+    { href: '/admin/analytics', label: 'Analitik', icon: BarChart },
 ];
 
 const adminNavItems = [
@@ -33,33 +35,38 @@ function SidebarNav() {
     return (
         <nav className="flex flex-col gap-2">
             {navItems.map((item) => (
-                <Link key={item.href} href={item.href}>
-                    <Button
-                        variant={pathname === item.href ? 'secondary' : 'ghost'}
-                        className="w-full justify-start"
-                    >
+                <Button
+                    key={item.href}
+                    variant={pathname === item.href ? 'secondary' : 'ghost'}
+                    className="w-full justify-start"
+                    asChild
+                >
+                    <Link href={item.href}>
                         <item.icon className="mr-2 h-4 w-4" />
                         {item.label}
-                    </Button>
-                </Link>
+                    </Link>
+                </Button>
             ))}
-             {userProfile?.role === 'admin' && adminNavItems.map((item) => (
-                <Link key={item.href} href={item.href}>
-                    <Button
-                        variant={pathname === item.href ? 'secondary' : 'ghost'}
-                        className="w-full justify-start"
-                    >
+            {userProfile?.role === 'admin' && adminNavItems.map((item) => (
+                <Button
+                    key={item.href}
+                    variant={pathname === item.href ? 'secondary' : 'ghost'}
+                    className="w-full justify-start"
+                    asChild
+                >
+                    <Link href={item.href}>
                         <item.icon className="mr-2 h-4 w-4" />
                         {item.label}
-                    </Button>
-                </Link>
-             ))}
+                    </Link>
+                </Button>
+            ))}
         </nav>
     );
 }
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
     const auth = useAuth();
+    const pathname = usePathname();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { userProfile } = useUserProfile();
 
@@ -78,6 +85,18 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 </div>
                 <div className="flex-1 overflow-auto py-2">
                     <SidebarNav />
+                </div>
+                <div className="border-t p-2">
+                    <Button
+                        variant={pathname === '/admin/settings' ? 'secondary' : 'ghost'}
+                        className="w-full justify-start"
+                        asChild
+                    >
+                        <Link href="/admin/settings">
+                            <Settings className="mr-2 h-4 w-4" />
+                            Pengaturan
+                        </Link>
+                    </Button>
                 </div>
             </aside>
 
@@ -112,13 +131,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                                         {item.label}
                                     </Link>
                                 ))}
+                                <Link
+                                    href="/admin/settings"
+                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    <Settings className="h-5 w-5" />
+                                    Pengaturan
+                                </Link>
                             </nav>
                         </SheetContent>
                     </Sheet>
                     <div className="relative ml-auto flex-1 md:grow-0">
                         {/* Can add a search bar here if needed */}
                     </div>
-                     <DropdownMenu>
+                    <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
                                 <Avatar>
@@ -129,6 +156,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
                             <DropdownMenuLabel>{userProfile?.username || 'Akun Saya'}</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <Link href="/admin/settings">
+                                <DropdownMenuItem>
+                                    <Settings className="mr-2 h-4 w-4" />
+                                    Pengaturan
+                                </DropdownMenuItem>
+                            </Link>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem onClick={() => auth?.signOut()}>
                                 <LogOut className="mr-2 h-4 w-4" />

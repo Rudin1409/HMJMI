@@ -28,8 +28,8 @@ export default function BeritaPage() {
     if (!firestore) return null;
     return query(
       collection(firestore, 'berita_acara'),
-      where('status', '==', 'published'),
-      orderBy('date', 'desc')
+      where('status', '==', 'published')
+      // orderBy('date', 'desc')
     );
   }, [firestore]);
 
@@ -74,7 +74,7 @@ export default function BeritaPage() {
               <TabsTrigger value="hmj" className="py-2.5">Berita HMJ</TabsTrigger>
               <TabsTrigger value="artikel" className="py-2.5">Artikel & Pengetahuan</TabsTrigger>
             </TabsList>
-            
+
             <TabsContent value="hmj" className="mt-8">
               <BeritaList
                 berita={beritaHmj}

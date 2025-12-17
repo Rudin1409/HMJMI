@@ -1,4 +1,3 @@
-
 'use client';
 
 import React from 'react';
@@ -8,128 +7,182 @@ import { doc } from 'firebase/firestore';
 import { useParams } from 'next/navigation';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { Calendar, User, Tag, ChevronLeft } from 'lucide-react';
+import { Calendar, User, ChevronLeft } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ScrollAnimation } from '@/components/scroll-animation';
+import { BlogSidebar } from '@/components/blog-sidebar';
+import { CommentSection } from '@/components/comment-section';
+import { LikeButton } from '@/components/like-button';
 
 interface BeritaAcara {
-  title: string;
-  content: string;
-  date: string;
-  imageUrl: string;
-  author: string;
-  divisionId?: string;
-  category: string;
+    id: string; // Include ID for sidebar exclusion logic
+    title: string;
+    content: string;
+    date: any;
+    imageUrl: string;
+    author: string;
+    divisionId?: string;
+    category: string;
+    likes?: number;
 }
 
+const formatDate = (date: any) => {
+    if (!date) return '';
+    try {
+        if (date.toDate) return format(date.toDate(), 'd MMMM yyyy', { locale: id });
+        if (date instanceof Date) return format(date, 'd MMMM yyyy', { locale: id });
+        return format(new Date(date), 'd MMMM yyyy', { locale: id });
+    } catch (e) {
+        return '';
+    }
+};
+
 const DetailBeritaSkeleton = () => (
-    <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-        <Skeleton className="h-10 w-3/4 mx-auto" />
-        <div className="flex justify-center items-center gap-6 mt-6">
-            <Skeleton className="h-5 w-32" />
-            <Skeleton className="h-5 w-24" />
-        </div>
-        <div className="relative aspect-video w-full mt-8 rounded-lg overflow-hidden">
-            <Skeleton className="h-full w-full" />
-        </div>
-        <div className="mt-8 space-y-4">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-5/6" />
-            <Skeleton className="h-4 w-full mt-4" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-2/3" />
+    <div className="container mx-auto px-4 py-12 md:py-20 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-8 space-y-6">
+                <Skeleton className="h-6 w-32" />
+                <Skeleton className="h-12 w-full" />
+                <div className="flex gap-4">
+                    <Skeleton className="h-5 w-24" />
+                    <Skeleton className="h-5 w-32" />
+                </div>
+                <Skeleton className="h-[400px] w-full rounded-xl" />
+                <div className="space-y-4 pt-4">
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-4 w-5/6" />
+                </div>
+            </div>
+            <div className="lg:col-span-4">
+                <Skeleton className="h-[600px] w-full" />
+            </div>
         </div>
     </div>
 );
 
 
 export default function BeritaDetailPage() {
-  const firestore = useFirestore();
-  const params = useParams();
-  const { id: beritaId } = params;
+    const firestore = useFirestore();
+    const params = useParams();
+    const { id: beritaId } = params;
 
-  const beritaRef = useMemoFirebase(() => {
-    if (!firestore || !beritaId) return null;
-    return doc(firestore, 'berita_acara', Array.isArray(beritaId) ? beritaId[0] : beritaId);
-  }, [firestore, beritaId]);
+    const finalId = Array.isArray(beritaId) ? beritaId[0] : beritaId || '';
 
-  const { data: berita, isLoading } = useDoc<BeritaAcara>(beritaRef);
+    const beritaRef = useMemoFirebase(() => {
+        if (!firestore || !finalId) return null;
+        return doc(firestore, 'berita_acara', finalId);
+    }, [firestore, finalId]);
 
-  if (isLoading) {
-    return <DetailBeritaSkeleton />;
-  }
+    const { data: berita, isLoading } = useDoc<BeritaAcara>(beritaRef);
 
-  if (!berita) {
-    return (
-        <div className="container mx-auto px-4 py-16 md:py-24 text-center">
-            <h1 className="text-3xl font-bold text-destructive">Berita Tidak Ditemukan</h1>
-            <p className="text-muted-foreground mt-4">Berita yang Anda cari tidak ada atau mungkin telah dihapus.</p>
-            <Button asChild className="mt-8">
-                <Link href="/berita">
-                    <ChevronLeft className="mr-2 h-4 w-4" />
-                    Kembali ke Daftar Berita
-                </Link>
-            </Button>
-        </div>
-    );
-  }
+    if (isLoading) {
+        return <DetailBeritaSkeleton />;
+    }
 
-  return (
-    <article className="bg-primary/5">
-        <ScrollAnimation>
-        <div className="container mx-auto px-4 py-16 md:py-24 max-w-4xl">
-            <header className="text-center mb-12">
-                <Badge variant="secondary" className="mb-4">{berita.category}</Badge>
-                <h1 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
-                    {berita.title}
-                </h1>
-                <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mt-6 text-muted-foreground">
-                    <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-2 text-primary" />
-                        <span>{format(new Date(berita.date), 'EEEE, d MMMM yyyy', { locale: id })}</span>
-                    </div>
-                    <div className="flex items-center">
-                        <User className="w-4 h-4 mr-2 text-primary" />
-                        <span>{berita.author}</span>
-                    </div>
-                    {berita.divisionId && (
-                        <div className="flex items-center">
-                             <Tag className="w-4 h-4 mr-2 text-primary" />
-                             <Badge variant="outline">{berita.divisionId}</Badge>
-                        </div>
-                    )}
-                </div>
-            </header>
-
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-lg mb-12">
-                <Image
-                src={berita.imageUrl || '/placeholder.png'}
-                alt={berita.title}
-                fill
-                className="object-cover"
-                data-ai-hint="event highlight"
-                />
-            </div>
-
-            <div
-                className="prose prose-lg dark:prose-invert max-w-none mx-auto text-foreground/90 prose-p:leading-relaxed prose-headings:text-foreground prose-strong:text-foreground prose-ul:list-disc prose-ol:list-decimal"
-                dangerouslySetInnerHTML={{ __html: berita.content }}
-            />
-
-            <div className="text-center mt-16">
-                 <Button asChild variant="outline">
+    if (!berita) {
+        return (
+            <div className="container mx-auto px-4 py-24 text-center">
+                <h1 className="text-3xl font-bold text-destructive">Berita Tidak Ditemukan</h1>
+                <p className="text-muted-foreground mt-4">Berita yang Anda cari tidak ada atau mungkin telah dihapus.</p>
+                <Button asChild className="mt-8">
                     <Link href="/berita">
                         <ChevronLeft className="mr-2 h-4 w-4" />
-                        Kembali ke Semua Berita
+                        Kembali ke Daftar Berita
                     </Link>
                 </Button>
             </div>
-        </div>
-        </ScrollAnimation>
-    </article>
-  );
+        );
+    }
+
+    // Inject ID manually if not returned by fetch (useDoc usually spreads data, but ID might need explicit handling if not in document fields)
+    // Actually useDoc from firebase-hooks usually just returns data. Let's assume data has ID or we pass finalId.
+
+    return (
+        <article className="min-h-screen bg-background/50 backdrop-blur-sm">
+            <ScrollAnimation>
+                <div className="container mx-auto px-4 py-12 md:py-20 max-w-7xl">
+                    {/* Top Navigation */}
+                    <div className="mb-8">
+                        <Button asChild variant="ghost" className="pl-0 hover:bg-transparent hover:text-primary">
+                            <Link href="/berita" className="flex items-center text-muted-foreground transition-colors">
+                                <ChevronLeft className="mr-2 h-4 w-4" />
+                                Kembali ke Berita
+                            </Link>
+                        </Button>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        {/* Main Content Area */}
+                        <div className="lg:col-span-8">
+                            {/* Header Section */}
+                            <header className="mb-8">
+                                <div className="flex items-center gap-3 mb-4 text-sm">
+                                    <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20 border-0 rounded-full px-4 py-1">
+                                        {berita.category}
+                                    </Badge>
+                                    <span className="text-muted-foreground flex items-center">
+                                        <Calendar className="w-3.5 h-3.5 mr-1.5" />
+                                        {formatDate(berita.date)}
+                                    </span>
+                                </div>
+                                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+                                    <h1 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight tracking-tight flex-1">
+                                        {berita.title}
+                                    </h1>
+                                    <div className="shrink-0 md:mt-2">
+                                        <LikeButton postId={finalId} initialLikes={berita.likes} />
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                                        {berita.author.substring(0, 2).toUpperCase()}
+                                    </div>
+                                    <div>
+                                        <p className="text-sm font-medium text-foreground">Oleh <span className="text-primary">{berita.author}</span></p>
+                                        <p className="text-xs text-muted-foreground">Admin HMJ</p>
+                                    </div>
+                                </div>
+                            </header>
+
+                            {/* Featured Image */}
+                            <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-2xl mb-10 border border-border/50">
+                                <Image
+                                    src={berita.imageUrl || '/placeholder.png'}
+                                    alt={berita.title}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                    data-ai-hint="event highlight"
+                                />
+                            </div>
+
+                            {/* Content Body */}
+                            <div
+                                className="prose prose-lg dark:prose-invert max-w-none text-foreground/90 prose-p:leading-relaxed prose-headings:font-bold prose-headings:text-foreground prose-a:text-primary prose-img:rounded-xl"
+                                dangerouslySetInnerHTML={{ __html: berita.content }}
+                            />
+
+                            {/* Comment Section */}
+                            <CommentSection postId={finalId} articleTitle={berita.title} />
+                        </div>
+
+                        {/* Sidebar Area */}
+                        <div className="lg:col-span-4 space-y-8">
+                            <div className="sticky top-24">
+                                <BlogSidebar
+                                    authorName={berita.author}
+                                    category={berita.category}
+                                    currentPostId={finalId}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ScrollAnimation>
+        </article>
+    );
 }

@@ -5,13 +5,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useUser, useFirestore } from '@/firebase';
 import { useDoc, useMemoFirebase } from '@/firebase';
 import { doc, setDoc, addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -20,12 +19,13 @@ import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { TiptapEditor } from '@/components/ui/tiptap-editor';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useImageUpload } from '@/hooks/use-image-upload';
 
 const formSchema = z.object({
   title: z.string().min(5, 'Judul harus memiliki setidaknya 5 karakter.'),
   content: z.string().min(20, 'Konten harus memiliki setidaknya 20 karakter.'),
   imageUrl: z.string().optional(),
-  category: z.string({ required_error: 'Kategori harus dipilih.' }),
+  category: z.string({ required_error: 'Kategori harus dipilih.' }).min(1, 'Kategori wajib dipilih!'),
   status: z.enum(['draft', 'published'], { required_error: 'Status harus dipilih' }),
 });
 
@@ -42,6 +42,7 @@ function PostForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
+  const { uploadImage, isLoading: isUploading, progress: uploadProgress } = useImageUpload();
 
   const isNewPost = id === 'new';
 
@@ -71,35 +72,26 @@ function PostForm() {
   useEffect(() => {
     if (postData) {
       form.reset(postData);
-      if(postData.imageUrl) {
+      if (postData.imageUrl) {
         setImagePreview(postData.imageUrl)
       }
     }
   }, [postData, form]);
-  
+
   useEffect(() => {
     if (imageFile) {
-        const objectUrl = URL.createObjectURL(imageFile);
-        setImagePreview(objectUrl);
-        return () => URL.revokeObjectURL(objectUrl);
+      const objectUrl = URL.createObjectURL(imageFile);
+      setImagePreview(objectUrl);
+      return () => URL.revokeObjectURL(objectUrl);
     }
   }, [imageFile]);
 
 
   useEffect(() => {
     if (!isUserLoading && !user) {
-        router.push('/login');
+      router.push('/login');
     }
   }, [user, isUserLoading, router]);
-
-  const uploadImage = async (file: File): Promise<string> => {
-      if(!firestore) throw new Error("Firestore not initialized");
-      const storage = getStorage(firestore.app);
-      const storageRef = ref(storage, `berita_images/${Date.now()}_${file.name}`);
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-      return downloadURL;
-  }
 
   const onSubmit = async (values: BeritaFormData) => {
     if (!firestore || !id) {
@@ -110,21 +102,25 @@ function PostForm() {
     setError(null);
     try {
       let finalImageUrl = values.imageUrl || '';
-      
+
       if (imageFile) {
-          finalImageUrl = await uploadImage(imageFile);
-      }
-      
-      if(!finalImageUrl && isNewPost) {
-          throw new Error("Gambar unggulan wajib diisi untuk postingan baru.");
+        finalImageUrl = await uploadImage(imageFile);
       }
 
-      const dataToSave = {
+      if (!finalImageUrl && isNewPost) {
+        throw new Error("Gambar unggulan wajib diisi untuk postingan baru.");
+      }
+
+      const dataToSave: any = {
         ...values,
         imageUrl: finalImageUrl,
-        date: serverTimestamp(),
-        author: 'Dept. Humas' // Hardcoded author as requested
+        updatedAt: serverTimestamp(),
       };
+
+      if (isNewPost) {
+        dataToSave.date = serverTimestamp();
+        dataToSave.author = user?.displayName || 'Admin HMJ';
+      }
 
       if (isNewPost) {
         await addDoc(collection(firestore, 'berita_acara'), dataToSave);
@@ -134,7 +130,8 @@ function PostForm() {
       }
       router.push('/admin/posts');
     } catch (err: any) {
-      setError(err.message);
+      console.error(err);
+      setError(err.message || "Terjadi kesalahan saat menyimpan.");
     } finally {
       setIsLoading(false);
     }
@@ -150,162 +147,168 @@ function PostForm() {
 
   return (
     <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <div className="flex items-center justify-between">
-                <div>
-                    <h1 className="text-2xl font-bold">{isNewPost ? 'Buat Postingan Baru' : 'Edit Postingan'}</h1>
-                    <p className="text-muted-foreground">Isi formulir di bawah ini untuk membuat atau mengedit postingan berita.</p>
-                </div>
-                 <div className="flex justify-end gap-4">
-                    <Button type="button" variant="outline" onClick={() => router.push('/admin/posts')} disabled={isLoading}>
-                        Batal
-                    </Button>
-                    <Button type="submit" disabled={isLoading}>
-                      {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
-                      {isNewPost ? 'Terbitkan' : 'Simpan Perubahan'}
-                    </Button>
-                </div>
-            </div>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">{isNewPost ? 'Buat Postingan Baru' : 'Edit Postingan'}</h1>
+            <p className="text-muted-foreground">Isi formulir di bawah ini untuk membuat atau mengedit postingan berita.</p>
+          </div>
+          <div className="flex justify-end gap-4">
+            <Button type="button" variant="outline" onClick={() => router.push('/admin/posts')} disabled={isLoading}>
+              Batal
+            </Button>
+            <Button type="submit" disabled={isLoading || isUploading}>
+              {isLoading || isUploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              {isNewPost ? 'Terbitkan' : 'Simpan Perubahan'}
+            </Button>
+          </div>
+        </div>
 
-            {error && (
-            <Alert variant="destructive">
-                <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Terjadi Kesalahan</AlertTitle>
-                <AlertDescription>{error}</AlertDescription>
-            </Alert>
-            )}
+        {error && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertTitle>Terjadi Kesalahan</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 space-y-8">
-                     <Card>
-                        <CardHeader>
-                            <CardTitle>Konten Postingan</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <FormField
-                                control={form.control}
-                                name="title"
-                                render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Judul Postingan</FormLabel>
-                                    <FormControl>
-                                    <Input placeholder="Masukkan judul..." {...field} disabled={isLoading} />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Konten Postingan</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="title"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Judul Postingan</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Masukkan judul..." {...field} disabled={isLoading} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                            <FormItem>
-                                <FormLabel>Gambar Unggulan</FormLabel>
-                                <FormControl>
-                                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
-                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                            <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
-                                            <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Klik untuk mengunggah</span></p>
-                                            <p className="text-xs text-muted-foreground">PNG, JPG, WEBP</p>
-                                        </div>
-                                        <Input type="file" className="hidden" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} disabled={isLoading}/>
-                                    </label>
-                                </FormControl>
-                                {imagePreview && (
-                                        <div className="mt-4 relative w-full aspect-video rounded-md overflow-hidden border-2 border-border">
-                                            <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover"/>
-                                        </div>
-                                )}
-                                <FormMessage className="mt-2" />
-                            </FormItem>
+                <FormItem>
+                  <FormLabel>Gambar Unggulan</FormLabel>
+                  <FormControl>
+                    <label className="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed rounded-lg cursor-pointer bg-muted/50 hover:bg-muted/80">
+                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                        <div className="flex flex-col items-center text-center">
+                          <Upload className="w-8 h-8 mb-4 text-muted-foreground" />
+                          <p className="mb-2 text-sm text-muted-foreground"><span className="font-semibold">Klik untuk mengunggah</span></p>
+                          <p className="text-xs text-muted-foreground">PNG, JPG, WEBP</p>
+                        </div>
+                      </div>
+                      <Input type="file" className="hidden" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} disabled={isLoading} />
+                    </label>
+                  </FormControl>
+                  {imagePreview && (
+                    <div className="mt-4 relative w-full aspect-video rounded-md overflow-hidden border-2 border-border">
+                      <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover" />
+                      {isUploading && <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white">Uploading...</div>}
+                    </div>
+                  )}
+                  <FormMessage className="mt-2" />
+                </FormItem>
 
-                            <FormField
-                                control={form.control}
-                                name="content"
-                                render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Konten</FormLabel>
-                                    <FormControl>
-                                      <TiptapEditor 
-                                        content={field.value}
-                                        onChange={field.onChange}
-                                        disabled={isLoading}
-                                      />
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                        </CardContent>
-                    </Card>
-                </div>
-                <div className="lg:col-span-1 space-y-8">
-                     <Card>
-                        <CardHeader>
-                            <CardTitle>Metadata</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <FormField
-                                control={form.control}
-                                name="status"
-                                render={({ field }) => (
-                                    <FormItem className="space-y-3">
-                                    <FormLabel>Status Postingan</FormLabel>
-                                    <FormControl>
-                                        <RadioGroup
-                                        onValueChange={field.onChange}
-                                        defaultValue={field.value}
-                                        className="flex flex-col space-y-1"
-                                        >
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                            <RadioGroupItem value="published" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                            Publish
-                                            </FormLabel>
-                                        </FormItem>
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                            <RadioGroupItem value="draft" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                            Draft
-                                            </FormLabel>
-                                        </FormItem>
-                                        </RadioGroup>
-                                    </FormControl>
-                                    <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="category"
-                                render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Kategori</FormLabel>
-                                    <Select onValueChange={field.onChange} value={field.value} disabled={isLoading}>
-                                    <FormControl>
-                                        <SelectTrigger>
-                                        <SelectValue placeholder="Pilih kategori" />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                        <SelectItem value="Berita HMJ">Berita HMJ</SelectItem>
-                                        <SelectItem value="Artikel & Pengetahuan">Artikel & Pengetahuan</SelectItem>
-                                    </SelectContent>
-                                    </Select>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-        </form>
+                <FormField
+                  control={form.control}
+                  name="content"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Konten</FormLabel>
+                      <FormControl>
+                        <TiptapEditor
+                          content={field.value}
+                          onChange={field.onChange}
+                          disabled={isLoading}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+            </Card>
+          </div>
+          <div className="lg:col-span-1 space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Metadata</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="status"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Status Postingan</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          value={field.value}
+                          className="flex flex-col space-y-1"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="published" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Publish
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="draft" />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              Draft
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="category"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Kategori <span className="text-red-500">*</span></FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value || ''}
+                        disabled={isLoading}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Pilih kategori" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="Berita HMJ">Berita HMJ</SelectItem>
+                          <SelectItem value="Artikel & Pengetahuan">Artikel & Pengetahuan</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </form>
     </Form>
   );
 }
-
 
 export default function PostFormPage() {
   return (

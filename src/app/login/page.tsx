@@ -58,13 +58,13 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
-       <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-            <div className="mx-auto mb-4">
-              <Link href="/" className="flex items-center justify-center space-x-2">
-                <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-12 w-12" />
-              </Link>
-            </div>
+          <div className="mx-auto mb-4">
+            <Link href="/" className="flex items-center justify-center space-x-2">
+              <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-12 w-12" />
+            </Link>
+          </div>
           <CardTitle className="text-2xl">Admin Login</CardTitle>
           <CardDescription>Masukkan kredensial Anda untuk mengakses dasbor.</CardDescription>
         </CardHeader>
@@ -106,12 +106,7 @@ export default function LoginPage() {
               {isLoading ? <Loader2 className="animate-spin mr-2" /> : null}
               {isLoading ? 'Masuk...' : 'Masuk'}
             </Button>
-            <p className="text-xs text-muted-foreground">
-                Belum punya akun?{' '}
-                <Link href="/register" className="underline text-primary hover:text-primary/80">
-                    Daftar di sini
-                </Link>
-            </p>
+
           </CardFooter>
         </form>
       </Card>
