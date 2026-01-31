@@ -1,91 +1,119 @@
-
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Briefcase, Calendar, Code, Users, CheckCircle } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, Target, Zap, Rocket } from 'lucide-react';
 
 const stats = [
   {
-    icon: <Calendar className="h-8 w-8 text-primary" />,
+    icon: <Calendar className="h-6 w-6 text-white" />,
     title: 'Didirikan Sejak 2002',
     description: 'Lebih dari 20 tahun mencetak talenta digital.',
+    gradient: 'from-pink-500 to-rose-500',
   },
   {
-    icon: <Users className="h-8 w-8 text-primary" />,
+    icon: <Users className="h-6 w-6 text-white" />,
     title: '5 Departemen',
     description: 'Kolaborasi lintas bidang untuk hasil optimal.',
+    gradient: 'from-purple-500 to-indigo-500',
   },
   {
-    icon: <Code className="h-8 w-8 text-primary" />,
+    icon: <Code className="h-6 w-6 text-white" />,
     title: '11 Divisi Khusus',
     description: 'Fokus pada pengembangan keahlian spesifik.',
+    gradient: 'from-blue-500 to-cyan-500',
   },
   {
-    icon: <Briefcase className="h-8 w-8 text-primary" />,
+    icon: <Briefcase className="h-6 w-6 text-white" />,
     title: '15+ Program Kerja',
     description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
+    gradient: 'from-emerald-500 to-teal-500',
   },
 ];
 
 export function AboutSection() {
   return (
-    <section id="about" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-           <Badge variant="default" className="bg-pink-100 text-primary mb-4 dark:bg-primary/10">
+    <section id="about" className="w-full py-20 md:py-32 relative overflow-hidden bg-primary/35 backdrop-blur-sm">
+      {/* Background Glows */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 w-96 h-96 bg-white/20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 w-96 h-96 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16 md:mb-20">
+          <Badge variant="outline" className="border-primary/50 text-slate-900 dark:text-white mb-6 py-1.5 px-4 font-semibold text-sm backdrop-blur-md bg-white/30 dark:bg-white/10">
             Jejak Langkah Kami
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-             Merangkai Inovasi, <span className="text-primary">Mencetak Talenta</span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 tracking-tight">
+            Merangkai Inovasi, <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 via-pink-600 to-blue-600 animate-gradient-x">
+              Mencetak Talenta
+            </span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-3xl mx-auto">
+          <p className="text-slate-700 dark:text-slate-200 text-lg max-w-2xl mx-auto leading-relaxed font-medium">
             Himpunan Mahasiswa Jurusan Manajemen Informatika adalah organisasi kemahasiswaan yang menjadi wadah bagi mahasiswa untuk berinovasi, berkreasi, dan mengembangkan potensi di bidang teknologi informasi.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {stats.map((stat, index) => (
-            <Card key={index} className="text-center p-6">
-              <CardContent className="flex flex-col items-center gap-4 p-0">
-                <div className="bg-pink-100 dark:bg-primary/10 p-4 rounded-full">
-                   {stat.icon}
-                </div>
-                <h3 className="text-xl font-bold">{stat.title}</h3>
-                <p className="text-muted-foreground text-sm">{stat.description}</p>
-              </CardContent>
-            </Card>
+            <div key={index} className="group relative">
+              <div className="absolute inset-0 bg-white/40 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Card className="relative overflow-hidden border-white/40 bg-white/30 backdrop-blur-md hover:bg-white/50 transition-all duration-300 hover:-translate-y-2 h-full shadow-sm hover:shadow-xl">
+                <CardContent className="flex flex-col items-center gap-5 p-6 md:p-8 text-center h-full">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.gradient} flex items-center justify-center shadow-lg shadow-black/10 group-hover:scale-110 transition-transform duration-300 rotate-3 group-hover:rotate-6 text-white`}>
+                    {stat.icon}
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-bold text-slate-900">{stat.title}</h3>
+                    <p className="text-sm text-slate-700 leading-relaxed font-medium">{stat.description}</p>
+                  </div>
+                </CardContent>
+                {/* Hover Border Gradient */}
+                <div className="absolute inset-0 rounded-xl border border-white/60 group-hover:border-white/80 transition-colors duration-300 pointer-events-none" />
+              </Card>
+            </div>
           ))}
         </div>
 
-        <div className="text-center my-12">
-          <p className="text-2xl font-semibold text-primary/80 italic">"Bersatu Beraksi, Bersinar Berprestasi"</p>
+        <div className="text-center my-16">
+          <p className="text-2xl md:text-3xl font-bold text-slate-900/90 italic drop-shadow-sm">
+            "Bersatu Beraksi, Bersinar Berprestasi"
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 relative overflow-hidden">
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 dark:bg-primary/20 rounded-full"></div>
-                <div className="relative z-10">
-                    <div className="w-16 h-16 bg-pink-100 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center flex-shrink-0 mb-4">
-                        <CheckCircle className="w-8 h-8"/>
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">Visi Kami</h3>
-                    <p className="text-muted-foreground">Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif bagi seluruh Mahasiswa/i Manajemen Informatika.</p>
-                </div>
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+          {/* Visi Card */}
+          <div className="group relative">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-600 rounded-[2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+            <Card className="relative h-full p-8 md:p-10 bg-white/30 backdrop-blur-xl border-white/40 rounded-[1.9rem] flex flex-col items-start gap-6 hover:bg-white/40 transition-colors shadow-xl">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20 mb-2 text-white">
+                <Target className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">Visi Kami</h3>
+                <p className="text-slate-800 leading-loose text-base md:text-lg font-medium">
+                  Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa tanggung jawab, harmoni, kebersamaan, serta menciptakan lingkungan yang inspiratif dan kolaboratif.
+                </p>
+              </div>
             </Card>
-            <Card className="p-8 relative overflow-hidden">
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-pink-50/50 dark:bg-primary/20 rounded-full"></div>
-                 <div className="relative z-10">
-                    <div className="w-16 h-16 bg-pink-100 dark:bg-primary/10 text-primary rounded-2xl flex items-center justify-center flex-shrink-0 mb-4">
-                        <CheckCircle className="w-8 h-8"/>
-                    </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">Misi Kami</h3>
-                    <p className="text-muted-foreground">Meningkatkan kepedulian sosial dan religius, mendorong pengembangan kompetensi dan aspirasi, menjadi pusat informasi yang kreatif, mewadahi minat bakat, serta menumbuhkan jiwa kewirausahaan mahasiswa.</p>
-                </div>
+          </div>
+
+          {/* Misi Card */}
+          <div className="group relative">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-teal-500 rounded-[2rem] blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+            <Card className="relative h-full p-8 md:p-10 bg-white/30 backdrop-blur-xl border-white/40 rounded-[1.9rem] flex flex-col items-start gap-6 hover:bg-white/40 transition-colors shadow-xl">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center shadow-lg shadow-blue-500/20 mb-2 text-white">
+                <Rocket className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">Misi Kami</h3>
+                <p className="text-slate-800 leading-loose text-base md:text-lg font-medium">
+                  Meningkatkan kepedulian sosial, mendorong pengembangan kompetensi, menjadi pusat informasi kreatif, serta menumbuhkan jiwa kewirausahaan dan bakat mahasiswa.
+                </p>
+              </div>
             </Card>
+          </div>
         </div>
 
       </div>
     </section>
   );
 }
-
-    

@@ -5,6 +5,7 @@ import React, { DependencyList, createContext, useContext, ReactNode, useMemo, u
 import { FirebaseApp } from 'firebase/app';
 import { Firestore } from 'firebase/firestore';
 import { Auth, User, onAuthStateChanged } from 'firebase/auth';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import { FirebaseErrorListener } from '@/components/FirebaseErrorListener'
 
 interface FirebaseProviderProps {
@@ -69,6 +70,29 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
     return () => unsubscribe(); // Cleanup
   }, [auth]); // Depends on the auth instance
 
+  // Initialize Firebase App Check
+  useEffect(() => {
+    if (!firebaseApp || typeof window === 'undefined') return;
+
+    // Only initialize if reCAPTCHA key is available
+    const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!recaptchaKey) {
+      console.warn('Firebase App Check: reCAPTCHA site key not found. App Check will not be enabled.');
+      return;
+    }
+
+    try {
+      // Initialize App Check with reCAPTCHA v3
+      const appCheck = initializeAppCheck(firebaseApp, {
+        provider: new ReCaptchaV3Provider(recaptchaKey),
+        isTokenAutoRefreshEnabled: true, // Auto-refresh tokens
+      });
+      console.log('Firebase App Check initialized successfully');
+    } catch (error) {
+      console.error('Failed to initialize Firebase App Check:', error);
+    }
+  }, [firebaseApp]);
+
   // Memoize the context value
   const contextValue = useMemo((): FirebaseContextState => {
     return {
@@ -91,11 +115,11 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({
 
 
 function useFirebaseContext() {
-    const context = useContext(FirebaseContext);
-    if (context === undefined) {
-        throw new Error('useFirebaseContext must be used within a FirebaseProvider.');
-    }
-    return context;
+  const context = useContext(FirebaseContext);
+  if (context === undefined) {
+    throw new Error('useFirebaseContext must be used within a FirebaseProvider.');
+  }
+  return context;
 }
 
 
@@ -115,16 +139,16 @@ export const useFirebaseApp = (): FirebaseApp | null => {
 };
 
 
-type MemoFirebase <T> = T & {__memo?: boolean};
+type MemoFirebase<T> = T & { __memo?: boolean };
 
 export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): T | (MemoFirebase<T>) {
   const memoized = useMemo(factory, deps);
-  
-  if(typeof memoized !== 'object' || memoized === null) return memoized;
-  if(Array.isArray(memoized)) return memoized;
-  
+
+  if (typeof memoized !== 'object' || memoized === null) return memoized;
+  if (Array.isArray(memoized)) return memoized;
+
   (memoized as MemoFirebase<T>).__memo = true;
-  
+
   return memoized;
 }
 

@@ -69,170 +69,271 @@ const communityActivities = [
 ];
 
 const agendas = [
-    { 
-        title: 'Sertijab & Demisioner', 
-        description: 'Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.' 
-    },
-    { 
-        title: 'Open Recruitment & Gathering HMJ MI', 
-        description: 'Proses rekrutmen terbuka untuk menjaring anggota baru yang potensial, dilanjutkan dengan acara gathering untuk menyambut dan mengakrabkan seluruh anggota.' 
-    },
-    { 
-        title: 'SIGMA', 
-        description: 'Acara penyambutan khusus untuk mahasiswa baru Jurusan Manajemen Informatika, bertujuan untuk memperkenalkan lingkungan jurusan dan organisasi.' 
-    },
-    { 
-        title: 'Malam Keakraban HMJ MI', 
-        description: 'Acara tahunan yang dirancang untuk mempererat tali persaudaraan dan kebersamaan antar seluruh anggota HMJ MI melalui kegiatan yang santai dan menyenangkan.' 
-    },
-    { 
-        title: 'Latihan Dasar Organisasi', 
-        description: 'Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi, kepemimpinan, dan manajemen.' 
-    },
-    { 
-        title: 'Perpisahan Mahasiswa Semester Akhir', 
-        description: 'Sebuah acara apresiasi dan pelepasan bagi para senior yang telah menyelesaikan masa studinya, sebagai bentuk penghargaan atas kontribusi mereka.' 
-    },
-    { 
-        title: 'VIBE (Visiting - Interacting - Building - Exchanging)', 
-        description: 'Sebuah program kunjungan ke organisasi mahasiswa (Ormawa) lain di lingkungan Politeknik Negeri Sriwijaya untuk mempererat silaturahmi, berinteraksi, dan saling bertukar ide serta gagasan mengenai program kerja masing-masing.' 
-    },
+  {
+    title: 'Sertijab & Demisioner',
+    description: 'Momen serah terima jabatan dari kepengurusan lama ke kepengurusan baru, menandai awal dan akhir sebuah siklus kepemimpinan.'
+  },
+  {
+    title: 'Open Recruitment & Gathering HMJ MI',
+    description: 'Proses rekrutmen terbuka untuk menjaring anggota baru yang potensial, dilanjutkan dengan acara gathering untuk menyambut dan mengakrabkan seluruh anggota.'
+  },
+  {
+    title: 'SIGMA',
+    description: 'Acara penyambutan khusus untuk mahasiswa baru Jurusan Manajemen Informatika, bertujuan untuk memperkenalkan lingkungan jurusan dan organisasi.'
+  },
+  {
+    title: 'Malam Keakraban HMJ MI',
+    description: 'Acara tahunan yang dirancang untuk mempererat tali persaudaraan dan kebersamaan antar seluruh anggota HMJ MI melalui kegiatan yang santai dan menyenangkan.'
+  },
+  {
+    title: 'Latihan Dasar Organisasi',
+    description: 'Program pelatihan dasar bagi calon anggota untuk membekali mereka dengan pengetahuan fundamental tentang organisasi, kepemimpinan, dan manajemen.'
+  },
+  {
+    title: 'Perpisahan Mahasiswa Semester Akhir',
+    description: 'Sebuah acara apresiasi dan pelepasan bagi para senior yang telah menyelesaikan masa studinya, sebagai bentuk penghargaan atas kontribusi mereka.'
+  },
+  {
+    title: 'VIBE (Visiting - Interacting - Building - Exchanging)',
+    description: 'Sebuah program kunjungan ke organisasi mahasiswa (Ormawa) lain di lingkungan Politeknik Negeri Sriwijaya untuk mempererat silaturahmi, berinteraksi, dan saling bertukar ide serta gagasan mengenai program kerja masing-masing.'
+  },
 ];
 
 
 export default function ProkerPage() {
   return (
     <div className="flex flex-col">
-      <section 
-        id="hero-proker" 
-        className="relative w-full flex items-center justify-center min-h-screen py-20 bg-transparent"
+      <section
+        id="hero-proker"
+        className="relative w-full flex items-center justify-center min-h-screen py-20 bg-transparent overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-40"></div>
         <ScrollAnimation className="container mx-auto px-4 text-center relative z-10">
-          <Badge variant="default" className="mb-4 bg-primary/10 text-primary shadow-sm">
+          <Badge variant="outline" className="mb-6 border-primary/50 text-primary bg-primary/10 backdrop-blur-md px-6 py-2 text-base font-semibold rounded-full shadow-[0_0_20px_rgba(236,72,153,0.3)] hover:scale-105 transition-transform">
             Aktivitas & Inisiatif
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-extrabold text-foreground">
-            Inovasi Melalui <span className="text-primary">Aksi Nyata</span>
+          <h1 className="text-5xl md:text-7xl font-extrabold text-foreground mb-6 tracking-tight">
+            Inovasi Melalui <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-blue-600 animate-gradient-x">Aksi Nyata</span>
           </h1>
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
+          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
             Temukan berbagai program dan kegiatan yang kami selenggarakan untuk mengasah potensi, memperluas wawasan, dan memberikan kontribusi positif.
           </p>
-           <div className="mt-8">
+          <div className="mt-12">
             <a href="#proker-list">
-                <Button variant="ghost" size="icon" className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 animate-bounce">
+              <Button variant="outline" size="icon" className="h-14 w-14 rounded-full border-primary/20 bg-background/50 text-foreground hover:bg-primary/10 hover:border-primary/50 hover:text-primary backdrop-blur-sm animate-bounce shadow-lg transition-all duration-300">
                 <ChevronDown className="h-6 w-6" />
-                </Button>
+              </Button>
             </a>
           </div>
         </ScrollAnimation>
       </section>
 
       <ScrollAnimation>
-      <section id="proker-list" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <Tabs defaultValue="unggulan" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto mb-10 md:mb-12 shadow-md max-w-2xl mx-auto">
-              <TabsTrigger value="unggulan" className="py-2.5">Program Unggulan</TabsTrigger>
-              <TabsTrigger value="pengembangan" className="py-2.5">Program Pengembangan</TabsTrigger>
-              <TabsTrigger value="komunitas" className="py-2.5">Kegiatan Komunitas</TabsTrigger>
-              <TabsTrigger value="agenda" className="py-2.5">Agenda Rutin</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="unggulan">
-              <Card className="w-full max-w-5xl mx-auto overflow-hidden">
-                {mainPrograms.map((program) => (
-                    <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center">
-                         <div className="p-8 md:p-12 order-2 md:order-1">
-                            <Badge variant="secondary" className="mb-4">Program Kerja Utama</Badge>
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
-                            <p className="text-muted-foreground mb-6">{program.description}</p>
-                             {program.link && (
-                                <Button asChild>
-                                    <Link href={program.link} target="_blank" rel="noopener noreferrer">
-                                        Kunjungi Situs Web <ArrowUpRight className="ml-2" />
-                                    </Link>
-                                </Button>
+        <section id="proker-list" className="w-full py-16 md:py-24 bg-primary/35 backdrop-blur-sm">
+          <div className="container mx-auto px-4">
+            <Tabs defaultValue="unggulan" className="w-full">
+              <div className="flex justify-center mb-10 md:mb-12">
+                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 h-auto p-1 bg-primary/10 rounded-full max-w-3xl mx-auto shadow-inner">
+                  <TabsTrigger value="unggulan" className="rounded-full py-2.5 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">Program Unggulan</TabsTrigger>
+                  <TabsTrigger value="pengembangan" className="rounded-full py-2.5 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">Pengembangan</TabsTrigger>
+                  <TabsTrigger value="komunitas" className="rounded-full py-2.5 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">Komunitas</TabsTrigger>
+                  <TabsTrigger value="agenda" className="rounded-full py-2.5 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300">Agenda Rutin</TabsTrigger>
+                </TabsList>
+              </div>
+
+              <TabsContent value="unggulan">
+                <ScrollAnimation>
+                  <div className="w-full max-w-5xl mx-auto relative group perspective-1000">
+                    {/* Glow Effect */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary via-purple-500 to-blue-600 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+
+                    <Card className="relative overflow-hidden bg-black/40 backdrop-blur-3xl border-white/10 shadow-2xl rounded-[2.5rem]">
+                      {/* Background Pattern */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+
+                      {mainPrograms.map((program) => (
+                        <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center relative z-10">
+                          <div className="p-8 md:p-12 order-2 md:order-1 space-y-8">
+                            <Badge variant="secondary" className="bg-primary/20 text-white border border-primary/30 backdrop-blur-md shadow-[0_0_15px_rgba(236,72,153,0.3)] px-4 py-1.5 rounded-full">
+                              Program Kerja Utama
+                            </Badge>
+
+                            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-lg">
+                              {program.title}
+                            </h2>
+
+                            <p className="text-slate-200 text-lg leading-relaxed font-light border-l-2 border-primary/50 pl-6 drop-shadow-md">
+                              {program.description}
+                            </p>
+
+                            {program.link && (
+                              <Button asChild size="lg" className="rounded-full h-14 px-8 text-lg bg-gradient-to-r from-primary to-purple-600 hover:scale-105 shadow-lg shadow-primary/25 transition-all duration-300 group/btn text-white border-0">
+                                <Link href={program.link} target="_blank" rel="noopener noreferrer">
+                                  <span>Kunjungi Situs Web</span>
+                                  <ArrowUpRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                                </Link>
+                              </Button>
                             )}
-                        </div>
-                        <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-2">
-                             <Image src={program.image} alt={program.title} fill className="object-cover" data-ai-hint={program.hint} />
-                        </div>
-                    </div>
-                ))}
-              </Card>
-            </TabsContent>
+                          </div>
 
-            <TabsContent value="pengembangan">
-                 <Card className="w-full max-w-5xl mx-auto overflow-hidden">
-                    {additionalPrograms.map((program) => (
-                        <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center">
-                            <div className="relative w-full h-64 md:h-full min-h-[300px] order-1 md:order-first">
-                                <Image src={program.image} alt={program.title} fill className="object-cover" data-ai-hint={program.hint}/>
-                            </div>
-                            <div className="p-8 md:p-12 order-2 md:order-last">
-                                <Badge variant="secondary" className="mb-4 bg-blue-100 text-blue-800">Program Kerja Tambahan</Badge>
-                                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{program.title}</h2>
-                                <p className="text-muted-foreground mb-6">{program.description}</p>
-                            </div>
+                          <div className="relative w-full h-80 md:h-[550px] order-1 md:order-2 group/image overflow-hidden md:rounded-r-[2.5rem]">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 md:bg-gradient-to-l md:from-black/80 md:via-transparent md:to-transparent" />
+                            <Image
+                              src={program.image}
+                              alt={program.title}
+                              fill
+                              className="object-cover transition-transform duration-1000 group-hover/image:scale-110"
+                              data-ai-hint={program.hint}
+                            />
+                            {/* Tech Overlay */}
+                            <div className="absolute inset-0 border-[3px] border-white/10 md:rounded-r-[2.5rem] pointer-events-none" />
+                          </div>
                         </div>
-                    ))}
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="komunitas">
-                <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-foreground">Aktivitas Internal & Sosial</h2>
-                        <p className="text-muted-foreground mt-2">Inisiatif yang memperkuat ikatan dan mengembangkan soft skill anggota.</p>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {communityActivities.map((activity) => (
-                            <Card key={activity.title}>
-                                <CardContent className="p-6 flex items-center gap-6">
-                                    <div className="relative flex-shrink-0 w-20 h-20 rounded-full overflow-hidden border-4 border-pink-100 dark:border-primary/20 shadow-md">
-                                        <Image src={activity.image} alt={`${activity.title} logo`} fill className="object-cover" data-ai-hint={activity.hint} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-xl font-bold text-foreground mb-2">{activity.title}</h3>
-                                        <p className="text-muted-foreground text-sm">{activity.description}</p>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </TabsContent>
-
-            <TabsContent value="agenda">
-                 <div className="max-w-3xl mx-auto">
-                    <div className="text-center mb-10">
-                        <h2 className="text-3xl font-bold text-foreground">Agenda Rutin Tahunan</h2>
-                        <p className="text-muted-foreground mt-2">Kegiatan terjadwal yang menjadi bagian dari siklus organisasi kami.</p>                    </div>
-                     <Card>
-                        <CardContent className="p-6 md:p-8">
-                             <Accordion type="single" collapsible className="w-full">
-                                {agendas.map((agenda, index) => (
-                                    <AccordionItem key={index} value={`item-${index}`} className="border-b last:border-b-0">
-                                        <AccordionTrigger className="text-lg text-left font-semibold text-foreground/80 hover:no-underline">
-                                            <span className='flex items-center gap-4'>
-                                              <Calendar className="h-5 w-5 text-primary/80" />
-                                              {agenda.title}
-                                            </span>
-                                        </AccordionTrigger>
-                                        <AccordionContent className="text-muted-foreground pl-10 text-left">
-                                            {agenda.description}
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
-                        </CardContent>
+                      ))}
                     </Card>
+                  </div>
+                </ScrollAnimation>
+              </TabsContent>
+
+              <TabsContent value="pengembangan">
+                <ScrollAnimation>
+                  <div className="w-full max-w-5xl mx-auto relative group perspective-1000">
+                    {/* Glow Effect */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+
+                    <Card className="relative overflow-hidden bg-black/40 backdrop-blur-3xl border-white/10 shadow-2xl rounded-[2.5rem]">
+                      {/* Background Pattern */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none" />
+
+                      {additionalPrograms.map((program) => (
+                        <div key={program.title} className="flex flex-col md:grid md:grid-cols-2 items-center relative z-10">
+                          <div className="relative w-full h-80 md:h-[550px] order-1 md:order-first group/image overflow-hidden md:rounded-l-[2.5rem]">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 md:bg-gradient-to-r md:from-black/80 md:via-transparent md:to-transparent" />
+                            <Image
+                              src={program.image}
+                              alt={program.title}
+                              fill
+                              className="object-cover transition-transform duration-1000 group-hover/image:scale-110"
+                              data-ai-hint={program.hint}
+                            />
+                            {/* Tech Overlay */}
+                            <div className="absolute inset-0 border-[3px] border-white/10 md:rounded-l-[2.5rem] pointer-events-none" />
+                          </div>
+
+                          <div className="p-8 md:p-12 order-2 md:order-last space-y-8">
+                            <Badge variant="secondary" className="bg-blue-500/20 text-blue-100 border border-blue-500/30 backdrop-blur-md shadow-[0_0_15px_rgba(59,130,246,0.3)] px-4 py-1.5 rounded-full">
+                              Program Kerja Tambahan
+                            </Badge>
+
+                            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight drop-shadow-lg">
+                              {program.title}
+                            </h2>
+
+                            <p className="text-slate-200 text-lg leading-relaxed font-light border-l-2 border-blue-500/50 pl-6 drop-shadow-md">
+                              {program.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </Card>
+                  </div>
+                </ScrollAnimation>
+              </TabsContent>
+
+              <TabsContent value="komunitas">
+                <div className="max-w-6xl mx-auto">
+                  <div className="text-center mb-12 space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-black text-foreground">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-200 to-white animate-gradient-x">Aktivitas Internal & Sosial</span>
+                    </h2>
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-light">
+                      Inisiatif yang memperkuat ikatan kekeluargaan dan mengembangkan soft skill setiap anggota.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {communityActivities.map((activity, index) => (
+                      <ScrollAnimation key={activity.title} delay={index * 0.1}>
+                        <div className="group relative h-full perspective-1000">
+                          {/* Hover Glow */}
+                          <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-purple-500 to-blue-600 rounded-[2rem] blur opacity-20 group-hover:opacity-60 transition-opacity duration-500" />
+
+                          <Card className="h-full bg-black/40 backdrop-blur-xl border-white/10 overflow-hidden relative rounded-[2rem] hover:transform hover:scale-[1.02] transition-all duration-300 shadow-2xl">
+                            {/* Glossy Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+
+                            <CardContent className="p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 relative z-10 transition-transform duration-300">
+                              <div className="relative shrink-0">
+                                <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-lg border-2 border-white/10 group-hover:border-primary/50 transition-colors duration-300 bg-black/50">
+                                  <Image src={activity.image} alt={activity.title} fill className="object-cover p-2" data-ai-hint={activity.hint} />
+                                </div>
+                              </div>
+
+                              <div className="text-center sm:text-left space-y-3">
+                                <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-purple-400 transition-all duration-300">
+                                  {activity.title}
+                                </h3>
+                                <p className="text-slate-300 text-sm leading-relaxed font-light">
+                                  {activity.description}
+                                </p>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      </ScrollAnimation>
+                    ))}
+                  </div>
                 </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
+              </TabsContent>
+
+              <TabsContent value="agenda">
+                <div className="max-w-4xl mx-auto">
+                  <div className="text-center mb-12 space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-black text-foreground">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-200 to-white animate-gradient-x">Agenda Rutin Tahunan</span>
+                    </h2>
+                    <p className="text-muted-foreground text-lg font-light">
+                      Kegiatan terjadwal yang menjadi bagian dari siklus organisasi kami.
+                    </p>
+                  </div>
+
+                  <div className="relative group perspective-1000">
+                    {/* Glow Effect */}
+                    <div className="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-[2.5rem] blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-700" />
+
+                    <Card className="bg-black/40 backdrop-blur-3xl border-white/10 shadow-2xl relative overflow-hidden rounded-[2.5rem]">
+                      {/* Background Pattern */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent pointer-events-none" />
+                      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
+
+                      <CardContent className="p-8 md:p-12 relative z-10">
+                        <Accordion type="single" collapsible className="w-full space-y-4">
+                          {agendas.map((agenda, index) => (
+                            <AccordionItem key={index} value={`item-${index}`} className="border-none bg-white/5 hover:bg-white/10 rounded-2xl transition-all duration-300 px-4 group/item data-[state=open]:bg-white/10 data-[state=open]:shadow-lg">
+                              <AccordionTrigger className="text-lg md:text-xl font-bold text-white hover:text-primary hover:no-underline py-6 px-2 [&[data-state=open]>span>div]:bg-primary [&[data-state=open]>span>div]:text-white">
+                                <span className='flex items-center gap-6 text-left'>
+                                  <div className="p-3 rounded-xl bg-white/10 text-primary group-hover/item:bg-primary group-hover/item:text-white transition-all duration-300 shadow-inner">
+                                    <Calendar className="h-6 w-6" />
+                                  </div>
+                                  {agenda.title}
+                                </span>
+                              </AccordionTrigger>
+                              <AccordionContent className="text-slate-300 pl-[4.5rem] pr-4 pb-6 text-base leading-relaxed font-light">
+                                <div className="pt-2 border-t border-white/10">
+                                  {agenda.description}
+                                </div>
+                              </AccordionContent>
+                            </AccordionItem>
+                          ))}
+                        </Accordion>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </section>
       </ScrollAnimation>
     </div>
   );

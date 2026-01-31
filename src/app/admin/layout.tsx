@@ -16,12 +16,14 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { ProtectedRoute } from '@/components/auth/protected-route';
 
 const navItems = [
     { href: '/admin', label: 'Dasbor', icon: Home },
     { href: '/admin/posts', label: 'Postingan', icon: Newspaper },
     { href: '/admin/comments', label: 'Komentar', icon: MessageCircle },
     { href: '/admin/analytics', label: 'Analitik', icon: BarChart },
+    { href: '/admin/berita', label: 'Berita', icon: Newspaper },
 ];
 
 const adminNavItems = [
@@ -74,105 +76,107 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
 
     return (
-        <div className="flex min-h-screen w-full bg-muted/40">
-            {/* Desktop Sidebar */}
-            <aside className="sticky top-0 hidden h-screen w-64 flex-col border-r bg-background sm:flex">
-                <div className="flex h-[60px] items-center border-b px-6">
-                    <Link href="/admin" className="flex items-center gap-2 font-semibold">
-                        <Newspaper className="h-6 w-6 text-primary" />
-                        <span>Admin Panel</span>
-                    </Link>
-                </div>
-                <div className="flex-1 overflow-auto py-2">
-                    <SidebarNav />
-                </div>
-                <div className="border-t p-2">
-                    <Button
-                        variant={pathname === '/admin/settings' ? 'secondary' : 'ghost'}
-                        className="w-full justify-start"
-                        asChild
-                    >
-                        <Link href="/admin/settings">
-                            <Settings className="mr-2 h-4 w-4" />
-                            Pengaturan
+        <ProtectedRoute>
+            <div className="flex min-h-screen w-full bg-muted/40">
+                {/* Desktop Sidebar */}
+                <aside className="sticky top-0 hidden h-screen w-64 flex-col border-r bg-background sm:flex">
+                    <div className="flex h-[60px] items-center border-b px-6">
+                        <Link href="/admin" className="flex items-center gap-2 font-semibold">
+                            <Newspaper className="h-6 w-6 text-primary" />
+                            <span>Admin Panel</span>
                         </Link>
-                    </Button>
-                </div>
-            </aside>
+                    </div>
+                    <div className="flex-1 overflow-auto py-2">
+                        <SidebarNav />
+                    </div>
+                    <div className="border-t p-2">
+                        <Button
+                            variant={pathname === '/admin/settings' ? 'secondary' : 'ghost'}
+                            className="w-full justify-start"
+                            asChild
+                        >
+                            <Link href="/admin/settings">
+                                <Settings className="mr-2 h-4 w-4" />
+                                Pengaturan
+                            </Link>
+                        </Button>
+                    </div>
+                </aside>
 
-            <div className="flex flex-1 flex-col">
-                {/* Mobile Header */}
-                <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:h-[60px] sm:px-6">
-                    <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-                        <SheetTrigger asChild>
-                            <Button size="icon" variant="outline" className="sm:hidden">
-                                <Menu className="h-5 w-5" />
-                                <span className="sr-only">Toggle Menu</span>
-                            </Button>
-                        </SheetTrigger>
-                        <SheetContent side="left" className="sm:max-w-xs">
-                            <nav className="grid gap-6 text-lg font-medium">
-                                <Link
-                                    href="/admin"
-                                    className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    <Newspaper className="h-5 w-5 transition-all group-hover:scale-110" />
-                                    <span className="sr-only">Admin Panel</span>
-                                </Link>
-                                {allNavItems.map((item) => (
+                <div className="flex flex-1 flex-col">
+                    {/* Mobile Header */}
+                    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:h-[60px] sm:px-6">
+                        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                            <SheetTrigger asChild>
+                                <Button size="icon" variant="outline" className="sm:hidden">
+                                    <Menu className="h-5 w-5" />
+                                    <span className="sr-only">Toggle Menu</span>
+                                </Button>
+                            </SheetTrigger>
+                            <SheetContent side="left" className="sm:max-w-xs">
+                                <nav className="grid gap-6 text-lg font-medium">
                                     <Link
-                                        key={item.href}
-                                        href={item.href}
+                                        href="/admin"
+                                        className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        <Newspaper className="h-5 w-5 transition-all group-hover:scale-110" />
+                                        <span className="sr-only">Admin Panel</span>
+                                    </Link>
+                                    {allNavItems.map((item) => (
+                                        <Link
+                                            key={item.href}
+                                            href={item.href}
+                                            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                        >
+                                            <item.icon className="h-5 w-5" />
+                                            {item.label}
+                                        </Link>
+                                    ))}
+                                    <Link
+                                        href="/admin/settings"
                                         className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
-                                        <item.icon className="h-5 w-5" />
-                                        {item.label}
+                                        <Settings className="h-5 w-5" />
+                                        Pengaturan
                                     </Link>
-                                ))}
-                                <Link
-                                    href="/admin/settings"
-                                    className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    <Settings className="h-5 w-5" />
-                                    Pengaturan
+                                </nav>
+                            </SheetContent>
+                        </Sheet>
+                        <div className="relative ml-auto flex-1 md:grow-0">
+                            {/* Can add a search bar here if needed */}
+                        </div>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
+                                    <Avatar>
+                                        <AvatarImage src={userProfile?.avatar || "https://placehold.co/32x32"} alt="Avatar" />
+                                        <AvatarFallback><UserIcon /></AvatarFallback>
+                                    </Avatar>
+                                </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>{userProfile?.username || 'Akun Saya'}</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <Link href="/admin/settings">
+                                    <DropdownMenuItem>
+                                        <Settings className="mr-2 h-4 w-4" />
+                                        Pengaturan
+                                    </DropdownMenuItem>
                                 </Link>
-                            </nav>
-                        </SheetContent>
-                    </Sheet>
-                    <div className="relative ml-auto flex-1 md:grow-0">
-                        {/* Can add a search bar here if needed */}
-                    </div>
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button variant="outline" size="icon" className="overflow-hidden rounded-full">
-                                <Avatar>
-                                    <AvatarImage src={userProfile?.avatar || "https://placehold.co/32x32"} alt="Avatar" />
-                                    <AvatarFallback><UserIcon /></AvatarFallback>
-                                </Avatar>
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>{userProfile?.username || 'Akun Saya'}</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <Link href="/admin/settings">
-                                <DropdownMenuItem>
-                                    <Settings className="mr-2 h-4 w-4" />
-                                    Pengaturan
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem onClick={() => auth?.signOut()}>
+                                    <LogOut className="mr-2 h-4 w-4" />
+                                    Keluar
                                 </DropdownMenuItem>
-                            </Link>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem onClick={() => auth?.signOut()}>
-                                <LogOut className="mr-2 h-4 w-4" />
-                                Keluar
-                            </DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
-                </header>
-                <main className="flex-1 overflow-auto p-4 sm:p-6">{children}</main>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </header>
+                    <main className="flex-1 overflow-auto p-4 sm:p-6">{children}</main>
+                </div>
             </div>
-        </div>
+        </ProtectedRoute>
     );
 }

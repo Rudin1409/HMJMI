@@ -47,7 +47,7 @@ export function SiteHeader() {
     }
     return pathname.startsWith(href);
   };
-  
+
   const NavLink = ({ href, label }: { href: string; label: string }) => {
     const isActive = getIsActive(href);
     return (
@@ -69,29 +69,33 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'border-b bg-background/80 backdrop-blur-lg shadow-sm' : 'bg-transparent'
+        'sticky top-4 z-50 w-full max-w-7xl mx-auto transition-all duration-300',
+        isScrolled
+          ? 'bg-background/70 backdrop-blur-md shadow-lg border rounded-full mt-4'
+          : 'bg-transparent mt-4'
       )}
     >
-      <div className="container mx-auto flex h-20 items-center justify-between px-4">
+      <div className={cn(
+        "container mx-auto flex items-center justify-between px-6 transition-all duration-300",
+        isScrolled ? "h-16" : "h-20"
+      )}>
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-10 w-10" />
-           <div className="flex flex-col">
-              <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
-              <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
-            </div>
+          <Image src="/logo/logohmj.png" width={40} height={40} alt="HMJ MI POLSRI Logo" className="h-9 w-9" />
+          <div className="flex flex-col">
+            <span className="text-base font-bold leading-tight text-primary">HMJ MI</span>
+          </div>
         </Link>
-        
-        <nav className="hidden items-center space-x-8 text-sm lg:flex">
+
+        <nav className="hidden items-center space-x-6 text-sm lg:flex">
           {mainNavLinks.map((link) => (
             <NavLink key={link.href} href={link.href} label={link.label} />
           ))}
 
           <NavLink href={trailingNavLink.href} label={trailingNavLink.label} />
         </nav>
-        
+
         <div className="flex items-center gap-2">
-           <ThemeToggle />
+          <ThemeToggle />
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" className="lg:hidden" size="icon">
@@ -103,11 +107,11 @@ export function SiteHeader() {
               <SheetTitle className="sr-only">Menu Seluler</SheetTitle>
               <div className="flex h-full flex-col">
                 <div className="flex items-center gap-2 border-b p-6">
-                   <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-10 w-10" />
-                   <div className="flex flex-col">
-                      <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
-                      <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
-                    </div>
+                  <Image src="/logo/logohmj.png" width={48} height={48} alt="HMJ MI POLSRI Logo" className="h-10 w-10" />
+                  <div className="flex flex-col">
+                    <span className="text-lg font-bold leading-tight text-primary">HMJ MI POLSRI</span>
+                    <span className="text-xs font-semibold leading-tight text-muted-foreground">Bersatu Beraksi, Bersinar Berprestasi</span>
+                  </div>
                 </div>
                 <nav className="mt-6 flex flex-col gap-2 p-6">
                   {[...mainNavLinks, trailingNavLink].map((link) => (

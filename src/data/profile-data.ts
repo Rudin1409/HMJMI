@@ -347,7 +347,7 @@ export const teamMembers = {
             ],
             medkraf: [
                 {
-                    name: "Muhammad Nabil Fadhilah",
+                    name: "Muhammad Nabil Akmal",
                     role: "Anggota Medkraf",
                     class: "MI 2025",
                     avatar: "/anggota/humas25/naabil (2).png",
@@ -505,13 +505,6 @@ export const teamMembers = {
                     class: "MI 2025",
                     avatar: "/anggota/psdm25/shafia_aurajannah_marza (2).png",
                     instagram: "https://www.instagram.com/shafiaura/",
-                },
-                {
-                    name: "Renjiro Alief Daniswara",
-                    role: "Anggota Minat Bakat",
-                    class: "MI 2025",
-                    avatar: "/anggota/psdm25/Renjiro Alief PDH (2).png",
-                    instagram: "https://www.instagram.com/renjiroad/",
                 },
                 {
                     name: "Fika Dwi Jayanti",

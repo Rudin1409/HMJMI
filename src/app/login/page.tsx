@@ -22,6 +22,11 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [loginAttempts, setLoginAttempts] = useState(0);
+  const [lockoutUntil, setLockoutUntil] = useState<number | null>(null);
+
+  const MAX_ATTEMPTS = 5;
+  const LOCKOUT_DURATION = 15 * 60 * 1000; // 15 minutes
 
   useEffect(() => {
     if (!isUserLoading && user) {
@@ -29,17 +34,56 @@ export default function LoginPage() {
     }
   }, [user, isUserLoading, router]);
 
+  useEffect(() => {
+    // Load rate limiting data from localStorage
+    const stored = localStorage.getItem('loginAttempts');
+    const lockout = localStorage.getItem('lockoutUntil');
+
+    if (stored) setLoginAttempts(parseInt(stored));
+    if (lockout) {
+      const until = parseInt(lockout);
+      if (Date.now() < until) {
+        setLockoutUntil(until);
+      } else {
+        localStorage.removeItem('lockoutUntil');
+        localStorage.removeItem('loginAttempts');
+      }
+    }
+  }, []);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!auth) return;
+
+    // Check lockout
+    if (lockoutUntil && Date.now() < lockoutUntil) {
+      const remaining = Math.ceil((lockoutUntil - Date.now()) / 60000);
+      setError(`Terlalu banyak percobaan login. Coba lagi dalam ${remaining} menit.`);
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      // Reset on success
+      localStorage.removeItem('loginAttempts');
+      localStorage.removeItem('lockoutUntil');
+      setLoginAttempts(0);
+      setLockoutUntil(null);
       // The useEffect hook will handle redirection
     } catch (err: any) {
-      if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
-        setError('Email atau password salah. Silakan coba lagi.');
+      const newAttempts = loginAttempts + 1;
+      setLoginAttempts(newAttempts);
+      localStorage.setItem('loginAttempts', newAttempts.toString());
+
+      if (newAttempts >= MAX_ATTEMPTS) {
+        const until = Date.now() + LOCKOUT_DURATION;
+        setLockoutUntil(until);
+        localStorage.setItem('lockoutUntil', until.toString());
+        setError(`Terlalu banyak percobaan login gagal. Akun dikunci selama 15 menit.`);
+      } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
+        setError(`Email atau password salah. ${MAX_ATTEMPTS - newAttempts} percobaan tersisa.`);
       } else {
         setError(err.message || 'Terjadi kesalahan saat login.');
       }

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Calendar } from 'lucide-react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -65,32 +66,38 @@ export default function BeritaList({ berita, isLoading }: BeritaListProps) {
       {!isLoading && berita && berita.length > 0 ? (
         berita.map((item) => (
           <ScrollAnimation key={item.id}>
-            <Card className="flex flex-col h-full overflow-hidden transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/20">
+            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] hover:border-primary/50 bg-background/90 backdrop-blur-sm border-white/20 group">
               <CardContent className="p-0">
-                <div className="relative w-full aspect-video">
+                <div className="relative w-full aspect-video overflow-hidden">
                   <Image
                     src={item.imageUrl || '/placeholder.png'}
                     alt={item.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     data-ai-hint="event photo"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-60" />
+                  <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                    <Badge variant="secondary" className="bg-primary text-primary-foreground hover:bg-primary/90">Baca Sekarang</Badge>
+                  </div>
                 </div>
               </CardContent>
-              <CardHeader>
-                <CardTitle className="text-xl line-clamp-2">{item.title}</CardTitle>
-                <div className="flex items-center text-sm text-muted-foreground pt-2">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span>{formatDate(item.date)}</span>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-xl line-clamp-2 leading-tight group-hover:text-primary transition-colors duration-300">{item.title}</CardTitle>
+                <div className="flex items-center text-xs text-muted-foreground pt-2 gap-2">
+                  <div className="flex items-center bg-primary/10 px-2 py-1 rounded-full text-primary">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    <span>{formatDate(item.date)}</span>
+                  </div>
                 </div>
               </CardHeader>
-              <CardContent className="flex-grow">
-                <div className="text-muted-foreground line-clamp-3 text-sm" dangerouslySetInnerHTML={{ __html: item.content }} />
+              <CardContent className="flex-grow pb-4">
+                <div className="text-muted-foreground line-clamp-3 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item.content }} />
               </CardContent>
-              <CardFooter>
-                <Button asChild variant="link" className="p-0 text-primary">
+              <CardFooter className="pt-0">
+                <Button asChild variant="ghost" size="sm" className="rounded-full px-4 h-8 text-xs bg-primary/5 hover:bg-primary hover:text-primary-foreground w-full justify-between group/btn">
                   <Link href={`/berita/read?id=${item.id}`}>
-                    Baca Selengkapnya <ArrowRight className="ml-2 h-4 w-4" />
+                    Baca Selengkapnya <ArrowRight className="ml-2 h-3 w-3 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
               </CardFooter>
