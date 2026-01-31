@@ -170,7 +170,7 @@ export const teamMembers = {
                     name: "M. Bahrudin",
                     role: "Anggota",
                     class: "MI 2025",
-                    avatar: "/anggota/ptkp25/M. Bahrudin (2).png",
+                    avatar: "/anggota/ptkp25/M. Bahrudin.png",
                     instagram: "https://www.instagram.com/m.bhrdnnn_/",
                 },
                 {
