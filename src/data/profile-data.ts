@@ -163,7 +163,7 @@ export const teamMembers = {
                     name: "Kemas Muhammad Amar Fauzan",
                     role: "Anggota",
                     class: "MI 2025",
-                    avatar: "/anggota/psdm24/anonym.png",
+                    avatar: "/anggota/ptkp25/Kemas Amar.png",
                     instagram: "https://www.instagram.com/kmsamarf_/",
                 },
                 {
@@ -235,7 +235,7 @@ export const teamMembers = {
                     name: "Muhammad Satria Anugrah",
                     role: "Anggota",
                     class: "MI 2025",
-                    avatar: "/anggota/psdm24/anonym.png",
+                    avatar: "/anggota/ptkp25/Satria Anugrah.png",
                     instagram: "https://www.instagram.com/rragaa__/",
                 },
                 {
@@ -393,7 +393,7 @@ export const teamMembers = {
                     name: "Sulthan Muhammad Diftha Annashira",
                     role: "Anggota Jurnalis",
                     class: "MI 2025",
-                    avatar: "/anggota/psdm24/anonym.png",
+                    avatar: "/anggota/humas25/sultan.png",
                     instagram: "https://www.instagram.com/sulthan.difthaa/",
                 },
                 {

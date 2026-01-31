@@ -76,7 +76,7 @@ export function SiteFooter() {
                                         <MapPin className="h-4 w-4" />
                                     </div>
                                     <span className="text-muted-foreground mt-1">
-                                        Jl. Srijaya Negara, Bukit Besar, Palembang 30139
+                                        Jl. Sungai Sahang Ujung, Lorok Pakjo, Kec. Ilir Bar. I, Kota Palembang, Sumatera Selatan
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm group">
