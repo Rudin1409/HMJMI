@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useLayoutEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 
 interface SmoothScrollProps {
@@ -11,20 +11,19 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
     const lenisRef = useRef<Lenis | null>(null);
 
     useEffect(() => {
-        // Initialize Lenis
+        // Zen Mode Lenis Config
         const lenis = new Lenis({
-            duration: 1.0, // Reduced from 1.2 for less "heavy" feel
+            duration: 1.2, // Faster response = less perceived lag
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 1.2, // Slightly more responsive
-            touchMultiplier: 2,
+            wheelMultiplier: 1.0,
+            touchMultiplier: 1.5, // Reduced for smoother mobile
         });
 
         lenisRef.current = lenis;
 
-        // RAF loop
         function raf(time: number) {
             lenis.raf(time);
             requestAnimationFrame(raf);
@@ -37,5 +36,5 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
         };
     }, []);
 
-    return <>{children}</>;
+    return <div className="will-change-transform">{children}</div>;
 }

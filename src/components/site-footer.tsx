@@ -33,7 +33,6 @@ export function SiteFooter() {
 
     const infoLinks = [
         { href: "#faq", label: "FAQ" },
-        { href: "/login", label: "Admin" },
     ];
 
     return (
@@ -41,7 +40,7 @@ export function SiteFooter() {
             {/* Gradient Top Border Line */}
             <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
 
-            <div className="bg-background/80 backdrop-blur-xl border-t border-white/20 rounded-t-[2.5rem] pt-16 pb-8">
+            <div className="bg-background/90 border-t border-white/20 rounded-t-[2.5rem] pt-16 pb-8">
                 <div className="container px-6 md:px-12">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
                         {/* Column 1: Logo and About */}
@@ -165,7 +164,7 @@ export function SiteFooter() {
                                 &copy; {new Date().getFullYear()} <span className="font-semibold text-foreground">HMJ MI POLSRI</span>. All rights reserved.
                             </p>
                             <p className="text-xs text-muted-foreground/50 mt-1">
-                                Crafted with passion by Dinas Pengembangan Teknologi Informasi.
+                                Powered by <span className="font-semibold text-primary">PTKP</span>
                             </p>
                         </div>
                         <div className="flex items-center gap-6 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">

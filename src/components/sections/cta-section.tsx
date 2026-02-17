@@ -3,44 +3,53 @@ import { Button } from '@/components/ui/button';
 import { Instagram } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ScrollAnimation } from '../scroll-animation';
 
 export function CtaSection() {
   return (
     <section id="cta" className="w-full py-16 md:py-24 bg-transparent">
       <div className="container mx-auto px-4">
-        <div className="relative bg-primary text-primary-foreground rounded-2xl overflow-visible shadow-2xl">
+        <ScrollAnimation className="relative bg-primary text-primary-foreground rounded-2xl overflow-visible shadow-2xl">
           <div className="flex flex-col md:flex-row items-center justify-between">
             {/* Image Section */}
             <div className="relative w-full md:w-1/3 lg:w-[40%] self-end order-2 md:order-1">
-              <div className="md:absolute md:left-0 md:-bottom-8 w-full flex justify-center md:justify-start">
+              <ScrollAnimation delay={1} className="md:absolute md:left-0 md:-bottom-8 w-full flex justify-center md:justify-start">
                 <div className="relative w-[250px] sm:w-[300px] md:w-[400px]">
-                  <Image 
-                      src="/hand-iphone.png"
-                      width={400}
-                      height={600}
-                      alt="Hand holding phone with Instagram profile"
-                      className="drop-shadow-2xl w-full h-auto"
+                  <Image
+                    src="/hand-iphone.png"
+                    width={400}
+                    height={600}
+                    alt="Hand holding phone with Instagram profile"
+                    className="drop-shadow-2xl w-full h-auto"
                   />
                 </div>
-              </div>
+              </ScrollAnimation>
             </div>
-            
+
             {/* Text & Button Section */}
             <div className="w-full md:w-2/3 lg:w-[60%] relative z-10 text-center md:text-left p-8 md:p-12 lg:p-16 order-1 md:order-2">
+              <ScrollAnimation delay={2}>
                 <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground">
-                    Ikuti Kami di Media Sosial!
+                  Ikuti Kami di Media Sosial!
                 </h2>
+              </ScrollAnimation>
+
+              <ScrollAnimation delay={3}>
                 <p className="mt-4 mb-6 text-primary-foreground/80 max-w-lg mx-auto md:mx-0">
-                    Dapatkan pembaruan terbaru, info acara, dan berbagai peluang eksklusif dengan mengikuti akun Instagram kami.
+                  Dapatkan pembaruan terbaru, info acara, dan berbagai peluang eksklusif dengan mengikuti akun Instagram kami.
                 </p>
+              </ScrollAnimation>
+
+              <ScrollAnimation delay={4}>
                 <Button asChild size="lg" variant="secondary" className="rounded-full bg-white text-primary hover:bg-white/90">
-                    <Link href="https://www.instagram.com/hmjmi_polsri/" target="_blank" rel="noopener noreferrer">
-                        <Instagram className="mr-2 h-5 w-5" /> Kunjungi Instagram
-                    </Link>
+                  <Link href="https://www.instagram.com/hmjmi_polsri/" target="_blank" rel="noopener noreferrer">
+                    <Instagram className="mr-2 h-5 w-5" /> Kunjungi Instagram
+                  </Link>
                 </Button>
+              </ScrollAnimation>
             </div>
           </div>
-        </div>
+        </ScrollAnimation>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 'use client';
 
 import Image from 'next/image';
+import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import { useState, useRef, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -25,6 +26,7 @@ import AutoScroll from "embla-carousel-auto-scroll"
 import { AnimatedLogo } from '@/components/ui/animated-logo';
 import { galleryItems, GalleryItem } from '@/data/site-data';
 import { ScrollAnimation } from '@/components/scroll-animation';
+import { BackgroundBlobs } from '@/components/ui/background-blobs';
 
 const stats = [
   {
@@ -119,40 +121,49 @@ export default function AboutPage() {
         id="hero-about"
         className="relative w-full flex items-center justify-center min-h-[90vh] overflow-hidden bg-transparent"
       >
-        {/* Background Effects - Removed blue glow */}
-        <div className="absolute inset-0 bg-[url('/dot-grid.svg')] bg-repeat bg-center opacity-20 dark:opacity-10 mix-blend-overlay"></div>
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-purple-500/15 to-pink-500/15 blur-[120px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
+        {/* Background Effects */}
+        <BackgroundBlobs className="opacity-50" />
 
         <div className="container mx-auto px-4 relative z-10 pt-20">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 lg:gap-16">
 
             {/* Text Content - Reduced Size */}
-            <ScrollAnimation className="relative z-10 text-center md:text-left space-y-5">
-              <Badge variant="outline" className="mb-4 border-pink-500/50 text-pink-600 dark:text-pink-300 bg-pink-500/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold rounded-full">
-                Jejak Langkah Kami
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
-                Merangkai Inovasi, <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 animate-gradient-x">
-                  Mencetak Talenta
-                </span>
-              </h1>
-              <p className="max-w-lg mx-auto md:mx-0 text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Temukan bagaimana Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berkomitmen mencetak pemimpin teknologi masa depan.
-              </p>
+            <div className="relative z-10 text-center md:text-left space-y-5">
+              <ScrollAnimation>
+                <Badge variant="outline" className="mb-4 border-pink-500/50 text-pink-600 dark:text-pink-300 bg-pink-500/10 px-4 py-1.5 text-sm font-semibold rounded-full">
+                  Jejak Langkah Kami
+                </Badge>
+              </ScrollAnimation>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
-                <Button asChild size="lg" className="rounded-full px-6 py-5 text-base bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 shadow-lg shadow-pink-500/20 transition-all">
-                  <a href="#our-impact">Pelajari Sejarah</a>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-6 py-5 text-base border-primary/20 bg-white/5 backdrop-blur-sm hover:bg-white/10">
-                  <a href="#vision-mission">Lihat Visi Misi</a>
-                </Button>
-              </div>
-            </ScrollAnimation>
+              <ScrollAnimation delay={1}>
+                <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
+                  Merangkai Inovasi, <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600">
+                    Mencetak Talenta
+                  </span>
+                </h1>
+              </ScrollAnimation>
+
+              <ScrollAnimation delay={2}>
+                <p className="max-w-lg mx-auto md:mx-0 text-base md:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Temukan bagaimana Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya berkomitmen mencetak pemimpin teknologi masa depan.
+                </p>
+              </ScrollAnimation>
+
+              <ScrollAnimation delay={3}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+                  <Button asChild size="lg" className="rounded-full px-6 py-5 text-base bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 shadow-lg shadow-pink-500/20 transition-all">
+                    <a href="#our-impact">Pelajari Sejarah</a>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="rounded-full px-6 py-5 text-base border-primary/20 bg-white/10 hover:bg-white/15">
+                    <a href="#vision-mission">Lihat Visi Misi</a>
+                  </Button>
+                </div>
+              </ScrollAnimation>
+            </div>
 
             {/* Orbiting Visuals - Fixed Proper Orbit */}
-            <ScrollAnimation className="relative flex items-center justify-center h-[450px] md:h-[500px]">
+            <ScrollAnimation delay={2} className="relative flex items-center justify-center h-[450px] md:h-[500px]">
 
               {/* Orbit Rings */}
               <div className="absolute w-[320px] h-[320px] md:w-[400px] md:h-[400px] border border-white/10 rounded-full"></div>
@@ -196,113 +207,117 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <ScrollAnimation>
-        <section id="vision-mission" className="w-full py-16 md:py-24 bg-transparent relative">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-6xl mx-auto">
+      <section id="vision-mission" className="w-full py-16 md:py-24 bg-transparent relative">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-6xl mx-auto">
 
-              {/* Visi Card - Pink Theme */}
-              <div className="relative group hover:-translate-y-2 transition-transform duration-500">
-                <div className="absolute inset-0 bg-pink-500/20 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                <Card className="relative bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 overflow-hidden h-full shadow-2xl hover:shadow-pink-500/10 transition-all duration-500">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/10 to-transparent rounded-bl-full pointer-events-none" />
+            {/* Visi Card - Pink Theme */}
+            <ScrollAnimation direction="left" className="relative group hover:-translate-y-2 transition-transform duration-500 h-full">
+              <div className="absolute inset-0 bg-pink-500/20 blur-[30px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <Card className="relative bg-white/50 dark:bg-white/10 border border-white/20 dark:border-white/10 overflow-hidden h-full shadow-2xl hover:shadow-pink-500/10 transition-all duration-500">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/10 to-transparent rounded-bl-full pointer-events-none" />
 
-                  <CardContent className="p-8 md:p-12 space-y-8 flex flex-col items-center md:items-start text-center md:text-left h-full">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-pink-500 blur-xl opacity-20 animate-pulse"></div>
-                      <div className="w-20 h-20 bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg group-hover:rotate-6 transition-transform duration-500">
-                        <Eye className="w-10 h-10 text-pink-500" />
+                <CardContent className="p-8 md:p-12 space-y-8 flex flex-col items-center md:items-start text-center md:text-left h-full">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-pink-500 blur-md opacity-20"></div>
+                    <div className="w-20 h-20 bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg group-hover:rotate-6 transition-transform duration-500">
+                      <Eye className="w-10 h-10 text-pink-500" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6 flex flex-col items-center md:items-start gap-2">
+                      Visi Kami
+                      <span className="w-16 h-1.5 bg-pink-500 rounded-full" />
+                    </h2>
+                    <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed font-medium dark:font-light">
+                      "Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa <strong className="text-pink-600 dark:text-pink-400 font-bold dark:font-medium">tanggung jawab, harmoni, kebersamaan</strong>, serta menciptakan lingkungan yang inspiratif dan kolaboratif."
+                    </p>
+                  </div>
+
+                  <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg mt-auto group-hover:scale-105 transition-transform duration-500">
+                    <Image
+                      src="/Visi.png"
+                      alt="Visi HMJMI"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <p className="absolute bottom-4 left-4 text-white font-semibold text-sm">Bersama Meraih Prestasi</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+
+            {/* Misi Card - Blue Theme */}
+            <ScrollAnimation direction="right" className="relative group hover:-translate-y-2 transition-transform duration-500 h-full">
+              <div className="absolute inset-0 bg-blue-500/20 blur-[30px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <Card className="relative bg-white/50 dark:bg-white/10 border border-white/20 dark:border-white/10 overflow-hidden h-full shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full pointer-events-none" />
+
+                <CardContent className="p-8 md:p-12 space-y-8 h-full">
+                  <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="relative mb-6">
+                      <div className="absolute inset-0 bg-blue-500 blur-md opacity-20"></div>
+                      <div className="w-20 h-20 bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg group-hover:-rotate-6 transition-transform duration-500">
+                        <ListChecks className="w-10 h-10 text-blue-500" />
                       </div>
                     </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white flex flex-col items-center md:items-start gap-2">
+                      Misi Kami
+                      <span className="w-16 h-1.5 bg-blue-500 rounded-full" />
+                    </h2>
+                  </div>
 
-                    <div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6 flex flex-col items-center md:items-start gap-2">
-                        Visi Kami
-                        <span className="w-16 h-1.5 bg-pink-500 rounded-full" />
-                      </h2>
-                      <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed font-medium dark:font-light">
-                        "Mewujudkan Himpunan Mahasiswa Jurusan Manajemen Informatika yang mengedepankan rasa <strong className="text-pink-600 dark:text-pink-400 font-bold dark:font-medium">tanggung jawab, harmoni, kebersamaan</strong>, serta menciptakan lingkungan yang inspiratif dan kolaboratif."
-                      </p>
-                    </div>
-
-                    <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg mt-auto group-hover:scale-105 transition-transform duration-500">
-                      <Image
-                        src="/Visi.png"
-                        alt="Visi HMJMI"
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <p className="absolute bottom-4 left-4 text-white font-semibold text-sm">Bersama Meraih Prestasi</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Misi Card - Blue Theme */}
-              <div className="relative group hover:-translate-y-2 transition-transform duration-500 delay-100">
-                <div className="absolute inset-0 bg-blue-500/20 blur-[60px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                <Card className="relative bg-white/40 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 overflow-hidden h-full shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full pointer-events-none" />
-
-                  <CardContent className="p-8 md:p-12 space-y-8 h-full">
-                    <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                      <div className="relative mb-6">
-                        <div className="absolute inset-0 bg-blue-500 blur-xl opacity-20 animate-pulse delay-75"></div>
-                        <div className="w-20 h-20 bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg group-hover:-rotate-6 transition-transform duration-500">
-                          <ListChecks className="w-10 h-10 text-blue-500" />
+                  <ul className="space-y-6 text-left">
+                    {missionPoints.map((mission, index) => (
+                      <li key={index} className="flex items-start gap-4 group/item">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg group-hover/item:scale-110 transition-transform duration-300 mt-0.5">
+                          <span className="text-white font-bold text-sm">{index + 1}</span>
                         </div>
-                      </div>
-                      <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white flex flex-col items-center md:items-start gap-2">
-                        Misi Kami
-                        <span className="w-16 h-1.5 bg-blue-500 rounded-full" />
-                      </h2>
-                    </div>
+                        <p className="text-slate-700 dark:text-slate-300 font-medium dark:font-light text-base leading-relaxed group-hover/item:text-slate-900 dark:group-hover/item:text-white transition-colors duration-300 pt-1 border-b border-transparent group-hover/item:border-blue-500/30 pb-4 w-full">
+                          {mission}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
 
-                    <ul className="space-y-6 text-left">
-                      {missionPoints.map((mission, index) => (
-                        <li key={index} className="flex items-start gap-4 group/item">
-                          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg group-hover/item:scale-110 transition-transform duration-300 mt-0.5">
-                            <span className="text-white font-bold text-sm">{index + 1}</span>
-                          </div>
-                          <p className="text-slate-700 dark:text-slate-300 font-medium dark:font-light text-base leading-relaxed group-hover/item:text-slate-900 dark:group-hover/item:text-white transition-colors duration-300 pt-1 border-b border-transparent group-hover/item:border-blue-500/30 pb-4 w-full">
-                            {mission}
-                          </p>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-
-            </div>
           </div>
-        </section>
-      </ScrollAnimation>
+        </div>
+      </section>
 
-      <ScrollAnimation>
-        <section id="our-impact" className="w-full py-16 md:py-24 bg-transparent relative">
-          {/* Decorative Background Elements */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+      <section id="our-impact" className="w-full py-16 md:py-24 bg-transparent relative">
+        {/* Decorative Background Elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[30px] rounded-full pointer-events-none" />
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <Badge variant="outline" className="mb-4 border-purple-500/50 text-purple-600 dark:text-purple-300 bg-purple-500/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold rounded-full shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <ScrollAnimation>
+              <Badge variant="outline" className="mb-4 border-purple-500/50 text-purple-600 dark:text-purple-300 bg-purple-500/10 px-4 py-1.5 text-sm font-semibold rounded-full">
                 Dedikasi Kami
               </Badge>
+            </ScrollAnimation>
+            <ScrollAnimation delay={1}>
               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">
-                Capaian dan <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 animate-gradient-x">Kontribusi Kami</span>
+                Capaian dan <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Kontribusi Kami</span>
               </h2>
+            </ScrollAnimation>
+            <ScrollAnimation delay={2}>
               <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
                 Angka-angka ini adalah cerminan dedikasi dan pertumbuhan berkelanjutan dari komunitas kami selama bertahun-tahun.
               </p>
-            </div>
+            </ScrollAnimation>
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="group relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {stats.map((stat, index) => (
+              <ScrollAnimation key={index} delay={index + 3}>
+                <div className="group relative h-full">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 blur-xl rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <Card className="relative h-full bg-white/40 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl group-hover:shadow-purple-500/10">
+                  <Card className="relative h-full bg-white/50 dark:bg-white/10 border border-white/20 dark:border-white/10 overflow-hidden hover:-translate-y-2 transition-transform duration-300 shadow-xl group-hover:shadow-purple-500/10">
                     <CardContent className="flex flex-col items-center justify-center p-8 text-center h-full gap-6">
                       <div className="relative">
                         <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -318,36 +333,43 @@ export default function AboutPage() {
                     </CardContent>
                   </Card>
                 </div>
-              ))}
-            </div>
+              </ScrollAnimation>
+            ))}
           </div>
-        </section>
-      </ScrollAnimation>
+        </div>
+      </section>
 
-      <ScrollAnimation>
-        <section className="py-16 md:py-24 bg-primary/35 backdrop-blur-sm relative overflow-hidden">
-          {/* Decorative element for this section */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
+      <section className="py-16 md:py-24 bg-primary/40 relative overflow-hidden">
+        {/* Decorative element for this section */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/10 blur-[30px] rounded-full pointer-events-none" />
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center mb-16">
-              <Badge variant="outline" className="mb-4 border-purple-500/50 text-purple-600 dark:text-purple-300 bg-purple-500/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold rounded-full shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <ScrollAnimation>
+              <Badge variant="outline" className="mb-4 border-purple-500/50 text-purple-600 dark:text-purple-300 bg-purple-500/10 px-4 py-1.5 text-sm font-semibold rounded-full">
                 Kabinet Karsadhikara
               </Badge>
+            </ScrollAnimation>
+            <ScrollAnimation delay={1}>
               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">
-                Filosofi Logo <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 animate-gradient-x">Kabinet Karsadhikara</span>
+                Filosofi Logo <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Kabinet Karsadhikara</span>
               </h2>
+            </ScrollAnimation>
+            <ScrollAnimation delay={2}>
               <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
                 Setiap elemen dalam logo Kabinet Karsadhikara dirancang dengan makna mendalam, mencerminkan semangat, visi, dan nilai-nilai yang kami junjung tinggi.
               </p>
-            </div>
+            </ScrollAnimation>
+          </div>
 
-            <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-              <div className="relative aspect-square">
-                <AnimatedLogo />
-              </div>
-              <div className="space-y-8">
-                <Card className="bg-background/80 backdrop-blur-md border-white/10 overflow-hidden group hover:border-primary/30 transition-colors duration-500">
+          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <ScrollAnimation className="relative aspect-square">
+              <AnimatedLogo />
+            </ScrollAnimation>
+
+            <div className="space-y-8">
+              <ScrollAnimation delay={1}>
+                <Card className="bg-background/90 border-white/10 overflow-hidden group hover:border-primary/30 transition-colors duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <CardHeader className="pb-4">
                     <CardTitle className="text-xl flex items-center gap-2">
@@ -376,8 +398,10 @@ export default function AboutPage() {
                     </div>
                   </CardContent>
                 </Card>
+              </ScrollAnimation>
 
-                <Card className="bg-background/80 backdrop-blur-md border-white/10 overflow-hidden group hover:border-primary/30 transition-colors duration-500">
+              <ScrollAnimation delay={2}>
+                <Card className="bg-background/90 border-white/10 overflow-hidden group hover:border-primary/30 transition-colors duration-500">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <CardHeader className="pb-4">
                     <CardTitle className="text-xl flex items-center gap-2">
@@ -398,44 +422,54 @@ export default function AboutPage() {
                     ))}
                   </CardContent>
                 </Card>
-              </div>
+              </ScrollAnimation>
             </div>
-            <Card className="mt-12 max-w-4xl mx-auto bg-gradient-to-r from-background/80 to-background/60 backdrop-blur-md border-primary/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden relative">
+          </div>
+
+          <ScrollAnimation delay={3}>
+            <Card className="mt-12 max-w-4xl mx-auto bg-gradient-to-r from-background/90 to-background/80 border-primary/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden relative">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-500/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/3" />
               <CardHeader className="text-center relative z-10 pb-2">
                 <CardTitle className="flex items-center justify-center gap-2 text-2xl">
-                  <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+                  <Sparkles className="w-5 h-5 text-primary " />
                   Filosofi Utama
-                  <Sparkles className="w-5 h-5 text-primary animate-pulse" />
+                  <Sparkles className="w-5 h-5 text-primary " />
                 </CardTitle>
               </CardHeader>
               <CardContent className="relative z-10">
                 <p className="text-center text-muted-foreground text-lg italic leading-relaxed max-w-2xl mx-auto">"{logoPhilosophy.overall}"</p>
               </CardContent>
             </Card>
-          </div>
-        </section>
-      </ScrollAnimation>
+          </ScrollAnimation>
+        </div>
+      </section>
 
       <div className="w-full overflow-hidden">
-        <ScrollAnimation>
-          <section id="gallery" className="py-16 md:py-24 bg-transparent relative overflow-hidden">
-            {/* Decorative background */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/5 blur-[100px] rounded-full pointer-events-none" />
+        <section id="gallery" className="py-16 md:py-24 bg-transparent relative overflow-hidden">
+          {/* Decorative background */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/5 blur-[30px] rounded-full pointer-events-none" />
 
-            <div className="container mx-auto px-4 relative z-10">
-              <div className="text-center mb-16">
-                <Badge variant="outline" className="mb-4 border-pink-500/50 text-pink-600 dark:text-pink-300 bg-pink-500/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold rounded-full shadow-[0_0_15px_rgba(236,72,153,0.3)]">
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-16">
+              <ScrollAnimation>
+                <Badge variant="outline" className="mb-4 border-pink-500/50 text-pink-600 dark:text-pink-300 bg-pink-500/10 px-4 py-1.5 text-sm font-semibold rounded-full">
                   Galeri Kegiatan
                 </Badge>
+              </ScrollAnimation>
+              <ScrollAnimation delay={1}>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">
-                  Momen <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 animate-gradient-x">Dalam Lensa</span>
+                  Momen <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600">Dalam Lensa</span>
                 </h2>
+              </ScrollAnimation>
+              <ScrollAnimation delay={2}>
                 <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
                   Saksikan dokumentasi berbagai momen tak terlupakan yang menangkap semangat, kolaborasi, dan pencapaian kami.
                 </p>
-              </div>
+              </ScrollAnimation>
+            </div>
+
+            <ScrollAnimation delay={3}>
               <Carousel
                 plugins={[plugin.current]}
                 opts={{
@@ -456,12 +490,13 @@ export default function AboutPage() {
                           onClick={() => setSelectedImage(item)}
                         >
                           {/* Image with Zoom Effect */}
-                          <Image
+                          <ImageWithSkeleton
                             src={item.src}
                             alt={item.title}
                             fill
                             data-ai-hint={item.hint}
                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                            containerClassName="absolute inset-0"
                           />
 
                           {/* Refined Bottom Gradient Overlay - Only distinct at bottom for text */}
@@ -469,7 +504,7 @@ export default function AboutPage() {
 
                           {/* Floating Year Badge */}
                           <div className="absolute top-4 right-4 z-20 translate-y-[-10px] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                            <Badge className="bg-black/40 backdrop-blur-md border-white/20 text-white hover:bg-black/60">
+                            <Badge className="bg-black/60 border-white/20 text-white hover:bg-black/80">
                               {item.year}
                             </Badge>
                           </div>
@@ -496,32 +531,72 @@ export default function AboutPage() {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-primary border-none text-white h-12 w-12 rounded-full backdrop-blur-md transition-all duration-300" />
-                <CarouselNext className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-primary border-none text-white h-12 w-12 rounded-full backdrop-blur-md transition-all duration-300" />
+                <CarouselPrevious className="hidden md:flex absolute -left-12 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-primary border-none text-white h-12 w-12 rounded-full transition-all duration-300" />
+                <CarouselNext className="hidden md:flex absolute -right-12 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-primary border-none text-white h-12 w-12 rounded-full transition-all duration-300" />
               </Carousel>
-            </div>
-          </section>
-        </ScrollAnimation>
+            </ScrollAnimation>
+          </div>
+        </section>
       </div>
 
       {selectedImage && (
         <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
-          <DialogContent className="max-w-4xl p-0">
-            <div className="relative aspect-video">
-              <Image src={selectedImage.src} alt={selectedImage.title} fill className="object-contain" data-ai-hint={selectedImage.hint} />
-              <Button variant="ghost" size="icon" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white hover:bg-black/75" onClick={handlePrevImage}>
-                <ChevronLeft className="h-6 w-6" />
+          <DialogContent className="max-w-6xl p-0 bg-transparent border-none shadow-none overflow-hidden">
+            {/* Accessibility: Hidden Title/Description */}
+            <DialogTitle className="sr-only">{selectedImage.title}</DialogTitle>
+            <DialogDescription className="sr-only">{selectedImage.year}</DialogDescription>
+
+            {/* Premium Backdrop Glow */}
+            <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full pointer-events-none opacity-50" />
+
+            <div className="relative flex flex-col items-center justify-center min-h-[60vh] md:min-h-[80vh] p-4">
+              {/* Navigation Buttons - Floating */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 rounded-full h-12 w-12 md:h-16 md:w-16 bg-black/20 hover:bg-black/50 text-white/70 hover:text-white backdrop-blur-md border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 z-50 group"
+                onClick={(e) => { e.stopPropagation(); handlePrevImage(); }}
+              >
+                <ChevronLeft className="h-6 w-6 md:h-8 md:w-8 group-hover:-translate-x-1 transition-transform" />
               </Button>
-              <Button variant="ghost" size="icon" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 text-white hover:bg-black/75" onClick={handleNextImage}>
-                <ChevronRight className="h-6 w-6" />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 rounded-full h-12 w-12 md:h-16 md:w-16 bg-black/20 hover:bg-black/50 text-white/70 hover:text-white backdrop-blur-md border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-110 z-50 group"
+                onClick={(e) => { e.stopPropagation(); handleNextImage(); }}
+              >
+                <ChevronRight className="h-6 w-6 md:h-8 md:w-8 group-hover:translate-x-1 transition-transform" />
               </Button>
+
+              {/* Main Image Container */}
+              <div className="relative w-full max-w-5xl aspect-[16/10] md:aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-black/50 group border border-white/10 bg-black/50 backdrop-blur-sm">
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  fill
+                  className="object-contain md:object-cover"
+                  data-ai-hint={selectedImage.hint}
+                  quality={100}
+                />
+
+                {/* Overlay Gradient for Text */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 text-center md:text-left">
+                  <Badge variant="outline" className="mb-4 bg-primary/20 text-white border-primary/40 px-4 py-1.5 backdrop-blur-md">
+                    {selectedImage.year}
+                  </Badge>
+                  <h3 className="text-3xl md:text-5xl font-bold text-white mb-2 tracking-tight drop-shadow-2xl">
+                    {selectedImage.title}
+                  </h3>
+                  <p className="text-white/60 text-lg md:text-xl font-light tracking-wide max-w-2xl">
+                    Momen kebersamaan yang tak terlupakan.
+                  </p>
+                </div>
+              </div>
             </div>
-            <DialogHeader className="p-6 pt-2">
-              <DialogTitle>{selectedImage.title}</DialogTitle>
-              <DialogDescription>
-                {selectedImage.year}
-              </DialogDescription>
-            </DialogHeader>
           </DialogContent>
         </Dialog>
       )}

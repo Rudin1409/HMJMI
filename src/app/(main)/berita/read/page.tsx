@@ -95,7 +95,7 @@ function BeritaContent() {
     }
 
     return (
-        <article className="min-h-screen bg-background/50 backdrop-blur-sm">
+        <article className="min-h-screen bg-background/60">
             <ScrollAnimation>
                 <div className="container mx-auto px-4 py-12 md:py-20 max-w-7xl">
                     {/* Top Navigation */}

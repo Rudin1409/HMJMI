@@ -69,10 +69,10 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        'sticky top-4 z-50 w-full max-w-7xl mx-auto transition-all duration-300',
+        'fixed top-4 z-50 w-full max-w-7xl left-0 right-0 mx-auto transition-all duration-300',
         isScrolled
-          ? 'bg-background/70 backdrop-blur-md shadow-lg border rounded-full mt-4'
-          : 'bg-transparent mt-4'
+          ? 'bg-background/95 shadow-2xl border border-white/10 rounded-full'
+          : 'bg-transparent'
       )}
     >
       <div className={cn(

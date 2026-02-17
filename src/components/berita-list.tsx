@@ -64,9 +64,9 @@ export default function BeritaList({ berita, isLoading }: BeritaListProps) {
       {isLoading && Array.from({ length: 3 }).map((_, i) => <BeritaItemSkeleton key={i} />)}
 
       {!isLoading && berita && berita.length > 0 ? (
-        berita.map((item) => (
-          <ScrollAnimation key={item.id}>
-            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] hover:border-primary/50 bg-background/90 backdrop-blur-sm border-white/20 group">
+        berita.map((item, index) => (
+          <ScrollAnimation key={item.id} delay={index * 1.5}>
+            <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] hover:border-primary/50 bg-background/95 border-white/20 group">
               <CardContent className="p-0">
                 <div className="relative w-full aspect-video overflow-hidden">
                   <Image

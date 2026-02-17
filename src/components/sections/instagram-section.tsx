@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, Instagram, Heart, MessageCircle } from 'lucide-react';
+import { ScrollAnimation } from '../scroll-animation';
 
 export function InstagramSection() {
   return (
@@ -10,65 +11,75 @@ export function InstagramSection() {
       <div className="container mx-auto px-4 relative z-10">
 
         {/* Main Glass Card */}
-        <div className="relative rounded-[2.5rem] border border-white/20 bg-white/10 dark:bg-black/40 backdrop-blur-3xl overflow-hidden p-8 md:p-16">
+        <div className="relative rounded-[2.5rem] border border-white/20 bg-white/20 dark:bg-black/50 overflow-hidden p-8 md:p-16">
 
           {/* Background Gradients */}
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-pink-500/30 to-purple-600/30 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/20 blur-[80px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-pink-500/30 to-purple-600/30 blur-[30px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/20 blur-[30px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
 
             {/* Content Side */}
             <div className="space-y-8 text-center lg:text-left">
-              <Badge variant="outline" className="border-pink-500/50 text-pink-600 dark:text-pink-300 bg-pink-500/10 backdrop-blur-md px-4 py-1.5 text-sm font-semibold rounded-full animate-pulse">
-                <Instagram className="w-3.5 h-3.5 mr-2" />
-                @hmjmi_polsri
-              </Badge>
+              <ScrollAnimation>
+                <Badge variant="outline" className="border-pink-500/50 text-pink-600 dark:text-pink-300 bg-pink-500/10 px-4 py-1.5 text-sm font-semibold rounded-full">
+                  <Instagram className="w-3.5 h-3.5 mr-2" />
+                  @hmjmi_polsri
+                </Badge>
+              </ScrollAnimation>
 
-              <h2 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">
-                Ikuti Jejak Digital <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 animate-gradient-x">
-                  Inovator Muda
-                </span>
-              </h2>
+              <ScrollAnimation delay={1}>
+                <h2 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">
+                  Ikuti Jejak Digital <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+                    Inovator Muda
+                  </span>
+                </h2>
+              </ScrollAnimation>
 
-              <p className="text-slate-700 dark:text-slate-300 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Jangan lewatkan momen seru, info acara, dan update terbaru seputar teknologi langsung dari feed kami. Jadilah bagian dari komunitas digital HMJMI!
-              </p>
+              <ScrollAnimation delay={2}>
+                <p className="text-slate-700 dark:text-slate-300 text-lg md:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Jangan lewatkan momen seru, info acara, dan update terbaru seputar teknologi langsung dari feed kami. Jadilah bagian dari komunitas digital HMJMI!
+                </p>
+              </ScrollAnimation>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg font-semibold bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 shadow-xl shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105">
-                  <Link href="https://www.instagram.com/hmjmi_polsri/" target="_blank">
-                    Kunjungi Instagram <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-8 py-6 text-lg border-white/20 hover:bg-white/10 dark:text-white backdrop-blur-md">
-                  <Link href="/proker">Lihat Galeri</Link>
-                </Button>
-              </div>
+              <ScrollAnimation delay={3}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Button asChild size="lg" className="rounded-full px-8 py-6 text-lg font-semibold bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 shadow-xl shadow-pink-500/20 hover:shadow-pink-500/40 transition-all duration-300 hover:scale-105">
+                    <Link href="https://www.instagram.com/hmjmi_polsri/" target="_blank">
+                      Kunjungi Instagram <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="rounded-full px-8 py-6 text-lg border-white/20 hover:bg-white/10 dark:text-white">
+                    <Link href="/proker">Lihat Galeri</Link>
+                  </Button>
+                </div>
+              </ScrollAnimation>
 
               {/* Stats / Social Proof */}
-              <div className="flex items-center justify-center lg:justify-start gap-8 pt-4">
-                <div className="text-center lg:text-left">
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">1.5k+</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Followers</p>
+              <ScrollAnimation delay={4}>
+                <div className="flex items-center justify-center lg:justify-start gap-8 pt-4">
+                  <div className="text-center lg:text-left">
+                    <h4 className="text-2xl font-bold text-slate-900 dark:text-white">1.5k+</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Followers</p>
+                  </div>
+                  <div className="w-px h-10 bg-slate-500/20" />
+                  <div className="text-center lg:text-left">
+                    <h4 className="text-2xl font-bold text-slate-900 dark:text-white">200+</h4>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">Posts</p>
+                  </div>
                 </div>
-                <div className="w-px h-10 bg-slate-500/20" />
-                <div className="text-center lg:text-left">
-                  <h4 className="text-2xl font-bold text-slate-900 dark:text-white">200+</h4>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Posts</p>
-                </div>
-              </div>
+              </ScrollAnimation>
             </div>
 
             {/* Visual Side - Phone Mockup */}
-            <div className="relative flex justify-center lg:justify-end group perspective-1000">
+            <ScrollAnimation delay={2} className="relative flex justify-center lg:justify-end group perspective-1000">
 
               {/* Floating Icons */}
-              <div className="absolute top-10 left-10 p-3 bg-white dark:bg-black/80 rounded-2xl shadow-xl shadow-pink-500/20 z-20 animate-bounce delay-100">
+              <div className="absolute top-10 left-10 p-3 bg-white dark:bg-black/80 rounded-2xl shadow-xl shadow-pink-500/20 z-20 animate-bounce [animation-duration:3s]">
                 <Heart className="w-6 h-6 text-pink-500 fill-pink-500" />
               </div>
-              <div className="absolute bottom-20 right-0 p-3 bg-white dark:bg-black/80 rounded-2xl shadow-xl shadow-purple-500/20 z-20 animate-bounce delay-300">
+              <div className="absolute bottom-20 right-0 p-3 bg-white dark:bg-black/80 rounded-2xl shadow-xl shadow-purple-500/20 z-20 animate-bounce [animation-duration:4s]">
                 <MessageCircle className="w-6 h-6 text-purple-500" />
               </div>
 
@@ -102,8 +113,8 @@ export function InstagramSection() {
               </div>
 
               {/* Glow Behind Phone */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 blur-[80px] opacity-40 -z-10 rounded-full scale-90 group-hover:scale-100 transition-transform duration-500" />
-            </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 blur-[30px] opacity-40 -z-10 rounded-full scale-90 group-hover:scale-100 transition-transform duration-500" />
+            </ScrollAnimation>
           </div>
         </div>
       </div>

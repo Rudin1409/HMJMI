@@ -97,7 +97,7 @@ export function CommentSection({ postId, articleTitle }: CommentSectionProps) {
             </div>
 
             {/* Comment Form */}
-            <Card className="bg-card/50 backdrop-blur-sm border-primary/20">
+            <Card className="bg-card/60 border-primary/20">
                 <CardHeader>
                     <CardTitle className="text-lg">Tinggalkan Komentar</CardTitle>
                 </CardHeader>

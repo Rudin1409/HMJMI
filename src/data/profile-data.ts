@@ -673,7 +673,7 @@ export const teamMembers = {
                     name: "Muhammad Rasya Syakir",
                     role: "Anggota Sosial",
                     class: "MI 2025",
-                    avatar: "/anggota/psdm24/anonym.png",
+                    avatar: "/anggota/kesma25/Rasya Syakir.png",
                     instagram: "https://www.instagram.com/mhmdrsya_s/",
                 },
             ],
