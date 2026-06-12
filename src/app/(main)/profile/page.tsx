@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -81,9 +82,16 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
               <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] rounded-[2.5rem] p-[3px] bg-gradient-to-br from-purple-500/30 via-pink-500/30 to-blue-500/30 dark:from-white/30 dark:via-purple-500/30 dark:to-white/10 shadow-2xl dark:shadow-none rotate-3 group-hover:rotate-0 group-hover:scale-[1.02] transition-all duration-500 ease-out">
                 {/* Inner Content */}
                 <div className="relative w-full h-full rounded-[2.3rem] overflow-hidden bg-white dark:bg-slate-900/50">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent z-10 mix-blend-overlay dark:mix-blend-normal" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent z-10 dark:from-black/60" />
-                  <Image src={member.avatar} alt={member.name} fill className="object-cover" data-ai-hint="headshot portrait" />
+                  <ImageWithSkeleton
+                    src={member.avatar}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                    data-ai-hint="headshot portrait"
+                    containerClassName="absolute inset-0"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent z-20 mix-blend-overlay dark:mix-blend-normal" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent z-20 dark:from-black/60" />
                 </div>
               </div>
             </ScrollAnimation>
@@ -147,7 +155,14 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
           : "grayscale hover:grayscale-0 opacity-70 hover:opacity-100 hover:scale-105"
       )}
     >
-      <Image src={member.avatar} alt={member.name} fill className="object-cover" data-ai-hint="headshot portrait" />
+      <ImageWithSkeleton
+        src={member.avatar}
+        alt={member.name}
+        fill
+        className="object-cover"
+        data-ai-hint="headshot portrait"
+        containerClassName="absolute inset-0"
+      />
     </div>
     <p className={cn(
       "text-xs text-center font-bold w-24 truncate transition-colors",
@@ -498,8 +513,15 @@ export default function ProfilePage() {
                       <Card>
                         <CardContent className="p-0">
                           <div className="relative aspect-video">
-                            <Image src={program.image} fill className="object-cover" alt={program.title} data-ai-hint={program.hint} />
-                            <div className="absolute top-2 right-2">
+                            <ImageWithSkeleton
+                              src={program.image}
+                              fill
+                              className="object-cover"
+                              alt={program.title}
+                              data-ai-hint={program.hint}
+                              containerClassName="absolute inset-0"
+                            />
+                            <div className="absolute top-2 right-2 z-20">
                               <Badge className="bg-yellow-300 text-yellow-900 font-bold">{program.category}</Badge>
                             </div>
                           </div>

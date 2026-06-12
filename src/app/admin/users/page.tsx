@@ -1,12 +1,10 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useUser, useFirestore, useCollection, useMemoFirebase, useAuth } from '@/firebase';
-import { collection, setDoc, doc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useUser } from '@/firebase';
+import { api } from '@/lib/api-client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -50,10 +48,7 @@ const userFormSchema = z.object({
 
 type UserFormData = z.infer<typeof userFormSchema>;
 
-
-function AddUserForm({ setDialogOpen }: { setDialogOpen: (open: boolean) => void }) {
-  const auth = useAuth();
-  const firestore = useFirestore();
+function AddUserForm({ setDialogOpen, onSuccess }: { setDialogOpen: (open: boolean) => void; onSuccess: () => void }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -72,37 +67,15 @@ function AddUserForm({ setDialogOpen }: { setDialogOpen: (open: boolean) => void
   const availableDivisions = departmentId ? allDivisions[departmentId as keyof typeof allDivisions] || [] : [];
 
   async function onSubmit(values: UserFormData) {
-    if (!auth || !firestore) {
-      setError("Firebase tidak terinisialisasi.");
-      return;
-    }
     setIsLoading(true);
     setError(null);
     try {
-      // 1. Create user in Auth
-      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
-      const user = userCredential.user;
-
-      // 2. Create user profile in Firestore
-      const userProfileData = {
-        uid: user.uid,
-        username: values.username,
-        email: values.email,
-        departmentId: values.departmentId,
-        divisionId: values.divisionId || null,
-        avatar: `https://placehold.co/100x100.png?text=${values.username.charAt(0)}`,
-        role: 'user', // Assign 'user' role by default
-      };
-      await setDoc(doc(firestore, "users", user.uid), userProfileData);
-
+      await api.createUser(values);
       setDialogOpen(false); // Close dialog on success
       form.reset();
+      onSuccess(); // Refresh users list
     } catch (err: any) {
-      if (err.code === 'auth/email-already-in-use') {
-        setError('Email ini sudah terdaftar.');
-      } else {
-        setError(err.message || "Terjadi kesalahan saat membuat pengguna.");
-      }
+      setError(err.message || "Terjadi kesalahan saat membuat pengguna.");
     } finally {
       setIsLoading(false);
     }
@@ -217,23 +190,34 @@ function AddUserForm({ setDialogOpen }: { setDialogOpen: (open: boolean) => void
   )
 }
 
-
 export default function AdminUsersPage() {
-  const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [users, setUsers] = useState<UserProfile[]>([]);
+  const [isUsersLoading, setIsUsersLoading] = useState(true);
+  const [usersError, setUsersError] = useState<any>(null);
 
-  const usersQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return collection(firestore, 'users');
-  }, [firestore]);
-
-  const { data: users, isLoading: isUsersLoading, error: usersError } = useCollection<UserProfile>(usersQuery);
+  const fetchUsers = async () => {
+    setIsUsersLoading(true);
+    setUsersError(null);
+    try {
+      const data = await api.getUsers();
+      setUsers(data);
+    } catch (err: any) {
+      setUsersError(err);
+    } finally {
+      setIsUsersLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!isUserLoading && !user) {
       router.push('/login');
+      return;
+    }
+    if (user) {
+      fetchUsers();
     }
   }, [user, isUserLoading, router]);
 
@@ -242,7 +226,6 @@ export default function AdminUsersPage() {
     const deptDivisions = allDivisions[deptId as keyof typeof allDivisions] || [];
     return deptDivisions.find(d => d.id === divId)?.name || 'Tidak diketahui';
   }
-
 
   if (isUserLoading || !user) {
     return (
@@ -272,7 +255,7 @@ export default function AdminUsersPage() {
                         Isi detail di bawah ini untuk membuat akun pengguna baru.
                     </DialogDescription>
                 </DialogHeader>
-                <AddUserForm setDialogOpen={setDialogOpen} />
+                <AddUserForm setDialogOpen={setDialogOpen} onSuccess={fetchUsers} />
             </DialogContent>
         </Dialog>
       </div>
@@ -285,7 +268,7 @@ export default function AdminUsersPage() {
       {usersError && (
         <div className="text-destructive-foreground bg-destructive p-4 rounded-md flex items-center gap-4">
           <AlertCircle />
-          <p>Error fetching users: {usersError.message}</p>
+          <p>Error fetching users: {usersError.message || 'Gagal memuat pengguna'}</p>
         </div>
       )}
 

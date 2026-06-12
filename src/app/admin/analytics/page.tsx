@@ -3,8 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Loader2, TrendingUp, Users, FileText, PieChart, Sparkles }
-    from 'lucide-react';
+import { Loader2, TrendingUp, Users, FileText, Sparkles } from 'lucide-react';
 import {
     BarChart,
     Bar,
@@ -15,16 +14,14 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 import { format } from 'date-fns';
-import { getSiteStats, getDailyVisits, getPopularityStats } from '@/services/analytics';
+import { api } from '@/lib/api-client';
 import { useToast } from '@/hooks/use-toast';
 import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog";
 
 export default function AnalyticsPage() {
@@ -49,9 +46,9 @@ export default function AnalyticsPage() {
         const fetchData = async () => {
             try {
                 const [siteStats, dailyVisits, popularityStats] = await Promise.all([
-                    getSiteStats(),
-                    getDailyVisits(7),
-                    getPopularityStats()
+                    api.getStats(),
+                    api.getDailyVisits(7),
+                    api.getPopularity()
                 ]);
 
                 setStats({
@@ -133,7 +130,7 @@ export default function AnalyticsPage() {
                             </DialogDescription>
                         </DialogHeader>
 
-                        {aiReport && (typeof aiReport !== 'string') && (
+                        {aiReport && (
                             <div className="space-y-6 py-2">
                                 {/* Summary Section */}
                                 <div className="bg-rose-50 dark:bg-rose-950/30 p-4 rounded-xl border border-rose-100 dark:border-rose-900/50">

@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, addDoc, serverTimestamp, query, where, orderBy } from 'firebase/firestore';
+import { api } from '@/lib/api-client';
 import { Loader2, Send, MessageCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -26,62 +25,56 @@ interface Comment {
     status?: 'pending' | 'approved' | 'rejected';
 }
 
-const formatDate = (date: any) => {
-    if (!date) return 'Baru saja';
+const formatDate = (dateObj: any) => {
+    if (!dateObj) return 'Baru saja';
     try {
-        if (date.toDate) return format(date.toDate(), 'd MMMM yyyy, HH:mm', { locale: id });
-        if (date instanceof Date) return format(date, 'd MMMM yyyy, HH:mm', { locale: id });
+        if (dateObj.seconds) {
+            return format(new Date(dateObj.seconds * 1000), 'd MMMM yyyy, HH:mm', { locale: id });
+        }
+        return format(new Date(dateObj), 'd MMMM yyyy, HH:mm', { locale: id });
     } catch (e) {
         return '';
     }
-    return '';
 };
 
 export function CommentSection({ postId, articleTitle }: CommentSectionProps) {
-    const firestore = useFirestore();
     const [authorName, setAuthorName] = useState('');
     const [commentContent, setCommentContent] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // Fetch APPROVED comments only
-    const commentsQuery = useMemoFirebase(() => {
-        if (!firestore || !postId) return null;
-        return query(
-            collection(firestore, 'berita_acara', postId, 'comments')
-        );
-    }, [firestore, postId]);
+    const fetchComments = async () => {
+        setIsLoading(true);
+        try {
+            const data = await api.getPostComments(postId);
+            setComments(data);
+        } catch (error) {
+            console.error("Error fetching comments:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
-    const { data: rawComments, isLoading } = useCollection<Comment>(commentsQuery);
-
-    const comments = React.useMemo(() => {
-        if (!rawComments) return [];
-        return rawComments
-            .filter(c => c.status === 'approved')
-            .sort((a, b) => {
-                const dateA = a.date?.toDate ? a.date.toDate() : new Date(a.date || 0);
-                const dateB = b.date?.toDate ? b.date.toDate() : new Date(b.date || 0);
-                return dateB.getTime() - dateA.getTime();
-            });
-    }, [rawComments]);
+    useEffect(() => {
+        if (postId) {
+            fetchComments();
+        }
+    }, [postId]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!firestore || !authorName.trim() || !commentContent.trim()) return;
+        if (!authorName.trim() || !commentContent.trim() || !postId) return;
 
         setIsSubmitting(true);
         try {
-            await addDoc(collection(firestore, 'berita_acara', postId, 'comments'), {
-                author: authorName,
-                content: commentContent,
-                date: serverTimestamp(),
-                status: 'pending', // Default status
-                articleTitle: articleTitle
-            });
+            await api.createComment(postId, authorName, commentContent);
             setAuthorName('');
             setCommentContent('');
             setSubmitSuccess(true);
             setTimeout(() => setSubmitSuccess(false), 5000); // Hide success message after 5s
+            fetchComments(); // Refresh comments list
         } catch (error) {
             console.error("Error adding comment:", error);
         } finally {

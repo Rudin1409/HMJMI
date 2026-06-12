@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useUser, useFirestore } from '@/firebase';
-import { useDoc, useMemoFirebase } from '@/firebase';
-import { doc, setDoc, addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { useUser } from '@/firebase';
+import { api } from '@/lib/api-client';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -14,12 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader2, AlertCircle, Upload } from 'lucide-react';
+import { Loader2, AlertCircle, Upload, Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { TiptapEditor } from '@/components/ui/tiptap-editor';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useImageUpload } from '@/hooks/use-image-upload';
 
 const formSchema = z.object({
   title: z.string().min(5, 'Judul harus memiliki setidaknya 5 karakter.'),
@@ -32,31 +30,27 @@ const formSchema = z.object({
 type BeritaFormData = z.infer<typeof formSchema>;
 
 interface BeritaAcara extends BeritaFormData {
-  date: any; // Firestore timestamp
+  date: any;
   author: string;
 }
 
 function PostForm() {
-  const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
-  const { uploadImage, isLoading: isUploading, progress: uploadProgress } = useImageUpload();
 
   const isNewPost = id === 'new';
 
   const [isLoading, setIsLoading] = useState(false);
+  const [isPostLoading, setIsPostLoading] = useState(!isNewPost);
+  const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-
-  const beritaRef = useMemoFirebase(() => {
-    if (isNewPost || !firestore || !id) return null;
-    return doc(firestore, 'berita_acara', id);
-  }, [firestore, id, isNewPost]);
-
-  const { data: postData, isLoading: isPostLoading } = useDoc<BeritaAcara>(beritaRef);
+  const [imageFit, setImageFit] = useState<'cover' | 'contain'>('cover');
+  const [imageZoom, setImageZoom] = useState<number>(1);
+  const [imagePosY, setImagePosY] = useState<number>(50);
 
   const form = useForm<BeritaFormData>({
     resolver: zodResolver(formSchema),
@@ -69,14 +63,55 @@ function PostForm() {
     },
   });
 
+  // Fetch post data for editing
   useEffect(() => {
-    if (postData) {
-      form.reset(postData);
-      if (postData.imageUrl) {
-        setImagePreview(postData.imageUrl)
+    if (isNewPost || !id) return;
+
+    const fetchPost = async () => {
+      setIsPostLoading(true);
+      try {
+        const postData = await api.getPost(id);
+        // Format postData content for form structure (category, status, title, etc)
+        form.reset({
+          title: postData.title,
+          content: postData.content,
+          imageUrl: postData.imageUrl || '',
+          category: postData.category,
+          status: postData.status,
+        });
+        if (postData.imageUrl) {
+          setImagePreview(postData.imageUrl);
+        }
+        
+        // Parse and load image position settings if present
+        let fit: 'cover' | 'contain' = 'cover';
+        let zoom = 1;
+        let posY = 50;
+        if (postData.imageStyle) {
+          try {
+            const parsed = JSON.parse(postData.imageStyle);
+            if (parsed && typeof parsed === 'object') {
+              fit = parsed.fit || 'cover';
+              zoom = parsed.zoom ?? 1;
+              posY = parsed.posY ?? 50;
+            }
+          } catch (e) {
+            console.error("Failed to parse image style:", e);
+          }
+        }
+        setImageFit(fit);
+        setImageZoom(zoom);
+        setImagePosY(posY);
+      } catch (err: any) {
+        console.error("Gagal memuat berita:", err);
+        setError("Gagal memuat detail postingan berita.");
+      } finally {
+        setIsPostLoading(false);
       }
-    }
-  }, [postData, form]);
+    };
+
+    fetchPost();
+  }, [id, isNewPost, form]);
 
   useEffect(() => {
     if (imageFile) {
@@ -86,7 +121,6 @@ function PostForm() {
     }
   }, [imageFile]);
 
-
   useEffect(() => {
     if (!isUserLoading && !user) {
       router.push('/login');
@@ -94,8 +128,8 @@ function PostForm() {
   }, [user, isUserLoading, router]);
 
   const onSubmit = async (values: BeritaFormData) => {
-    if (!firestore || !id) {
-      setError("Database connection not available or ID is missing.");
+    if (!id) {
+      setError("ID postingan tidak tersedia.");
       return;
     }
     setIsLoading(true);
@@ -104,34 +138,41 @@ function PostForm() {
       let finalImageUrl = values.imageUrl || '';
 
       if (imageFile) {
-        finalImageUrl = await uploadImage(imageFile);
+        setIsUploading(true);
+        try {
+          finalImageUrl = await api.uploadImage(imageFile);
+        } catch (uploadErr: any) {
+          throw new Error("Gagal mengunggah gambar ke server: " + uploadErr.message);
+        } finally {
+          setIsUploading(false);
+        }
       }
 
       if (!finalImageUrl && isNewPost) {
         throw new Error("Gambar unggulan wajib diisi untuk postingan baru.");
       }
 
-      const dataToSave: any = {
+      const serializedStyle = JSON.stringify({
+        fit: imageFit,
+        zoom: imageZoom,
+        posY: imagePosY
+      });
+
+      const dataToSave = {
         ...values,
         imageUrl: finalImageUrl,
-        updatedAt: serverTimestamp(),
+        imageStyle: serializedStyle,
       };
 
       if (isNewPost) {
-        dataToSave.date = serverTimestamp();
-        dataToSave.author = user?.displayName || 'Admin HMJ';
-      }
-
-      if (isNewPost) {
-        await addDoc(collection(firestore, 'berita_acara'), dataToSave);
+        await api.createPost(dataToSave);
       } else {
-        const postDocRef = doc(firestore, 'berita_acara', id);
-        await setDoc(postDocRef, dataToSave, { merge: true });
+        await api.updatePost(id, dataToSave);
       }
-      router.push('/admin/posts');
+      router.push('/admin/berita');
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Terjadi kesalahan saat menyimpan.");
+      setError(err.message || "Terjadi kesalahan saat menyimpan postingan.");
     } finally {
       setIsLoading(false);
     }
@@ -154,7 +195,7 @@ function PostForm() {
             <p className="text-muted-foreground">Isi formulir di bawah ini untuk membuat atau mengedit postingan berita.</p>
           </div>
           <div className="flex justify-end gap-4">
-            <Button type="button" variant="outline" onClick={() => router.push('/admin/posts')} disabled={isLoading}>
+            <Button type="button" variant="outline" onClick={() => router.push('/admin/berita')} disabled={isLoading}>
               Batal
             </Button>
             <Button type="submit" disabled={isLoading || isUploading}>
@@ -208,9 +249,154 @@ function PostForm() {
                     </label>
                   </FormControl>
                   {imagePreview && (
-                    <div className="mt-4 relative w-full aspect-video rounded-md overflow-hidden border-2 border-border">
-                      <Image src={imagePreview} alt="Pratinjau gambar" fill className="object-cover" />
-                      {isUploading && <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white">Uploading...</div>}
+                    <div className="space-y-4 border border-border bg-muted/20 p-4 rounded-xl mt-4">
+                      <div className="flex items-center justify-between">
+                        <span className="font-semibold text-foreground flex items-center gap-1.5 text-sm">
+                          <Sparkles className="h-4 w-4 text-pink-500" /> Posisi & Zoom Gambar (Pratinjau)
+                        </span>
+                      </div>
+
+                      {/* Real-time Preview Box */}
+                      <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-black/90">
+                        <img
+                          src={imagePreview}
+                          alt="Pratinjau penyesuaian gambar"
+                          className="w-full h-full"
+                          style={{
+                            objectFit: imageFit,
+                            objectPosition: `50% ${imagePosY}%`,
+                            transform: `scale(${imageZoom})`,
+                            transformOrigin: 'center center',
+                          }}
+                        />
+                        {isUploading && <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white">Uploading...</div>}
+                      </div>
+
+                      {/* Preset Recommendation Buttons */}
+                      <div className="space-y-2">
+                        <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wider">Rekomendasi Cepat</label>
+                        <div className="grid grid-cols-2 gap-2">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            className="text-xs h-9 justify-start px-2.5 font-normal border-border/80 hover:bg-muted"
+                            onClick={() => {
+                              setImageFit('cover');
+                              setImageZoom(1);
+                              setImagePosY(50);
+                            }}
+                          >
+                            🎯 Default / Tengah
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            className="text-xs h-9 justify-start px-2.5 font-normal border-border/80 hover:bg-muted"
+                            onClick={() => {
+                              setImageFit('cover');
+                              setImageZoom(1.2);
+                              setImagePosY(15);
+                            }}
+                          >
+                            👤 Fokus Atas (Wajah)
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            className="text-xs h-9 justify-start px-2.5 font-normal border-border/80 hover:bg-muted"
+                            onClick={() => {
+                              setImageFit('cover');
+                              setImageZoom(1.4);
+                              setImagePosY(50);
+                            }}
+                          >
+                            🔍 Fokus Tengah (Zoom)
+                          </Button>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            className="text-xs h-9 justify-start px-2.5 font-normal border-border/80 hover:bg-muted"
+                            onClick={() => {
+                              setImageFit('contain');
+                              setImageZoom(1);
+                              setImagePosY(50);
+                            }}
+                          >
+                            🖼️ Tampilkan Utuh (Fit)
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Manual Sliders */}
+                      <div className="space-y-4 pt-3 border-t border-border">
+                        {/* Object Fit Selector */}
+                        <div className="flex items-center justify-between gap-4">
+                          <span className="text-xs font-semibold">Tipe Penyesuaian Fit</span>
+                          <div className="flex bg-muted p-0.5 rounded-lg border border-border text-xs">
+                            <button
+                              type="button"
+                              className={`px-3 py-1.5 rounded-md font-medium transition-all duration-200 ${imageFit === 'cover' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                              onClick={() => setImageFit('cover')}
+                            >
+                              Cover (Penuhi)
+                            </button>
+                            <button
+                              type="button"
+                              className={`px-3 py-1.5 rounded-md font-medium transition-all duration-200 ${imageFit === 'contain' ? 'bg-background text-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                              onClick={() => setImageFit('contain')}
+                            >
+                              Contain (Muat)
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Zoom Slider */}
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between items-center text-xs">
+                            <span className="font-semibold">Skala Zoom</span>
+                            <span className="font-mono text-[11px] text-muted-foreground font-bold bg-muted px-1.5 py-0.5 rounded">
+                              {imageZoom.toFixed(2)}x
+                            </span>
+                          </div>
+                          <input
+                            type="range"
+                            min="1"
+                            max="2"
+                            step="0.05"
+                            value={imageZoom}
+                            onChange={(e) => setImageZoom(parseFloat(e.target.value))}
+                            className="w-full h-1.5 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                          />
+                        </div>
+
+                        {/* Vertical position Y Slider */}
+                        <div className="space-y-1.5">
+                          <div className="flex justify-between items-center text-xs">
+                            <span className="font-semibold">Pergeseran Posisi Y (Vertikal)</span>
+                            <span className="font-mono text-[11px] text-muted-foreground font-bold bg-muted px-1.5 py-0.5 rounded">
+                              {imagePosY}%
+                            </span>
+                          </div>
+                          <input
+                            type="range"
+                            min="0"
+                            max="100"
+                            step="1"
+                            value={imagePosY}
+                            onChange={(e) => setImagePosY(parseInt(e.target.value))}
+                            className="w-full h-1.5 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
+                          />
+                          <div className="flex justify-between text-[10px] text-muted-foreground font-medium">
+                            <span>0% (Atas)</span>
+                            <span>50% (Tengah)</span>
+                            <span>100% (Bawah)</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                   <FormMessage className="mt-2" />

@@ -22,7 +22,7 @@ const mainPrograms = [
     title: "IT Festival",
     icon: <Rocket className="h-8 w-8 text-primary" />,
     description: "Information Technology Festival atau yang disingkat dengan IT Festival merupakan serangkaian acara IT tahunan. Dengan rangkaian acara kompetisi, pelatihan, dan seminar sebagai ajang edukatif bagi mahasiswa maupun masyarakat umum dalam meningkatkan kreativitas dan kesadaran tentang pentingnya penggunaan teknologi informasi di era globalisasi.",
-    image: "/Galeri/IT-fest.jpg",
+    image: "/Galeri/IT-fest.webp",
     hint: "tech festival stage competition",
     link: "https://it-fest-2025-pi.vercel.app/",
   },
@@ -33,7 +33,7 @@ const additionalPrograms = [
     title: "Seminar Bisnis",
     icon: <Briefcase className="h-8 w-8 text-primary" />,
     description: "Kegiatan Seminar Bisnis bertujuan menambah wawasan dan pengetahuan mengenai bisnis dan berwirausaha serta memotivasi mahasiswa/i se-Indonesia dan umum untuk memulai usaha sejak dini dan siap bersaing di dunia bisnis.",
-    image: "/Galeri/Sembis.jpg",
+    image: "/Galeri/Sembis.webp",
     hint: "business seminar presentation",
   },
 ];
@@ -43,28 +43,28 @@ const communityActivities = [
     title: "UPGRADING",
     description: "Pelatihan yang dikhususkan untuk kepengurusan baru Himpunan Mahasiswa Jurusan Manajemen Informatika demi meningkatkan kemampuan dalam bidang berbicara di depan umum serta menambah kemampuan di bidang desain grafis.",
     icon: <Award className="h-6 w-6 text-primary" />,
-    image: '/proker/upgrading.png',
+    image: '/proker/upgrading.webp',
     hint: 'certificate award'
   },
   {
     title: "BAKSOMI",
     description: "Bakti sosial jurusan manajemen informatika yang didalamnya terdapat rangkaian kegiatan bermanfaat seperti bantuan sosial, kunjungan ke panti, tausiyah serta bagi-bagi takjil dijalan.",
     icon: <Heart className="h-6 w-6 text-primary" />,
-    image: '/proker/baksomiii.png',
+    image: '/proker/baksomiii.webp',
     hint: 'charity donation'
   },
   {
     title: "SINTAK",
     description: "Sebuah study club yang dibentuk sebagai wadah mahasiswa/i Jurusan Manajemen Informatika untuk mengembangkan soft skill dalam pemrograman terutama di bidang web development.",
     icon: <Lightbulb className="h-6 w-6 text-primary" />,
-    image: '/proker/sintak.png',
+    image: '/proker/sintak.webp',
     hint: 'coding gears'
   },
   {
     title: "POSMI",
     description: "Acara kompetisi yang menyatukan peserta dari berbagai tim, kelas, dan program studi untuk berkompetisi dalam beragam cabang olahraga dan seni khusus untuk mahasiswa/i Jurusan Manajemen Informatika.",
     icon: <Users className="h-6 w-6 text-primary" />,
-    image: '/proker/posmi2024.png',
+    image: '/proker/posmi2024.webp',
     hint: 'sports trophy'
   },
 ];
@@ -280,7 +280,14 @@ export default function ProkerPage() {
                             <div className="relative shrink-0">
                               <div className="absolute inset-0 bg-primary/30 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                               <div className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-lg border-2 border-white/10 group-hover:border-primary/50 transition-colors duration-300 bg-black/50">
-                                <Image src={activity.image} alt={activity.title} fill className="object-cover p-2" data-ai-hint={activity.hint} />
+                                <ImageWithSkeleton
+                                  src={activity.image}
+                                  alt={activity.title}
+                                  fill
+                                  className="object-cover p-2"
+                                  data-ai-hint={activity.hint}
+                                  containerClassName="absolute inset-0"
+                                />
                               </div>
                             </div>
 

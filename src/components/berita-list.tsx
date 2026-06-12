@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -18,7 +19,29 @@ interface BeritaAcara {
   content: string;
   date: any; // Changed from string to any to handle Firestore Timestamp
   imageUrl: string;
+  imageStyle?: string;
   author: string;
+}
+
+function getImageStyle(captionStr: string | null | undefined) {
+  if (!captionStr) return undefined;
+  try {
+    const parsed = JSON.parse(captionStr);
+    if (parsed && typeof parsed === 'object') {
+      const scale = parsed.zoom ?? 1;
+      const posY = parsed.posY ?? 50;
+      const fit = parsed.fit ?? 'cover';
+      return {
+        objectFit: fit,
+        objectPosition: `50% ${posY}%`,
+        transform: `scale(${scale})`,
+        transformOrigin: 'center center',
+      } as React.CSSProperties;
+    }
+  } catch (e) {
+    // Plain text
+  }
+  return undefined;
 }
 
 interface BeritaListProps {
@@ -69,14 +92,16 @@ export default function BeritaList({ berita, isLoading }: BeritaListProps) {
             <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_-5px_hsl(var(--primary)/0.3)] hover:border-primary/50 bg-background/95 border-white/20 group">
               <CardContent className="p-0">
                 <div className="relative w-full aspect-video overflow-hidden">
-                  <Image
+                  <ImageWithSkeleton
                     src={item.imageUrl || '/placeholder.png'}
                     alt={item.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    style={getImageStyle(item.imageStyle)}
                     data-ai-hint="event photo"
+                    containerClassName="absolute inset-0"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-60 z-20" />
                   <div className="absolute bottom-4 left-4 right-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                     <Badge variant="secondary" className="bg-primary text-primary-foreground hover:bg-primary/90">Baca Sekarang</Badge>
                   </div>

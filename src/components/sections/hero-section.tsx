@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import Link from 'next/link';
@@ -11,8 +12,49 @@ import { ScrollAnimation } from '../scroll-animation';
 import { MagneticButton } from '@/components/ui/magnetic-button';
 import { SpotlightCard } from '@/components/ui/spotlight-card';
 import { TypewriterText } from '@/components/ui/typewriter-text';
+import { api } from '@/lib/api-client';
+
+function getImageStyle(captionStr: string | null) {
+  if (!captionStr) return undefined;
+  try {
+    const parsed = JSON.parse(captionStr);
+    if (parsed && typeof parsed === 'object') {
+      const scale = parsed.zoom ?? 1;
+      const posY = parsed.posY ?? 50;
+      const fit = parsed.fit ?? 'cover';
+      return {
+        objectFit: fit,
+        objectPosition: `50% ${posY}%`,
+        transform: `scale(${scale})`,
+        transformOrigin: 'center center',
+      } as React.CSSProperties;
+    }
+  } catch (e) {
+    // Plain text caption
+  }
+  return undefined;
+}
 
 export function HeroSection() {
+  const [heroImages, setHeroImages] = useState<any[]>(homeHeroImages);
+
+  useEffect(() => {
+    async function loadHeroImages() {
+      try {
+        const data = await api.getGalleryItems('home_hero');
+        if (data && data.length > 0) {
+          setHeroImages(data.map((item: any) => ({
+            src: item.image_url,
+            alt: item.title,
+            caption: item.caption,
+          })));
+        }
+      } catch (err) {
+        console.error("Gagal memuat gambar banner dari API:", err);
+      }
+    }
+    loadHeroImages();
+  }, []);
   return (
     <section id="home" className="relative w-full overflow-hidden bg-transparent perspective-1000">
 
@@ -106,13 +148,14 @@ export function HeroSection() {
               {/* Main Content Container */}
               <div className="relative h-full w-full p-3 sm:p-4 overflow-hidden rounded-[1.8rem]">
                 <div className="grid grid-cols-1 grid-rows-2 gap-3 sm:gap-4 h-full">
-                  {homeHeroImages.map((image, index) => (
+                  {heroImages.map((image, index) => (
                     <div key={index} className={`relative overflow-hidden rounded-2xl border border-white/5 group/img ${index === 0 ? 'row-span-1' : 'row-span-1'}`}>
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 z-10 opacity-60 group-hover/img:opacity-40 transition-opacity duration-300" />
                       <ImageWithSkeleton
                         src={image.src}
                         fill
                         className="object-cover transition-transform duration-700 group-hover/img:scale-105"
+                        style={getImageStyle(image.caption)}
                         alt={image.alt}
                         containerClassName="absolute inset-0"
                       />

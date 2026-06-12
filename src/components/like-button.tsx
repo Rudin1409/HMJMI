@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart } from 'lucide-react';
-import { incrementPostLikes } from '@/services/analytics';
+import { api } from '@/lib/api-client';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -54,7 +54,7 @@ export function LikeButton({ postId, initialLikes = 0 }: LikeButtonProps) {
             localStorage.setItem('liked_posts', JSON.stringify(likedPosts));
 
             // Call server
-            await incrementPostLikes(postId);
+            await api.likePost(postId);
 
             toast({
                 description: "Terima kasih atas apresiasi Anda! ❤️",

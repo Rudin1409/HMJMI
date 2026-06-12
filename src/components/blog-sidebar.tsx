@@ -1,14 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Facebook, Instagram, Github, Linkedin, Calendar, User, Youtube, Music, Video } from 'lucide-react';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { collection, query, where, limit, orderBy } from 'firebase/firestore';
+import { Instagram, Calendar, Youtube, Music, Video } from 'lucide-react';
+import { api } from '@/lib/api-client';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 
@@ -18,39 +17,39 @@ interface BlogSidebarProps {
     currentPostId: string;
 }
 
-// Helper for date formatting
-const formatDate = (date: any) => {
-    if (!date) return '';
+const formatDate = (dateObj: any) => {
+    if (!dateObj) return '';
     try {
-        if (date.toDate) return format(date.toDate(), 'd MMM yyyy', { locale: id });
-        if (date instanceof Date) return format(date, 'd MMM yyyy', { locale: id });
-        return format(new Date(date), 'd MMM yyyy', { locale: id });
+        if (dateObj.seconds) {
+            return format(new Date(dateObj.seconds * 1000), 'd MMM yyyy', { locale: id });
+        }
+        return format(new Date(dateObj), 'd MMM yyyy', { locale: id });
     } catch (e) {
         return '';
     }
 };
 
 export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebarProps) {
-    const firestore = useFirestore();
+    const [allPosts, setAllPosts] = useState<any[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // Query for Related Posts
-    const relatedQuery = useMemoFirebase(() => {
-        if (!firestore || !category) return null;
-        return query(
-            collection(firestore, 'berita_acara'),
-            // where('status', '==', 'published'),
-            // Note: Ideally we filter by category here, but compound queries need indexes.
-            // We will client-side filter for simplicity if index is missing, 
-            // or assuming user has "published" index.
-            // Let's try simple query first to avoid index errors, or just sort by date
-            orderBy('date', 'desc')
-            // limit(5)
-        );
-    }, [firestore, category]);
+    useEffect(() => {
+        const fetchRelated = async () => {
+            setIsLoading(true);
+            try {
+                const data = await api.getPosts('published');
+                setAllPosts(data);
+            } catch (e) {
+                console.error("Gagal memuat berita terkait", e);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-    const { data: allPosts } = useCollection<any>(relatedQuery);
+        fetchRelated();
+    }, []);
 
-    // Client-side filtering to exclude current post and match category (if query was broader)
+    // Client-side filtering to exclude current post and match category
     const relatedPosts = allPosts
         ?.filter(p => p.id !== currentPostId && p.category === category)
         .slice(0, 3); // Take top 3
@@ -83,7 +82,9 @@ export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebar
                     <CardTitle className="text-lg font-bold">Lainnya di Kategori Ini</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6 space-y-4">
-                    {relatedPosts && relatedPosts.length > 0 ? (
+                    {isLoading ? (
+                        <div className="flex justify-center py-4"><Loader2Icon /></div>
+                    ) : relatedPosts && relatedPosts.length > 0 ? (
                         relatedPosts.map((post) => (
                             <Link href={`/berita/read?id=${post.id}`} key={post.id} className="flex gap-4 group">
                                 <div className="relative w-16 h-16 rounded-md overflow-hidden flex-shrink-0 border border-border group-hover:border-primary transition-colors">
@@ -126,6 +127,7 @@ export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebar
                     <Link href="https://www.tiktok.com/@hmjmi_polsri" target="_blank">
                         <Button variant="outline" className="w-full justify-between bg-black/5 hover:bg-black/10 dark:bg-white/5 dark:hover:bg-white/10 border-foreground/20 text-foreground h-12">
                             <div className="flex items-center"><Video className="mr-2 h-5 w-5" /> TikTok</div>
+                            <span className="sr-only">TikTok</span>
                             <span className="text-xs font-medium">@hmjmi_polsri</span>
                         </Button>
                     </Link>
@@ -145,4 +147,8 @@ export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebar
             </Card>
         </div>
     );
+}
+
+function Loader2Icon() {
+    return <span className="flex justify-center"><span className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></span></span>;
 }

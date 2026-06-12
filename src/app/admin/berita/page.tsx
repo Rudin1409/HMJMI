@@ -1,12 +1,12 @@
-
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import { useRouter } from 'next/navigation';
-import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, deleteDoc, doc, orderBy, query, Timestamp } from 'firebase/firestore';
+import { useUser } from '@/firebase';
+import { api } from '@/lib/api-client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -36,7 +36,7 @@ import { cn } from '@/lib/utils';
 interface BeritaAcara {
   id: string;
   title: string;
-  date: Timestamp;
+  date: any; // REST response contains { seconds, nanoseconds } or Date string
   status: 'published' | 'draft';
   category: string;
   imageUrl: string;
@@ -44,39 +44,57 @@ interface BeritaAcara {
 }
 
 export default function AdminPostsPage() {
-  const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
+  const [berita, setBerita] = useState<BeritaAcara[]>([]);
+  const [isBeritaLoading, setIsBeritaLoading] = useState(true);
+  const [beritaError, setBeritaError] = useState<any>(null);
 
-  const beritaQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'berita_acara'), orderBy('date', 'desc'));
-  }, [firestore]);
-
-  const { data: berita, isLoading: isBeritaLoading, error: beritaError } = useCollection<BeritaAcara>(beritaQuery);
+  const fetchPosts = async () => {
+    setIsBeritaLoading(true);
+    setBeritaError(null);
+    try {
+      const data = await api.getPosts();
+      setBerita(data);
+    } catch (err: any) {
+      setBeritaError(err);
+    } finally {
+      setIsBeritaLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (!isUserLoading && !user) {
       router.push('/login');
+      return;
+    }
+    if (user) {
+      fetchPosts();
     }
   }, [user, isUserLoading, router]);
 
   const handleDelete = async (id: string) => {
-    if (!firestore) return;
     try {
-      await deleteDoc(doc(firestore, 'berita_acara', id));
+      await api.deletePost(id);
+      fetchPosts(); // Refresh list after deletion
     } catch (error) {
       console.error("Error deleting document: ", error);
     }
   };
 
-  const formatDate = (timestamp: Timestamp | null | undefined) => {
-    if (timestamp && timestamp.toDate) {
-      return format(timestamp.toDate(), 'd MMM yyyy', { locale: id });
+  const formatDate = (dateObj: any) => {
+    if (!dateObj) return 'No date';
+    
+    try {
+      // Handle Firebase compatibility shape { seconds }
+      if (dateObj.seconds) {
+        return format(new Date(dateObj.seconds * 1000), 'd MMM yyyy', { locale: id });
+      }
+      return format(new Date(dateObj), 'd MMM yyyy', { locale: id });
+    } catch (e) {
+      return 'No date';
     }
-    return 'No date';
-  }
-
+  };
 
   if (isUserLoading || !user) {
     return (
@@ -108,7 +126,7 @@ export default function AdminPostsPage() {
         {beritaError && (
              <div className="text-destructive-foreground bg-destructive p-4 rounded-md flex items-center gap-4">
                 <AlertCircle />
-                <p>Error fetching news data: {beritaError.message}</p>
+                <p>Error fetching news data: {beritaError.message || 'Gagal memuat berita'}</p>
              </div>
         )}
         {!isBeritaLoading && !beritaError && (
@@ -129,12 +147,13 @@ export default function AdminPostsPage() {
                 berita.map((item) => (
                   <TableRow key={item.id}>
                     <TableCell>
-                      <Image 
+                      <ImageWithSkeleton 
                         src={item.imageUrl || '/placeholder.png'} 
                         alt={item.title}
                         width={64}
                         height={64}
                         className="rounded-md object-cover aspect-square"
+                        containerClassName="w-16 h-16 rounded-md overflow-hidden"
                       />
                     </TableCell>
                     <TableCell className="font-medium">{item.title}</TableCell>
@@ -189,7 +208,7 @@ export default function AdminPostsPage() {
                               </AlertDialogAction>
                             </AlertDialogFooter>
                           </AlertDialogContent>
-                      </AlertDialog>
+                       </AlertDialog>
                     </TableCell>
                   </TableRow>
                 ))

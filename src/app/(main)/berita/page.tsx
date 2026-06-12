@@ -1,20 +1,19 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ChevronDown } from 'lucide-react';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import BeritaList from '@/components/berita-list';
-import { collection, query, where, orderBy } from 'firebase/firestore';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { api } from '@/lib/api-client';
 
 interface BeritaAcara {
   id: string;
   title: string;
   content: string;
-  date: string;
+  date: any;
   imageUrl: string;
   author: string;
   category: 'Berita HMJ' | 'Artikel & Pengetahuan';
@@ -22,18 +21,24 @@ interface BeritaAcara {
 }
 
 export default function BeritaPage() {
-  const firestore = useFirestore();
+  const [allBerita, setAllBerita] = useState<BeritaAcara[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const beritaQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(
-      collection(firestore, 'berita_acara'),
-      where('status', '==', 'published')
-      // orderBy('date', 'desc')
-    );
-  }, [firestore]);
+  useEffect(() => {
+    const fetchPublishedPosts = async () => {
+      setIsLoading(true);
+      try {
+        const data = await api.getPosts('published');
+        setAllBerita(data);
+      } catch (e) {
+        console.error("Gagal memuat berita:", e);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const { data: allBerita, isLoading } = useCollection<BeritaAcara>(beritaQuery);
+    fetchPublishedPosts();
+  }, []);
 
   const beritaHmj = useMemo(() => {
     if (!allBerita) return null;

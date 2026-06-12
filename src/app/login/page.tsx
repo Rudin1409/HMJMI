@@ -3,9 +3,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useAuth, useUser } from '@/firebase';
+import { useUser } from '@/firebase';
 import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { api } from '@/lib/api-client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -15,8 +15,7 @@ import { AlertCircle, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 
 export default function LoginPage() {
-  const auth = useAuth();
-  const { user, isUserLoading } = useUser();
+  const { user, isUserLoading, refreshUser } = useUser();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -53,7 +52,6 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!auth) return;
 
     // Check lockout
     if (lockoutUntil && Date.now() < lockoutUntil) {
@@ -65,13 +63,17 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await api.login(email, password);
       // Reset on success
       localStorage.removeItem('loginAttempts');
       localStorage.removeItem('lockoutUntil');
       setLoginAttempts(0);
       setLockoutUntil(null);
-      // The useEffect hook will handle redirection
+      
+      // Refresh the context user state so that page redirects to /admin
+      if (refreshUser) {
+        await refreshUser();
+      }
     } catch (err: any) {
       const newAttempts = loginAttempts + 1;
       setLoginAttempts(newAttempts);
@@ -82,10 +84,8 @@ export default function LoginPage() {
         setLockoutUntil(until);
         localStorage.setItem('lockoutUntil', until.toString());
         setError(`Terlalu banyak percobaan login gagal. Akun dikunci selama 15 menit.`);
-      } else if (err.code === 'auth/invalid-credential' || err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password') {
-        setError(`Email atau password salah. ${MAX_ATTEMPTS - newAttempts} percobaan tersisa.`);
       } else {
-        setError(err.message || 'Terjadi kesalahan saat login.');
+        setError(err.message || 'Email atau password salah.');
       }
     } finally {
       setIsLoading(false);

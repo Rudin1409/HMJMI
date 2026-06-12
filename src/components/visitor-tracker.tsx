@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { incrementVisitorCount } from '@/services/analytics';
+import { api } from '@/lib/api-client';
 import { format } from 'date-fns';
 
 export function VisitorTracker() {
@@ -37,7 +37,7 @@ export function VisitorTracker() {
 
                 if (shouldIncrement) {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify({ lastVisited: today }));
-                    await incrementVisitorCount();
+                    await api.incrementVisit();
                 }
             } catch (error) {
                 console.error("Visitor tracking failed:", error);

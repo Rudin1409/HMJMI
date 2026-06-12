@@ -91,7 +91,7 @@ export function InstagramSection() {
                 {/* Screen Content */}
                 <div className="relative w-full h-full bg-white dark:bg-black">
                   <Image
-                    src="/Galeri/IT-fest.jpg" // Using an existing image as placeholder for the feed
+                    src="/Galeri/IT-fest.webp" // Using an existing image as placeholder for the feed
                     fill
                     className="object-cover opacity-90 hover:opacity-100 transition-opacity"
                     alt="Instagram Feed Preview"

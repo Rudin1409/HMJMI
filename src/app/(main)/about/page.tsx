@@ -27,6 +27,15 @@ import { AnimatedLogo } from '@/components/ui/animated-logo';
 import { galleryItems, GalleryItem } from '@/data/site-data';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import { BackgroundBlobs } from '@/components/ui/background-blobs';
+import { api } from '@/lib/api-client';
+
+const defaultAboutHero = [
+  { src: "/Galeri/BUKBERMI.webp", alt: "Center" },
+  { src: "/Galeri/BUKBRHMJ.webp", alt: "Top" },
+  { src: "/Galeri/Makrab.webp", alt: "Bottom" },
+  { src: "/Galeri/LDOHMJMI.webp", alt: "Left" },
+  { src: "/Galeri/OR.webp", alt: "Right" }
+];
 
 const stats = [
   {
@@ -85,11 +94,86 @@ const logoPhilosophy = {
   overall: "Secara keseluruhan, logo ini mencerminkan semangat kebangkitan, adaptasi, dan inovasi dalam bidang teknologi dan manajemen organisasi, menjadikan Himpunan Mahasiswa Manajemen Informatika sebagai entitas yang selalu berkembang dan siap menghadapi tantangan zaman."
 };
 
+function getImageStyle(captionStr: string | null) {
+  if (!captionStr) return undefined;
+  try {
+    const parsed = JSON.parse(captionStr);
+    if (parsed && typeof parsed === 'object') {
+      const scale = parsed.zoom ?? 1;
+      const posY = parsed.posY ?? 50;
+      const fit = parsed.fit ?? 'cover';
+      return {
+        objectFit: fit,
+        objectPosition: `50% ${posY}%`,
+        transform: `scale(${scale})`,
+        transformOrigin: 'center center',
+      } as React.CSSProperties;
+    }
+  } catch (e) {
+    // Plain text caption
+  }
+  return undefined;
+}
+
+function getCaptionText(captionStr: string | null) {
+  if (!captionStr) return '';
+  try {
+    const parsed = JSON.parse(captionStr);
+    if (parsed && typeof parsed === 'object') {
+      return parsed.text || '';
+    }
+  } catch (e) {
+    // Plain text caption
+    return captionStr;
+  }
+  return '';
+}
+
 export default function AboutPage() {
   const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
   const plugin = useRef(
     AutoScroll({ speed: 0.5, stopOnInteraction: false, stopOnMouseEnter: true })
   );
+
+  const [dynamicGalleryItems, setDynamicGalleryItems] = useState<GalleryItem[]>(galleryItems);
+  const [aboutHeroImages, setAboutHeroImages] = useState<any[]>(defaultAboutHero);
+
+  useEffect(() => {
+    async function loadGalleryAndHero() {
+      try {
+        const galData = await api.getGalleryItems('gallery');
+        if (galData && galData.length > 0) {
+          setDynamicGalleryItems(galData.map((item: any) => ({
+            src: item.image_url,
+            title: item.title,
+            year: item.year || '2025',
+            hint: item.caption || ''
+          })));
+        }
+      } catch (err) {
+        console.error("Gagal memuat galeri dari API:", err);
+      }
+
+      try {
+        const heroData = await api.getGalleryItems('about_hero');
+        if (heroData && heroData.length > 0) {
+          const mapped = heroData.map((item: any) => ({
+            src: item.image_url,
+            alt: item.title,
+            caption: item.caption
+          }));
+          const finalHero = [...mapped];
+          while (finalHero.length < 5) {
+            finalHero.push(defaultAboutHero[finalHero.length]);
+          }
+          setAboutHeroImages(finalHero);
+        }
+      } catch (err) {
+        console.error("Gagal memuat gambar Orbiting About dari API:", err);
+      }
+    }
+    loadGalleryAndHero();
+  }, []);
 
   const missionPoints = [
     "Meningkatkan kepedulian sosial dan memperkuat nilai-nilai religius bagi Mahasiswa/i Jurusan Manajemen Informatika.",
@@ -101,17 +185,17 @@ export default function AboutPage() {
 
   const handleNextImage = () => {
     if (selectedImage) {
-      const currentIndex = galleryItems.findIndex(item => item.src === selectedImage.src);
-      const nextIndex = (currentIndex + 1) % galleryItems.length;
-      setSelectedImage(galleryItems[nextIndex]);
+      const currentIndex = dynamicGalleryItems.findIndex(item => item.src === selectedImage.src);
+      const nextIndex = (currentIndex + 1) % dynamicGalleryItems.length;
+      setSelectedImage(dynamicGalleryItems[nextIndex]);
     }
   };
 
   const handlePrevImage = () => {
     if (selectedImage) {
-      const currentIndex = galleryItems.findIndex(item => item.src === selectedImage.src);
-      const prevIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      setSelectedImage(galleryItems[prevIndex]);
+      const currentIndex = dynamicGalleryItems.findIndex(item => item.src === selectedImage.src);
+      const prevIndex = (currentIndex - 1 + dynamicGalleryItems.length) % dynamicGalleryItems.length;
+      setSelectedImage(dynamicGalleryItems[prevIndex]);
     }
   };
 
@@ -172,34 +256,73 @@ export default function AboutPage() {
               {/* Main Center Image */}
               <div className="relative z-20 group">
                 <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full blur-lg opacity-40 group-hover:opacity-60 transition-opacity"></div>
-                <Image
-                  src="/Galeri/BUKBERMI.jpg"
+                <ImageWithSkeleton
+                  src={aboutHeroImages[0]?.src || "/Galeri/BUKBERMI.webp"}
                   width={200}
                   height={200}
-                  alt="Team Main"
-                  className="rounded-full object-cover shadow-2xl border-4 border-white dark:border-white/20 relative z-10 w-36 h-36 md:w-48 md:h-48 transition-transform duration-500 group-hover:scale-105"
+                  alt={aboutHeroImages[0]?.alt || "Team Main"}
+                  containerClassName="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white dark:border-white/20 shadow-2xl relative z-10 transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover w-full h-full"
+                  style={getImageStyle(aboutHeroImages[0]?.caption)}
+                  skeletonClassName="rounded-full"
                 />
               </div>
 
               {/* Orbiting Images - Positioned on the ring */}
               {/* Top */}
               <div className="absolute top-4 md:top-6 left-1/2 -translate-x-1/2">
-                <Image src="/Galeri/BUKBRHMJ.jpg" width={100} height={100} alt="Team 1" className="rounded-full border-2 border-white shadow-lg w-16 h-16 md:w-24 md:h-24 object-cover hover:scale-110 transition-transform cursor-pointer" />
+                <ImageWithSkeleton
+                  src={aboutHeroImages[1]?.src || "/Galeri/BUKBRHMJ.webp"}
+                  width={100}
+                  height={100}
+                  alt={aboutHeroImages[1]?.alt || "Team 1"}
+                  containerClassName="rounded-full border-2 border-white shadow-lg w-16 h-16 md:w-24 md:h-24 hover:scale-110 transition-transform cursor-pointer"
+                  className="object-cover w-full h-full"
+                  style={getImageStyle(aboutHeroImages[1]?.caption)}
+                  skeletonClassName="rounded-full"
+                />
               </div>
 
               {/* Bottom */}
               <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2">
-                <Image src="/Galeri/Makrab.jpg" width={100} height={100} alt="Team 2" className="rounded-full border-2 border-white shadow-lg w-16 h-16 md:w-24 md:h-24 object-cover hover:scale-110 transition-transform cursor-pointer" />
+                <ImageWithSkeleton
+                  src={aboutHeroImages[2]?.src || "/Galeri/Makrab.webp"}
+                  width={100}
+                  height={100}
+                  alt={aboutHeroImages[2]?.alt || "Team 2"}
+                  containerClassName="rounded-full border-2 border-white shadow-lg w-16 h-16 md:w-24 md:h-24 hover:scale-110 transition-transform cursor-pointer"
+                  className="object-cover w-full h-full"
+                  style={getImageStyle(aboutHeroImages[2]?.caption)}
+                  skeletonClassName="rounded-full"
+                />
               </div>
 
               {/* Left */}
               <div className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2">
-                <Image src="/Galeri/LDOHMJMI.jpg" width={80} height={80} alt="Team 3" className="rounded-full border-2 border-white shadow-lg w-14 h-14 md:w-20 md:h-20 object-cover hover:scale-110 transition-transform cursor-pointer" />
+                <ImageWithSkeleton
+                  src={aboutHeroImages[3]?.src || "/Galeri/LDOHMJMI.webp"}
+                  width={80}
+                  height={80}
+                  alt={aboutHeroImages[3]?.alt || "Team 3"}
+                  containerClassName="rounded-full border-2 border-white shadow-lg w-14 h-14 md:w-20 md:h-20 hover:scale-110 transition-transform cursor-pointer"
+                  className="object-cover w-full h-full"
+                  style={getImageStyle(aboutHeroImages[3]?.caption)}
+                  skeletonClassName="rounded-full"
+                />
               </div>
 
               {/* Right */}
               <div className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2">
-                <Image src="/Galeri/OR.jpg" width={80} height={80} alt="Team 4" className="rounded-full border-2 border-white shadow-lg w-14 h-14 md:w-20 md:h-20 object-cover hover:scale-110 transition-transform cursor-pointer" />
+                <ImageWithSkeleton
+                  src={aboutHeroImages[4]?.src || "/Galeri/OR.webp"}
+                  width={80}
+                  height={80}
+                  alt={aboutHeroImages[4]?.alt || "Team 4"}
+                  containerClassName="rounded-full border-2 border-white shadow-lg w-14 h-14 md:w-20 md:h-20 hover:scale-110 transition-transform cursor-pointer"
+                  className="object-cover w-full h-full"
+                  style={getImageStyle(aboutHeroImages[4]?.caption)}
+                  skeletonClassName="rounded-full"
+                />
               </div>
 
             </ScrollAnimation>
@@ -236,14 +359,15 @@ export default function AboutPage() {
                   </div>
 
                   <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg mt-auto group-hover:scale-105 transition-transform duration-500">
-                    <Image
+                    <ImageWithSkeleton
                       src="/Visi.png"
                       alt="Visi HMJMI"
                       fill
                       className="object-cover"
+                      containerClassName="absolute inset-0"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <p className="absolute bottom-4 left-4 text-white font-semibold text-sm">Bersama Meraih Prestasi</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-20"></div>
+                    <p className="absolute bottom-4 left-4 text-white font-semibold text-sm z-30">Bersama Meraih Prestasi</p>
                   </div>
                 </CardContent>
               </Card>
@@ -482,7 +606,7 @@ export default function AboutPage() {
                 onMouseLeave={plugin.current.reset}
               >
                 <CarouselContent className="-ml-4">
-                  {galleryItems.map((item, index) => (
+                  {dynamicGalleryItems.map((item, index) => (
                     <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                       <div className="p-1 h-full">
                         <div
@@ -496,6 +620,7 @@ export default function AboutPage() {
                             fill
                             data-ai-hint={item.hint}
                             className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                            style={getImageStyle(item.hint)}
                             containerClassName="absolute inset-0"
                           />
 
@@ -517,7 +642,7 @@ export default function AboutPage() {
                               </h3>
                               <div className="overflow-hidden max-h-0 group-hover:max-h-20 transition-all duration-500 ease-in-out">
                                 <p className="text-white/80 text-xs leading-relaxed drop-shadow-md pb-2">
-                                  Sebuah momen berharga yang mengabadikan semangat kebersamaan dan dedikasi kami.
+                                  {getCaptionText(item.hint) || "Sebuah momen berharga yang mengabadikan semangat kebersamaan dan dedikasi kami."}
                                 </p>
                               </div>
                               <div className="w-0 group-hover:w-12 h-1 bg-primary rounded-full transition-all duration-500 delay-100" />
@@ -592,7 +717,7 @@ export default function AboutPage() {
                     {selectedImage.title}
                   </h3>
                   <p className="text-white/60 text-lg md:text-xl font-light tracking-wide max-w-2xl">
-                    Momen kebersamaan yang tak terlupakan.
+                    {getCaptionText(selectedImage.hint) || "Momen kebersamaan yang tak terlupakan."}
                   </p>
                 </div>
               </div>

@@ -3,10 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users, MessageCircle, Settings, BarChart } from 'lucide-react';
+import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users, MessageCircle, Settings, BarChart, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth, useUserProfile } from '@/firebase';
+import { api } from '@/lib/api-client';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
     DropdownMenu,
@@ -20,10 +21,10 @@ import { ProtectedRoute } from '@/components/auth/protected-route';
 
 const navItems = [
     { href: '/admin', label: 'Dasbor', icon: Home },
-    { href: '/admin/posts', label: 'Postingan', icon: Newspaper },
+    { href: '/admin/berita', label: 'Berita', icon: Newspaper },
+    { href: '/admin/gallery', label: 'Galeri Foto', icon: ImageIcon },
     { href: '/admin/comments', label: 'Komentar', icon: MessageCircle },
     { href: '/admin/analytics', label: 'Analitik', icon: BarChart },
-    { href: '/admin/berita', label: 'Berita', icon: Newspaper },
 ];
 
 const adminNavItems = [
@@ -77,9 +78,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
     return (
         <ProtectedRoute>
-            <div className="flex min-h-screen w-full bg-muted/40">
+            <div className="flex h-screen w-full overflow-hidden bg-muted/40">
                 {/* Desktop Sidebar */}
-                <aside className="sticky top-0 hidden h-screen w-64 flex-col border-r bg-background sm:flex">
+                <aside className="hidden h-full w-64 flex-col border-r bg-background sm:flex">
                     <div className="flex h-[60px] items-center border-b px-6">
                         <Link href="/admin" className="flex items-center gap-2 font-semibold">
                             <Newspaper className="h-6 w-6 text-primary" />
@@ -103,9 +104,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     </div>
                 </aside>
 
-                <div className="flex flex-1 flex-col">
+                <div className="flex flex-1 flex-col overflow-hidden">
                     {/* Mobile Header */}
-                    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:h-[60px] sm:px-6">
+                    <header className="flex h-14 shrink-0 items-center gap-4 border-b bg-background px-4 sm:h-[60px] sm:px-6">
                         <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                             <SheetTrigger asChild>
                                 <Button size="icon" variant="outline" className="sm:hidden">
@@ -167,14 +168,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                                     </DropdownMenuItem>
                                 </Link>
                                 <DropdownMenuSeparator />
-                                <DropdownMenuItem onClick={() => auth?.signOut()}>
+                                <DropdownMenuItem onClick={async () => {
+                                    await api.logout();
+                                    window.location.href = '/login';
+                                }}>
                                     <LogOut className="mr-2 h-4 w-4" />
                                     Keluar
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </header>
-                    <main className="flex-1 overflow-auto p-4 sm:p-6">{children}</main>
+                    <main className="flex-1 overflow-y-auto p-4 sm:p-6">{children}</main>
                 </div>
             </div>
         </ProtectedRoute>

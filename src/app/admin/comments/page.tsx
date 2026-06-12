@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { getFirestore, collectionGroup, query, orderBy, updateDoc, deleteDoc, doc, onSnapshot } from 'firebase/firestore';
-import { getApp } from 'firebase/app';
 import {
     Table,
     TableBody,
@@ -24,26 +22,27 @@ import {
 } from '@/components/ui/dialog';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
-import { Loader2, CheckCircle, XCircle, Trash2, Eye, ExternalLink } from 'lucide-react';
+import { Loader2, CheckCircle, XCircle, Trash2, Eye } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import Link from 'next/link';
-import { initializeFirebase } from '@/firebase';
+import { api } from '@/lib/api-client';
 
 interface Comment {
     id: string;
+    postId: string;
     author: string;
     content: string;
     date: any;
     status: 'pending' | 'approved' | 'rejected';
     articleTitle?: string;
-    path: string; // Store path string to reconstruct ref
 }
 
-const formatDate = (date: any) => {
-    if (!date) return '-';
+const formatDate = (dateObj: any) => {
+    if (!dateObj) return '-';
     try {
-        if (date.toDate) return format(date.toDate(), 'd MMM yyyy, HH:mm', { locale: id });
-        return format(new Date(date), 'd MMM yyyy, HH:mm', { locale: id });
+        if (dateObj.seconds) {
+            return format(new Date(dateObj.seconds * 1000), 'd MMM yyyy, HH:mm', { locale: id });
+        }
+        return format(new Date(dateObj), 'd MMM yyyy, HH:mm', { locale: id });
     } catch (e) {
         return '-';
     }
@@ -55,52 +54,35 @@ export default function CommentsManagementPage() {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [processingId, setProcessingId] = useState<string | null>(null);
 
-    // Manual listener state
-    const [manualComments, setManualComments] = useState<Comment[]>([]);
-    const [manualLoading, setManualLoading] = useState(true);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const fetchComments = async () => {
+        setIsLoading(true);
+        try {
+            const data = await api.getComments();
+            setComments(data);
+        } catch (e) {
+            console.error("Gagal mengambil komentar", e);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     useEffect(() => {
-        // Ensure Firebase is initialized
-        initializeFirebase();
-
-        let db;
-        try {
-            db = getFirestore(getApp());
-        } catch (e) {
-            console.error("Firebase not initialized", e);
-            setManualLoading(false);
-            return;
-        }
-
-        const q = query(collectionGroup(db, 'comments'), orderBy('date', 'desc'));
-
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const items = snapshot.docs.map((d: any) => ({
-                ...d.data(),
-                id: d.id,
-                path: d.ref.path // VITAL: Keep the path strictly
-            }));
-            setManualComments(items);
-            setManualLoading(false);
-        }, (err) => {
-            console.error("CG Error", err);
-            setManualLoading(false);
-        });
-
-        return () => unsubscribe();
+        fetchComments();
     }, []);
 
     const performUpdate = async (comment: Comment, newStatus: 'approved' | 'rejected') => {
         setProcessingId(comment.id);
-        const db = getFirestore(getApp());
         try {
-            const ref = doc(db, comment.path);
-            await updateDoc(ref, { status: newStatus });
+            await api.updateComment(comment.id, { status: newStatus });
             toast({
                 title: "Berhasil",
                 description: `Komentar ${newStatus === 'approved' ? 'disetujui' : 'ditolak'}`,
             });
             setIsDialogOpen(false);
+            fetchComments(); // Refresh comments
         } catch (e) {
             console.error(e);
             toast({
@@ -116,14 +98,14 @@ export default function CommentsManagementPage() {
     const performDelete = async (comment: Comment) => {
         if (!confirm("Yakin hapus komentar ini?")) return;
         setProcessingId(comment.id);
-        const db = getFirestore(getApp());
         try {
-            await deleteDoc(doc(db, comment.path));
+            await api.deleteComment(comment.id);
             toast({
                 title: "Berhasil",
                 description: "Komentar dihapus",
             });
             setIsDialogOpen(false);
+            fetchComments(); // Refresh comments
         } catch (e) {
             console.error(e);
             toast({
@@ -136,8 +118,7 @@ export default function CommentsManagementPage() {
         }
     };
 
-
-    if (manualLoading) {
+    if (isLoading) {
         return <div className="p-8 flex justify-center"><Loader2 className="animate-spin" /></div>;
     }
 
@@ -160,14 +141,14 @@ export default function CommentsManagementPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {manualComments.length === 0 ? (
+                        {comments.length === 0 ? (
                             <TableRow>
                                 <TableCell colSpan={6} className="text-center h-24 text-muted-foreground">
                                     Belum ada komentar masuk.
                                 </TableCell>
                             </TableRow>
                         ) : (
-                            manualComments.map((comment) => (
+                            comments.map((comment) => (
                                 <TableRow key={comment.id}>
                                     <TableCell className="font-medium">{comment.author}</TableCell>
                                     <TableCell className="truncate max-w-[300px]">{comment.content}</TableCell>

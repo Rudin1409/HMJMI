@@ -1,9 +1,7 @@
 'use client';
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
-import { doc } from 'firebase/firestore';
 import { useSearchParams } from 'next/navigation';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -16,6 +14,7 @@ import { ScrollAnimation } from '@/components/scroll-animation';
 import { BlogSidebar } from '@/components/blog-sidebar';
 import { CommentSection } from '@/components/comment-section';
 import { LikeButton } from '@/components/like-button';
+import { api } from '@/lib/api-client';
 
 interface BeritaAcara {
     id: string;
@@ -23,17 +22,40 @@ interface BeritaAcara {
     content: string;
     date: any;
     imageUrl: string;
+    imageStyle?: string;
     author: string;
     category: string;
     likes?: number;
 }
 
-const formatDate = (date: any) => {
-    if (!date) return '';
+function getImageStyle(captionStr: string | null | undefined) {
+  if (!captionStr) return undefined;
+  try {
+    const parsed = JSON.parse(captionStr);
+    if (parsed && typeof parsed === 'object') {
+      const scale = parsed.zoom ?? 1;
+      const posY = parsed.posY ?? 50;
+      const fit = parsed.fit ?? 'cover';
+      return {
+        objectFit: fit,
+        objectPosition: `50% ${posY}%`,
+        transform: `scale(${scale})`,
+        transformOrigin: 'center center',
+      } as React.CSSProperties;
+    }
+  } catch (e) {
+    // Plain text
+  }
+  return undefined;
+}
+
+const formatDate = (dateObj: any) => {
+    if (!dateObj) return '';
     try {
-        if (date.toDate) return format(date.toDate(), 'd MMMM yyyy', { locale: id });
-        if (date instanceof Date) return format(date, 'd MMMM yyyy', { locale: id });
-        return format(new Date(date), 'd MMMM yyyy', { locale: id });
+        if (dateObj.seconds) {
+            return format(new Date(dateObj.seconds * 1000), 'd MMMM yyyy', { locale: id });
+        }
+        return format(new Date(dateObj), 'd MMMM yyyy', { locale: id });
     } catch (e) {
         return '';
     }
@@ -64,16 +86,28 @@ const DetailBeritaSkeleton = () => (
 );
 
 function BeritaContent() {
-    const firestore = useFirestore();
     const searchParams = useSearchParams();
     const beritaId = searchParams.get('id');
+    const [berita, setBerita] = useState<BeritaAcara | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const beritaRef = useMemoFirebase(() => {
-        if (!firestore || !beritaId) return null;
-        return doc(firestore, 'berita_acara', beritaId);
-    }, [firestore, beritaId]);
+    useEffect(() => {
+        if (!beritaId) return;
 
-    const { data: berita, isLoading } = useDoc<BeritaAcara>(beritaRef);
+        const fetchPostDetail = async () => {
+            setIsLoading(true);
+            try {
+                const data = await api.getPost(beritaId);
+                setBerita(data);
+            } catch (e) {
+                console.error("Gagal mengambil detail berita", e);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchPostDetail();
+    }, [beritaId]);
 
     if (isLoading) {
         return <DetailBeritaSkeleton />;
@@ -148,6 +182,7 @@ function BeritaContent() {
                                     alt={berita.title}
                                     fill
                                     className="object-cover"
+                                    style={getImageStyle(berita.imageStyle)}
                                     priority
                                     data-ai-hint="event highlight"
                                 />

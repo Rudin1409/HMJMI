@@ -1,32 +1,18 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useUser, useAuth, useFirestore } from '@/firebase';
-import { useImageUpload } from '@/hooks/use-image-upload';
-import { updateProfile, updatePassword, deleteUser, EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth';
-import { doc, updateDoc } from 'firebase/firestore';
+import { useUser } from '@/firebase';
+import { api } from '@/lib/api-client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Loader2, User, Lock, Trash2, Camera, AlertTriangle, UploadCloud } from 'lucide-react';
+import { Loader2, User, Lock, Camera } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
 
 export default function SettingsPage() {
-    const { user, isUserLoading } = useUser();
-    const firestore = useFirestore();
-    const { uploadImage, isLoading: isUploading } = useImageUpload();
+    const { user, isUserLoading, refreshUser } = useUser();
     const { toast } = useToast();
 
     // Profile State
@@ -42,16 +28,12 @@ export default function SettingsPage() {
     // Image Upload State
     const [uploadPreview, setUploadPreview] = useState<string | null>(null);
     const [imageFile, setImageFile] = useState<File | null>(null);
-
-    // Danger Zone State
-    const [isDeleting, setIsDeleting] = useState(false);
-    const [deleteConfirmation, setDeleteConfirmation] = useState('');
-    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
         if (user) {
-            setDisplayName(user.displayName || '');
-            setPhotoURL(user.photoURL || '');
+            setDisplayName(user.username || '');
+            setPhotoURL(user.avatar || '');
         }
     }, [user]);
 
@@ -67,7 +49,7 @@ export default function SettingsPage() {
     // Update Profile Handler
     const handleUpdateProfile = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!user || !firestore) return;
+        if (!user) return;
 
         setIsProfileSaving(true);
         try {
@@ -75,28 +57,22 @@ export default function SettingsPage() {
 
             // Upload new image if selected
             if (imageFile) {
-                const uploadedUrl = await uploadImage(imageFile);
-                if (uploadedUrl) {
-                    finalPhotoURL = uploadedUrl;
+                setIsUploading(true);
+                try {
+                    finalPhotoURL = await api.uploadImage(imageFile);
+                } catch (uploadErr: any) {
+                    throw new Error("Gagal mengunggah foto profil: " + uploadErr.message);
+                } finally {
+                    setIsUploading(false);
                 }
             }
 
-            // 1. Update Firebase Auth Profile
-            await updateProfile(user, {
-                displayName: displayName,
-                photoURL: finalPhotoURL
-            });
-
-            // 2. Update Firestore User Document (Sync for Navbar/Profile)
-            const userRef = doc(firestore, 'users', user.uid);
-            await updateDoc(userRef, {
-                avatar: finalPhotoURL,
-                username: displayName
-            });
+            // Update Profile via REST API
+            await api.updateProfile(displayName, finalPhotoURL);
 
             toast({
                 title: "Profil Diperbarui",
-                description: "Informasi profil dan foto berhasil disimpan dan disinkronkan.",
+                description: "Informasi profil dan foto berhasil disimpan.",
                 variant: "default",
             });
 
@@ -105,10 +81,15 @@ export default function SettingsPage() {
             setUploadPreview(null);
             setPhotoURL(finalPhotoURL);
 
+            // Refresh layout user state
+            if (refreshUser) {
+                await refreshUser();
+            }
+
         } catch (error: any) {
             toast({
                 title: "Gagal Memperbarui Profil",
-                description: "Pastikan Anda Login. " + error.message,
+                description: error.message || "Terjadi kesalahan.",
                 variant: "destructive",
             });
         } finally {
@@ -141,61 +122,24 @@ export default function SettingsPage() {
 
         setIsPasswordSaving(true);
         try {
-            await updatePassword(user, newPassword);
+            await api.updatePassword(newPassword);
             toast({
                 title: "Kata Sandi Diperbarui",
-                description: "Kata sandi Anda berhasil diubah. Silakan login ulang jika diminta.",
+                description: "Kata sandi Anda berhasil diubah.",
                 variant: "default",
             });
             setNewPassword('');
             setConfirmPassword('');
         } catch (error: any) {
-            if (error.code === 'auth/requires-recent-login') {
-                toast({
-                    title: "Otentikasi Ulang Diperlukan",
-                    description: "Silakan logout dan login kembali untuk mengubah kata sandi.",
-                    variant: "destructive",
-                });
-            } else {
-                toast({
-                    title: "Gagal Mengubah Kata Sandi",
-                    description: error.message,
-                    variant: "destructive",
-                });
-            }
+            toast({
+                title: "Gagal Mengubah Kata Sandi",
+                description: error.message || "Gagal memperbarui kata sandi.",
+                variant: "destructive",
+            });
         } finally {
             setIsPasswordSaving(false);
         }
     };
-
-    // Delete Account Handler
-    const handleDeleteAccount = async () => {
-        if (!user) return;
-        if (deleteConfirmation !== 'HAPUS') return;
-
-        setIsDeleting(true);
-        try {
-            await deleteUser(user);
-            // Firebase auth state change will trigger redirect in layout/middleware
-        } catch (error: any) {
-            if (error.code === 'auth/requires-recent-login') {
-                toast({
-                    title: "Gagal Menghapus Akun",
-                    description: "Demi keamanan, silakan logout dan login kembali sebelum menghapus akun.",
-                    variant: "destructive",
-                });
-            } else {
-                toast({
-                    title: "Error",
-                    description: error.message,
-                    variant: "destructive",
-                });
-            }
-            setIsDeleting(false);
-            setIsDeleteDialogOpen(false);
-        }
-    };
-
 
     if (isUserLoading) {
         return <div className="flex justify-center items-center h-96"><Loader2 className="animate-spin w-8 h-8" /></div>;
@@ -253,12 +197,12 @@ export default function SettingsPage() {
                             {/* Inputs Section */}
                             <div className="flex-1 space-y-6 w-full">
                                 <div className="space-y-2">
-                                    <Label htmlFor="displayName">Nama Lengkap</Label>
+                                    <Label htmlFor="displayName">Nama Pengguna (Username)</Label>
                                     <Input
                                         id="displayName"
                                         value={displayName}
                                         onChange={(e) => setDisplayName(e.target.value)}
-                                        placeholder="Masukkan nama lengkap"
+                                        placeholder="Masukkan username"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -333,53 +277,6 @@ export default function SettingsPage() {
                             </Button>
                         </div>
                     </form>
-                </CardContent>
-            </Card>
-
-            {/* Danger Zone */}
-            <Card className="border-destructive/30 bg-destructive/5 shadow-sm">
-                <CardHeader>
-                    <div className="flex items-center gap-2 text-destructive">
-                        <AlertTriangle className="w-5 h-5" />
-                        <CardTitle>Zona Berbahaya</CardTitle>
-                    </div>
-                    <CardDescription>Tindakan ini tidak dapat diurungkan.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <p className="text-sm text-muted-foreground mb-6">
-                        Menghapus akun Anda akan menghilangkan akses login secara permanen. Pastikan Anda benar-benar yakin sebelum melakukan tindakan ini.
-                    </p>
-                    <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-                        <DialogTrigger asChild>
-                            <Button variant="destructive">Hapus Akun Saya</Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                            <DialogHeader>
-                                <DialogTitle>Apakah Anda Yakin?</DialogTitle>
-                                <DialogDescription>
-                                    Tindakan ini permanen. Ketik <strong>HAPUS</strong> untuk mengonfirmasi penghapusan akun anda.
-                                </DialogDescription>
-                            </DialogHeader>
-                            <div className="py-4">
-                                <Input
-                                    value={deleteConfirmation}
-                                    onChange={(e) => setDeleteConfirmation(e.target.value)}
-                                    placeholder="Ketik HAPUS"
-                                    className="border-destructive/50 focus-visible:ring-destructive"
-                                />
-                            </div>
-                            <DialogFooter>
-                                <Button variant="ghost" onClick={() => setIsDeleteDialogOpen(false)}>Batal</Button>
-                                <Button
-                                    variant="destructive"
-                                    onClick={handleDeleteAccount}
-                                    disabled={deleteConfirmation !== 'HAPUS' || isDeleting}
-                                >
-                                    {isDeleting ? <Loader2 className="animate-spin w-4 h-4" /> : 'Hapus Permanen'}
-                                </Button>
-                            </DialogFooter>
-                        </DialogContent>
-                    </Dialog>
                 </CardContent>
             </Card>
         </div>

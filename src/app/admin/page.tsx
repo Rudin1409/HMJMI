@@ -1,10 +1,8 @@
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
-import { collection, query, orderBy } from 'firebase/firestore';
+import { useUser } from '@/firebase';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2, Users, FileText, BarChart } from 'lucide-react';
 import {
@@ -15,28 +13,15 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
-import { getSiteStats, getDailyVisits } from '@/services/analytics';
+import { api } from '@/lib/api-client';
 import { format } from 'date-fns';
 
-interface BeritaAcara {
-  id: string;
-}
-
-const placeholderVisitorData = [
-  { day: 'Rab', visitors: 2 },
-  { day: 'Kam', visitors: 3 },
-  { day: 'Jum', visitors: 1 },
-  { day: 'Sab', visitors: 4 },
-  { day: 'Min', visitors: 3 },
-  { day: 'Sen', visitors: 5 },
-  { day: 'Har', visitors: 7 },
-];
-
-
 export default function AdminPage() {
-  const firestore = useFirestore();
   const { user, isUserLoading } = useUser();
   const router = useRouter();
+  
+  const [totalPosts, setTotalPosts] = useState(0);
+  const [isPostsLoading, setIsPostsLoading] = useState(true);
   const [totalVisitors, setTotalVisitors] = useState(0);
   const [dailyStats, setDailyStats] = useState<any[]>([]);
 
@@ -47,27 +32,34 @@ export default function AdminPage() {
   }, [user, isUserLoading, router]);
 
   useEffect(() => {
-    async function fetchAnalytics() {
-      const stats = await getSiteStats();
-      const daily = await getDailyVisits(7);
-      setTotalVisitors(stats.visitorCount);
-      setDailyStats(daily.map(d => ({
-        day: format(new Date(d.date), 'dd MMM'),
-        visitors: d.count
-      })));
+    if (!user) return;
+
+    async function fetchDashboardData() {
+      setIsPostsLoading(true);
+      try {
+        // 1. Fetch total posts
+        const posts = await api.getPosts();
+        setTotalPosts(posts.length);
+        
+        // 2. Fetch stats
+        const stats = await api.getStats();
+        setTotalVisitors(stats.visitorCount);
+
+        // 3. Fetch daily visits
+        const daily = await api.getDailyVisits(7);
+        setDailyStats(daily.map((d: any) => ({
+          day: format(new Date(d.date), 'dd MMM'),
+          visitors: d.count
+        })));
+      } catch (err) {
+        console.error("Gagal memuat data dashboard:", err);
+      } finally {
+        setIsPostsLoading(false);
+      }
     }
-    fetchAnalytics();
-  }, []);
-
-  const beritaQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'berita_acara'));
-  }, [firestore]);
-
-  const { data: berita, isLoading: isBeritaLoading } = useCollection<BeritaAcara>(beritaQuery);
-
-  const totalPosts = berita ? berita.length : 0;
-
+    
+    fetchDashboardData();
+  }, [user]);
 
   if (isUserLoading || !user) {
     return (
@@ -90,7 +82,7 @@ export default function AdminPage() {
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            {isBeritaLoading ? (
+            {isPostsLoading ? (
               <Skeleton className="h-8 w-1/4" />
             ) : (
               <div className="text-2xl font-bold">{totalPosts}</div>
