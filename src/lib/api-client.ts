@@ -236,6 +236,55 @@ class ApiClient {
       body: JSON.stringify({ items }),
     });
   }
+
+  // Structural Members Management
+  async getStructuralMembers(departmentId?: string) {
+    const query = departmentId ? `?department_id=${departmentId}` : '';
+    return this.request(`/structural-members${query}`);
+  }
+
+  async getStructuralMember(id: number | string) {
+    return this.request(`/structural-members/${id}`);
+  }
+
+  async createStructuralMember(formData: FormData) {
+    return this.request('/structural-members', {
+      method: 'POST',
+      body: formData,
+    });
+  }
+
+  async updateStructuralMember(id: number | string, formData: FormData) {
+    return this.request(`/structural-members/${id}`, {
+      method: 'POST', // Use POST for multipart/form-data upload compatibility
+      body: formData,
+    });
+  }
+
+  async deleteStructuralMember(id: number | string) {
+    return this.request(`/structural-members/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  async reorderStructuralMembers(items: { id: number; order_index: number }[]) {
+    return this.request('/structural-members/reorder', {
+      method: 'PUT',
+      body: JSON.stringify({ items }),
+    });
+  }
+
+  // Cabinet Settings Management
+  async getCabinetSettings() {
+    return this.request('/cabinet-settings');
+  }
+
+  async updateCabinetSettings(formData: FormData) {
+    return this.request('/cabinet-settings', {
+      method: 'POST', // We use POST for multipart FormData compatibility
+      body: formData,
+    });
+  }
 }
 
 export const api = new ApiClient();

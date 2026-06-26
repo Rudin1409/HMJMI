@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users, MessageCircle, Settings, BarChart, Image as ImageIcon } from 'lucide-react';
+import { Home, Newspaper, Menu, X, LogOut, User as UserIcon, Users, MessageCircle, Settings, BarChart, Image as ImageIcon, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAuth, useUserProfile } from '@/firebase';
@@ -23,6 +23,8 @@ const navItems = [
     { href: '/admin', label: 'Dasbor', icon: Home },
     { href: '/admin/berita', label: 'Berita', icon: Newspaper },
     { href: '/admin/gallery', label: 'Galeri Foto', icon: ImageIcon },
+    { href: '/admin/struktural', label: 'Struktur Organisasi', icon: Users },
+    { href: '/admin/kabinet', label: 'Kabinet', icon: Shield },
     { href: '/admin/comments', label: 'Komentar', icon: MessageCircle },
     { href: '/admin/analytics', label: 'Analitik', icon: BarChart },
 ];

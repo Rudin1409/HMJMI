@@ -90,6 +90,20 @@ function getImageStyle(captionStr: string | null) {
   return undefined;
 }
 
+function getCaptionText(captionStr: string | null) {
+  if (!captionStr) return '';
+  try {
+    const parsed = JSON.parse(captionStr);
+    if (parsed && typeof parsed === 'object') {
+      return parsed.text || '';
+    }
+  } catch (e) {
+    // Plain text caption
+    return captionStr;
+  }
+  return '';
+}
+
 export default function AdminGalleryPage() {
   const { user, isUserLoading } = useUser();
   const router = useRouter();
@@ -652,7 +666,7 @@ export default function AdminGalleryPage() {
                     <CardHeader className="p-4 pb-2">
                       <CardTitle className="text-base truncate">{item.title}</CardTitle>
                       <CardDescription className="line-clamp-2 min-h-[2.5rem] text-xs">
-                        {item.caption || <span className="italic text-muted-foreground/50">Tidak ada keterangan.</span>}
+                        {getCaptionText(item.caption) || <span className="italic text-muted-foreground/50">Tidak ada keterangan.</span>}
                       </CardDescription>
                     </CardHeader>
 

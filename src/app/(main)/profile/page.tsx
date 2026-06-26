@@ -23,8 +23,72 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { departments, teamMembers, programs, divisions } from '@/data/profile-data';
+import { api } from '@/lib/api-client';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import Link from 'next/link';
+
+function getStructuralImageStyle(member: {
+  image_zoom?: string | null;
+  image_object_position?: string | null;
+}) {
+  const styles: React.CSSProperties = {
+    transformOrigin: 'center center',
+  };
+
+  // Parse Zoom
+  let scale = 1;
+  const zoom = member.image_zoom || 'scale-100';
+  if (zoom.startsWith('scale-')) {
+    const scaleMap: { [key: string]: number } = {
+      'scale-100': 1,
+      'scale-105': 1.05,
+      'scale-110': 1.1,
+      'scale-115': 1.15,
+      'scale-125': 1.25,
+    };
+    scale = scaleMap[zoom] ?? 1;
+  } else {
+    const num = parseFloat(zoom);
+    scale = isNaN(num) ? 1 : num;
+  }
+
+  // Parse Position X & Y / Crop
+  let posX = 50;
+  let posY = 50;
+  const pos = member.image_object_position || 'object-center';
+  if (pos.startsWith('object-')) {
+    const posMap: { [key: string]: { x: number; y: number } } = {
+      'object-center': { x: 50, y: 50 },
+      'object-top': { x: 50, y: 0 },
+      'object-bottom': { x: 50, y: 100 },
+      'object-left': { x: 0, y: 50 },
+      'object-right': { x: 100, y: 50 },
+    };
+    const mapped = posMap[pos] ?? { x: 50, y: 50 };
+    posX = mapped.x;
+    posY = mapped.y;
+  } else if (pos.includes(' ')) {
+    const parts = pos.split(' ');
+    const numX = parseInt(parts[0]);
+    const numY = parseInt(parts[1]);
+    posX = isNaN(numX) ? 50 : numX;
+    posY = isNaN(numY) ? 50 : numY;
+  } else {
+    const num = parseInt(pos);
+    posX = 50;
+    posY = isNaN(num) ? 50 : num;
+  }
+
+  // Apply objectPosition for native crop (aspect ratio offset)
+  styles.objectPosition = `${posX}% ${posY}%`;
+
+  // Calculate translation X and Y based on zoom to slide the scaled viewport
+  const translateXVal = ((50 - posX) / 50) * ((scale - 1) / 2) * 100;
+  const translateYVal = ((50 - posY) / 50) * ((scale - 1) / 2) * 100;
+  styles.transform = `scale(${scale}) translate(${translateXVal}%, ${translateYVal}%)`;
+
+  return styles;
+}
 
 type Member = {
   name: string;
@@ -32,6 +96,10 @@ type Member = {
   class: string;
   avatar: string;
   instagram?: string;
+  image_rotation?: string;
+  image_grayscale?: string;
+  image_object_position?: string;
+  image_zoom?: string;
 };
 
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -79,14 +147,22 @@ const MemberCard = ({ member, onPrev, onNext, showNav }: { member: Member, onPre
               <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 rounded-[2.5rem] blur-xl opacity-20 dark:opacity-30 group-hover:opacity-50 dark:group-hover:opacity-60 transition-opacity duration-700" />
 
               {/* Card Frame */}
-              <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] rounded-[2.5rem] p-[3px] bg-gradient-to-br from-purple-500/30 via-pink-500/30 to-blue-500/30 dark:from-white/30 dark:via-purple-500/30 dark:to-white/10 shadow-2xl dark:shadow-none rotate-3 group-hover:rotate-0 group-hover:scale-[1.02] transition-all duration-500 ease-out">
+              <div className={cn(
+                "relative w-64 h-80 sm:w-72 sm:h-[22rem] rounded-[2.5rem] p-[3px] bg-gradient-to-br from-purple-500/30 via-pink-500/30 to-blue-500/30 dark:from-white/30 dark:via-purple-500/30 dark:to-white/10 shadow-2xl dark:shadow-none group-hover:rotate-0 group-hover:scale-[1.02] transition-all duration-500 ease-out",
+                member.image_rotation || "rotate-3"
+              )}>
                 {/* Inner Content */}
                 <div className="relative w-full h-full rounded-[2.3rem] overflow-hidden bg-white dark:bg-slate-900/50">
                   <ImageWithSkeleton
                     src={member.avatar}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className={cn(
+                      "object-cover transition-all duration-300",
+                      member.image_grayscale === 'grayscale_always' ? 'grayscale' :
+                      member.image_grayscale === 'grayscale_hover' ? 'grayscale hover:grayscale-0' : ''
+                    )}
+                    style={getStructuralImageStyle(member)}
                     data-ai-hint="headshot portrait"
                     containerClassName="absolute inset-0"
                   />
@@ -152,7 +228,7 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
         "relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden transition-all duration-300 shadow-lg",
         isActive
           ? "ring-4 ring-purple-500 ring-offset-4 ring-offset-background scale-110 z-10"
-          : "grayscale hover:grayscale-0 opacity-70 hover:opacity-100 hover:scale-105"
+          : "opacity-70 hover:opacity-100 hover:scale-105 grayscale hover:grayscale-0"
       )}
     >
       <ImageWithSkeleton
@@ -160,6 +236,7 @@ const SmallMemberCard = ({ member, onSelect, isActive }: { member: Member, onSel
         alt={member.name}
         fill
         className="object-cover"
+        style={getStructuralImageStyle(member)}
         data-ai-hint="headshot portrait"
         containerClassName="absolute inset-0"
       />
@@ -251,18 +328,58 @@ export default function ProfilePage() {
   const [activeView, setActiveView] = useState('members');
   const [featuredHead, setFeaturedHead] = useState<Member | null>(null);
   const [featuredMembers, setFeaturedMembers] = useState<{ [key: string]: Member | null }>({});
+  const [groupedTeam, setGroupedTeam] = useState<any>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
   const isInitialMount = useRef(true);
 
-  const currentDepartmentData = teamMembers[activeDept.id as keyof typeof teamMembers] || { heads: [], members: {} };
+  // Fetch dynamic structural members on mount
+  useEffect(() => {
+    api.getStructuralMembers()
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          const grouped: any = {};
+          
+          // Pre-populate departments
+          departments.forEach(d => {
+            grouped[d.id] = { heads: [], members: {} };
+          });
+
+          data.forEach((m: any) => {
+            const deptId = m.department_id;
+            if (!grouped[deptId]) {
+              grouped[deptId] = { heads: [], members: {} };
+            }
+
+            if (m.type === 'head') {
+              grouped[deptId].heads.push(m);
+            } else {
+              const divId = m.division_id || 'none';
+              if (!grouped[deptId].members[divId]) {
+                grouped[deptId].members[divId] = [];
+              }
+              grouped[deptId].members[divId].push(m);
+            }
+          });
+          
+          setGroupedTeam(grouped);
+        }
+      })
+      .catch(err => {
+        console.error("Gagal mengambil data pengurus dinamis, menggunakan fallback data lokal:", err);
+      });
+  }, []);
+
+  const resolvedTeamMembers = groupedTeam || teamMembers;
+  const currentDepartmentData = resolvedTeamMembers[activeDept.id as keyof typeof resolvedTeamMembers] || { heads: [], members: {} };
   const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
   const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
 
   useEffect(() => {
-    const newHeads = teamMembers[activeDept.id as keyof typeof teamMembers]?.heads || [];
+    const activeDeptData = resolvedTeamMembers[activeDept.id as keyof typeof resolvedTeamMembers] || { heads: [], members: {} };
+    const newHeads = activeDeptData.heads || [];
     setFeaturedHead(newHeads.length > 0 ? newHeads[0] : null);
 
-    const newMembersByDivision = teamMembers[activeDept.id as keyof typeof teamMembers]?.members || {};
+    const newMembersByDivision = activeDeptData.members || {};
     const initialFeaturedMembers: { [key: string]: Member | null } = {};
     for (const divisionId in newMembersByDivision) {
       const divisionMembers: Member[] = newMembersByDivision[divisionId as keyof typeof newMembersByDivision] || [];
@@ -275,7 +392,7 @@ export default function ProfilePage() {
     } else {
       detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [activeDept]);
+  }, [activeDept, groupedTeam]);
 
   const handleDeptClick = (dept: typeof departments[0]) => {
     setActiveDept(dept);

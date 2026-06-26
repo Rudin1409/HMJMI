@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks, Palette, Sparkles, Wind, Cpu, BrainCircuit, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Briefcase, Calendar, Code, Users, ChevronDown, Rocket, Target, Leaf, Feather, BookOpenCheck, Eye, ListChecks, Palette, Sparkles, Wind, Cpu, BrainCircuit, ChevronLeft, ChevronRight, HelpCircle, Flame, Heart, Shield, Award, Landmark } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -59,6 +59,25 @@ const stats = [
     description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
   },
 ];
+
+const SYMBOL_ICONS: { [key: string]: React.ReactNode } = {
+  Feather: <Feather className="w-6 h-6" />,
+  Wind: <Wind className="w-6 h-6" />,
+  Sparkles: <Sparkles className="w-6 h-6" />,
+  Cpu: <Cpu className="w-6 h-6" />,
+  Rocket: <Rocket className="w-6 h-6" />,
+  Target: <Target className="w-6 h-6" />,
+  Leaf: <Leaf className="w-6 h-6" />,
+  Flame: <Flame className="w-6 h-6" />,
+  Heart: <Heart className="w-6 h-6" />,
+  Shield: <Shield className="w-6 h-6" />,
+  Award: <Award className="w-6 h-6" />,
+  Landmark: <Landmark className="w-6 h-6" />,
+};
+
+const getSymbolIcon = (iconName: string) => {
+  return SYMBOL_ICONS[iconName] || <HelpCircle className="w-6 h-6" />;
+};
 
 const logoPhilosophy = {
   colors: [
@@ -137,6 +156,13 @@ export default function AboutPage() {
 
   const [dynamicGalleryItems, setDynamicGalleryItems] = useState<GalleryItem[]>(galleryItems);
   const [aboutHeroImages, setAboutHeroImages] = useState<any[]>(defaultAboutHero);
+  const [cabinet, setCabinet] = useState<any>({
+    cabinet_name: 'Kabinet Karsadhikara',
+    logo_path: '/logo/logokabinet.png',
+    overall_philosophy: logoPhilosophy.overall,
+    color_meanings: logoPhilosophy.colors,
+    symbol_meanings: logoPhilosophy.symbols
+  });
 
   useEffect(() => {
     async function loadGalleryAndHero() {
@@ -170,6 +196,21 @@ export default function AboutPage() {
         }
       } catch (err) {
         console.error("Gagal memuat gambar Orbiting About dari API:", err);
+      }
+
+      try {
+        const cabinetData = await api.getCabinetSettings();
+        if (cabinetData) {
+          setCabinet({
+            cabinet_name: cabinetData.cabinet_name,
+            logo_path: cabinetData.logo_path,
+            overall_philosophy: cabinetData.overall_philosophy,
+            color_meanings: cabinetData.color_meanings,
+            symbol_meanings: cabinetData.symbol_meanings
+          });
+        }
+      } catch (err) {
+        console.error("Gagal memuat filosofi logo kabinet dari API:", err);
       }
     }
     loadGalleryAndHero();
@@ -471,24 +512,24 @@ export default function AboutPage() {
           <div className="text-center mb-16">
             <ScrollAnimation>
               <Badge variant="outline" className="mb-4 border-purple-500/50 text-purple-600 dark:text-purple-300 bg-purple-500/10 px-4 py-1.5 text-sm font-semibold rounded-full">
-                Kabinet Karsadhikara
+                {cabinet.cabinet_name}
               </Badge>
             </ScrollAnimation>
             <ScrollAnimation delay={1}>
               <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-6">
-                Filosofi Logo <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Kabinet Karsadhikara</span>
+                Filosofi Logo <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">{cabinet.cabinet_name}</span>
               </h2>
             </ScrollAnimation>
             <ScrollAnimation delay={2}>
               <p className="text-slate-600 dark:text-slate-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                Setiap elemen dalam logo Kabinet Karsadhikara dirancang dengan makna mendalam, mencerminkan semangat, visi, dan nilai-nilai yang kami junjung tinggi.
+                Setiap elemen dalam logo {cabinet.cabinet_name} dirancang dengan makna mendalam, mencerminkan semangat, visi, dan nilai-nilai yang kami junjung tinggi.
               </p>
             </ScrollAnimation>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <ScrollAnimation className="relative aspect-square">
-              <AnimatedLogo />
+              <AnimatedLogo logoPath={cabinet.logo_path} />
             </ScrollAnimation>
 
             <div className="space-y-8">
@@ -502,7 +543,7 @@ export default function AboutPage() {
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="flex flex-wrap gap-2">
-                      {logoPhilosophy.colors.map(color => (
+                      {cabinet.color_meanings.map((color: any) => (
                         <div key={color.name} className="flex items-center gap-2 bg-secondary/50 px-3 py-1.5 rounded-full border border-white/5 hover:bg-secondary transition-colors cursor-default">
                           <div className={`w-3 h-3 rounded-full shadow-[0_0_8px_rgba(0,0,0,0.2)] ${color.class}`}></div>
                           <span className="text-xs font-medium">{color.name}</span>
@@ -510,7 +551,7 @@ export default function AboutPage() {
                       ))}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
-                      {logoPhilosophy.colors.map(color => (
+                      {cabinet.color_meanings.map((color: any) => (
                         <div key={color.name} className="flex gap-3 text-sm group/item items-start">
                           <div className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${color.class} shadow-[0_0_5px_currentColor] opacity-70 group-hover/item:opacity-100 transition-opacity`} />
                           <p className="text-muted-foreground group-hover/item:text-foreground transition-colors leading-snug">
@@ -533,10 +574,10 @@ export default function AboutPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {logoPhilosophy.symbols.map((item) => (
+                    {cabinet.symbol_meanings.map((item: any) => (
                       <div key={item.title} className="flex items-start gap-4 p-3 rounded-xl hover:bg-primary/5 transition-all duration-300 group/symbol border border-transparent hover:border-primary/10">
                         <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover/symbol:scale-110 group-hover/symbol:bg-primary group-hover/symbol:text-primary-foreground transition-all duration-300 shadow-sm mt-1">
-                          {item.icon}
+                          {getSymbolIcon(item.icon)}
                         </div>
                         <div>
                           <h4 className="font-semibold text-foreground text-sm group-hover/symbol:text-primary transition-colors">{item.title}</h4>
@@ -562,7 +603,7 @@ export default function AboutPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="relative z-10">
-                <p className="text-center text-muted-foreground text-lg italic leading-relaxed max-w-2xl mx-auto">"{logoPhilosophy.overall}"</p>
+                <p className="text-center text-muted-foreground text-lg italic leading-relaxed max-w-2xl mx-auto">"{cabinet.overall_philosophy}"</p>
               </CardContent>
             </Card>
           </ScrollAnimation>

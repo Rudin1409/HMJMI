@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
-export function AnimatedLogo() {
+export function AnimatedLogo({ logoPath }: { logoPath?: string }) {
   return (
     <div className="relative flex items-center justify-center w-full aspect-square">
       {/* Soft Radial Glow */}
@@ -57,12 +57,13 @@ export function AnimatedLogo() {
       {/* Central Logo */}
       <div className="relative w-[50%] h-[50%] flex items-center justify-center z-10">
         <Image
-          src="/logo/logokabinet.png"
+          src={logoPath || "/logo/logokabinet.png"}
           width={500}
           height={500}
-          alt="Logo Kabinet Karsadhikara"
+          alt="Logo Kabinet"
           data-ai-hint="phoenix emblem"
-          className="drop-shadow-[0_0_30px_rgba(236,127,169,0.3)] object-contain"
+          className="drop-shadow-[0_0_30px_rgba(236,127,169,0.3)] object-contain text-transparent"
+          unoptimized
         />
       </div>
     </div>
