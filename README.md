@@ -49,20 +49,18 @@ This project is actively maintained and continuously improved to provide a bette
 ## 🛠 Tech Stack
 
 ### Frontend
-
-- Next.js
+- Next.js (SPA / Static Export)
 - TypeScript
 - Tailwind CSS
 
 ### Backend & Services
-
-- Firebase Authentication
-- Firestore Database
-- Firebase Storage
+- Laravel (PHP API Backend)
+- MySQL / SQLite Database
+- Firebase (Authentication, Storage, Firestore)
 
 ### Deployment
-
-- Vercel
+- cPanel (Shared hosting PHP)
+- Vercel (Frontend only if needed)
 
 ---
 
@@ -71,14 +69,21 @@ This project is actively maintained and continuously improved to provide a bette
 ```bash
 HMJMI/
 │
-├── public/
-├── src/
-├── docs/
+├── api/                  # Laravel Backend API
+│   ├── app/
+│   ├── config/
+│   ├── database/
+│   ├── public/
+│   └── routes/
+│
+├── src/                  # Next.js Frontend
+│   └── app/
+│
+├── scripts/              # Pengepak deploy cPanel & Migrator
 │
 ├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
 ├── next.config.ts
+├── UPDATE_GUIDE.md       # Panduan Pembaruan cPanel
 └── README.md
 ```
 

@@ -10,11 +10,20 @@ import { Instagram, Calendar, Youtube, Music, Video } from 'lucide-react';
 import { api } from '@/lib/api-client';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
+import { getImageUrl } from '@/lib/utils';
+import { departments } from '@/data/profile-data';
 
 interface BlogSidebarProps {
     authorName: string;
     category: string;
     currentPostId: string;
+    showAuthorInfo?: boolean;
+    authorDetails?: {
+        name: string;
+        avatar?: string;
+        bio?: string;
+        departmentId?: string;
+    } | null;
 }
 
 const formatDate = (dateObj: any) => {
@@ -29,7 +38,13 @@ const formatDate = (dateObj: any) => {
     }
 };
 
-export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebarProps) {
+export function BlogSidebar({ 
+    authorName, 
+    category, 
+    currentPostId,
+    showAuthorInfo = true,
+    authorDetails
+}: BlogSidebarProps) {
     const [allPosts, setAllPosts] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -54,6 +69,29 @@ export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebar
         ?.filter(p => p.id !== currentPostId && p.category === category)
         .slice(0, 3); // Take top 3
 
+    // Resolve author name
+    const writerName = (showAuthorInfo && authorDetails?.name) ? authorDetails.name : 'Redaksi HMJ MI';
+
+    // Resolve department/role name
+    const getDeptRole = () => {
+        if (showAuthorInfo && authorDetails?.departmentId) {
+            const dept = departments.find(d => d.id === authorDetails.departmentId);
+            return dept ? `Departemen ${dept.name}` : 'Kontributor Ahli';
+        }
+        return 'Media & Informasi';
+    };
+
+    // Resolve bio description
+    const getBioDescription = () => {
+        if (showAuthorInfo && authorDetails?.bio) {
+            return authorDetails.bio;
+        }
+        return 'Akun resmi Redaksi HMJ MI. Menyajikan berita dan informasi terkini seputar kegiatan Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya.';
+    };
+
+    // Resolve avatar src
+    const avatarSrc = (showAuthorInfo && authorDetails?.avatar) ? getImageUrl(authorDetails.avatar) : '/logo/logohmj.png';
+
     return (
         <div className="space-y-8">
             {/* 1. About Author */}
@@ -62,16 +100,16 @@ export function BlogSidebar({ authorName, category, currentPostId }: BlogSidebar
                     <CardTitle className="text-lg font-bold">Tentang Penulis</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6 flex flex-col items-center text-center">
-                    <Avatar className="h-20 w-20 mb-4 border-2 border-primary shadow-lg ring-4 ring-primary/10">
-                        <AvatarImage src={`https://ui-avatars.com/api/?name=${authorName}&background=random`} />
-                        <AvatarFallback>{authorName.substring(0, 2).toUpperCase()}</AvatarFallback>
+                    <Avatar className="h-20 w-20 mb-4 border-2 border-primary shadow-lg ring-4 ring-primary/10 overflow-hidden">
+                        <AvatarImage src={avatarSrc} className="object-cover" />
+                        <AvatarFallback>{writerName.substring(0, 2).toUpperCase()}</AvatarFallback>
                     </Avatar>
                     <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
-                        {authorName}
+                        {writerName}
                     </h3>
-                    <p className="text-sm text-primary mb-3 font-medium">Kontributor Ahli</p>
+                    <p className="text-sm text-primary mb-3 font-medium">{getDeptRole()}</p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                        {authorName} adalah bagian dari tim penulis HMJ MI yang berdedikasi membagikan wawasan teknologi dan kegiatan kampus.
+                        {getBioDescription()}
                     </p>
                 </CardContent>
             </Card>

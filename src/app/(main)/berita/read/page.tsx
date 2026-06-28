@@ -15,6 +15,8 @@ import { BlogSidebar } from '@/components/blog-sidebar';
 import { CommentSection } from '@/components/comment-section';
 import { LikeButton } from '@/components/like-button';
 import { api } from '@/lib/api-client';
+import { getImageUrl } from '@/lib/utils';
+import { departments } from '@/data/profile-data';
 
 interface BeritaAcara {
     id: string;
@@ -26,6 +28,13 @@ interface BeritaAcara {
     author: string;
     category: string;
     likes?: number;
+    showAuthorInfo?: boolean;
+    authorDetails?: {
+        name: string;
+        avatar?: string;
+        bio?: string;
+        departmentId?: string;
+    } | null;
 }
 
 function getImageStyle(captionStr: string | null | undefined) {
@@ -164,13 +173,21 @@ function BeritaContent() {
                                         <LikeButton postId={beritaId} initialLikes={berita.likes} />
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                                        {berita.author.substring(0, 2).toUpperCase()}
+                                 <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-primary/10 overflow-hidden flex items-center justify-center text-primary font-bold">
+                                        {berita.showAuthorInfo && berita.authorDetails?.avatar ? (
+                                            <img src={getImageUrl(berita.authorDetails.avatar)} className="w-full h-full object-cover" alt="Author" />
+                                        ) : (
+                                            <img src="/logo/logohmj.png" className="w-full h-full object-cover p-1" alt="Redaksi" />
+                                        )}
                                     </div>
                                     <div>
-                                        <p className="text-sm font-medium text-foreground">Oleh <span className="text-primary">{berita.author}</span></p>
-                                        <p className="text-xs text-muted-foreground">Admin HMJ</p>
+                                        <p className="text-sm font-medium text-foreground">Oleh <span className="text-primary">{berita.showAuthorInfo && berita.authorDetails?.name ? berita.authorDetails.name : 'Redaksi HMJ MI'}</span></p>
+                                        <p className="text-xs text-muted-foreground">
+                                            {berita.showAuthorInfo && berita.authorDetails?.departmentId ? (
+                                                departments.find(d => d.id === berita.authorDetails?.departmentId)?.fullName || 'Kontributor Ahli'
+                                            ) : 'Media & Informasi'}
+                                        </p>
                                     </div>
                                 </div>
                             </header>
@@ -205,6 +222,8 @@ function BeritaContent() {
                                     authorName={berita.author}
                                     category={berita.category}
                                     currentPostId={beritaId}
+                                    showAuthorInfo={berita.showAuthorInfo}
+                                    authorDetails={berita.authorDetails}
                                 />
                             </div>
                         </div>

@@ -28,6 +28,8 @@ import { galleryItems, GalleryItem } from '@/data/site-data';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import { BackgroundBlobs } from '@/components/ui/background-blobs';
 import { api } from '@/lib/api-client';
+import { getImageUrl } from '@/lib/utils';
+
 
 const defaultAboutHero = [
   { src: "/Galeri/BUKBERMI.webp", alt: "Center" },
@@ -170,7 +172,7 @@ export default function AboutPage() {
         const galData = await api.getGalleryItems('gallery');
         if (galData && galData.length > 0) {
           setDynamicGalleryItems(galData.map((item: any) => ({
-            src: item.image_url,
+            src: getImageUrl(item.image_url),
             title: item.title,
             year: item.year || '2025',
             hint: item.caption || ''
@@ -184,7 +186,7 @@ export default function AboutPage() {
         const heroData = await api.getGalleryItems('about_hero');
         if (heroData && heroData.length > 0) {
           const mapped = heroData.map((item: any) => ({
-            src: item.image_url,
+            src: getImageUrl(item.image_url),
             alt: item.title,
             caption: item.caption
           }));
@@ -203,7 +205,7 @@ export default function AboutPage() {
         if (cabinetData) {
           setCabinet({
             cabinet_name: cabinetData.cabinet_name,
-            logo_path: cabinetData.logo_path,
+            logo_path: getImageUrl(cabinetData.logo_path),
             overall_philosophy: cabinetData.overall_philosophy,
             color_meanings: cabinetData.color_meanings,
             symbol_meanings: cabinetData.symbol_meanings

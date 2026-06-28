@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('department_id')->nullable();
             $table->string('division_id')->nullable();
             $table->string('avatar')->nullable();
-            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->enum('role', ['admin', 'penulis', 'user'])->default('penulis');
             $table->rememberToken();
             $table->timestamps();
         });

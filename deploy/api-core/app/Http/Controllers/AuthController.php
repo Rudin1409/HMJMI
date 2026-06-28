@@ -39,6 +39,7 @@ class AuthController extends Controller
                 'departmentId' => $user->department_id,
                 'divisionId' => $user->division_id,
                 'avatar' => $user->avatar,
+                'bio' => $user->bio,
             ],
             'token' => $token
         ], 200);
@@ -65,6 +66,7 @@ class AuthController extends Controller
             'departmentId' => $user->department_id,
             'divisionId' => $user->division_id,
             'avatar' => $user->avatar,
+            'bio' => $user->bio,
         ], 200);
     }
 
@@ -86,6 +88,7 @@ class AuthController extends Controller
                 'departmentId' => $user->department_id,
                 'divisionId' => $user->division_id,
                 'avatar' => $user->avatar,
+                'bio' => $user->bio,
             ];
         });
 
@@ -106,6 +109,7 @@ class AuthController extends Controller
             'password' => 'required|string|min:6',
             'departmentId' => 'required|string',
             'divisionId' => 'nullable|string',
+            'role' => 'nullable|string|in:admin,penulis,user',
         ]);
 
         $user = User::create([
@@ -115,7 +119,7 @@ class AuthController extends Controller
             'department_id' => $fields['departmentId'],
             'division_id' => $fields['divisionId'] ?? null,
             'avatar' => 'https://placehold.co/100x100.png?text=' . urlencode(substr($fields['username'], 0, 1)),
-            'role' => 'user',
+            'role' => $fields['role'] ?? 'user',
         ]);
 
         return response([
@@ -137,11 +141,13 @@ class AuthController extends Controller
         $fields = $request->validate([
             'username' => 'required|string|min:3',
             'avatar' => 'nullable|string',
+            'bio' => 'nullable|string|max:1000',
         ]);
 
         $user->update([
             'username' => $fields['username'],
             'avatar' => $fields['avatar'] ?? $user->avatar,
+            'bio' => $fields['bio'] ?? $user->bio,
         ]);
 
         return response([
@@ -153,6 +159,7 @@ class AuthController extends Controller
             'departmentId' => $user->department_id,
             'divisionId' => $user->division_id,
             'avatar' => $user->avatar,
+            'bio' => $user->bio,
         ], 200);
     }
 

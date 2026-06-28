@@ -1,10 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import { cn, getImageUrl } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 export function AnimatedLogo({ logoPath }: { logoPath?: string }) {
+  const resolvedPath = getImageUrl(logoPath) || "/logo/logokabinet.png";
+  const [imgSrc, setImgSrc] = useState(resolvedPath);
+
+  useEffect(() => {
+    setImgSrc(resolvedPath);
+  }, [resolvedPath]);
+
   return (
     <div className="relative flex items-center justify-center w-full aspect-square">
       {/* Soft Radial Glow */}
@@ -57,15 +65,17 @@ export function AnimatedLogo({ logoPath }: { logoPath?: string }) {
       {/* Central Logo */}
       <div className="relative w-[50%] h-[50%] flex items-center justify-center z-10">
         <Image
-          src={logoPath || "/logo/logokabinet.png"}
+          src={imgSrc}
           width={500}
           height={500}
           alt="Logo Kabinet"
           data-ai-hint="phoenix emblem"
           className="drop-shadow-[0_0_30px_rgba(236,127,169,0.3)] object-contain text-transparent"
           unoptimized
+          onError={() => setImgSrc("/logo/logokabinet.png")}
         />
       </div>
     </div>
   );
 }
+

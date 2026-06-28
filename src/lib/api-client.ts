@@ -81,10 +81,10 @@ class ApiClient {
     return this.request('/auth/me');
   }
 
-  async updateProfile(username: string, avatar?: string) {
+  async updateProfile(username: string, avatar?: string, bio?: string) {
     return this.request('/auth/profile', {
       method: 'PUT',
-      body: JSON.stringify({ username, avatar }),
+      body: JSON.stringify({ username, avatar, bio }),
     });
   }
 
@@ -283,6 +283,43 @@ class ApiClient {
     return this.request('/cabinet-settings', {
       method: 'POST', // We use POST for multipart FormData compatibility
       body: formData,
+    });
+  }
+
+  // Work Programs Management
+  async getWorkPrograms(category?: string) {
+    const query = category ? `?category=${category}` : '';
+    return this.request(`/work-programs${query}`);
+  }
+
+  async getWorkProgram(id: number | string) {
+    return this.request(`/work-programs/${id}`);
+  }
+
+  async createWorkProgram(formData: FormData) {
+    return this.request('/work-programs', {
+      method: 'POST',
+      body: formData,
+    });
+  }
+
+  async updateWorkProgram(id: number | string, formData: FormData) {
+    return this.request(`/work-programs/${id}`, {
+      method: 'POST', // We use POST for multipart FormData compatibility
+      body: formData,
+    });
+  }
+
+  async deleteWorkProgram(id: number | string) {
+    return this.request(`/work-programs/${id}`, {
+      method: 'DELETE',
+    });
+  }
+
+  async reorderWorkPrograms(items: { id: number; order_index: number }[]) {
+    return this.request('/work-programs/reorder', {
+      method: 'PUT',
+      body: JSON.stringify({ items }),
     });
   }
 }

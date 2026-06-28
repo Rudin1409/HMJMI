@@ -9,7 +9,7 @@ export interface UserProfile {
     departmentId: string;
     divisionId?: string;
     avatar?: string;
-    role: 'admin' | 'user';
+    role: 'admin' | 'penulis' | 'user';
 }
 
 /**

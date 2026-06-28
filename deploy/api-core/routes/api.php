@@ -8,6 +8,7 @@ use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\StructuralMemberController;
+use App\Http\Controllers\WorkProgramController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::get('/analytics/popularity', [AnalyticsController::class, 'popularity']);
 Route::get('/gallery-items', [GalleryController::class, 'index']);
 Route::get('/structural-members', [StructuralMemberController::class, 'index']);
 Route::get('/cabinet-settings', [\App\Http\Controllers\CabinetSettingController::class, 'show']);
+Route::get('/work-programs', [WorkProgramController::class, 'index']);
+Route::get('/work-programs/{id}', [WorkProgramController::class, 'show']);
 
 // Protected routes (Requires Auth Token)
 Route::middleware('auth:sanctum')->group(function () {
@@ -79,4 +82,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Cabinet Settings Management
     Route::post('/cabinet-settings', [\App\Http\Controllers\CabinetSettingController::class, 'update']);
+
+    // Work Programs Management
+    Route::post('/work-programs', [WorkProgramController::class, 'store']);
+    Route::post('/work-programs/{id}', [WorkProgramController::class, 'update']);
+    Route::put('/work-programs/reorder', [WorkProgramController::class, 'reorder']);
+    Route::delete('/work-programs/{id}', [WorkProgramController::class, 'destroy']);
 });

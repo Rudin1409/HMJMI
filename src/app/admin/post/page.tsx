@@ -18,6 +18,9 @@ import Image from 'next/image';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { TiptapEditor } from '@/components/ui/tiptap-editor';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { departments } from '@/data/profile-data';
+import { getImageUrl } from '@/lib/utils';
 
 const formSchema = z.object({
   title: z.string().min(5, 'Judul harus memiliki setidaknya 5 karakter.'),
@@ -25,6 +28,7 @@ const formSchema = z.object({
   imageUrl: z.string().optional(),
   category: z.string({ required_error: 'Kategori harus dipilih.' }).min(1, 'Kategori wajib dipilih!'),
   status: z.enum(['draft', 'published'], { required_error: 'Status harus dipilih' }),
+  showAuthorInfo: z.boolean().default(true),
 });
 
 type BeritaFormData = z.infer<typeof formSchema>;
@@ -60,8 +64,41 @@ function PostForm() {
       imageUrl: '',
       category: undefined,
       status: 'draft',
+      showAuthorInfo: true,
     },
   });
+
+  const showAuthorInfo = form.watch('showAuthorInfo');
+
+  // Author preview helper values
+  const getPreviewWriterName = () => {
+    if (showAuthorInfo && user) {
+      return user.username || 'Penulis';
+    }
+    return 'Redaksi HMJ MI';
+  };
+
+  const getPreviewRole = () => {
+    if (showAuthorInfo && user?.departmentId) {
+      const dept = departments.find(d => d.id === user.departmentId);
+      return dept ? `Departemen ${dept.name}` : 'Kontributor Ahli';
+    }
+    return 'Media & Informasi';
+  };
+
+  const getPreviewBio = () => {
+    if (showAuthorInfo) {
+      return user?.bio || 'Belum ada deskripsi/bio. Atur di menu Pengaturan.';
+    }
+    return 'Akun resmi Redaksi HMJ MI. Menyajikan berita dan informasi terkini seputar kegiatan Himpunan Mahasiswa Jurusan Manajemen Informatika Politeknik Negeri Sriwijaya.';
+  };
+
+  const getPreviewAvatar = () => {
+    if (showAuthorInfo && user?.avatar) {
+      return getImageUrl(user.avatar);
+    }
+    return '/logo/logohmj.png';
+  };
 
   // Fetch post data for editing
   useEffect(() => {
@@ -78,6 +115,7 @@ function PostForm() {
           imageUrl: postData.imageUrl || '',
           category: postData.category,
           status: postData.status,
+          showAuthorInfo: postData.showAuthorInfo ?? true,
         });
         if (postData.imageUrl) {
           setImagePreview(postData.imageUrl);
@@ -487,7 +525,63 @@ function PostForm() {
                     </FormItem>
                   )}
                 />
+                 <FormField
+                  control={form.control}
+                  name="showAuthorInfo"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel>Informasi Penulis</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={(val) => field.onChange(val === 'true')}
+                          value={field.value ? 'true' : 'false'}
+                          className="flex flex-col space-y-1"
+                        >
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="true" />
+                            </FormControl>
+                            <FormLabel className="font-normal cursor-pointer">
+                              Tampilkan Data Diri (Nama, Foto, Bio, Departemen)
+                            </FormLabel>
+                          </FormItem>
+                          <FormItem className="flex items-center space-x-3 space-y-0">
+                            <FormControl>
+                              <RadioGroupItem value="false" />
+                            </FormControl>
+                            <FormLabel className="font-normal cursor-pointer">
+                              Pakai Template Dasar (Redaksi HMJ MI)
+                            </FormLabel>
+                          </FormItem>
+                        </RadioGroup>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
               </CardContent>
+            </Card>
+
+            {/* Pratinjau Tentang Penulis */}
+            <Card className="bg-card/50 border-primary/20 overflow-hidden">
+                <CardHeader className="bg-primary/5 pb-4">
+                    <CardTitle className="text-sm font-bold flex items-center gap-2">
+                        <span>Pratinjau Tentang Penulis</span>
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="pt-6 flex flex-col items-center text-center">
+                    <Avatar className="h-16 w-16 mb-3 border-2 border-primary shadow overflow-hidden">
+                        <AvatarImage src={getPreviewAvatar()} className="object-cover" />
+                        <AvatarFallback>{getPreviewWriterName().substring(0, 2).toUpperCase()}</AvatarFallback>
+                    </Avatar>
+                    <h4 className="text-base font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-500">
+                        {getPreviewWriterName()}
+                    </h4>
+                    <p className="text-xs text-primary mb-2.5 font-medium">{getPreviewRole()}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                        {getPreviewBio()}
+                    </p>
+                </CardContent>
             </Card>
           </div>
         </div>

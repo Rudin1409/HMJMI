@@ -125,7 +125,7 @@ export default function AspirationPage() {
                   </div>
 
                   <Button asChild size="lg" className="w-full sm:w-auto h-14 px-8 rounded-xl text-lg font-bold bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 shadow-lg shadow-pink-500/25 border-0 hover:scale-[1.02] transition-all duration-300">
-                    <Link href="https://bit.ly/ASKMIPOLSRI2025" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://bit.ly/AKSMIPOLSRI2026" target="_blank" rel="noopener noreferrer">
                       Isi Formulir Aspirasi <ArrowUpRight className="ml-2 w-5 h-5" />
                     </Link>
                   </Button>

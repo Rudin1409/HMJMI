@@ -3,12 +3,12 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useUser } from '@/firebase';
+import { useUser, useUserProfile } from '@/firebase';
 import { api } from '@/lib/api-client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlusCircle, Loader2, AlertCircle, Mail, Briefcase, Users as UsersIcon, UserCheck } from 'lucide-react';
+import { PlusCircle, Loader2, AlertCircle, Mail, Briefcase, Users as UsersIcon, UserCheck, PenSquare, ShieldCheck } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -35,13 +35,14 @@ interface UserProfile {
   departmentId: string;
   divisionId?: string;
   avatar?: string;
-  role: 'admin' | 'user';
+  role: 'admin' | 'penulis' | 'user';
 }
 
 const userFormSchema = z.object({
   username: z.string().min(3, 'Username harus memiliki setidaknya 3 karakter.'),
   email: z.string().email('Format email tidak valid.'),
   password: z.string().min(6, 'Password harus memiliki setidaknya 6 karakter.'),
+  role: z.enum(['admin', 'penulis'], { required_error: 'Role harus dipilih.' }),
   departmentId: z.string({ required_error: 'Departemen harus dipilih.' }),
   divisionId: z.string().optional(),
 });
@@ -58,6 +59,7 @@ function AddUserForm({ setDialogOpen, onSuccess }: { setDialogOpen: (open: boole
       username: '',
       email: '',
       password: '',
+      role: 'penulis',
       departmentId: undefined,
       divisionId: undefined,
     },
@@ -126,6 +128,28 @@ function AddUserForm({ setDialogOpen, onSuccess }: { setDialogOpen: (open: boole
               <FormControl>
                 <Input type="password" placeholder="Minimal 6 karakter" {...field} />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="role"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Peran / Role</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Pilih role" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="admin">Admin (Akses Penuh)</SelectItem>
+                  <SelectItem value="penulis">Penulis (Berita saja)</SelectItem>
+
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -287,24 +311,30 @@ export default function AdminUsersPage() {
                     <span>{u.email}</span>
                 </div>
                 
-                {u.role === 'admin' ? (
-                  <div className="text-sm text-muted-foreground flex items-center gap-2 font-semibold text-primary">
-                    <UserCheck className="h-4 w-4"/>
-                    <span>Admin</span>
-                  </div>
-                ) : (
-                  <>
+                <div className="flex items-center gap-1.5 mt-1">
+                  {u.role === 'admin' ? (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/15 text-primary text-[11px] font-semibold">
+                      <ShieldCheck className="h-3 w-3"/> Admin
+                    </span>
+                  ) : u.role === 'penulis' ? (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-500 text-[11px] font-semibold">
+                      <PenSquare className="h-3 w-3"/> Penulis
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-muted text-muted-foreground text-[11px] font-semibold">
+                      <UserCheck className="h-3 w-3"/> Anggota
+                    </span>
+                  )}
+                </div>
+                <div className="text-sm text-muted-foreground flex items-center gap-2">
+                    <Briefcase className="h-4 w-4"/>
+                    <span>{getDepartmentName(u.departmentId)}</span>
+                </div>
+                {u.divisionId && (
                     <div className="text-sm text-muted-foreground flex items-center gap-2">
-                        <Briefcase className="h-4 w-4"/>
-                        <span>{getDepartmentName(u.departmentId)}</span>
+                        <UsersIcon className="h-4 w-4"/>
+                        <span>{getDivisionName(u.departmentId, u.divisionId)}</span>
                     </div>
-                    {u.divisionId && (
-                        <div className="text-sm text-muted-foreground flex items-center gap-2">
-                            <UsersIcon className="h-4 w-4"/>
-                            <span>{getDivisionName(u.departmentId, u.divisionId)}</span>
-                        </div>
-                    )}
-                  </>
                 )}
               </div>
             </CardContent>

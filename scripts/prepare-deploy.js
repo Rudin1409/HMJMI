@@ -179,6 +179,13 @@ async function main() {
     console.log('--> Menyalin scripts/symlink.php ke deploy/public_html/api/symlink.php');
   }
 
+  // 7b. Copy migrate helper script to public_html/api/migrate.php
+  const migrateHelperSource = path.join(PROJECT_ROOT, 'scripts', 'migrate.php');
+  if (fs.existsSync(migrateHelperSource)) {
+    fs.copyFileSync(migrateHelperSource, path.join(apiDir, 'migrate.php'));
+    console.log('--> Menyalin scripts/migrate.php ke deploy/public_html/api/migrate.php');
+  }
+
   // 8. Modify public_html/api/index.php paths to point to api-core
   const indexPhpPath = path.join(apiDir, 'index.php');
   if (fs.existsSync(indexPhpPath)) {
@@ -244,6 +251,32 @@ async function main() {
     fs.writeFileSync(path.join(dirPath, '.gitkeep'), '');
   });
 
+  // 11. [Opsional] Export local database SQL
+  console.log('--> Mencoba mengekspor database lokal (db_hmjmi) ke deploy/latest_db_backup.sql...');
+  try {
+    const envContent = fs.readFileSync(path.join(laravelRoot, '.env'), 'utf8');
+    const dbNameMatch = envContent.match(/DB_DATABASE=(.*)/);
+    const dbUserMatch = envContent.match(/DB_USERNAME=(.*)/);
+    const dbPassMatch = envContent.match(/DB_PASSWORD=(.*)/);
+
+    const dbName = dbNameMatch ? dbNameMatch[1].trim() : 'db_hmjmi';
+    const dbUser = dbUserMatch ? dbUserMatch[1].trim() : 'root';
+    const dbPass = dbPassMatch ? dbPassMatch[1].trim() : '';
+
+    const backupFile = path.join(DEPLOY_DIR, 'latest_db_backup.sql');
+    
+    let dumpCmd = `mysqldump --user=${dbUser} `;
+    if (dbPass) {
+      dumpCmd += `--password=${dbPass} `;
+    }
+    dumpCmd += `${dbName} > "${backupFile}"`;
+
+    execSync(dumpCmd, { stdio: 'ignore' });
+    console.log(`[SUCCESS] Berhasil mengekspor SQL terbaru ke: deploy/latest_db_backup.sql`);
+  } catch (err) {
+    console.log('[INFO] Lewati ekspor database SQL otomatis (mysqldump tidak terinstal di PATH sistem lokal Anda).');
+  }
+
   console.log('\n==================================================');
   console.log('[SUCCESS] Paket Deployment Siap di Folder: deploy/');
   console.log('==================================================');
@@ -254,7 +287,10 @@ async function main() {
   console.log('4. Upload `public_html.zip` langsung di dalam folder `/home/username/public_html` lalu ekstrak.');
   console.log('5. Buka berkas `/home/username/api-core/.env` di cPanel, sesuaikan nama database, username, password, dan ubah APP_DEBUG menjadi false.');
   console.log('6. Buka browser dan jalankan alamat `https://domainanda.com/api/symlink.php` untuk menghubungkan storage upload gambar.');
-  console.log('7. Hapus berkas `public_html/api/symlink.php` setelah symlink sukses demi keamanan.');
+  console.log('7. [Sangat Direkomendasikan] Jika ada perubahan database, jalankan `https://domainanda.com/api/migrate.php` di browser.');
+  console.log('   (Ini otomatis mengupdate tabel tanpa menghapus data berita/user/proker yang sudah ada di cPanel!)');
+  console.log('8. [Alternatif] Jika ingin menimpa database secara total dari kosong, Anda dapat menggunakan berkas `deploy/latest_db_backup.sql` untuk di-import melalui phpMyAdmin.');
+  console.log('9. Hapus berkas `symlink.php` dan `migrate.php` di dalam folder `public_html/api/` setelah sukses demi keamanan.');
   console.log('==================================================\n');
 }
 

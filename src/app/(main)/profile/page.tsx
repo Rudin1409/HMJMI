@@ -26,6 +26,7 @@ import { departments, teamMembers, programs, divisions } from '@/data/profile-da
 import { api } from '@/lib/api-client';
 import { ScrollAnimation } from '@/components/scroll-animation';
 import Link from 'next/link';
+import { getImageUrl } from '@/lib/utils';
 
 function getStructuralImageStyle(member: {
   image_zoom?: string | null;
@@ -329,10 +330,10 @@ export default function ProfilePage() {
   const [featuredHead, setFeaturedHead] = useState<Member | null>(null);
   const [featuredMembers, setFeaturedMembers] = useState<{ [key: string]: Member | null }>({});
   const [groupedTeam, setGroupedTeam] = useState<any>(null);
+  const [allDbPrograms, setAllDbPrograms] = useState<any[]>([]);
   const detailsRef = useRef<HTMLDivElement>(null);
-  const isInitialMount = useRef(true);
 
-  // Fetch dynamic structural members on mount
+  // Fetch dynamic structural members and work programs on mount
   useEffect(() => {
     api.getStructuralMembers()
       .then(data => {
@@ -367,11 +368,42 @@ export default function ProfilePage() {
       .catch(err => {
         console.error("Gagal mengambil data pengurus dinamis, menggunakan fallback data lokal:", err);
       });
+
+    api.getWorkPrograms()
+      .then(data => {
+        setAllDbPrograms(data || []);
+      })
+      .catch(err => {
+        console.error("Gagal mengambil data program kerja dinamis, menggunakan fallback data lokal:", err);
+      });
   }, []);
 
   const resolvedTeamMembers = groupedTeam || teamMembers;
   const currentDepartmentData = resolvedTeamMembers[activeDept.id as keyof typeof resolvedTeamMembers] || { heads: [], members: {} };
-  const currentPrograms = programs[activeDept.id as keyof typeof programs] || [];
+  
+  const hasDynamicPrograms = allDbPrograms.length > 0;
+  const currentPrograms = hasDynamicPrograms
+    ? allDbPrograms
+        .filter(p => p.department_id === activeDept.id)
+        .map(p => ({
+          id: p.id,
+          title: p.title,
+          category: p.category === 'unggulan' 
+            ? 'KOMPETISI & EDUKASI' 
+            : p.category === 'pengembangan' 
+            ? 'EDUKASI' 
+            : p.category === 'komunitas' 
+            ? 'PENGEMBANGAN DIRI' 
+            : 'PELATIHAN',
+          description: p.description,
+          image: p.image_url ? getImageUrl(p.image_url) : '/placeholder.png',
+          hint: p.title
+        }))
+    : (programs[activeDept.id as keyof typeof programs] || []).map(p => ({
+          ...p,
+          id: null
+        }));
+
   const currentDivisions = divisions[activeDept.id as keyof typeof divisions] || [];
 
   useEffect(() => {
@@ -386,12 +418,6 @@ export default function ProfilePage() {
       initialFeaturedMembers[divisionId] = divisionMembers.length > 0 ? divisionMembers[0] : null;
     }
     setFeaturedMembers(initialFeaturedMembers);
-
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
-      detailsRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }
   }, [activeDept, groupedTeam]);
 
   const handleDeptClick = (dept: typeof departments[0]) => {
@@ -601,7 +627,7 @@ export default function ProfilePage() {
                   return (
                     <MemberGroup
                       key={division.id}
-                      title={`Tim Divisi ${division.name}`}
+                      title={division.name.toLowerCase().startsWith('divisi') ? `Tim ${division.name}` : `Tim Divisi ${division.name}`}
                       members={divisionMembers}
                       featuredMember={featuredMembers[division.id] || null}
                       setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
@@ -648,7 +674,7 @@ export default function ProfilePage() {
                               {program.description}
                             </p>
                             <Button asChild variant="link" className="text-primary p-0 h-auto">
-                              <Link href="/proker">
+                              <Link href={program.id ? `/proker/read?id=${program.id}` : `/proker`}>
                                 Lihat Detail <ArrowUpRight className="ml-1 h-4 w-4" />
                               </Link>
                             </Button>

@@ -236,5 +236,8 @@ class DatabaseSeeder extends Seeder
 
         // 7. Seed Structural Members
         $this->call(StructuralMemberSeeder::class);
+
+        // 8. Seed Work Programs
+        $this->call(WorkProgramSeeder::class);
     }
 }

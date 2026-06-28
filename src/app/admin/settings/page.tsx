@@ -10,6 +10,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Loader2, User, Lock, Camera } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { Textarea } from '@/components/ui/textarea';
+import { departments } from '@/data/profile-data';
 
 export default function SettingsPage() {
     const { user, isUserLoading, refreshUser } = useUser();
@@ -18,6 +20,7 @@ export default function SettingsPage() {
     // Profile State
     const [displayName, setDisplayName] = useState('');
     const [photoURL, setPhotoURL] = useState('');
+    const [bio, setBio] = useState('');
     const [isProfileSaving, setIsProfileSaving] = useState(false);
 
     // Password State
@@ -34,6 +37,7 @@ export default function SettingsPage() {
         if (user) {
             setDisplayName(user.username || '');
             setPhotoURL(user.avatar || '');
+            setBio(user.bio || '');
         }
     }, [user]);
 
@@ -68,7 +72,7 @@ export default function SettingsPage() {
             }
 
             // Update Profile via REST API
-            await api.updateProfile(displayName, finalPhotoURL);
+            await api.updateProfile(displayName, finalPhotoURL, bio);
 
             toast({
                 title: "Profil Diperbarui",
@@ -214,6 +218,26 @@ export default function SettingsPage() {
                                         className="bg-muted/50 text-muted-foreground"
                                     />
                                     <p className="text-xs text-muted-foreground">Email tidak dapat diubah.</p>
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="department">Departemen</Label>
+                                    <Input
+                                        id="department"
+                                        value={departments.find(d => d.id === user?.departmentId)?.fullName || user?.departmentId || '-'}
+                                        disabled
+                                        className="bg-muted/50 text-muted-foreground"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="bio">Deskripsi Penulis (Bio)</Label>
+                                    <Textarea
+                                        id="bio"
+                                        value={bio}
+                                        onChange={(e) => setBio(e.target.value)}
+                                        placeholder="Tuliskan sedikit profil tentang Anda sebagai penulis berita..."
+                                        className="min-h-[100px] resize-none"
+                                        maxLength={1000}
+                                    />
                                 </div>
                                 <div className="pt-4">
                                     <Button type="submit" disabled={isUploading || isProfileSaving}>

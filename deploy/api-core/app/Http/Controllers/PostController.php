@@ -11,11 +11,20 @@ class PostController extends Controller
     // GET all posts
     public function index(Request $request)
     {
-        $query = DB::table('berita_acara')->orderBy('date', 'desc');
+        $query = DB::table('berita_acara')
+            ->leftJoin('users', 'berita_acara.user_id', '=', 'users.id')
+            ->select(
+                'berita_acara.*',
+                'users.username as author_name',
+                'users.avatar as author_avatar',
+                'users.bio as author_bio',
+                'users.department_id as author_department_id'
+            )
+            ->orderBy('berita_acara.date', 'desc');
 
         // Optional status filter (e.g., only show published for guests)
         if ($request->has('status')) {
-            $query->where('status', $request->query('status'));
+            $query->where('berita_acara.status', $request->query('status'));
         }
 
         $posts = $query->get()->map(function ($post) {
@@ -28,7 +37,17 @@ class PostController extends Controller
     // GET single post
     public function show($id)
     {
-        $post = DB::table('berita_acara')->where('id', $id)->first();
+        $post = DB::table('berita_acara')
+            ->leftJoin('users', 'berita_acara.user_id', '=', 'users.id')
+            ->select(
+                'berita_acara.*',
+                'users.username as author_name',
+                'users.avatar as author_avatar',
+                'users.bio as author_bio',
+                'users.department_id as author_department_id'
+            )
+            ->where('berita_acara.id', $id)
+            ->first();
 
         if (!$post) {
             return response(['message' => 'Postingan tidak ditemukan.'], 404);
@@ -47,6 +66,7 @@ class PostController extends Controller
             'imageStyle' => 'nullable|string',
             'category' => 'required|string',
             'status' => 'required|in:draft,published',
+            'showAuthorInfo' => 'nullable|boolean',
         ]);
 
         $postId = Str::random(20); // Generate Firestore-like string ID
@@ -61,13 +81,25 @@ class PostController extends Controller
             'category' => $fields['category'],
             'status' => $fields['status'],
             'author' => $request->user()->username ?: 'Admin HMJ',
+            'user_id' => $request->user()->id,
+            'show_author_info' => $request->input('showAuthorInfo', true),
             'likes' => 0,
             'date' => $now,
             'created_at' => $now,
             'updated_at' => $now,
         ]);
 
-        $post = DB::table('berita_acara')->where('id', $postId)->first();
+        $post = DB::table('berita_acara')
+            ->leftJoin('users', 'berita_acara.user_id', '=', 'users.id')
+            ->select(
+                'berita_acara.*',
+                'users.username as author_name',
+                'users.avatar as author_avatar',
+                'users.bio as author_bio',
+                'users.department_id as author_department_id'
+            )
+            ->where('berita_acara.id', $postId)
+            ->first();
 
         return response($this->formatPost($post), 201);
     }
@@ -82,6 +114,7 @@ class PostController extends Controller
             'imageStyle' => 'nullable|string',
             'category' => 'required|string',
             'status' => 'required|in:draft,published',
+            'showAuthorInfo' => 'nullable|boolean',
         ]);
 
         $post = DB::table('berita_acara')->where('id', $id)->first();
@@ -97,10 +130,21 @@ class PostController extends Controller
             'image_style' => $fields['imageStyle'] ?? $post->image_style,
             'category' => $fields['category'],
             'status' => $fields['status'],
+            'show_author_info' => $request->input('showAuthorInfo', true),
             'updated_at' => $now,
         ]);
 
-        $updatedPost = DB::table('berita_acara')->where('id', $id)->first();
+        $updatedPost = DB::table('berita_acara')
+            ->leftJoin('users', 'berita_acara.user_id', '=', 'users.id')
+            ->select(
+                'berita_acara.*',
+                'users.username as author_name',
+                'users.avatar as author_avatar',
+                'users.bio as author_bio',
+                'users.department_id as author_department_id'
+            )
+            ->where('berita_acara.id', $id)
+            ->first();
 
         return response($this->formatPost($updatedPost), 200);
     }
@@ -144,6 +188,13 @@ class PostController extends Controller
             'status' => $post->status,
             'author' => $post->author,
             'likes' => (int) $post->likes,
+            'showAuthorInfo' => isset($post->show_author_info) ? (bool) $post->show_author_info : true,
+            'authorDetails' => (isset($post->show_author_info) && $post->show_author_info && $post->user_id) ? [
+                'name' => $post->author_name ?? $post->author,
+                'avatar' => $post->author_avatar,
+                'bio' => $post->author_bio,
+                'departmentId' => $post->author_department_id,
+            ] : null,
             // Convert timestamps to object with seconds/nanoseconds to prevent breaking client parsing
             'date' => $post->date ? [
                 'seconds' => strtotime($post->date),
