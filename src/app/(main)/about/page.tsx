@@ -39,29 +39,6 @@ const defaultAboutHero = [
   { src: "/Galeri/OR.webp", alt: "Right" }
 ];
 
-const stats = [
-  {
-    icon: <Calendar className="h-8 w-8 text-primary" />,
-    title: 'Didirikan Sejak 2002',
-    description: 'Lebih dari 20 tahun mencetak talenta digital.',
-  },
-  {
-    icon: <Users className="h-8 w-8 text-primary" />,
-    title: '5 Departemen',
-    description: 'Kolaborasi lintas bidang untuk hasil optimal.',
-  },
-  {
-    icon: <Code className="h-8 w-8 text-primary" />,
-    title: '11 Divisi Khusus',
-    description: 'Fokus pada pengembangan keahlian spesifik.',
-  },
-  {
-    icon: <Briefcase className="h-8 w-8 text-primary" />,
-    title: '15+ Program Kerja',
-    description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
-  },
-];
-
 const SYMBOL_ICONS: { [key: string]: React.ReactNode } = {
   Feather: <Feather className="w-6 h-6" />,
   Wind: <Wind className="w-6 h-6" />,
@@ -158,6 +135,7 @@ export default function AboutPage() {
 
   const [dynamicGalleryItems, setDynamicGalleryItems] = useState<GalleryItem[]>(galleryItems);
   const [aboutHeroImages, setAboutHeroImages] = useState<any[]>(defaultAboutHero);
+  const [programCount, setProgramCount] = useState<string>('15+');
   const [cabinet, setCabinet] = useState<any>({
     cabinet_name: 'Kabinet Karsadhikara',
     logo_path: '/logo/logokabinet.png',
@@ -165,6 +143,32 @@ export default function AboutPage() {
     color_meanings: logoPhilosophy.colors,
     symbol_meanings: logoPhilosophy.symbols
   });
+
+  const currentYear = new Date().getFullYear();
+  const expYears = currentYear - 2002;
+
+  const stats = [
+    {
+      icon: <Calendar className="h-8 w-8 text-primary" />,
+      title: 'Didirikan Sejak 2002',
+      description: `Lebih dari ${expYears} tahun mencetak talenta digital.`,
+    },
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: '5 Departemen',
+      description: 'Kolaborasi lintas bidang untuk hasil optimal.',
+    },
+    {
+      icon: <Code className="h-8 w-8 text-primary" />,
+      title: '11 Divisi Khusus',
+      description: 'Fokus pada pengembangan keahlian spesifik.',
+    },
+    {
+      icon: <Briefcase className="h-8 w-8 text-primary" />,
+      title: `${programCount} Program Kerja`,
+      description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
+    },
+  ];
 
   useEffect(() => {
     async function loadGalleryAndHero() {
@@ -213,6 +217,15 @@ export default function AboutPage() {
         }
       } catch (err) {
         console.error("Gagal memuat filosofi logo kabinet dari API:", err);
+      }
+
+      try {
+        const prokerData = await api.getWorkPrograms();
+        if (prokerData && Array.isArray(prokerData)) {
+          setProgramCount(String(prokerData.length) + '+');
+        }
+      } catch (err) {
+        console.error("Gagal memuat jumlah program kerja dari API:", err);
       }
     }
     loadGalleryAndHero();

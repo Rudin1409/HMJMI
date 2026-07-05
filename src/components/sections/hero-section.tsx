@@ -6,7 +6,7 @@ import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Users, Calendar, Award } from 'lucide-react';
+import { ArrowRight, Users, Calendar, Award, Briefcase } from 'lucide-react';
 import { homeHeroImages } from '@/data/site-data';
 import { ScrollAnimation } from '../scroll-animation';
 import { MagneticButton } from '@/components/ui/magnetic-button';
@@ -37,6 +37,11 @@ function getImageStyle(captionStr: string | null) {
 
 export function HeroSection() {
   const [heroImages, setHeroImages] = useState<any[]>(homeHeroImages);
+  const [stats, setStats] = useState({
+    members: '...',
+    programs: '...',
+    experience: '...'
+  });
 
   useEffect(() => {
     async function loadHeroImages() {
@@ -54,6 +59,22 @@ export function HeroSection() {
       }
     }
     loadHeroImages();
+
+    // Calculate experience dynamically based on current year and founding year (2002)
+    const currentYear = new Date().getFullYear();
+    const foundingYear = 2002;
+    const expYears = currentYear - foundingYear;
+
+    Promise.all([
+      api.getStructuralMembers().catch(() => null),
+      api.getWorkPrograms().catch(() => null)
+    ]).then(([membersData, programsData]) => {
+      setStats({
+        members: membersData && Array.isArray(membersData) ? String(membersData.length) : '101',
+        programs: programsData && Array.isArray(programsData) ? String(programsData.length) : '25+',
+        experience: `${expYears}+`
+      });
+    });
   }, []);
   return (
     <section id="home" className="relative w-full overflow-hidden bg-transparent perspective-1000">
@@ -115,9 +136,9 @@ export function HeroSection() {
 
             <div className="grid grid-cols-3 gap-4 md:gap-8">
               {[
-                { icon: Users, val: "101", label: "Anggota Aktif" },
-                { icon: Calendar, val: "25+", label: "Acara Tahunan" },
-                { icon: Award, val: "20+", label: "Tahun Pengalaman" }
+                { icon: Users, val: stats.members, label: "Anggota Aktif" },
+                { icon: Briefcase, val: stats.programs, label: "Program Kerja" },
+                { icon: Award, val: stats.experience, label: "Tahun Pengalaman" }
               ].map((stat, idx) => (
                 <ScrollAnimation key={idx} delay={4 + idx}>
                   <SpotlightCard className="group p-4 bg-white/5 border-white/10 hover:-translate-y-1 cursor-default h-full">

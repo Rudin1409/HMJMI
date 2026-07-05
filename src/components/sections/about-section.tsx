@@ -1,37 +1,59 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { SpotlightCard } from '@/components/ui/spotlight-card';
 import { Badge } from '@/components/ui/badge';
 import { Briefcase, Calendar, Code, Users, Target, Rocket } from 'lucide-react';
 import { ScrollAnimation } from '@/components/scroll-animation';
-
-const stats = [
-  {
-    icon: <Calendar className="h-6 w-6 text-white" />,
-    title: 'Didirikan Sejak 2002',
-    description: 'Lebih dari 20 tahun mencetak talenta digital.',
-    gradient: 'from-pink-500 to-rose-500',
-  },
-  {
-    icon: <Users className="h-6 w-6 text-white" />,
-    title: '5 Departemen',
-    description: 'Kolaborasi lintas bidang untuk hasil optimal.',
-    gradient: 'from-purple-500 to-indigo-500',
-  },
-  {
-    icon: <Code className="h-6 w-6 text-white" />,
-    title: '11 Divisi Khusus',
-    description: 'Fokus pada pengembangan keahlian spesifik.',
-    gradient: 'from-blue-500 to-cyan-500',
-  },
-  {
-    icon: <Briefcase className="h-6 w-6 text-white" />,
-    title: '15+ Program Kerja',
-    description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
-    gradient: 'from-emerald-500 to-teal-500',
-  },
-];
+import { api } from '@/lib/api-client';
 
 export function AboutSection() {
+  const [programCount, setProgramCount] = useState<string>('15+');
+
+  // Calculate experience dynamically based on current year and founding year (2002)
+  const currentYear = new Date().getFullYear();
+  const expYears = currentYear - 2002;
+
+  useEffect(() => {
+    api.getWorkPrograms()
+      .then(data => {
+        if (data && Array.isArray(data)) {
+          setProgramCount(String(data.length) + '+');
+        }
+      })
+      .catch(err => {
+        console.error("Gagal memuat jumlah program kerja dari API:", err);
+      });
+  }, []);
+
+  const stats = [
+    {
+      icon: <Calendar className="h-6 w-6 text-white" />,
+      title: 'Didirikan Sejak 2002',
+      description: `Lebih dari ${expYears} tahun mencetak talenta digital.`,
+      gradient: 'from-pink-500 to-rose-500',
+    },
+    {
+      icon: <Users className="h-6 w-6 text-white" />,
+      title: '5 Departemen',
+      description: 'Kolaborasi lintas bidang untuk hasil optimal.',
+      gradient: 'from-purple-500 to-indigo-500',
+    },
+    {
+      icon: <Code className="h-6 w-6 text-white" />,
+      title: '11 Divisi Khusus',
+      description: 'Fokus pada pengembangan keahlian spesifik.',
+      gradient: 'from-blue-500 to-cyan-500',
+    },
+    {
+      icon: <Briefcase className="h-6 w-6 text-white" />,
+      title: `${programCount} Program Kerja`,
+      description: 'Inisiatif beragam untuk pemberdayaan mahasiswa.',
+      gradient: 'from-emerald-500 to-teal-500',
+    },
+  ];
+
   return (
     <section id="about" className="w-full py-20 md:py-32 relative overflow-hidden bg-primary/40">
       {/* Background Glows (Static for performance) */}
