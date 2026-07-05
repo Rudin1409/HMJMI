@@ -55,6 +55,12 @@ class ImageOptimizer
             return $file->store($directory, 'public');
         }
 
+        // Convert palette/indexed images (like GIFs or indexed PNGs) to truecolor
+        // to prevent imagewebp() from failing with "Palette image not supported by webp"
+        if (!imageistruecolor($image)) {
+            imagepalettetotruecolor($image);
+        }
+
         // 3. Get original dimensions
         $width = imagesx($image);
         $height = imagesy($image);
@@ -78,7 +84,6 @@ class ImageOptimizer
             imagesavealpha($resizedImage, true);
             
             imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-            imagedestroy($image);
             $image = $resizedImage;
         } else {
             // Even if not resized, ensure transparency settings are intact for encoding
@@ -89,8 +94,6 @@ class ImageOptimizer
         // 5. Save as WebP into a temporary file
         $tempPath = tempnam(sys_get_temp_dir(), 'webp_opt_');
         if (imagewebp($image, $tempPath, 80)) { // 80% compression quality is perfect
-            imagedestroy($image);
-            
             // Store WebP using Laravel's Storage disk
             Storage::disk('public')->putFileAs($directory, new File($tempPath), $filename);
             @unlink($tempPath);
@@ -99,7 +102,6 @@ class ImageOptimizer
         }
 
         // Final fallback if WebP conversion fails
-        imagedestroy($image);
         @unlink($tempPath);
         return $file->store($directory, 'public');
     }

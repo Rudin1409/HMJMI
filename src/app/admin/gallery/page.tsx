@@ -385,6 +385,7 @@ export default function AdminGalleryPage() {
     const targetIndex = direction === 'up' ? index - 1 : index + 1;
     if (targetIndex < 0 || targetIndex >= items.length) return;
 
+    const previousState = [...items];
     const newItems = [...items];
     const temp = newItems[index];
     newItems[index] = newItems[targetIndex];
@@ -401,7 +402,8 @@ export default function AdminGalleryPage() {
       await api.reorderGalleryItems(payload);
     } catch (err: any) {
       console.error('Failed to save order index:', err);
-      fetchItems(activeCategory);
+      setItems(previousState);
+      setError(err.message || 'Gagal menyimpan urutan galeri ke server.');
     }
   };
 

@@ -21,12 +21,23 @@ class ApiClient {
   }
 
   async request<T = any>(endpoint: string, options: RequestInit = {}): Promise<T> {
+    let method = options.method || 'GET';
+    let url = `${API_URL}${endpoint}`;
+
     const headers = new Headers(options.headers || {});
     headers.set('Accept', 'application/json');
     
     // Set content-type to JSON unless we are sending FormData (like image upload)
     if (!(options.body instanceof FormData) && !headers.has('Content-Type')) {
       headers.set('Content-Type', 'application/json');
+    }
+
+    // Spoof PUT and DELETE requests as POST to bypass hosting limitations (ModSecurity blocking PUT/DELETE)
+    if (method === 'PUT' || method === 'DELETE') {
+      headers.set('X-HTTP-Method-Override', method);
+      const separator = url.includes('?') ? '&' : '?';
+      url += `${separator}_method=${method}`;
+      method = 'POST';
     }
 
     const token = this.getToken();
@@ -36,10 +47,11 @@ class ApiClient {
 
     const config: RequestInit = {
       ...options,
+      method,
       headers,
     };
 
-    const response = await fetch(`${API_URL}${endpoint}`, config);
+    const response = await fetch(url, config);
 
     if (response.status === 401) {
       this.clearToken();
