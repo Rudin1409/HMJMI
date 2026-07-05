@@ -7,7 +7,7 @@ import { ImageWithSkeleton } from '@/components/ui/image-with-skeleton';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Briefcase, Instagram, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Award, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store } from 'lucide-react';
+import { Users, Briefcase, Instagram, ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Award, GraduationCap, Megaphone, Sparkles, HeartHandshake, Store, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Accordion,
@@ -331,6 +331,8 @@ export default function ProfilePage() {
   const [featuredMembers, setFeaturedMembers] = useState<{ [key: string]: Member | null }>({});
   const [groupedTeam, setGroupedTeam] = useState<any>(null);
   const [allDbPrograms, setAllDbPrograms] = useState<any[]>([]);
+  const [isMembersLoading, setIsMembersLoading] = useState(true);
+  const [isProgramsLoading, setIsProgramsLoading] = useState(true);
   const detailsRef = useRef<HTMLDivElement>(null);
 
   // Fetch dynamic structural members and work programs on mount
@@ -367,6 +369,9 @@ export default function ProfilePage() {
       })
       .catch(err => {
         console.error("Gagal mengambil data pengurus dinamis, menggunakan fallback data lokal:", err);
+      })
+      .finally(() => {
+        setIsMembersLoading(false);
       });
 
     api.getWorkPrograms()
@@ -375,6 +380,9 @@ export default function ProfilePage() {
       })
       .catch(err => {
         console.error("Gagal mengambil data program kerja dinamis, menggunakan fallback data lokal:", err);
+      })
+      .finally(() => {
+        setIsProgramsLoading(false);
       });
   }, []);
 
@@ -612,36 +620,49 @@ export default function ProfilePage() {
           </div>
 
           {activeView === 'members' && (
-            <div className="space-y-12">
-              <MemberGroup
-                title={activeDept.id === 'inti' ? 'Pengurus Inti' : 'Pimpinan Departemen'}
-                members={currentDepartmentData.heads}
-                featuredMember={featuredHead}
-                setFeaturedMember={setFeaturedHead}
-                showNavOnDesktop={true}
-              />
-              {Object.keys(currentDepartmentData.members).length > 0 && currentDivisions.length > 0 && (
-                currentDivisions.map(division => {
-                  const divisionMembers: Member[] = currentDepartmentData.members[division.id as keyof typeof currentDepartmentData.members] || [];
-                  if (divisionMembers.length === 0) return null;
-                  return (
-                    <MemberGroup
-                      key={division.id}
-                      title={division.name.toLowerCase().startsWith('divisi') ? `Tim ${division.name}` : `Tim Divisi ${division.name}`}
-                      members={divisionMembers}
-                      featuredMember={featuredMembers[division.id] || null}
-                      setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
-                      showNavOnDesktop={true}
-                    />
-                  );
-                })
-              )}
-            </div>
+            isMembersLoading ? (
+              <div className="flex flex-col items-center justify-center py-20 gap-3">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <p className="text-sm text-muted-foreground animate-pulse">Memuat data pengurus...</p>
+              </div>
+            ) : (
+              <div className="space-y-12">
+                <MemberGroup
+                  title={activeDept.id === 'inti' ? 'Pengurus Inti' : 'Pimpinan Departemen'}
+                  members={currentDepartmentData.heads}
+                  featuredMember={featuredHead}
+                  setFeaturedMember={setFeaturedHead}
+                  showNavOnDesktop={true}
+                />
+                {Object.keys(currentDepartmentData.members).length > 0 && currentDivisions.length > 0 && (
+                  currentDivisions.map(division => {
+                    const divisionMembers: Member[] = currentDepartmentData.members[division.id as keyof typeof currentDepartmentData.members] || [];
+                    if (divisionMembers.length === 0) return null;
+                    return (
+                      <MemberGroup
+                        key={division.id}
+                        title={division.name.toLowerCase().startsWith('divisi') ? `Tim ${division.name}` : `Tim Divisi ${division.name}`}
+                        members={divisionMembers}
+                        featuredMember={featuredMembers[division.id] || null}
+                        setFeaturedMember={(member) => setFeaturedMemberForDivision(division.id, member)}
+                        showNavOnDesktop={true}
+                      />
+                    );
+                  })
+                )}
+              </div>
+            )
           )}
 
           {activeView === 'programs' && (
-            <div>
-              <div className="text-center mb-8">
+            isProgramsLoading ? (
+              <div className="flex flex-col items-center justify-center py-20 gap-3">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <p className="text-sm text-muted-foreground animate-pulse">Memuat program kerja...</p>
+              </div>
+            ) : (
+              <div>
+                <div className="text-center mb-8">
                 <ScrollAnimation direction="up">
                   <h3 className="text-2xl font-bold text-foreground relative inline-block">
                     Program Unggulan
@@ -690,7 +711,8 @@ export default function ProfilePage() {
                 )}
               </div>
             </div>
-          )}
+          )
+        )}
 
         </div>
       </section>

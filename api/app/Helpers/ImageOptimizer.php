@@ -65,7 +65,7 @@ class ImageOptimizer
         $width = imagesx($image);
         $height = imagesy($image);
 
-        $maxDimension = 1200; // Optimal max dimension for standard web layouts
+        $maxDimension = 1920; // Increased to 1920px for high quality / Full HD resolution
 
         // 4. Resize if width or height exceeds maxDimension
         if ($width > $maxDimension || $height > $maxDimension) {
@@ -93,7 +93,7 @@ class ImageOptimizer
 
         // 5. Save as WebP into a temporary file
         $tempPath = tempnam(sys_get_temp_dir(), 'webp_opt_');
-        if (imagewebp($image, $tempPath, 80)) { // 80% compression quality is perfect
+        if (imagewebp($image, $tempPath, 90)) { // Increased to 90% quality for very sharp and smooth results
             // Store WebP using Laravel's Storage disk
             Storage::disk('public')->putFileAs($directory, new File($tempPath), $filename);
             @unlink($tempPath);
